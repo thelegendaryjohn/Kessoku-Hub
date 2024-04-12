@@ -23,7 +23,7 @@ We recommend having basic understanding of `git`, `github` and `nodejs` and givi
 
 Then, follow these steps to contribute to this project:
 
-1. **Create a New Branch**: Create a new branch for your changes using the `git switch` command. Replace `<branch-name>` with a name for your branch: `git switch -c <branch-name>`.
+1. **Create a New Branch**: Create a new branch for your changes using the `git switch` command. Replace `<branch-name>` with a name for your branch: `git switch <branch-name>`.
 2. **Make Your Changes**: Make the changes you want to contribute. Be sure to test your changes thoroughly, and comment your code properly.
 3. **Commit Your Changes**: Stage your changes with `git add .`, then commit them with `git commit -m "Your detailed commit message"`.
 4. **Push Your Changes**: Push your changes to your forked repository on GitHub with `git push origin <branch-name>`.
