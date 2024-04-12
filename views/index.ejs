@@ -9,6 +9,12 @@
 <body>
   <h1>Home</h1>
   <p><%= message %></p>
+  <p>Characters:</p>
+  <ul>
+    <% characters.forEach(element => { %>
+    <%- include("partials/characterCard.ejs", { character: element }) %>
+    <% }); %>
+  </ul>
 </body>
 
 </html>
