@@ -1,0 +1,19 @@
+var env = process.env.NODE_ENV;
+// Packages
+import { createServer } from "http";
+import fs from "fs";
+// Modules
+import { app } from "./app.js";
+
+// Import all routes
+fs.readdirSync("./routes").map((file) => {
+	if (file.endsWith(".js")) {
+		import(`./routes/${file}`);
+	}
+});
+
+// Start a HTTP server. Listen to 80 in production, 3000 / specified port in development
+const server = createServer(app);
+server.listen(env == "dev" ? 3000 : 80, () => {
+	console.log(`Server started on http://localhost:${server.address().port}`);
+});
