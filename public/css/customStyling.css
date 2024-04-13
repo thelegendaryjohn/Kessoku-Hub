@@ -1,0 +1,12 @@
+/* Custom variables */
+:root {
+    --bocchi-color: rgb(255, 34, 144);
+    --nijika-color: rgb(255, 240, 0);
+    --ryu-color: rgb(34, 84, 192);
+    --ikuyo-color: rgb(218, 39, 39);
+}
+
+/* Custom Styling */
+.btn-underline {
+    text-decoration: underline;
+}

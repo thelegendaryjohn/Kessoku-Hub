@@ -14,3 +14,17 @@ export const characters = [
 		desc: "A bright and popular first year of high school. She is in charge of the guitar and vocals of Kessoku Band. She is a cheerful character who likes to interact with people and can talk to her with a smile without hesitation, even when she meets her for the first time.",
 	},
 ];
+
+function getCharacterById(id) {
+	const currChar = characters.find((character) => character.id === id);
+
+	console.log(
+		`
+		ID: ${currChar.id}\n
+		Name: ${currChar.name}\n
+		VA: ${currChar.va}\n
+		Role: ${currChar.role}\n
+		Description: ${currChar.desc}
+		`
+	);
+}
