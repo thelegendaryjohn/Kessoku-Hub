@@ -7,7 +7,55 @@
     --accent-purple: rgb(196, 90, 255);
     --accent-grey: rgb(149, 149, 149);
     --accent-rainbow: linear-gradient(135deg, rgb(34, 84, 192), rgb(255, 240, 0), rgb(218, 39, 39));
-    
+    --base-font-size: 
+    --small-font-size: 
+    --heading-font-size: 
+}
+
+/* Footer Styling */
+footer {
+    display: flex;
+    flex-direction: column;
+	background-image: url("/images/footer-section/footer-bg.png");
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
+
+footer * {
+	color: #000;
+    font-size: 1.1rem;
+	/* text-decoration: none; */
+}
+
+footer p {
+	margin-top: 10px;
+}
+
+#footer-social {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#footer-social img {
+    padding: 0 3px;
+    width: 2rem;
+}
+
+#footer-icon {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#footer-icon-img {
+    width: 60%;
+}
+
+#footer-icon-arrow {
+    width: 12%;
 }
 
 /* Custom Styling */

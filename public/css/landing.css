@@ -10,11 +10,6 @@ body {
 	color: #000;
 }
 
-/* header,
-#characters {
-	text-shadow: 0 0.4rem 0.3rem rgba(0, 0, 0, 0.2);
-} */
-
 /* Banner Styling */
 #banner {
 	display: flex;
@@ -31,7 +26,7 @@ body {
 #banner-img {
 	min-width: 130%;
 	transform: translateX(-1%);
-	filter: brightness(90%);
+	filter: brightness(0%);
 }
 
 #banner-img-overlap {
@@ -41,6 +36,7 @@ body {
 	justify-content: center;
 	width: 75vw;
 	bottom: -2vw;
+	opacity: 0;
 }
 
 #banner-logo {
@@ -67,24 +63,22 @@ body {
 }
 
 /* Characters Section */
-#characters {
-	padding: 6vw 0 0 8vw;
-}
-
-#characters ul {
+#char-btn-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 	list-style-type: none;
+	padding: 0 5%;
 }
 
-#characters li {
-	display: inline-block;
-	padding: 5vw 5.6vw;
-	margin: 0 0 0 -3vw;
+#char-btn-list li {
 	font-size: 1.8rem;
 	font-weight: bold;
 }
 
 #char-header {
 	font-size: 12vw;
+	padding: 6vw 0 0 8vw;
 	color: var(--bocchi-color);
 }
 
@@ -93,9 +87,11 @@ body {
 	position: relative;
 	margin: 28vw 0;
 	height: 120vw;
+	overflow-x: clip;
 }
 
 #band-ribbon {
+	z-index: -1;
 	background-color: var(--bocchi-color);
 	color: #fff;
 	text-align: center;
@@ -104,33 +100,71 @@ body {
 }
 
 #char-name-ribbon {
+	z-index: 1;
 	position: absolute;
 	transform-origin: 7% 60%;
 	transform: rotate(90deg);
 	text-wrap: nowrap;
-	top: -33vw;
-	font-size: 25vw;
+	top: -30vw;
+	font-size: 23vw;
 	color: transparent;
 	text-transform: uppercase;
 	text-shadow: 0.4rem 0 0.1rem rgba(0, 0, 0, 0.04);
-	-webkit-text-stroke: 0.5vw var(--accent-grey);
+	-webkit-text-stroke: 0.4vw var(--accent-grey);
 }
 
 #char-img,
-#char-img-backdrop {
+#char-img-layer {
 	position: absolute;
+	z-index: 2;
 	width: 66vw;
-	top: -12vw;
+	top: -24vw;
 }
 
-#char-img-backdrop {
-    z-index: -1;
-    top: -12vw;
-    left: 1vw;
+#char-img-layer {
+	z-index: 1;
+	left: 1vw;
 }
 
-#char-img-backdrop-visible {
-    mix-blend-mode: color-burn;
+.char-heads {
+	position: absolute;
+	z-index: 1;
+	width: 80vw;
+	top: -22vw;
+	right: -20vw;
+}
+
+#bocchi-third-head {
+	z-index: 3;
+	width: 21vw;
+	top: 9.5vw;
+	right: 22.5vw;
+}
+
+#card-text-container {
+	transition: 0.2s;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	z-index: 3;
+	top: 40vw;
+    right: 5%;
+	max-width: 20rem;
+	width: 100%;
+}
+
+#char-name {
+	font-size: 2.6rem;
+	color: var(--bocchi-color);
+}
+
+#char-va,
+#char-role {
+	font-size: 1.8rem;
+}
+
+#char-desc {
+    font-size: 1.3rem;
 }
 
 /* News & Forum Section */
@@ -157,24 +191,40 @@ body {
 	padding: 20px;
 }
 
-/* Footer Styling */
-footer {
-	background-image: url("/images/footer-section/footer-bg-mobile.png");
-	color: #fff;
-	padding: 10px;
-	text-align: center;
+/* CSS animation for header poster */
+@keyframes adjustBrightness {
+	0% {
+		filter: brightness(0%);
+	}
+	25% {
+		filter: brightness(35%);
+	}
+	50% {
+		filter: brightness(35%); /* Delay or pause */
+	}
+	75% {
+		filter: brightness(15%);
+	}
+	100% {
+		filter: brightness(90%);
+	}
 }
 
-footer a {
-	color: #fff;
-	text-decoration: none;
+@keyframes adjustOpacity {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
 }
 
-footer p {
-	margin-top: 10px;
+/* Apply animations on page load*/
+#banner-img {
+	animation: adjustBrightness 2s linear 0.2s forwards;
 }
 
-/* Just to remind me that this exists for a later stage */
-/* outline-color: aqua;
-outline-width: 2vw;
-outline-style: groove; */
+#banner-img-overlap {
+	animation: adjustOpacity 1s linear 2.1s forwards;
+}

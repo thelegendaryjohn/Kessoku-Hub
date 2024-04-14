@@ -13,9 +13,9 @@
   <main>
     <section class="text-shadow">
       <div id="banner">
-        <img id="banner-img" src="/images/top/top-bg-nr.jpg" alt="Landing page banner">
+        <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner">
         <div id="banner-img-overlap" class="banner-overlap">
-          <img id="banner-logo" src="/images/top/band-logo.svg" alt="Landing page banner logo">
+          <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo">
           <div id="banner-text">
             <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
             <h3 id="banner-desc">THEATER COMPILATION</h3>
@@ -26,7 +26,7 @@
 
     <section id="characters" class="text-shadow">
       <h2 id="char-header">CHARACTER</h2>
-      <ul>
+      <ul id="char-btn-list">
         <li class="btn-underline">HITORI</li>
         <li>NIJIKA</li>
         <li>RYU</li>
@@ -41,8 +41,16 @@
         <p id="char-name-ribbon">HITORI GOTOH</p> <!-- Insert character name here -->
       </div>
       <div id="char-container">
-        <img id="char-img" src="/images/character-section/characters/bocchi.png" alt="Hitori Gotoh standing photo">
-        <img id="char-img-backdrop" src="/images/character-section/characters/bocchi-backdrop.png" alt="Hitori Gotoh standing photo">
+        <img id="char-img" src="/images/character-section/character/bocchi.png" alt="Hitori Gotoh standing photo">
+        <img id="char-img-layer" src="/images/character-section/character/bocchi-layer.png" alt="Hitori Gotoh standing photo">
+        <img class="char-heads" src="/images/character-section/character/bocchi-3pics.png" alt="Hitori's face expressions">
+        <img id="bocchi-third-head" class="char-heads" src="/images/character-section/character/bocchi-face-1.png" alt="Hitori's face expressions">
+      </div>
+      <div id="card-text-container" class="text-shadow">
+        <h1 id="char-name">Hitori Gotoh</h1>
+        <h2 id="char-va">VA: Yoshino Aoyama</h2>
+        <h2 id="char-role">『 Guitarist 』</h2>
+        <p id="char-desc">A high school freshman who is extremely shy and introverted. She used to suffer from anxiety that was so bad it affected her studies but found solace in playing guitar.</p>
       </div>
     </article>
 
@@ -70,6 +78,7 @@
 
   <!-- Footer partial -->
   <%- include("partials/htmlFooter.ejs") %>
+  <script src="/js/landing.js"></script>
+  <script src="/js/root.js"></script>
 </body>
-
 </html>
