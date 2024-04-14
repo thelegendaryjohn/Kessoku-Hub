@@ -4,6 +4,7 @@ import { createServer } from "http";
 import fs from "fs";
 // Modules
 import { app } from "./lib/app.js";
+import db from "./lib/db.js";
 
 // Import all routes
 fs.readdirSync("./routes").map((file) => {
