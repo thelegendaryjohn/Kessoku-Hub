@@ -1,0 +1,20 @@
+/* Custom variables */
+:root {
+    --bocchi-color: rgb(255, 34, 144);
+    --nijika-color: rgb(255, 240, 0);
+    --ryu-color: rgb(34, 84, 192);
+    --ikuyo-color: rgb(218, 39, 39);
+    --accent-purple: rgb(196, 90, 255);
+    --accent-grey: rgb(149, 149, 149);
+    --accent-rainbow: linear-gradient(135deg, rgb(34, 84, 192), rgb(255, 240, 0), rgb(218, 39, 39));
+    
+}
+
+/* Custom Styling */
+.btn-underline {
+    text-decoration: underline;
+}
+
+.text-shadow {
+    text-shadow: 0 0.4rem 0.3rem rgba(0, 0, 0, 0.2);
+}

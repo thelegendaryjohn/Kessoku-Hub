@@ -2,35 +2,29 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kessoku Band Fan Site</title>
+  <!-- Head partial -->
+  <%- include("partials/htmlHead.ejs") %>
 
+  <title>Kessoku Band Fan Site | Home</title>
   <link rel="stylesheet" href="/css/landing.css">
-  <link rel="stylesheet" href="/css/customStyling.css">
-
-  <!-- Oswald Google Font-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <header>
-    <div id="banner">
-      <img id="banner-img" src="/images/top/top-bg-nr.jpg" alt="Landing page banner">
-      <div id="banner-img-overlap" class="banner-overlap">
-        <img id="banner-logo" src="/images/top/band-logo.svg" alt="Landing page banner logo">
-        <div id="banner-text">
-          <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
-          <h3 id="banner-desc">THEATER COMPILATION</h3>
+  <main>
+    <section class="text-shadow">
+      <div id="banner">
+        <img id="banner-img" src="/images/top/top-bg-nr.jpg" alt="Landing page banner">
+        <div id="banner-img-overlap" class="banner-overlap">
+          <img id="banner-logo" src="/images/top/band-logo.svg" alt="Landing page banner logo">
+          <div id="banner-text">
+            <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
+            <h3 id="banner-desc">THEATER COMPILATION</h3>
+          </div>
         </div>
       </div>
-      <!-- <div class="banner-padding">asdasdasdas</div> -->
-    </div>
-  </header>
-  <main>
-    <section id="characters">
+    </section>
+
+    <section id="characters" class="text-shadow">
       <h2 id="char-header">CHARACTER</h2>
       <ul>
         <li class="btn-underline">HITORI</li>
@@ -40,13 +34,20 @@
       </ul>
     </section>
     <article class="char-card">
-      <h2>Hitori Gotoh</h2>
-      <h3>VA: Yoshino Aoyama</h3>
-      <h3>[Guitarist]</h3>
-      <p>A high school freshman who is extremely shy and introverted. She used to suffer from anxiety that was so bad it affected her studies but found solace in playing guitar.</p>
+      <div id="char-card-bg">
+        <div id="band-ribbon">
+          <p id="band-ribbon-text">KESSOKUBAND</p>
+        </div>
+        <p id="char-name-ribbon">HITORI GOTOH</p> <!-- Insert character name here -->
+      </div>
+      <div id="char-container">
+        <img id="char-img" src="/images/character-section/characters/bocchi.png" alt="Hitori Gotoh standing photo">
+        <img id="char-img-backdrop" src="/images/character-section/characters/bocchi-backdrop.png" alt="Hitori Gotoh standing photo">
+      </div>
     </article>
+
     <section id="news-forum">
-      <h2>NEWS & FORUM</h2>
+      <h2>NEWS &amp; FORUM</h2>
       <p>Date 12.7.24</p>
       <p>Sales of collaboration models with Walkman R have started!</p>
     </section>
@@ -66,13 +67,9 @@
       <!-- Store content -->
     </section>
   </main>
-  <footer>
-    <div class="support">
-      <a href="#">Support</a>
-      <a href="#">About site</a>
-    </div>
-    <p>All rights reserved © 2022 CloverWorks Studios & Aniplex</p>
-  </footer>
+
+  <!-- Footer partial -->
+  <%- include("partials/htmlFooter.ejs") %>
 </body>
 
 </html>

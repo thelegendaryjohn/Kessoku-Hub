@@ -1,137 +1,180 @@
 /* Global Styling */
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    font-family: "Oswald", sans-serif;
-    background-color: #f4f4f4;
-    color: #000;
+	font-family: "Oswald", sans-serif;
+	background-color: #f4f4f4;
+	color: #000;
 }
 
-header,
+/* header,
 #characters {
-    text-shadow: 0vw 1vw 0.6vw rgba(0, 0, 0, 0.2);
-}
+	text-shadow: 0 0.4rem 0.3rem rgba(0, 0, 0, 0.2);
+} */
 
 /* Banner Styling */
 #banner {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    overflow-x: clip;
+	display: flex;
+	position: relative;
+	justify-content: center;
+	overflow-x: clip;
 }
 
 .banner-overlap {
-    position: absolute;
-    z-index: 1;
+	position: absolute;
+	z-index: 1;
 }
 
 #banner-img {
-    min-width: 130%;
-    transform: translateX(-1%);
-    filter: brightness(90%);
+	min-width: 130%;
+	transform: translateX(-1%);
+	filter: brightness(90%);
 }
 
 #banner-img-overlap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 75vw;
-    bottom: -2vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 75vw;
+	bottom: -2vw;
 }
 
 #banner-logo {
-    width: 70%;
+	width: 70%;
 }
 
 #banner-text {
-    position: relative;
+	position: relative;
 }
 
 #banner-name {
-    padding-top: 0.5vh;
-    color: rgb(196, 90, 255);
-    font-size: 16vw;
-    line-height: 82%;
+	padding-top: 0.5vh;
+	color: rgb(196, 90, 255);
+	font-size: 16vw;
+	line-height: 82%;
 }
 
 #banner-desc {
-    position: absolute;
-    color: rgb(255, 240, 0);
-    font-size: 6.8vw;
-    bottom: 33%;
-    left: 5.2%;
+	position: absolute;
+	color: rgb(255, 240, 0);
+	font-size: 6.8vw;
+	bottom: 33%;
+	left: 5.2%;
 }
 
 /* Characters Section */
 #characters {
-    background-color: #f8f8f8;
-    padding: 5vw 0 0 8vw;
+	padding: 6vw 0 0 8vw;
 }
 
 #characters ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 #characters li {
-    display: inline-block;
-    padding: 5vw 5.6vw;
-    margin: 0 0 0 -3vw;
-    font-size: 4vw;
-    font-weight: bold;
+	display: inline-block;
+	padding: 5vw 5.6vw;
+	margin: 0 0 0 -3vw;
+	font-size: 1.8rem;
+	font-weight: bold;
 }
 
 #char-header {
-    font-size: 12vw;
-    color: var(--bocchi-color);
+	font-size: 12vw;
+	color: var(--bocchi-color);
 }
 
 /* Character Card Styling */
 .char-card {
-    padding: 20px;
-    margin: 20px 0;
+	position: relative;
+	margin: 28vw 0;
+	height: 120vw;
+}
+
+#band-ribbon {
+	background-color: var(--bocchi-color);
+	color: #fff;
+	text-align: center;
+	font-size: 16vw;
+	font-weight: bold;
+}
+
+#char-name-ribbon {
+	position: absolute;
+	transform-origin: 7% 60%;
+	transform: rotate(90deg);
+	text-wrap: nowrap;
+	top: -33vw;
+	font-size: 25vw;
+	color: transparent;
+	text-transform: uppercase;
+	text-shadow: 0.4rem 0 0.1rem rgba(0, 0, 0, 0.04);
+	-webkit-text-stroke: 0.5vw var(--accent-grey);
+}
+
+#char-img,
+#char-img-backdrop {
+	position: absolute;
+	width: 66vw;
+	top: -12vw;
+}
+
+#char-img-backdrop {
+    z-index: -1;
+    top: -12vw;
+    left: 1vw;
+}
+
+#char-img-backdrop-visible {
+    mix-blend-mode: color-burn;
 }
 
 /* News & Forum Section */
 #news-forum {
-    background-color: #ddd;
-    padding: 20px;
+	background-color: #ddd;
+	padding: 20px;
 }
 
 /* Music Section */
 #music {
-    background-color: #ccc;
-    padding: 20px;
+	background-color: #ccc;
+	padding: 20px;
 }
 
 /* The Series Section */
 #the-series {
-    background-color: #bbb;
-    padding: 20px;
+	background-color: #bbb;
+	padding: 20px;
 }
 
 /* Store Section */
 #store {
-    background-color: #aaa;
-    padding: 20px;
+	background-color: #aaa;
+	padding: 20px;
 }
 
 /* Footer Styling */
 footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+	background-image: url("/images/footer-section/footer-bg-mobile.png");
+	color: #fff;
+	padding: 10px;
+	text-align: center;
 }
 
 footer a {
-    color: #fff;
-    text-decoration: none;
+	color: #fff;
+	text-decoration: none;
 }
 
 footer p {
-    margin-top: 10px;
+	margin-top: 10px;
 }
+
+/* Just to remind me that this exists for a later stage */
+/* outline-color: aqua;
+outline-width: 2vw;
+outline-style: groove; */
