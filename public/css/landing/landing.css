@@ -61,6 +61,11 @@ body {
 }
 
 /* Characters Section */
+#char-container {
+	display: flex;
+	justify-content: center;
+}
+
 #char-btn-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -78,13 +83,14 @@ body {
 	font-size: 12vw;
 	padding: 6vw 0 0 8vw;
 	color: var(--hitori-color);
+	transition: color 0.5s;
 }
 
 /* Character Card Styling */
 .char-card {
 	position: relative;
-	margin: 28vw 0;
-	height: 120vw;
+	margin: 0 1em 10em 0;
+	width: 100%;
 	overflow-x: clip;
 }
 
@@ -100,10 +106,10 @@ body {
 #char-name-ribbon {
 	z-index: 1;
 	position: absolute;
+	top: 10%;
 	transform-origin: 7% 60%;
 	transform: rotate(90deg);
 	text-wrap: nowrap;
-	top: -30vw;
 	font-size: 23vw;
 	color: transparent;
 	text-transform: uppercase;
@@ -111,25 +117,33 @@ body {
 	-webkit-text-stroke: 0.4vw var(--accent-grey);
 }
 
+#char-img-container {
+	width: 100%;
+	height: auto;
+	position: relative;
+	display: flex;
+}
+
 #char-img,
 #char-img-layer {
-	position: absolute;
+	width: 70%;
 	z-index: 2;
-	width: 66vw;
-	top: -24vw;
 }
 
 #char-img-layer {
+	position: absolute;
+	margin-left: 4px;
+	margin-top: 4px;
 	z-index: 1;
-	left: 1vw;
+	animation-duration: 0.3s;
 }
 
 .char-heads {
-	position: absolute;
 	z-index: 1;
-	width: 80vw;
-	top: -22vw;
-	right: -20vw;
+	position: absolute;
+	max-height: 45%;
+	right: -20%;
+	animation-delay: 200ms;
 }
 
 #bocchi-third-head {
@@ -145,7 +159,7 @@ body {
 	flex-direction: column;
 	position: absolute;
 	z-index: 3;
-	top: 40vw;
+	bottom: -10%;
 	right: 5%;
 	max-width: 20rem;
 	width: 100%;

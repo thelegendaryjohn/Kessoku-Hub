@@ -1,0 +1,119 @@
+@keyframes character-slide-in {
+	0% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes character-slide-out {
+	0% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(-200%);
+	}
+}
+
+@keyframes ribbon-clip-in {
+	0% {
+		clip-path: inset(0 0 0 100%);
+	}
+	100% {
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+@keyframes ribbon-clip-out {
+	0% {
+		clip-path: inset(0 0 0 0);
+	}
+	100% {
+		clip-path: inset(0 100% 0 0);
+	}
+}
+
+@keyframes banner-slide-in {
+	0% {
+		transform: rotate(90deg) translateX(-100%);
+		opacity: 0;
+	}
+	100% {
+		transform: rotate(90deg) translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes banner-slide-out {
+	0% {
+		transform: rotate(90deg) translateX(0);
+		opacity: 1;
+	}
+	100% {
+		transform: rotate(90deg) translateX(100%);
+		opacity: 0;
+	}
+}
+
+@keyframes card-slide-in {
+	0% {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes card-slide-out {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+}
+
+/* Classes to apply animations */
+.character-slide-in {
+	animation: character-slide-in 0.25s ease-out forwards;
+}
+
+.character-slide-out {
+	animation: character-slide-out 0.25s ease-out forwards;
+}
+
+.ribbon-clip-in {
+	animation: ribbon-clip-in 0.25s ease-out forwards;
+}
+
+.ribbon-clip-out {
+	animation: ribbon-clip-out 0.25s ease-out forwards;
+}
+
+.banner-slide-in {
+	animation: banner-slide-in 0.3s ease-out forwards;
+}
+
+.banner-slide-out {
+	animation: banner-slide-out 0.3s ease-out forwards;
+}
+
+.card-slide-in {
+	animation: card-slide-in 0.25s ease-out forwards;
+}
+
+.card-slide-out {
+	animation: card-slide-out 0.25s ease-out forwards;
+}

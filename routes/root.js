@@ -1,10 +1,8 @@
-import { characters } from "../data/characters.js";
 import { app } from "../app.js";
+import { characters } from "../public/js/characters.js";
 
 app.get("/", (req, res) => {
 	res.render("landingPage", {
-		title: "Home",
-		message: "Welcome to Kessoku Hub!!",
-		characters: characters,
+		charNames: characters.map((char) => char.id),
 	});
 });
