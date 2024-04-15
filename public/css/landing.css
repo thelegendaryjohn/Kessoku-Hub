@@ -79,7 +79,7 @@ body {
 #char-header {
 	font-size: 12vw;
 	padding: 6vw 0 0 8vw;
-	color: var(--bocchi-color);
+	color: var(--hitori-color);
 }
 
 /* Character Card Styling */
@@ -92,7 +92,7 @@ body {
 
 #band-ribbon {
 	z-index: -1;
-	background-color: var(--bocchi-color);
+	background-color: var(--hitori-color);
 	color: #fff;
 	text-align: center;
 	font-size: 16vw;
@@ -148,14 +148,14 @@ body {
 	position: absolute;
 	z-index: 3;
 	top: 40vw;
-    right: 5%;
+	right: 5%;
 	max-width: 20rem;
 	width: 100%;
 }
 
 #char-name {
 	font-size: 2.6rem;
-	color: var(--bocchi-color);
+	color: var(--hitori-color);
 }
 
 #char-va,
@@ -164,7 +164,7 @@ body {
 }
 
 #char-desc {
-    font-size: 1.3rem;
+	font-size: 1.3rem;
 }
 
 /* News & Forum Section */

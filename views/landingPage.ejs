@@ -10,6 +10,12 @@
 </head>
 
 <body>
+  <%
+  <script>
+    let characters = <%= characters %>;
+  </script>
+  %>
+  <!-- HTML Body -->
   <main>
     <section class="text-shadow">
       <div id="banner">
@@ -27,18 +33,20 @@
     <section id="characters" class="text-shadow">
       <h2 id="char-header">CHARACTER</h2>
       <ul id="char-btn-list">
-        <li class="btn-underline">HITORI</li>
-        <li>NIJIKA</li>
-        <li>RYU</li>
-        <li>IKUYO</li>
+        <!-- Create char btns -->
+        <% characters.forEach((e) => { %>
+        <li class="char-btn"><%= e.id.toUpperCase() %></li>
+        <% }); %>
       </ul>
     </section>
     <article class="char-card">
+      <!-- Character card content -->
+
       <div id="char-card-bg">
         <div id="band-ribbon">
           <p id="band-ribbon-text">KESSOKUBAND</p>
         </div>
-        <p id="char-name-ribbon">HITORI GOTOH</p> <!-- Insert character name here -->
+        <p id="char-name-ribbon">HIORI GOTOH</p>
       </div>
       <div id="char-container">
         <img id="char-img" src="/images/character-section/character/bocchi.png" alt="Hitori Gotoh standing photo">
@@ -52,6 +60,7 @@
         <h2 id="char-role">『 Guitarist 』</h2>
         <p id="char-desc">A high school freshman who is extremely shy and introverted. She used to suffer from anxiety that was so bad it affected her studies but found solace in playing guitar.</p>
       </div>
+
     </article>
 
     <section id="news-forum">
@@ -78,7 +87,8 @@
 
   <!-- Footer partial -->
   <%- include("partials/htmlFooter.ejs") %>
-  <script src="/js/landing.js"></script>
-  <script src="/js/root.js"></script>
+  <script src="/js/landing.js" type="module"></script>
+  <script src="/js/root.js" type="module"></script>
 </body>
+
 </html>

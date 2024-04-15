@@ -8,5 +8,10 @@
 	},
 	"[html]": {
 		"editor.defaultFormatter": "j69.ejs-beautify"
-	}
+	},
+
+	"files.associations": {
+		"*.ejs": "html"
+	},
+	"html.format.templating": true
 }

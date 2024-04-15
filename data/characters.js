@@ -1,22 +1,36 @@
 export const characters = [
 	{
-		id: "bocchi",
+		id: "hitori",
 		name: "Hitori Gotoh",
 		va: "Yoshino Aoyama",
 		role: "Guitarist",
-		desc: "An extremely timid and introverted first-year student in high school. She is in charge of the responsibility of playing the lead guitar for Kessoku Band. She aspires to perform in a band that could showcase even a reserved girl's talent, hence she began playing the guitar.",
+		desc: "An extremely timid and introverted first-year student in high school. She is in charge of the responsibility of playing the lead guitarist for <b>Kessoku Band</b>. She aspires to perform in a band that could showcase even a reserved girl's talent, hence she began playing the guitar.",
 	},
 	{
 		id: "ikuyo",
 		name: "Ikuyo Kita",
 		va: "Ikumi Hasegawa",
 		role: "Vocalist",
-		desc: "A bright and popular first year of high school. She is in charge of the guitar and vocals of Kessoku Band. She is a cheerful character who likes to interact with people and can talk to her with a smile without hesitation, even when she meets her for the first time.",
+		desc: "A bright and popular first-year of high school. She is in charge of playing the guitar and vocals of <b>Kessoku Band</b>. She is a cheerful character who likes to interact with people and can talk with a smile without hesitation, even when she meets them for the first time.",
 	},
+	{
+		id: "nijika",
+		name: "Nijika Ijichi",
+		va: "Sayumi Suzushiro",
+		role: "Drummer",
+		desc: "An energetic and cheerful second-year high school student. She is the drummer of <b>Kessoku Band</b>. The organizer of her band who takes care of <hitori><b>Hitori</b></hitori> was already in <b>Kessoku Band</b>. She has an older sister, <b>Seika</b>, who is the manager of the live house <b>\"STARRY\"</b> and has a special feeling for the live house."
+	},
+	{
+		id: "ryo",
+		name: "Ryo Yamada",
+		va: "Saku Mizuno",
+		role: "Bassist",
+		desc: "A cool and solitary second-year high school student. She is the bassist of <b>Kessoku Band</b> and <nijika><b>Nijika</b></nijika>'s best friend. Her hobbies are out of the ordinary, and she rejoices when called a weirdo. She lives in a wealthy family but never has any money because she spends it all on instruments."
+	}
 ];
 
-function getCharacterById(id) {
-	const currChar = characters.find((character) => character.id === id);
+function getCharacterById(index) {
+	const currChar = characters[index];
 
 	console.log(
 		`
