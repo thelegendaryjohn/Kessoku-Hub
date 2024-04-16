@@ -25,7 +25,6 @@ body {
 
 #banner-img {
 	min-width: 130%;
-	filter: brightness(0%);
 }
 
 #banner-img-overlap {
@@ -35,7 +34,6 @@ body {
 	justify-content: center;
 	width: 75%;
 	bottom: -1.2%;
-	opacity: 0;
 }
 
 #banner-logo {
@@ -243,11 +241,14 @@ body {
 }
 
 /* Apply animations on page load*/
+/* Comment these out if they get in the way when developing */
 #banner-img {
+	filter: brightness(0%);
 	animation: adjustBrightness 2s linear 0.2s forwards;
 }
 
 #banner-img-overlap {
+	opacity: 0;
 	animation: adjustOpacity 1s linear 2.1s forwards;
 }
 
@@ -259,4 +260,9 @@ main {
 body {
 	background-color: #000;
 	animation: adjustColor 0.8s linear 2.1s forwards;
+}
+
+footer {
+	opacity: 0;
+	animation: adjustOpacity 0.3s linear 0.5s forwards;
 }
