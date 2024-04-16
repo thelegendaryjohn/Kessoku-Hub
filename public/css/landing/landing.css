@@ -34,7 +34,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	width: 75%;
-	bottom: -2%;
+	bottom: -1.2%;
 	opacity: 0;
 }
 
@@ -44,6 +44,7 @@ body {
 
 #banner-text {
 	position: relative;
+	text-wrap: nowrap;
 }
 
 #banner-name {
@@ -71,15 +72,17 @@ body {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	list-style-type: none;
-	padding: 0 5%;
+	padding: 5% 5%;
 }
 
 #char-btn-list li {
+	z-index: 4;
 	font-size: 1.8rem;
 	font-weight: bold;
 }
 
 #char-header {
+	z-index: 4;
 	font-size: 12vw;
 	padding: 6vw 0 0 8vw;
 	color: var(--hitori-color);
@@ -95,26 +98,29 @@ body {
 }
 
 #band-ribbon {
+	position: absolute;
+	width: 100%;
 	z-index: -1;
 	background-color: var(--hitori-color);
 	color: #fff;
+	top: 14%;
 	text-align: center;
 	font-size: 16vw;
-	font-weight: bold;
+	font-weight: 700;
 }
 
 #char-name-ribbon {
 	z-index: 1;
 	position: absolute;
-	top: 10%;
 	transform-origin: 7% 60%;
 	transform: rotate(90deg);
 	text-wrap: nowrap;
-	font-size: 23vw;
+	font-size: 24vw;
+	font-weight: 700;
 	color: transparent;
 	text-transform: uppercase;
 	text-shadow: 0.4rem 0 0.1rem rgba(0, 0, 0, 0.04);
-	-webkit-text-stroke: 0.4vw var(--accent-grey);
+	-webkit-text-stroke: 0.5vw var(--accent-grey);
 }
 
 #char-img-container {
@@ -159,7 +165,7 @@ body {
 	flex-direction: column;
 	position: absolute;
 	z-index: 3;
-	bottom: -10%;
+	bottom: -5%;
 	right: 5%;
 	max-width: 20rem;
 	width: 100%;
