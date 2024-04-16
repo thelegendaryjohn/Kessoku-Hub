@@ -16,11 +16,11 @@ body {
 	position: relative;
 	justify-content: center;
 	overflow-x: clip;
+	z-index: 5;
 }
 
 .banner-overlap {
 	position: absolute;
-	z-index: 1;
 }
 
 #banner-img {
