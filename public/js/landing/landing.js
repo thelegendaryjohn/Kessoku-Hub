@@ -1,4 +1,3 @@
-import { characters } from "./characters.js";
 const charBtn = document.querySelectorAll(".char-btn");
 // Set up a click event listener for each character button
 charBtn.forEach((char, i) => {
@@ -66,7 +65,7 @@ function switchCharacters(char, i) {
 		charLayer.classList.add("character-slide-in");
 		charHeads.classList.remove("character-slide-out");
 		charHeads.classList.add("character-slide-in");
-	}, 250);
+	}, 200);
 }
 
 // Set default character to Hitori
