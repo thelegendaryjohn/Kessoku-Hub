@@ -8,7 +8,11 @@ This repository is intended to be submitted as the project for RMIT Vietnam's CO
 
 To get started with this project, follow these steps:
 
-0. Make sure you have [Node.js](https://nodejs.org/en/download/) installed on your machine.
+### Prerequisite:
+
+-   Make sure you have [Node.js](https://nodejs.org/en/download/) installed on your machine.
+-   If you're in the main Kessoku team, add a `.env` file to this repo after cloning, then request Cyfer for the data.
+
 1. Clone the repository: `git clone https://github.com/AzzaDeveloper/kessoku-hub`
 2. Install the dependencies: `npm install`
 3. Start the project: `npm start`. For production usage, run `npm production` instead.
