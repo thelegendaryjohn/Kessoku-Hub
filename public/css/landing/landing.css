@@ -48,14 +48,14 @@ body {
 }
 
 #banner-name {
-	color: rgb(196, 90, 255);
+	color: var(--accent-purple);
 	font-size: 16vw;
 	line-height: 82%;
 }
 
 #banner-desc {
 	position: absolute;
-	color: rgb(255, 240, 0);
+	color: var(--nijika-color);
 	font-size: 6.8vw;
 	bottom: 33%;
 	left: 5.2%;
