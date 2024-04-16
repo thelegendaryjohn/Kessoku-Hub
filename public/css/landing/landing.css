@@ -90,6 +90,7 @@ body {
 .char-card {
 	position: relative;
 	margin: 0 1em 10em 0;
+	height: 80vh;
 	width: 100%;
 	overflow-x: clip;
 }
