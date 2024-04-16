@@ -232,6 +232,16 @@ body {
 	}
 }
 
+@keyframes adjustColor {
+	from {
+		background-color: #000;
+	}
+
+	to {
+		background-color: #fff;
+	}
+}
+
 /* Apply animations on page load*/
 #banner-img {
 	animation: adjustBrightness 2s linear 0.2s forwards;
@@ -239,4 +249,14 @@ body {
 
 #banner-img-overlap {
 	animation: adjustOpacity 1s linear 2.1s forwards;
+}
+
+main {
+	opacity: 0;
+	animation: adjustOpacity 1s linear 2.1s forwards;
+}
+
+body {
+	background-color: #000;
+	animation: adjustColor 0.8s linear 2.1s forwards;
 }
