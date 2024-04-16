@@ -6,3 +6,5 @@ const scrollToTop = () => {
 
     console.log("Scrolling to top...");
 }
+
+document.querySelector("#footer-icon-arrow").addEventListener("click", scrollToTop);
