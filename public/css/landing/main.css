@@ -1,0 +1,150 @@
+/* Global Styling */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Oswald", sans-serif;
+	background-color: #f4f4f4;
+	color: #000;
+}
+
+/* Banner Styling */
+#banner {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	overflow-x: clip;
+	z-index: 5;
+}
+
+.banner-overlap {
+	position: absolute;
+}
+
+#banner-img {
+	min-width: 130%;
+}
+
+#banner-img-overlap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 75%;
+	bottom: -1.2%;
+}
+
+#banner-logo {
+	width: 70%;
+}
+
+#banner-text {
+	position: relative;
+	text-wrap: nowrap;
+}
+
+#banner-name {
+	color: var(--accent-purple);
+	font-size: 16vw;
+	line-height: 82%;
+}
+
+#banner-desc {
+	position: absolute;
+	color: var(--nijika-color);
+	font-size: 6.8vw;
+	bottom: 33%;
+	left: 5.2%;
+}
+
+/* News & Forum Section */
+#news-forum {
+	background-color: #ddd;
+	padding: 20px;
+}
+
+/* Music Section */
+#music {
+	background-color: #ccc;
+	padding: 20px;
+}
+
+/* The Series Section */
+#the-series {
+	background-color: #bbb;
+	padding: 20px;
+}
+
+/* Store Section */
+#store {
+	background-color: #aaa;
+	padding: 20px;
+}
+
+/* CSS animation for header poster */
+@keyframes adjustBrightness {
+	0% {
+		filter: brightness(0%);
+	}
+	25% {
+		filter: brightness(35%);
+	}
+	50% {
+		filter: brightness(35%); /* Delay or pause */
+	}
+	75% {
+		filter: brightness(15%);
+	}
+	100% {
+		filter: brightness(90%);
+	}
+}
+
+@keyframes adjustOpacity {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes adjustColor {
+	from {
+		background-color: #000;
+	}
+
+	to {
+		background-color: #fff;
+	}
+}
+
+/* Apply animations on page load*/
+/* Comment these out if they get in the way when developing */
+#banner-img {
+	filter: brightness(0%);
+	animation: adjustBrightness 2s linear 0.2s forwards;
+}
+
+#banner-img-overlap {
+	opacity: 0;
+	animation: adjustOpacity 1s linear 2.1s forwards;
+}
+
+main {
+	opacity: 0;
+	animation: adjustOpacity 1s linear 2.1s forwards;
+}
+
+body {
+	background-color: #000;
+	animation: adjustColor 0.8s linear 2.1s forwards;
+}
+
+footer {
+	opacity: 0;
+	animation: adjustOpacity 0.3s linear 0.5s forwards;
+}
