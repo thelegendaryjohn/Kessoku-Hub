@@ -1,0 +1,124 @@
+<!-- CSS-->
+<style>
+  @import "/css/landing/character/character.css";
+  @import "/css/landing/character/anims.css";
+</style>
+
+<!-- HTML -->
+<section id="characters" class="text-shadow">
+  <h2 id="char-header">CHARACTER</h2>
+  <ul id="char-btn-list">
+
+    <!-- Creating char btns -->
+    <% charNames.forEach((e) => { %>
+    <li class="char-btn"><%= e.toUpperCase() %></li>
+    <% }); %>
+
+  </ul>
+</section>
+<article class="char-card">
+  <!-- Character card content -->
+
+  <div id="char-card-bg">
+    <div id="band-ribbon">
+      <p id="band-ribbon-text">KESSOKUBAND</p>
+    </div>
+    <p id="char-name-ribbon">HIORI GOTOH</p>
+  </div>
+  <div id="char-container">
+    <div id="char-img-container">
+      <img id="char-img" src="/images/character-section/character/hitori.png" alt="Character standing photo">
+      <img id="char-img-layer" src="/images/character-section/character/hitori-layer.png" alt="Character standing photo">
+    </div>
+    <img class="char-heads" src="/images/character-section/character/hitori-3pics.png" alt="Character's face expressions">
+    <!-- note: Why did we need this? -->
+    <!--  <img id="bocchi-third-head" class="char-heads" src="/images/character-section/character/bocchi-face-1.png" alt="Hitori's face expressions"> -->
+  </div>
+  <div id="card-text-container" class="text-shadow">
+    <h1 id="char-name">Hitori Gotoh</h1>
+    <h2 id="char-va">VA: Yoshino Aoyama</h2>
+    <h2 id="char-role">『 Guitarist 』</h2>
+    <p id="char-desc">A high school freshman who is extremely shy and introverted. She used to suffer from anxiety that was so bad it affected her studies but found solace in playing guitar.</p>
+  </div>
+</article>
+
+<!-- Javascript -->
+<script type="module">
+  import {
+    characters
+  } from "/js/landing/characters.js";
+
+  //
+  const charBtn = document.querySelectorAll(".char-btn");
+  // Set up a click event listener for each character button
+  charBtn.forEach((char, i) => {
+    char.addEventListener("click", () => {
+      switchCharacters(char, i);
+    });
+  });
+
+  // Function to switch characters
+  function switchCharacters(char, i) {
+    // Remove underline from all buttons and add it to the clicked button
+    charBtn.forEach((e) => {
+      e.classList.remove("btn-underline");
+    });
+    char.classList.toggle("btn-underline");
+    // Elements
+    let ribbon = document.querySelector("#band-ribbon");
+    let banner = document.querySelector("#char-name-ribbon");
+    let card = document.querySelector("#card-text-container");
+    let charImg = document.querySelector("#char-img");
+    let charLayer = document.querySelector("#char-img-layer");
+    let charHeads = document.querySelector(".char-heads");
+    // Play animations to close the current character card.
+    // There's not exactly a way around this lengthy approach,
+    // as we need to play the animations in sequence, and we can't
+    // do that with a single class change.
+    ribbon.classList.remove("ribbon-clip-in");
+    ribbon.classList.add("ribbon-clip-out");
+    banner.classList.remove("banner-slide-in");
+    banner.classList.add("banner-slide-out");
+    card.classList.remove("card-slide-in");
+    card.classList.add("card-slide-out");
+    charImg.classList.remove("character-slide-in");
+    charImg.classList.add("character-slide-out");
+    charLayer.classList.remove("character-slide-in");
+    charLayer.classList.add("character-slide-out");
+    charHeads.classList.remove("character-slide-in");
+    charHeads.classList.add("character-slide-out");
+    // Update the character card info
+    setTimeout(() => {
+      document.querySelector("#char-name").textContent = characters[i].name;
+      document.querySelector("#char-desc").textContent = characters[i].desc;
+      document.querySelector("#char-role").textContent = characters[i].role;
+      document.querySelector("#char-va").textContent = characters[i].va;
+      banner.textContent = characters[i].name.toUpperCase();
+      // Change the image sources
+      charImg.src = `/images/character-section/character/${characters[i].id}.png`;
+      charLayer.src = `/images/character-section/character/${characters[i].id}-layer.png`;
+      charHeads.src = `/images/character-section/character/${characters[i].id}-3pics.png`;
+      // Update the header, ribbon and char name color
+      let color = `var(--${characters[i].id}-color)`;
+      document.querySelector("#char-name").style.color = color;
+      document.querySelector("#char-header").style.color = color;
+      ribbon.style.backgroundColor = color;
+      // Play animations to open the new character card
+      ribbon.classList.remove("ribbon-clip-out");
+      ribbon.classList.add("ribbon-clip-in");
+      banner.classList.remove("banner-slide-out");
+      banner.classList.add("banner-slide-in");
+      card.classList.remove("card-slide-out");
+      card.classList.add("card-slide-in");
+      charImg.classList.remove("character-slide-out");
+      charImg.classList.add("character-slide-in");
+      charLayer.classList.remove("character-slide-out");
+      charLayer.classList.add("character-slide-in");
+      charHeads.classList.remove("character-slide-out");
+      charHeads.classList.add("character-slide-in");
+    }, 200);
+  }
+
+  // Set default character to Hitori
+  switchCharacters(charBtn[0], 0);
+</script>
