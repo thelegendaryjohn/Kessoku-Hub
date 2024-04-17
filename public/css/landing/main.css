@@ -25,6 +25,7 @@ body {
 
 #banner-img {
 	min-width: 130%;
+	filter: brightness(90%);
 }
 
 #banner-img-overlap {
@@ -43,18 +44,19 @@ body {
 #banner-text {
 	position: relative;
 	text-wrap: nowrap;
+	font-size: 16vw;
 }
 
 #banner-name {
 	color: var(--accent-purple);
-	font-size: 16vw;
+	font-size: 100%;
 	line-height: 82%;
 }
 
 #banner-desc {
 	position: absolute;
 	color: var(--nijika-color);
-	font-size: 6.8vw;
+	font-size: 42.5%;
 	bottom: 33%;
 	left: 5.2%;
 }
