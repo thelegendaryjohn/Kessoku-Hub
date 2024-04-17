@@ -60,7 +60,7 @@ body {
 }
 
 /* News & Forum Section */
-#news-forum {
+#forum {
 	background-color: #ddd;
 	padding: 20px;
 }
@@ -72,7 +72,7 @@ body {
 }
 
 /* The Series Section */
-#the-series {
+#series {
 	background-color: #bbb;
 	padding: 20px;
 }
