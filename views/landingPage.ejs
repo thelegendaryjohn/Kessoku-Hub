@@ -11,7 +11,8 @@
 
 <body>
   <!-- HTML Body -->
-  <section class="text-shadow">
+  <!-- Header banner -->
+  <section id="header-banner" class="text-shadow">
     <div id="banner">
       <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner">
       <div id="banner-img-overlap" class="banner-overlap">
@@ -31,34 +32,16 @@
     <!-- Other sections -->
     <div id="other-sections" class="text-shadow">
       <!-- Forum -->
-      <section id="forum" class="box-shadow">
-        <h2>FORUM</h2>
-        <div class="thread">
-          <p>Date 12.7.24</p>
-          <p>Sales of collaboration models with Walkman R have started!</p>
-        </div>
-      </section>
+      <%- include("partials/landing/forum-section/forumContainer.ejs") %>
 
       <!-- Music -->
-      <section id="music" class="box-shadow">
-        <h2>MUSIC</h2>
-        <p>Date 12.7.24</p>
-        <p>Sales of collaboration models with Walkman R have started!</p>
-      </section>
+      <%- include("partials/landing/music-section/albumContainer.ejs") %>
 
       <!-- Series -->
-      <section id="series" class="box-shadow">
-        <h2>THE SERIES</h2>
-        <div class="episode">
-          <p>E6 - Eight Views</p>
-        </div>
-      </section>
+      <%- include("partials/landing/series-section/seriesContainer.ejs") %>
 
       <!-- Store -->
-      <section id="store" class="box-shadow">
-        <h2>STORE</h2>
-        <!-- Store content -->
-      </section>
+      <%- include("partials/landing/store-section/storeContainer.ejs") %>
     </div>
   </main>
 
