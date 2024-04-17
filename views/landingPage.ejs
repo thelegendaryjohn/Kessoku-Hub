@@ -9,14 +9,15 @@
   <link rel="stylesheet" href="/css/landing/main.css">
 </head>
 
-<body>
+<body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
+
   <!-- HTML Body -->
   <section class="text-shadow">
     <div id="banner">
-      <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner">
+      <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner" class="<%= env == 'prod' ? 'adjustBrightness' : '' %>">
       <div id="banner-img-overlap" class="banner-overlap">
-        <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo">
-        <div id="banner-text">
+        <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
+        <div id="banner-text" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
           <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
           <h3 id="banner-desc">THEATER COMPILATION</h3>
         </div>
@@ -24,7 +25,7 @@
     </div>
   </section>
 
-  <main>
+  <main class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
     <!-- Characters -->
     <%- include("partials/landing/character.ejs") %>
 
