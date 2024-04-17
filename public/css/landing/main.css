@@ -123,28 +123,18 @@ body {
 }
 
 /* Apply animations on page load*/
-/* Comment these out if they get in the way when developing */
-#banner-img {
-	filter: brightness(0%);
-	animation: adjustBrightness 2s linear 0.2s forwards;
-}
 
-#banner-img-overlap {
-	opacity: 0;
-	animation: adjustOpacity 1s linear 2.1s forwards;
-}
-
-main {
-	opacity: 0;
-	animation: adjustOpacity 1s linear 2.1s forwards;
-}
-
-body {
+.adjustColor {
 	background-color: #000;
-	animation: adjustColor 0.8s linear 2.1s forwards;
+	animation: adjustColor 0.5s linear 1.5s forwards;
 }
 
-footer {
+.adjustOpacity {
 	opacity: 0;
-	animation: adjustOpacity 0.3s linear 0.5s forwards;
+	animation: adjustOpacity 0.5s linear 1.5s forwards;
+}
+
+.adjustBrightness {
+	filter: brightness(0%);
+	animation: adjustBrightness 1s linear forwards;
 }
