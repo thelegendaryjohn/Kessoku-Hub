@@ -63,6 +63,8 @@ body {
 
 /* Other sections */
 #other-sections {
+	position: relative;
+	z-index: 5;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -80,9 +82,7 @@ body {
 #forum {
 	/* Rainbow border */
 	border-color: transparent;
-	background:
-		linear-gradient(to right, white, white),
-		var(--accent-rainbow);
+	background: linear-gradient(to right, white, white), var(--accent-rainbow);
 	background-clip: padding-box, border-box;
 	background-origin: padding-box, border-box;
 }
