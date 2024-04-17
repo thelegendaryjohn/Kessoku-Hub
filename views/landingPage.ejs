@@ -10,6 +10,8 @@
 </head>
 
 <body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
+  <!-- Sidebar -->
+  <%- include("partials/sidebar.ejs") %>
 
   <!-- HTML Body -->
   <section class="text-shadow">
@@ -53,7 +55,7 @@
 
   <!-- Footer partial -->
   <%- include("partials/htmlFooter.ejs") %>
-  <script src="/js/global.js" type="module"></script>
+  <!-- <script src="/js/global.js" type="module"></script> -->
 </body>
 
 </html>

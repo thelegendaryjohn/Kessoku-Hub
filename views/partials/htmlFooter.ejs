@@ -1,5 +1,4 @@
 <footer>
-  <script></script>
   <div id="footer-icon">
     <img src="/images/footer-section/theatre-logo-nrw.svg" alt="Bocchi The Rock footer banner" id="footer-icon-img">
     <img src="/images/button/ico-arw.svg" alt="Back to top" id="footer-icon-arrow">
@@ -15,4 +14,16 @@
     <a href="#">About site</a>
   </div>
   <p>All rights reserved © 2022 CloverWorks Studios & Aniplex</p>
+
+  <script>
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      console.log("Scrolling to top...");
+    }
+
+    document.querySelector("#footer-icon-arrow").addEventListener("click", scrollToTop);
+  </script>
 </footer>
