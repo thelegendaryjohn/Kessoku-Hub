@@ -77,3 +77,12 @@ body {
 	border: 3px solid #000;
 	background-color: #fff;
 }
+
+#other-sections .see-all-anchor {
+	display: flex;
+	justify-content: flex-end;
+	padding: 3% 2%;
+	font-size: 1.4rem;
+	font-style: italic;
+	color: #000;
+}

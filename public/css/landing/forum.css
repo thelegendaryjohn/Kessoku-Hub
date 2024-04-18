@@ -3,5 +3,38 @@
 	border-color: transparent;
 	background: linear-gradient(to right, white, white), var(--accent-rainbow);
 	background-clip: padding-box, border-box;
+	-webkit-background-clip: padding-box, border-box;
 	background-origin: padding-box, border-box;
+
+	display: flex;
+	flex-direction: column;
+}
+
+#forum-header {
+	font-size: 2.2rem;
+	padding: 1% 2%;
+	background-image: var(--accent-rainbow);
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+}
+
+.thread {
+	width: 92%;
+	margin: 2%;
+	padding: 2%;
+	text-shadow: none;
+	text-decoration: none;
+	color: #000;
+	align-self: center;
+	border: 1px solid var(--nijika-color);
+	border-radius: 6px;
+}
+
+.thread-date {
+	font-size: 1.4rem;
+}
+
+.thread-title {
+	font-size: 1.25rem;
 }
