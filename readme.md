@@ -48,6 +48,7 @@ This project uses the following packages:
 -   [`express-ratelimit`](https://www.npmjs.com/package/express-ratelimit): Limits the number of requests a client can make.
 -   [`ejs`](https://www.npmjs.com/package/ejs): A JavaScript templating engine for generating HTML.
 -   [`mongoose`](https://www.npmjs.com/package/mongoose): A MongoDB object modeling tool.
+-   [`bcrypt`](https://www.npmjs.com/package/bcrypt): A library to help hash passwords.
 -   [`dotenv`](https://www.npmjs.com/package/dotenv): Loads environment variables from a `.env` file.
 
 And these additional packages to aid development (cyfer tip - you don't need to read them. Just `npm i` and `npm start` :D):
