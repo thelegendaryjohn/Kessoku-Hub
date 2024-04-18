@@ -9,7 +9,7 @@ import chalk from "chalk";
 import * as colors from "./lib/consoleThemes.js";
 
 // Import all routes
-fs.readdirSync("./routes").map((file) => {
+fs.readdirSync("./routes", { recursive: true }).map((file) => {
 	if (file.endsWith(".js")) {
 		import(`./routes/${file}`);
 	}
@@ -18,6 +18,9 @@ fs.readdirSync("./routes").map((file) => {
 // Start a HTTP server. Listen to 80 in production, 3000 / specified port in development
 const server = createServer(app);
 server.listen(env == "dev" ? 3000 : 80, () => {
+	//
+	console.log(`${colors.server} Server started in ${chalk.bold(env)} mode`);
+	//
 	console.log(
 		`${colors.server} Server started on ${chalk.bold(
 			`http://localhost:${server.address().port}`
