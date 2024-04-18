@@ -1,0 +1,7 @@
+#forum {
+	/* Rainbow border */
+	border-color: transparent;
+	background: linear-gradient(to right, white, white), var(--accent-rainbow);
+	background-clip: padding-box, border-box;
+	background-origin: padding-box, border-box;
+}
