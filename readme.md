@@ -49,7 +49,8 @@ This project uses the following packages:
 -   [`ejs`](https://www.npmjs.com/package/ejs): A JavaScript templating engine for generating HTML.
 -   [`mongoose`](https://www.npmjs.com/package/mongoose): A MongoDB object modeling tool.
 -   [`bcrypt`](https://www.npmjs.com/package/bcrypt): A library to help hash passwords.
--   [`jsonwebtoken`](https://www.npmjs.com/package/jsonwebtoken): A library to create and verify JSON Web Tokens (JWTs) for secure transmission of information.
+-   [`jsonwebtoken`](https://www.npmjs.com/package/jsonwebtoken): To create and verify JSON Web Tokens (JWTs) for secure transmission of information.
+-   [`jsonschema`](https://www.npmjs.com/package/jsonschema): For validating JSON data against a schema, ensuring the data follows a specific structure.
 -   [`dotenv`](https://www.npmjs.com/package/dotenv): Loads environment variables from a `.env` file.
 
 And these additional packages to aid development (cyfer tip - you don't need to read them. Just `npm i` and `npm start` :D):
