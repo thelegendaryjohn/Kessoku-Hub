@@ -12,7 +12,8 @@
 <body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
 
   <!-- HTML Body -->
-  <section class="text-shadow">
+  <!-- Header banner -->
+  <section id="header-banner" class="text-shadow">
     <div id="banner">
       <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner" class="<%= env == 'prod' ? 'adjustBrightness' : '' %>">
       <div id="banner-img-overlap" class="banner-overlap">
@@ -29,26 +30,20 @@
     <!-- Characters -->
     <%- include("partials/landing/character.ejs") %>
 
-    <section id="news-forum">
-      <h2>NEWS &amp; FORUM</h2>
-      <p>Date 12.7.24</p>
-      <p>Sales of collaboration models with Walkman R have started!</p>
-    </section>
-    <section id="music">
-      <h2>MUSIC</h2>
-      <p>Date 12.7.24</p>
-      <p>Sales of collaboration models with Walkman R have started!</p>
-    </section>
-    <section id="the-series">
-      <h2>THE SERIES</h2>
-      <div class="episode">
-        <p>E6 - Eight Views</p>
-      </div>
-    </section>
-    <section id="store">
-      <h2>STORE</h2>
-      <!-- Store content -->
-    </section>
+    <!-- Other sections -->
+    <div id="other-sections" class="text-shadow">
+      <!-- Forum -->
+      <%- include("partials/landing/forum-section/forumContainer.ejs") %>
+
+      <!-- Music -->
+      <%- include("partials/landing/music-section/albumContainer.ejs") %>
+
+      <!-- Series -->
+      <%- include("partials/landing/series-section/seriesContainer.ejs") %>
+
+      <!-- Store -->
+      <%- include("partials/landing/store-section/storeContainer.ejs") %>
+    </div>
   </main>
 
   <!-- Footer partial -->

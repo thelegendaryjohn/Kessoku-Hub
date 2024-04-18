@@ -25,6 +25,7 @@ body {
 
 #banner-img {
 	min-width: 130%;
+	filter: brightness(90%);
 }
 
 #banner-img-overlap {
@@ -43,44 +44,62 @@ body {
 #banner-text {
 	position: relative;
 	text-wrap: nowrap;
+	font-size: 16vw;
 }
 
 #banner-name {
 	color: var(--accent-purple);
-	font-size: 16vw;
+	font-size: 100%;
 	line-height: 82%;
 }
 
 #banner-desc {
 	position: absolute;
 	color: var(--nijika-color);
-	font-size: 6.8vw;
+	font-size: 42.5%;
 	bottom: 33%;
 	left: 5.2%;
 }
 
-/* News & Forum Section */
-#news-forum {
-	background-color: #ddd;
-	padding: 20px;
+/* Other sections */
+#other-sections {
+	position: relative;
+	z-index: 5;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#other-sections > * {
+	padding: 12px;
+	margin: 0 25px 30px 25px;
+	border-radius: 8px;
+	border: 3px solid #000;
+	background-color: #fff;
+}
+
+/* Forum Section */
+#forum {
+	/* Rainbow border */
+	border-color: transparent;
+	background: linear-gradient(to right, white, white), var(--accent-rainbow);
+	background-clip: padding-box, border-box;
+	background-origin: padding-box, border-box;
 }
 
 /* Music Section */
 #music {
-	background-color: #ccc;
-	padding: 20px;
+	border-color: var(--hitori-color);
 }
 
 /* The Series Section */
-#the-series {
-	background-color: #bbb;
-	padding: 20px;
+#series {
+	border-color: var(--ikuyo-color);
 }
 
 /* Store Section */
 #store {
-	background-color: #aaa;
-	padding: 20px;
+	border-color: var(--nijika-color);
 }
 
 /* CSS animation for header poster */

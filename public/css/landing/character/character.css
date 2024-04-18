@@ -9,7 +9,7 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	list-style-type: none;
-	padding: 5% 5%;
+	padding: 4% 5%;
 }
 
 #char-btn-list li {
@@ -21,7 +21,7 @@
 #char-header {
 	z-index: 4;
 	font-size: 12vw;
-	padding: 6vw 0 0 8vw;
+	padding: 10% 0 0 10%;
 	color: var(--hitori-color);
 	transition: color 0.5s;
 }
@@ -30,9 +30,12 @@
 #char-card {
 	position: relative;
 	margin: 0 1em 10em 0;
-	height: 80vh;
 	width: 100%;
 	overflow-x: clip;
+}
+
+#char-card-bg {
+	font-size: 24vw;
 }
 
 #band-ribbon {
@@ -43,7 +46,7 @@
 	color: #fff;
 	top: 14%;
 	text-align: center;
-	font-size: 16vw;
+	font-size: 66.7%;
 	font-weight: 700;
 }
 
@@ -53,7 +56,7 @@
 	transform-origin: 7% 60%;
 	transform: rotate(90deg);
 	text-wrap: nowrap;
-	font-size: 24vw;
+	font-size: 100%;
 	font-weight: 700;
 	color: transparent;
 	text-transform: uppercase;
