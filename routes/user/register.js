@@ -1,7 +1,7 @@
 import rateLimit from "express-rate-limit";
 import { Validator } from "jsonschema";
 import { app } from "../../lib/app.js";
-import { User } from "../../lib/user.js";
+import { User } from "../../schemas/user.js";
 
 // Set up the validator
 let v = new Validator();
@@ -24,7 +24,7 @@ const registerLimit = rateLimit({
 		"Too many register attempts from this IP, please try again after 15 minutes.",
 });
 
-// Apply the route with rate limit
+// Apply the user register route
 app.post("/user/register", registerLimit, async (req, res) => {
 	// Sanitize the input
 	let result = v.validate(

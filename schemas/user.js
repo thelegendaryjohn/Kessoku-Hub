@@ -1,4 +1,4 @@
-import { mongoose } from "./db.js";
+import { mongoose } from "../lib/db.js";
 import bcrypt from "bcrypt";
 const Schema = mongoose.Schema;
 
