@@ -1,4 +1,7 @@
+let NODE_ENV = process.env.NODE_ENV;
+//
 import rateLimit from "express-rate-limit";
+7;
 import { Validator } from "jsonschema";
 import { app } from "../../lib/app.js";
 import { User } from "../../schemas/user.js";
@@ -24,8 +27,16 @@ const registerLimit = rateLimit({
 		"Too many register attempts from this IP, please try again after 15 minutes.",
 });
 
+function useRateLimit(req, res, next) {
+	if (NODE_ENV === "production") {
+		registerLimit(req, res, next);
+	} else {
+		next();
+	}
+}
+
 // Apply the user register route
-app.post("/user/register", registerLimit, async (req, res) => {
+app.post("/user/register", useRateLimit, async (req, res) => {
 	// Sanitize the input
 	let result = v.validate(
 		{
@@ -39,12 +50,17 @@ app.post("/user/register", registerLimit, async (req, res) => {
 		// Check if the username is already taken
 		let user = await User.findOne({ username: creds.username });
 		if (user) {
-			res.status(409).send("Username already taken.");
+			res.status(409).json("Username already taken.");
 		} else {
 			// Create the user
 			let newUser = new User(creds);
 			await newUser.save();
-			res.status(201).send({ username: creds.username });
+			res.status(201).json({ username: creds.username });
 		}
+	} else {
+		// Loop through all the errors
+		result.errors.map((error) => {
+			res.status(400).json(error.message);
+		});
 	}
 });
