@@ -1,5 +1,5 @@
-import { mongoose } from "../../lib/db.js";
-import colors from "../../lib/consoleThemes.js";
+import mongoose from "../../lib/db.js";
+import * as colors from "../../lib/consoleThemes.js";
 
 // Flushes the database before running tests
 mongoose.connection
