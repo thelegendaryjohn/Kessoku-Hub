@@ -1,5 +1,4 @@
 import { User } from "../../schemas/user.js";
-import * as colors from "../../lib/consoleThemes.js";
 import assert from "assert";
 
 // Describe the tests
