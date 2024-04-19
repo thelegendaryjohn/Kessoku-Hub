@@ -75,14 +75,6 @@ footer p {
 }
 
 /* Custom Styling */
-.profile-img {
-    width: 8rem;
-    margin: 3rem;
-    background-color: #ddd;
-    border-radius: 100%;
-    border: 2px solid #fff;
-}
-
 .btn {
     cursor: pointer;
 }
