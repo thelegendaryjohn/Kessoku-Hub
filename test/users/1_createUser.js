@@ -14,7 +14,7 @@ describe(`${colors.test} Creating a document in MongoDB`, function () {
 		user.save()
 			.then(() => {
 				// Check if the user is saved
-				assert(!user.isNew);
+				assert(!user.isNew, "User is not saved");
 				done();
 			})
 			.catch((err) => {
