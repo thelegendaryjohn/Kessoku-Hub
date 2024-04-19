@@ -14,10 +14,14 @@ export const roles = {
 
 // Define the schema
 const userSchema = new Schema({
-	username: { type: String, required: true, unique: true },
-	password: { type: String, required: true },
+	username: {
+		type: String,
+		required: [true, "Username is required."],
+		unique: [true, "Username must be unique."],
+	},
+	password: { type: String, required: [true, "Password is required."] },
 	role: { type: Number, default: roles.unverified },
-	email: { type: String, unique: true },
+	email: { type: String, unique: [true, "This email is already in use."] },
 	//
 	created: { type: Date, default: Date.now },
 });
