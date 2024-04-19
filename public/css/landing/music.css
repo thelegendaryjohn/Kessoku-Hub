@@ -49,6 +49,10 @@
 	font-size: 1.2rem;
 }
 
+#album-artist {
+	color: var(--hitori-color);
+}
+
 #album-link {
 	display: flex;
 	justify-content: center;
