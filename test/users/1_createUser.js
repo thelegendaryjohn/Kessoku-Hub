@@ -3,9 +3,9 @@ import * as colors from "../../lib/consoleThemes.js";
 import assert from "assert";
 
 // Describe the tests
-describe(`${colors.test} Creating a document in MongoDB`, function () {
+describe(`Creating a document in MongoDB`, function () {
 	// Create a document
-	it(`${colors.test} should create a new user`, function (done) {
+	it(`should create a new user`, function (done) {
 		// Create a new user
 		const user = new User({
 			username: "testuser",
