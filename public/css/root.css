@@ -80,6 +80,10 @@ footer p {
 }
 
 /* Custom Styling */
+.btn {
+    cursor: pointer;
+}
+
 .btn-underline {
 	text-decoration: underline;
 }
