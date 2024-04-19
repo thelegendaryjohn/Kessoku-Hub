@@ -37,6 +37,7 @@
 	},
 	"devDependencies": {
 		"connect-livereload": "^0.6.1",
+		"eslint": "^9.0.0",
 		"livereload": "^0.9.3",
 		"mocha": "^10.4.0",
 		"nodemon": "^3.1.0",
