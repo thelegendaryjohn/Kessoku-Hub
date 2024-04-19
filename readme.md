@@ -51,6 +51,7 @@ This project uses the following packages:
 -   [`bcrypt`](https://www.npmjs.com/package/bcrypt): A library to help hash passwords.
 -   [`jsonwebtoken`](https://www.npmjs.com/package/jsonwebtoken): To create and verify JSON Web Tokens (JWTs) for secure transmission of information.
 -   [`jsonschema`](https://www.npmjs.com/package/jsonschema): For validating JSON data against a schema, ensuring the data follows a specific structure.
+-   [`mocha`](https://www.npmjs.com/package/mocha): A JavaScript test framework running on Node.js.
 -   [`dotenv`](https://www.npmjs.com/package/dotenv): Loads environment variables from a `.env` file.
 
 And these additional packages to aid development (cyfer tip - you don't need to read them. Just `npm i` and `npm start` :D):
