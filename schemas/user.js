@@ -42,7 +42,7 @@ userSchema.pre("save", function (next) {
 });
 
 // Create a token to verify with email for new users
-userSchema.post("init", function (doc) {
+userSchema.post("init", function () {
 	// TODO: Use nodemailer to send the email with the generated token with JWT
 });
 
