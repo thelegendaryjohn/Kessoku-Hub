@@ -1,5 +1,8 @@
 # Kessoku Hub
 
+![Build](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/nodejs.yml/badge.svg)
+![Lint](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/linter.yml/badge.svg)
+
 ## Description
 
 This repository is intended to be submitted as the project for RMIT Vietnam's COSC3058 Web Studio course - a fansite for the anime band Kessoku!
