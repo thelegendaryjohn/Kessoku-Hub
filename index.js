@@ -1,6 +1,7 @@
 var env = process.env.NODE_ENV;
 // Packages
 import { createServer } from "http";
+import { config } from "dotenv";
 import fs from "fs";
 // Modules
 import { app } from "./lib/app.js";
