@@ -1,8 +1,11 @@
+<div align="center">
+
 # Kessoku Hub
 
 ![Test](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/node.js.yml/badge.svg)
-
 ![Lint](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/linter.yml/badge.svg)
+
+</div>
 
 ## Description
 
