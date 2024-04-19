@@ -1,6 +1,7 @@
 # Kessoku Hub
 
-![Build](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/nodejs.yml/badge.svg)
+![Test](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/node.js.yml/badge.svg)
+
 ![Lint](https://github.com/AzzaDeveloper/kessoku-hub/actions/workflows/linter.yml/badge.svg)
 
 ## Description
