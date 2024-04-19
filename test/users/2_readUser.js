@@ -6,6 +6,11 @@ import assert from "assert";
 let user;
 // This will run before running the test
 beforeEach(function (done) {
+	// Does not run if the test is createUser
+	if (this.currentTest.title === `${colors.test} should create a new user`) {
+		return done();
+	}
+
 	// Creating a new Instance of User Model
 	user = new User({
 		username: "testuser",
