@@ -48,6 +48,11 @@ This project uses the following packages:
 -   [`express-ratelimit`](https://www.npmjs.com/package/express-ratelimit): Limits the number of requests a client can make.
 -   [`ejs`](https://www.npmjs.com/package/ejs): A JavaScript templating engine for generating HTML.
 -   [`mongoose`](https://www.npmjs.com/package/mongoose): A MongoDB object modeling tool.
+-   [`bcrypt`](https://www.npmjs.com/package/bcrypt): A library to help hash passwords.
+-   [`jsonwebtoken`](https://www.npmjs.com/package/jsonwebtoken): To create and verify JSON Web Tokens (JWTs) for secure transmission of information.
+-   [`jsonschema`](https://www.npmjs.com/package/jsonschema): For validating JSON data against a schema, ensuring the data follows a specific structure.
+-   [`mocha`](https://www.npmjs.com/package/mocha): A JavaScript test framework running on Node.js.
+-   [`supertest`](https://www.npmjs.com/package/supertest): A library for testing Node.js HTTP servers using a fluent API.
 -   [`dotenv`](https://www.npmjs.com/package/dotenv): Loads environment variables from a `.env` file.
 
 And these additional packages to aid development (cyfer tip - you don't need to read them. Just `npm i` and `npm start` :D):

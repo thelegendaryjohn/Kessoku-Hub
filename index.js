@@ -1,19 +1,11 @@
 var env = process.env.NODE_ENV;
 // Packages
 import { createServer } from "http";
-import fs from "fs";
+import "dotenv/config";
 // Modules
 import { app } from "./lib/app.js";
-import db from "./lib/db.js";
 import chalk from "chalk";
 import * as colors from "./lib/consoleThemes.js";
-
-// Import all routes
-fs.readdirSync("./routes", { recursive: true }).map((file) => {
-	if (file.endsWith(".js")) {
-		import(`./routes/${file}`);
-	}
-});
 
 // Start a HTTP server. Listen to 80 in production, 3000 / specified port in development
 const server = createServer(app);
