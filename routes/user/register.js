@@ -44,7 +44,7 @@ app.post("/user/register", registerLimit, async (req, res) => {
 			// Create the user
 			let newUser = new User(creds);
 			await newUser.save();
-			res.status(201).send("User created.");
+			res.status(201).send({ username: creds.username });
 		}
 	}
 });
