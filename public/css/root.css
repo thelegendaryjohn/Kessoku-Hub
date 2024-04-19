@@ -17,22 +17,6 @@
 	--heading-font-size: 32px;
 }
 
-hitori {
-	color: var(--hitori-color);
-}
-
-ikuyo {
-	color: var(--ikuyo-color);
-}
-
-ryu {
-	color: var(--ryu-color);
-}
-
-nijika {
-	color: var(--nijika-color);
-}
-
 /* Footer Styling */
 footer {
 	display: flex;
