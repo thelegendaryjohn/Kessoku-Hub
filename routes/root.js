@@ -1,11 +1,13 @@
-let env = process.env.NODE_ENV;
-//
-import { app } from "../lib/app.js";
+import { Router } from "express";
+import { render } from "../lib/render.js";
 import { characters } from "../public/js/landing/characters.js";
+//
+const router = Router();
 
-app.get("/", (req, res) => {
-	res.render("landingPage", {
-		env: env,
+router.get("/", (req, res) => {
+	render(req, res, "landingPage", {
 		charNames: characters.map((char) => char.id),
 	});
 });
+
+export default router;
