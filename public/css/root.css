@@ -93,6 +93,20 @@ footer p {
 	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
 }
 
+#nav-container {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	height: 8.3rem;
+	background-color: var(--body-color);
+}
+
+#nav-title {
+	color: var(--accent-purple);
+	margin: auto;
+	font-size: 3rem;
+}
+
 #back-btn {
 	position: fixed;
 	transition: 0.2s;
