@@ -3,7 +3,9 @@
   <div id="sidebar-container">
     <div id="profile-container">
       <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
-      <h1 id="profile-name">Guest</h1>
+      <h1 id="profile-name"><%= 
+        user ? user.username : "Guest"
+        %></h1>
     </div>
     <div id="nav-buttons">
       <a id="nav-top" class="btn nav-btn" href="#">TOP</a>
