@@ -1,17 +1,6 @@
-/* Global Styling */
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	font-family: "Oswald", sans-serif;
-	background-color: #f4f4f4;
-	color: #000;
-}
-
 /* Custom variables */
 :root {
+	--body-color: #f4f4f4;
 	--hitori-color: rgb(255, 34, 144);
 	--nijika-color: rgb(255, 238, 0);
 	--ryo-color: rgb(34, 84, 192);
@@ -27,6 +16,18 @@ body {
 	--base-font-size: 16px;
 	--small-font-size: 12px;
 	--heading-font-size: 32px;
+}
+
+/* Global Styling */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Oswald", sans-serif;
+	background-color: var(--body-color);
+	color: #000;
 }
 
 /* Footer Styling */
@@ -77,7 +78,7 @@ footer p {
 
 /* Custom Styling */
 .btn {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .btn-underline {
@@ -90,4 +91,15 @@ footer p {
 
 .box-shadow {
 	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+#back-btn {
+	position: fixed;
+	margin: 1rem 0;
+	margin-left: 2.5rem;
+	height: 15vw;
+	min-height: 4rem;
+	max-height: 6rem;
+	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2));
+	background-color: var(--body-color);
 }
