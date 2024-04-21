@@ -3,34 +3,34 @@
 /* Desktop (>=1400px, landscape): 1920×1080 */
 @media (min-width: 1400px) and (orientation: landscape) {
 	/* Your CSS styles for Desktop */
-	body {
-		background-color: lightblue;
+	:root {
+		font-size: 1rem;
 	}
 }
 
 /* Tablet (>=768px && <=1400px, landscape): 1024x1366 */
 @media (min-width: 768px) and (max-width: 1400px) and (orientation: landscape) {
 	/* Your CSS styles for Tablet */
-	body {
-		background-color: lightgreen;
+	:root {
+		font-size: 1rem;
 	}
 }
 
 /* Mobile (<=768px, portrait): 390×844 */
 @media (orientation: portrait) and (max-width: 768px) {
-	body {
-		background-color: lightcoral;
+	:root {
+		font-size: 1rem;
 	}
 }
 
 @media screen and (orientation: portrait) and (max-width: 450px) {
-    :root {
-        font-size: 0.8rem;
-    }
+	:root {
+		font-size: 0.8rem;
+	}
 }
 
 @media screen and (orientation: portrait) and (max-width: 320px) {
-    :root {
-        font-size: 0.6rem;
-    }
+	:root {
+		font-size: 0.6rem;
+	}
 }
