@@ -9,3 +9,9 @@ app.get("/", (req, res) => {
 		charNames: characters.map((char) => char.id),
 	});
 });
+
+app.get("/account/welcome", (req, res) => {
+	res.render("accountWelcome", {
+		env: env,
+	});
+});
