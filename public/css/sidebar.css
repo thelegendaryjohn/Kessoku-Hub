@@ -52,6 +52,10 @@
 	padding-top: 9rem;
 }
 
+#nav-buttons :last-child {
+	padding-top: 4rem;
+}
+
 .sidebar a {
 	padding: 20px 10px 8px 0;
 	text-decoration: none;
@@ -67,14 +71,6 @@
 .nav-btn:hover {
 	color: var(--nijika-color);
 }
-
-/* .sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-} */
 
 .toggleSidebar {
 	clip-path: inset(0 0 0 0);
