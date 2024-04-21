@@ -95,11 +95,16 @@ footer p {
 
 #back-btn {
 	position: fixed;
+	transition: 0.2s;
 	margin: 1rem 0;
 	margin-left: 2.5rem;
-	height: 15vw;
+	height: 10vw;
 	min-height: 4rem;
-	max-height: 6rem;
-	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2));
+	max-height: 5rem;
+	top: calc(3.2rem + (clamp(4rem, 10vw, 5rem) / -2));
 	background-color: var(--body-color);
+}
+
+#back-btn:hover {
+	opacity: 0.6;
 }
