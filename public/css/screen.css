@@ -33,4 +33,8 @@
 	:root {
 		font-size: 0.5rem;
 	}
+
+	#logo {
+		padding: 25% !important;
+	}
 }
