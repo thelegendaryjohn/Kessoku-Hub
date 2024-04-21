@@ -34,10 +34,6 @@ body {
 	color: #000;
 }
 
-#error-page {
-	color: var(--hitori-color);
-}
-
 /* Footer Styling */
 footer {
 	bottom: 0;
