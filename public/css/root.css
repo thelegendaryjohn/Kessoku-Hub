@@ -20,29 +20,13 @@ body {
 	--accent-grey: rgb(149, 149, 149);
 	--accent-rainbow: linear-gradient(
 		145deg,
-		rgb(34, 84, 192),
-		rgb(255, 240, 0),
+		rgb(16, 103, 216),
+		rgb(255, 230, 0),
 		rgb(218, 39, 39)
 	);
 	--base-font-size: 16px;
 	--small-font-size: 12px;
 	--heading-font-size: 32px;
-}
-
-hitori {
-	color: var(--hitori-color);
-}
-
-ikuyo {
-	color: var(--ikuyo-color);
-}
-
-ryu {
-	color: var(--ryu-color);
-}
-
-nijika {
-	color: var(--nijika-color);
 }
 
 /* Footer Styling */

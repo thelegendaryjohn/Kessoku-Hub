@@ -1,0 +1,52 @@
+/* CSS animation for header banner */
+@keyframes adjustBrightness {
+	0% {
+		filter: brightness(0%);
+	}
+	25% {
+		filter: brightness(35%);
+	}
+	50% {
+		filter: brightness(35%); /* Delay or pause */
+	}
+	75% {
+		filter: brightness(15%);
+	}
+	100% {
+		filter: brightness(90%);
+	}
+}
+
+@keyframes adjustOpacity {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes adjustColor {
+	from {
+		background-color: #000;
+	}
+	to {
+		background-color: #fff;
+	}
+}
+
+/* Apply animations on page load*/
+.adjustColor {
+	background-color: #000;
+	animation: adjustColor 0.5s linear 1.5s forwards;
+}
+
+.adjustOpacity {
+	opacity: 0;
+	animation: adjustOpacity 0.5s linear 1.5s forwards;
+}
+
+.adjustBrightness {
+	filter: brightness(0%);
+	animation: adjustBrightness 1s linear forwards;
+}

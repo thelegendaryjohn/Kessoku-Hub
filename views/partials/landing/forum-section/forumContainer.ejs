@@ -1,6 +1,10 @@
 <section id="forum" class="box-shadow">
-  <h2>FORUM</h2>
-  <%- include("forumThread.ejs") %>
-  
+  <h2 id="forum-header" class="section-header">FORUM</h2>
+  <div id="thread-container" class="section-container">
+    <%- include("forumThread.ejs") %>
+    
+    <%- include("forumThread.ejs") %>
+  </div>
+
   <a href="#" class="see-all-anchor">See all...</a>
 </section>

@@ -1,0 +1,123 @@
+#music {
+	border-color: var(--hitori-color);
+}
+
+#music-header {
+	color: var(--hitori-color);
+}
+
+#album-container {
+	display: flex;
+	flex-direction: column;
+	text-shadow: none;
+	padding: 5px 20px;
+}
+
+#album-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#album-cover,
+#album-info-container {
+	width: 50%;
+}
+
+#album-cover {
+	border: 1.5px solid #000;
+	border-radius: 8px;
+}
+
+#album-info-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* font-size: 0.9rem; */
+}
+
+#album-info-container > * {
+	padding: 0 0;
+}
+
+#album-name {
+	font-size: 1.4rem;
+}
+
+#album-artist,
+#album-desc {
+	font-size: 1.2rem;
+}
+
+#album-artist {
+	color: var(--hitori-color);
+}
+
+#album-link {
+	display: flex;
+	justify-content: center;
+}
+
+#album-link img {
+	height: 100%;
+	width: 17%;
+	padding: 12px 5px;
+}
+
+#album-song-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0 0 0;
+}
+
+.song {
+	display: flex;
+	width: 100%;
+	padding: 0 0 15px 0;
+	justify-content: space-around;
+	font-size: 1.6rem;
+}
+
+.song-index,
+.song-length {
+	color: var(--hitori-color);
+}
+
+/* Specific Media Queries */
+/* <300px */
+@media screen and (orientation: portrait) and (max-width: 300px) {
+	#album-header {
+		flex-direction: column;
+	}
+
+	#album-cover,
+	#album-info-container {
+		width: 95%;
+	}
+
+	#album-name {
+		font-size: 2rem;
+	}
+	
+	#album-artist,
+	#album-desc {
+		font-size: 1.7rem;
+	}
+}
+
+/* <230px */
+@media screen and (orientation: portrait) and (max-width: 230px) {
+	#album-name {
+		font-size: 1.4rem;
+	}
+	
+	#album-artist,
+	#album-desc {
+		font-size: 1.2rem;
+	}
+
+	.song {
+		font-size: 1.1rem;
+	}
+}

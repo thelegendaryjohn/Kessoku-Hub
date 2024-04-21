@@ -1,8 +1,14 @@
 <section id="music" class="box-shadow">
-  <h2>MUSIC</h2>
-  <%- include("albumHeader.ejs") %>
+  <h2 id="music-header" class="section-header">MUSIC</h2>
+  <div id="album-container" class="section-container">
+    <%- include("albumHeader.ejs") %>
 
-  <%- include("albumSongList.ejs") %>
+    <div id="album-song-list">
+      <%- include("albumSong.ejs") %>
+
+      <%- include("albumSong.ejs") %>
+    </div>
+  </div>
 
   <a href="#" class="see-all-anchor">See all...</a>
 </section>
