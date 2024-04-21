@@ -9,3 +9,9 @@ app.get("/", (req, res) => {
 		charNames: characters.map((char) => char.id),
 	});
 });
+
+app.get("/errorPage", (req, res) => {
+	res.render("errorPage", {
+		env: env,
+	});
+});
