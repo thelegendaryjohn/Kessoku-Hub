@@ -4,8 +4,9 @@
 <head>
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/welcome.css">
 
-  <title>Kessoku Hub | Account Creation</title>
+  <title>Kessoku Hub | Account</title>
 </head>
 
 <body>
@@ -13,7 +14,12 @@
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Header -->
-
+  <div id="header-container" class="box-shadow">
+    <div id="back-btn-container">
+      <img id="back-btn" src="/images/button/btn-prev.svg" alt="Back button">
+    </div>
+    <h1 id="header-title">ACCOUNT</h1>
+  </div>
 </body>
 
 </html>
