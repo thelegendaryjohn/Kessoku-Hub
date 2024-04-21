@@ -1,10 +1,12 @@
 let NODE_ENV = process.env.NODE_ENV;
 //
 import rateLimit from "express-rate-limit";
-7;
+import { Router } from "express";
 import { Validator } from "jsonschema";
-import { app } from "../../lib/app.js";
 import { User } from "../../schemas/user.js";
+
+//
+const router = Router();
 
 // Set up the validator
 let v = new Validator();
@@ -36,7 +38,8 @@ function useRateLimit(req, res, next) {
 }
 
 // Apply the user register route
-app.post("/user/register", useRateLimit, async (req, res) => {
+
+router.post("/user/register", useRateLimit, async (req, res) => {
 	// Sanitize the input
 	let result = v.validate(
 		{
@@ -64,3 +67,4 @@ app.post("/user/register", useRateLimit, async (req, res) => {
 		});
 	}
 });
+export default router;
