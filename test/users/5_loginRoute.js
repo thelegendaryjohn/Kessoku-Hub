@@ -21,7 +21,11 @@ describe("POST /user/login", () => {
 	it("should login a user and return status code 200", (done) => {
 		request(app)
 			.post("/user/login")
-			.send({ username: "testuser", password: "testpassword" })
+			.send({
+				username: "testuser",
+				password: "testpassword",
+				remember: true,
+			})
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
 			.expect(200)
@@ -38,7 +42,11 @@ describe("POST /user/login", () => {
 	it("should fail if the username or password is incorrect", (done) => {
 		request(app)
 			.post("/user/login")
-			.send({ username: "wronguser", password: "wrongpassword" }) // replace with invalid credentials
+			.send({
+				username: "wronguser",
+				password: "wrongpassword",
+				remember: true,
+			}) // replace with invalid credentials
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
 			.expect(401)
@@ -47,6 +55,23 @@ describe("POST /user/login", () => {
 					return done(err);
 				}
 				assert(res.body === "Invalid credentials.");
+				done();
+			});
+	});
+
+	// Should fail if the input is of invalid type
+	it("should fail if the input is of invalid type", (done) => {
+		request(app)
+			.post("/user/login")
+			.send({ username: 123, password: 123, remember: "true" }) // replace with invalid credentials
+			.set("Accept", "application/json")
+			.expect("Content-Type", /json/)
+			.expect(401)
+			.end((err, res) => {
+				if (err) {
+					return done(err);
+				}
+				assert(res.body === "Invalid input.");
 				done();
 			});
 	});
