@@ -6,29 +6,29 @@
   <%- include("partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Error Page</title>
-  <link rel="stylesheet" href="/css/landing/main.css">
+  <link rel="stylesheet" href="/css/error.css">
 </head>
 
 <body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
   <!-- Sidebar -->
   <%- include("partials/sidebar.ejs") %>
 
-<header>
-    <!-- <a href="#" class="btn nav-btn"><img src="/images/button/btn-prev.svg"/></a> -->
-    <h1 id="error-page" class="text-shadow">ERROR</h1>
-</header>
+  <!-- Nav bar partial -->
+  <%- include("partials/navBar.ejs", { headerTitle: "ERROR" }) %>
 
-<main>
-  <img src="/images/error-page/kita-gif.gif">
+<main id="error-container">
+  <img src="/images/error-page/kita-gif.gif" id="error-gif">
   <h1 id="error-code">404</h1>
   <h2 id="error-desc">PAGE NOT FOUND</h2>
+
+  <a href="/" id="exit-button"><h1 class="btn">GO BACK!</h1></a>
 </main>
 
 
 
   <!-- Footer partial -->
   <%- include("partials/htmlFooter.ejs") %>
-  <!-- <script src="/js/global.js" type="module"></script> -->
+  <script src="/js/global.js" type="module"></script>
 </body>
 
 </html>
