@@ -1,9 +1,24 @@
 import { Router } from "express";
 import { User } from "../../schemas/user.js";
+import { Validator } from "jsonschema";
 //
 const router = Router();
+const v = new Validator();
+let schema = {
+	type: "object",
+	properties: {
+		username: { type: "string" },
+		password: { type: "string" },
+		remember: { type: "boolean" },
+	},
+	required: ["username", "password", "remember"],
+};
 
 router.post("/user/login", (req, res) => {
+	let result = v.validate(req.body, schema);
+	if (!result.valid) {
+		return res.status(401).json("Invalid input.");
+	}
 	// Check whether the user info matches the database
 	User.findOne({ username: req.body.username })
 		.then((user) => {
@@ -17,10 +32,15 @@ router.post("/user/login", (req, res) => {
 					throw err;
 				}
 				if (isMatch) {
-					console.log(`isMatch: ${isMatch}`);
-					res.status(200).json({ username: req.body.username });
+					// Saves the user info into the session
+					req.body.remember
+						? (req.session.user = user)
+						: (req.session.user = null);
+					return res
+						.status(200)
+						.json({ username: req.body.username });
 				} else {
-					res.status(401).json("Invalid credentials.");
+					return res.status(401).json("Invalid credentials.");
 				}
 			});
 		})
