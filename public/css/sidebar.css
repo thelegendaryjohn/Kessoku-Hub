@@ -21,7 +21,7 @@
 #profile-container {
 	position: absolute;
 	display: flex;
-	top: calc(4rem + -4.5em / 2);
+	top: calc(3.5rem + -4.5em / 2);
     height: 4.5em;
 }
 
