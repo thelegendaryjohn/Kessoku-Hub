@@ -14,7 +14,7 @@ let schema = {
 	required: ["username", "password", "remember"],
 };
 
-router.post("/user/login", (req, res) => {
+router.post("/user/login", (req, res, next) => {
 	let result = v.validate(req.body, schema);
 	if (!result.valid) {
 		return res.status(401).json("Invalid input.");
@@ -23,7 +23,6 @@ router.post("/user/login", (req, res) => {
 	User.findOne({ username: req.body.username })
 		.then((user) => {
 			if (!user) {
-				console.log(`user: ${req.body.username}`);
 				return res.status(401).json("Invalid credentials.");
 			}
 			// Compare the password
@@ -38,12 +37,10 @@ router.post("/user/login", (req, res) => {
 					// Saves the user info into the session
 					req.session.regenerate((err) => {
 						if (err) return next(err);
-						res.redirect("/");
+						return res
+							.status(200)
+							.json({ username: req.body.username });
 					});
-
-					return res
-						.status(200)
-						.json({ username: req.body.username });
 				} else {
 					return res.status(401).json("Invalid credentials.");
 				}
