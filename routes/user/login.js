@@ -32,10 +32,15 @@ router.post("/user/login", (req, res) => {
 					throw err;
 				}
 				if (isMatch) {
-					// Saves the user info into the session
 					req.body.remember
 						? (req.session.user = user)
 						: (req.session.user = null);
+					// Saves the user info into the session
+					req.session.regenerate((err) => {
+						if (err) return next(err);
+						res.redirect("/");
+					});
+
 					return res
 						.status(200)
 						.json({ username: req.body.username });
