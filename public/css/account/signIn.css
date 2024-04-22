@@ -1,5 +1,5 @@
 footer {
-    position: fixed !important;
+    position: sticky !important;
 }
 
 .account-section,

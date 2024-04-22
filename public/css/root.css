@@ -35,7 +35,6 @@ body {
 
 /* Footer Styling */
 footer {
-	position: sticky;
 	bottom: 0;
 	width: 100%;
 	display: flex;
@@ -70,10 +69,14 @@ footer p {
 
 #footer-icon {
 	position: absolute;
-	right: 25px;
-	transform: translateY(25px);
-	width: 50px;
+	right: 2rem;
+	transform: translateY(40%);
+	width: 3.5rem;
 }
+
+/* #footer-content {
+	width: 90%;
+} */
 
 /* #footer-icon-img {
 	width: 60%;
