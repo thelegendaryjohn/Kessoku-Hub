@@ -20,7 +20,7 @@ To get started with this project, follow these steps:
 -   Make sure you have [Node.js](https://nodejs.org/en/download/) installed on your machine.
 -   If you're in the main Kessoku team, add a `.env` file to this repo after cloning, then request Cyfer for the data.
 
-1. Clone the repository: `git clone https://github.com/AzzaDeveloper/kessoku-hub`
+1. Clone the repository: `git clone https://github.com/RMIT-Vietnam-Teaching/group-project-cosc3060-2024a-kessoku`
 2. Install the dependencies: `npm install`
 3. Start the project: `npm start`. For production usage, run `npm production` instead.
 
@@ -58,8 +58,6 @@ This project uses the following packages:
 -   [`bcrypt`](https://www.npmjs.com/package/bcrypt): A library to help hash passwords.
 -   [`jsonwebtoken`](https://www.npmjs.com/package/jsonwebtoken): To create and verify JSON Web Tokens (JWTs) for secure transmission of information.
 -   [`jsonschema`](https://www.npmjs.com/package/jsonschema): For validating JSON data against a schema, ensuring the data follows a specific structure.
--   [`mocha`](https://www.npmjs.com/package/mocha): A JavaScript test framework running on Node.js.
--   [`supertest`](https://www.npmjs.com/package/supertest): A library for testing Node.js HTTP servers using a fluent API.
 -   [`dotenv`](https://www.npmjs.com/package/dotenv): Loads environment variables from a `.env` file.
 
 And these additional packages to aid development (cyfer tip - you don't need to read them. Just `npm i` and `npm start` :D):
@@ -67,6 +65,8 @@ And these additional packages to aid development (cyfer tip - you don't need to 
 -   [`nodemon`](https://www.npmjs.com/package/nodemon): Automatically restarts your Node.js application when file changes are detected.
 -   [`livereload`](https://www.npmjs.com/package/livereload): Monitors changes in the file system and automatically refreshes the browser.
 -   [`livereload-connect`](https://www.npmjs.com/package/connect-livereload): Middleware that adds livereload script to the response for enabling live reloading.
+-   [`mocha`](https://www.npmjs.com/package/mocha): A JavaScript test framework running on Node.js.
+-   [`supertest`](https://www.npmjs.com/package/supertest): A library for testing Node.js HTTP servers using a fluent API.
 -   [`swagger-jsdoc`](https://www.npmjs.com/package/swagger-jsdoc): Generates Swagger doc based on JSDoc. This will be used to better document our API.
 -   [`swagger-ui-express`](https://www.npmjs.com/package/swagger-ui-express): Serves automatically generated Swagger UI docs from express.
 
