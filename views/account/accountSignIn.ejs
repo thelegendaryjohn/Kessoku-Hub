@@ -27,7 +27,7 @@
       </div>
 
       <!-- Sign up form -->
-      <form id="signup-form" class="account-form" action="POST">
+      <form id="signup-form" class="account-form" target="_self" action="https://wp.zybooks.com/form-viewer.php" method="post">
         <label for="username">Username</label>
         <input class="input-field" type="username" name="username" placeholder="guitarhero" required>
         <span id="username-signup-alert" class="alert">[Placeholder]</span>
@@ -57,7 +57,7 @@
       </div>
 
       <!-- Log in form -->
-      <form id="login-form" class="account-form" action="POST">
+      <form id="login-form" class="account-form" target="_self" action="https://wp.zybooks.com/form-viewer.php" method="post">
         <label for="username">Username or Email</label>
         <input class="input-field" type="username" name="username" placeholder="guitarhero" required>
         <span id="username-login-alert" class="alert">[Placeholder]</span>
@@ -77,7 +77,7 @@
   </main>
 
   <!-- Footer partial -->
-
+  <%- include("../partials/htmlFooter.ejs") %>
 </body>
 
 </html>
