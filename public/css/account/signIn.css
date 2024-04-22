@@ -58,8 +58,7 @@ label:not(.checkbox-container) {
 
 #forgot-pass {
     font-size: 1.25rem;
-    text-decoration: none;
-    color: #000;
+    color: var(--accent-purple);
     padding-right: 1rem;
 }
 
