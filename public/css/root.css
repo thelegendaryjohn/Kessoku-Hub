@@ -40,7 +40,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	background-image: url("/images/footer-section/footer-bg.png");
-	color: #fff;
+	background-color: #fff;
 	padding: 10px;
 	text-align: center;
 	box-sizing: border-box;
@@ -73,18 +73,6 @@ footer p {
 	transform: translateY(40%);
 	width: 3.5rem;
 }
-
-/* #footer-content {
-	width: 90%;
-} */
-
-/* #footer-icon-img {
-	width: 60%;
-} */
-
-/* #footer-icon-arrow {
-	width: 12%;
-} */
 
 /* Custom Styling */
 .btn {
