@@ -5,7 +5,7 @@
 	height: 15vw;
 	min-height: 4rem;
 	max-height: 6rem;
-	top: calc(5rem + (clamp(4rem, 15vw, 6rem) / -2));
+	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2));
 	right: 2rem;
 	background-color: #fff;
 	border: 1px solid var(--accent-purple);
@@ -21,7 +21,7 @@
 #profile-container {
 	position: absolute;
 	display: flex;
-	top: calc(5rem + -4.5em / 2);
+	top: calc(4rem + -4.5em / 2);
     height: 4.5em;
 }
 
@@ -49,7 +49,11 @@
 }
 
 #nav-buttons {
-	padding-top: 9rem;
+	padding-top: 8rem;
+}
+
+#nav-buttons :last-child {
+	padding-top: 4rem;
 }
 
 #nav-buttons :last-child {
