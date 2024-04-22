@@ -52,6 +52,7 @@ label {
 
 .submit-btn {
     font-family: "Oswald", sans-serif;
+    font-size: 1.5rem;
     font-weight: bold;
     color: var(--body-color);
     background-color: var(--accent-purple);
@@ -75,3 +76,4 @@ label {
     background-color: transparent;
     text-decoration: underline;
 }
+
