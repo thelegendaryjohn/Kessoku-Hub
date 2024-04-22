@@ -1,11 +1,11 @@
 #menu-btn {
-	font-size: 12px !important;
 	position: fixed;
 	z-index: 9;
-	height: 15vw;
-	min-height: 4rem;
+	height: 4.5rem;
+	transform: translateY(calc((6rem - 100%) / 2));
+	/* min-height: 4rem;
 	max-height: 6rem;
-	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2));
+	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2)); */
 	right: 2rem;
 	background-color: #fff;
 	border: 1px solid var(--accent-purple);
@@ -45,7 +45,7 @@
 	z-index: 9;
 	background-image: url("/images/side-menu/hamburger-bg.png");
 	overflow-x: hidden;
-	transition: 0.4s;
+	transition: 0.24s;
 }
 
 #nav-buttons {
