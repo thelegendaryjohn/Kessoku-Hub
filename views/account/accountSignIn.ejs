@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/signIn.css">
+
+  <title>Kessoku Hub | Account</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "ACCOUNT" }) %>
+
+  <!-- Main content -->
+  <main>
+
+    <!-- Sign up section -->
+    <section id="signup-section" class="account-section">
+      <!-- Sign up header -->
+      <div id="signup-header-container">
+        <h1 id="signup-header">Sign Up</h1>
+      </div>
+
+      <!-- Sign up form -->
+      <form id="signup-form" class="account-form" action="POST">
+        <label for="username">Username</label>
+        <input class="input-field" type="username" name="username" placeholder="guitarhero" required>
+        <span id="username-signup-alert" class="alert">[Placeholder]</span>
+
+        <label for="password">Password</label>
+        <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+        <span id="password-signup-alert" class="alert">[Placeholder]</span>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input class="input-field" type="password" name="confirmPassword" placeholder="bocchitherock" required>
+        <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
+
+        <span id="error-signup-alert" class="alert">[Placeholder]</span>
+        <input class="submit-btn" type="submit" value="Sign Up">
+      </form>
+
+      <span class="signin-redirect-container">
+        <p class="font-poppins signin-ask">Already have an account?</p><button class="font-poppins signin-link">Log In</button>
+      </span>
+    </section>
+
+    <!-- Log in section -->
+    <section id="login-section" class="account-section">
+      <!-- Log in header -->
+      <div id="signup-header-container">
+        <h1 id="signup-header">Log In</h1>
+      </div>
+
+      <!-- Log in form -->
+      <form id="login-form" class="account-form" action="POST">
+        <label for="username">Username or Email</label>
+        <input class="input-field" type="username" name="username" placeholder="guitarhero" required>
+        <span id="username-login-alert" class="alert">[Placeholder]</span>
+
+        <label for="password">Password</label>
+        <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+        <span id="password-login-alert" class="alert">[Placeholder]</span>
+
+        <span id="error-login-alert" class="alert">[Placeholder]</span>
+        <input class="submit-btn" type="submit" value="Log in">
+      </form>
+
+      <span class="signin-redirect-container">
+        <p class="font-poppins signin-ask">Don’t have an account?</p><button class="font-poppins signin-link">Sign up</button>
+      </span>
+    </section>
+  </main>
+
+  <!-- Footer partial -->
+
+</body>
+
+</html>
