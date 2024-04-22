@@ -5,6 +5,7 @@
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
   <link rel="stylesheet" href="/css/account/signIn.css">
+  <link rel="stylesheet" href="/css/account/checkbox.css">
 
   <title>Kessoku Hub | Account</title>
 </head>
@@ -67,6 +68,16 @@
         <span id="password-login-alert" class="alert">[Placeholder]</span>
 
         <span id="error-login-alert" class="alert">[Placeholder]</span>
+
+        <div id="login-hr-div">
+          <label class="checkbox-container">Remember me
+            <input type="checkbox" checked>
+            <span class="checkmark"></span>
+          </label>
+
+          <a id="forgot-pass" class="font-poppins" href="#">Forgot Password?</a>
+        </div>
+
         <input class="submit-btn" type="submit" value="Log in">
       </form>
 
