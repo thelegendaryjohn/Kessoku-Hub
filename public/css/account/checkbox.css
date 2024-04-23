@@ -7,7 +7,6 @@
 	font-size: 1.25rem;
 	user-select: none;
     margin: 1rem 0 1rem 0;
-	-webkit-tap-highlight-color: transparent;
 }
 
 /* Hide the browser's default checkbox */
