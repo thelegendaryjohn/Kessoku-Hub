@@ -37,9 +37,19 @@ router.post("/user/login", (req, res, next) => {
 					// Saves the user info into the session
 					req.session.regenerate((err) => {
 						if (err) return next(err);
-						return res
-							.status(200)
-							.json({ username: req.body.username });
+
+						req.session.user = {
+							username: user.username,
+							// TODO: Add more user info here, like profile picture, etc.
+						};
+
+						req.session.save(function (err) {
+							if (err) return next(err);
+
+							return res
+								.status(200)
+								.json({ username: req.body.username });
+						});
 					});
 				} else {
 					return res.status(401).json("Invalid credentials.");
