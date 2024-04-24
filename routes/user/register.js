@@ -62,9 +62,14 @@ router.post("/user/register", useRateLimit, async (req, res) => {
 		}
 	} else {
 		// Loop through all the errors
-		result.errors.map((error) => {
-			res.status(400).json(error.message);
-		});
+		res.status(400).json(
+			result.errors.map((error) => {
+				return {
+					path: error.path,
+					message: error.message,
+				};
+			})
+		);
 	}
 });
 export default router;
