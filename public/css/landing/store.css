@@ -1,3 +1,7 @@
 #store {
-	border-color: var(--nijika-color);
+	border-color: var(--ryo-color);
+}
+
+#store-header {
+	color: var(--ryo-color);
 }

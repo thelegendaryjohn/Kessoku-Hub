@@ -1,3 +1,7 @@
 #series {
 	border-color: var(--ikuyo-color);
 }
+
+#series-header {
+	color: var(--ikuyo-color);
+}
