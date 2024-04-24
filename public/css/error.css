@@ -9,12 +9,16 @@
     display: flex;
     border: 2px solid black;
     border-radius: 10px;
-    width: 20rem;
+    width: 25rem;
     align-items: center;
 }
 
 #error-code {
     font-size: 6rem;
     text-align: center;
+    color: var(--ikuyo-color);
 }
- 
+
+#exit-button .btn {
+    color: var(--nijika-color);
+}

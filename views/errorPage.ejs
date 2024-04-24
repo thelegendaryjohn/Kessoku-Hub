@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="/css/error.css">
 </head>
 
-<body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
+<body>
   <!-- Sidebar -->
   <%- include("partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
-  <%- include("partials/navBar.ejs", { headerTitle: "ERROR" }) %>
+  <%- include("partials/navBar.ejs", { headerTitle: "ERROR", headerColor: "var(--ikuyo-color)" }) %>
 
   <main id="error-container">
     <img src="/images/error-page/kita-gif.gif" id="error-gif">
