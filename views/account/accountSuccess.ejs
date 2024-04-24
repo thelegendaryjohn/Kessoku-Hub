@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <!-- Sidebar -->
+  <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
@@ -18,9 +18,16 @@
 
   <main id="success-container">
     <section id="success-section">
-        <h1 id="success-title">[Placeholder] successfully</h1>
-        <h2 id="success-desc">Redirecting, please wait...</h2>
+      <h1 id="success-title">[Placeholder] successfully</h1>
+      <div id="success-desc" class="loading-text-container">
+        <span class="loading-text"></span>
+      </div>
     </section>
+
+    <!-- Escape plan if redirect doesn't work -->
+    <div id="escape-plan">
+      <p class="font-poppins">If redirection didn't start automatically, <a href="/" class="font-poppins">click here</a></p>
+    </div>
   </main>
 
 </body>
