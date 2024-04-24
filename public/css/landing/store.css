@@ -109,3 +109,7 @@
 	background-color: var(--ryo-color);
 	color: #fff;
 }
+
+#store-header {
+	color: var(--ryo-color);
+}
