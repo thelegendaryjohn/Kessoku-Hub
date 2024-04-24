@@ -57,7 +57,8 @@ describe("POST /user/register sanitization", () => {
 				if (err) {
 					return done(err);
 				}
-				assert(res.body === `requires property "username"`);
+				assert(res.body[0].path.length === 0);
+				assert(res.body[0].message === `requires property "username"`);
 				done();
 			});
 	});
@@ -74,8 +75,10 @@ describe("POST /user/register sanitization", () => {
 				if (err) {
 					return done(err);
 				}
+
+				assert(res.body[0].path[0] === "username");
 				assert(
-					res.body ===
+					res.body[0].message ===
 						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{0,31}$"`
 				);
 				done();
@@ -94,7 +97,8 @@ describe("POST /user/register sanitization", () => {
 				if (err) {
 					return done(err);
 				}
-				assert(res.body === `requires property "password"`);
+				assert(res.body[0].path.length == 0);
+				assert(res.body[0].message === `requires property "password"`);
 				done();
 			});
 	});
@@ -109,10 +113,38 @@ describe("POST /user/register sanitization", () => {
 				if (err) {
 					return done(err);
 				}
+
+				assert(res.body[0].path[0] === "password");
 				assert(
-					res.body ===
+					res.body[0].message ===
 						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{5,31}$"`
 				);
+				done();
+			});
+	});
+	// Should fail with a combination of errors
+	it("should fail with a combination of errors", (done) => {
+		request(app)
+			.post("/user/register")
+			.send({ username: "1test", password: "test" })
+			.set("Accept", "application/json")
+			.expect("Content-Type", /json/)
+			.expect(400)
+			.end((err, res) => {
+				if (err) {
+					return done(err);
+				}
+				assert(res.body[0].path[0] == "username");
+				assert(
+					res.body[0].message ===
+						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{0,31}$"`
+				);
+				assert(res.body[1].path[0] == "password");
+				assert(
+					res.body[1].message ===
+						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{5,31}$"`
+				);
+
 				done();
 			});
 	});
