@@ -1,13 +1,9 @@
 <div id="nav-container" class="box-shadow">
   <%- include("backBtn.ejs") %>
 
-  <style>
-    #nav-title {
-      color: <%= headerColor == "" ? "var(--accent-purple)" : headerColor %>;
-    }
-  </style>
-
-  <h1 id="nav-title" class="text-shadow">
+  <h1 id="nav-title" class="text-shadow" style="
+    <%= (!!locals.headerColor)? `color: ${headerColor}` : 'color: var(--accent-purple)'  %>
+  ">
     <%= headerTitle %>
   </h1>
 
