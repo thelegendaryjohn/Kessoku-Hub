@@ -43,7 +43,7 @@
 
 #banner-desc {
 	position: absolute;
-	color: var(--nijika-color);
+	color: var(--accent-yellow);
 	font-size: 42.5%;
 	bottom: 33%;
 	left: 5.2%;

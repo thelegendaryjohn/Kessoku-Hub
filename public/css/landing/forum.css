@@ -1,20 +1,23 @@
 #forum {
 	/* Rainbow border */
-	border-color: transparent;
+	/* border-color: transparent;
 	background: linear-gradient(to right, white, white), var(--accent-rainbow);
 	background-clip: padding-box, border-box;
 	-webkit-background-clip: padding-box, border-box;
-	background-origin: padding-box, border-box;
+	background-origin: padding-box, border-box; */
 
+	border-color: var(--accent-purple);
 	display: flex;
 	flex-direction: column;
 }
 
 #forum-header {
-	background-image: var(--accent-rainbow);
+	/* background-image: var(--accent-rainbow);
 	background-clip: text;
 	-webkit-background-clip: text;
-	color: transparent;
+	color: transparent; */
+
+	color: var(--accent-purple);
 }
 
 #thread-container {
@@ -27,7 +30,7 @@
 	padding: 0.8rem;
 	text-shadow: none;
 	align-self: center;
-	border: 1px solid var(--nijika-color);
+	border: 1px solid var(--hitori-color);
 	border-radius: 6px;
 }
 
