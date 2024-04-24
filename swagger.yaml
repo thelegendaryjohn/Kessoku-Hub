@@ -40,7 +40,48 @@ paths:
                             username:
                                 type: "string"
                 "401":
-                    description: "Returns an array of error objects."
+                    description: "Invalid input or Invalid credentials"
+                "500":
+                    description: "Internal server error"
+    /user/register:
+        post:
+            tags:
+                - "Authentication"
+            summary: "User registration"
+            description: "This route allows new users to register by providing a username and password."
+            consumes:
+                - "application/json"
+            produces:
+                - "application/json"
+            parameters:
+                - in: "body"
+                  name: "body"
+                  description: "User registration information"
+                  required: true
+                  schema:
+                      type: "object"
+                      properties:
+                          username:
+                              type: "string"
+                              pattern: "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                              description: "Between 1 and 32 characters long and must not start with a number or special characters (only letters at the beginning), and the rest of the characters can include letters, numbers, or special characters."
+                          password:
+                              type: "string"
+                              pattern: "^[A-Za-z][A-Za-z0-9_]{5,31}$"
+                              description: "Between 6 and 32 characters long and must not start with a number or special characters (only letters at the beginning), and the rest of the characters can include letters, numbers, or special characters."
+                      required:
+                          - "username"
+                          - "password"
+            responses:
+                "201":
+                    description: "Registration successful"
+                    schema:
+                        type: "object"
+                        properties:
+                            username:
+                                type: "string"
+                "400":
+                    description: "Invalid input"
                     schema:
                         type: "array"
                         items:
@@ -52,5 +93,20 @@ paths:
                                         type: "string"
                                 message:
                                     type: "string"
+                "409":
+                    description: "Username already taken"
+                "500":
+                    description: "Internal server error"
+    /user/logout:
+        get:
+            tags:
+                - "Authentication"
+            summary: "User logout"
+            description: "This route allows users to logout from the system."
+            produces:
+                - "application/json"
+            responses:
+                "200":
+                    description: "Successfully logged out"
                 "500":
                     description: "Internal server error"
