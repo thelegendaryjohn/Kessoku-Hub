@@ -26,7 +26,7 @@ const registerLimit = rateLimit({
 	windowMs: 5 * 1000, // 10 seconds
 	max: 1, // limit each IP to 1 requests per windowMs
 	message:
-		"Too many register attempts from this IP, please try again after 15 minutes.",
+		"Too many register attempts from this IP, please try again after 10 seconds.",
 });
 
 function useRateLimit(req, res, next) {

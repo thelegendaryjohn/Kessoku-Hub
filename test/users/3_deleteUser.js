@@ -2,14 +2,11 @@ import { User } from "../../schemas/user.js";
 import assert from "assert";
 
 describe(`Deleting a document from MongoDB`, () => {
-	// Create a new user to test
-	let user;
 	// This will run before running the test
 	beforeEach(function (done) {
 		User.collection.drop(() => {
 			// Creating a new Instance of User Model
-
-			user = new User({
+			let user = new User({
 				username: "testuser",
 				password: "testpassword",
 			});
