@@ -1,18 +1,19 @@
 /* Custom variables */
 :root {
 	--body-color: #ffffff;
-	--hitori-color: rgb(255, 34, 144);
-	--nijika-color: rgb(255, 238, 0);
+	--hitori-color: rgb(229, 20, 112);
+	--nijika-color: rgb(219, 126, 5);
 	--ryo-color: rgb(34, 84, 192);
 	--ikuyo-color: rgb(218, 39, 39);
-	--accent-purple: rgb(196, 90, 255);
+	--accent-purple: rgb(170, 21, 228);
+	--accent-yellow: rgb(255, 240, 0);
 	--accent-grey: rgb(149, 149, 149);
-	--accent-rainbow: linear-gradient(
+	/* --accent-rainbow: linear-gradient(
 		145deg,
 		rgb(16, 103, 216),
 		rgb(255, 230, 0),
 		rgb(218, 39, 39)
-	);
+	); */
 	--base-font-size: 16px;
 	--small-font-size: 12px;
 	--heading-font-size: 32px;
