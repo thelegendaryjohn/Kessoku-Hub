@@ -1,0 +1,79 @@
+#success-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 20vh;
+}
+
+#success-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	border: 2px solid var(--accent-grey);
+	border-radius: 10px;
+	line-height: 4rem;
+	padding: 2rem 0;
+	width: 80%;
+}
+
+#success-title {
+	color: var(--ryo-color);
+	font-size: 2rem;
+}
+
+#success-desc {
+	color: var(--accent-grey);
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+/* Loading animation */
+@keyframes loadingAnim {
+	0% {
+		content: "Redirecting, please wait";
+	}
+	20% {
+		content: "Redirecting, please wait.";
+	}
+	40% {
+		content: "Redirecting, please wait..";
+	}
+	60% {
+		content: "Redirecting, please wait...";
+	}
+	80% {
+		content: "Redirecting, please wait....";
+	}
+}
+
+.loading-text::before {
+	content: "Redirecting, please wait";
+	animation: loadingAnim 2s steps(6) infinite;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* Escape plan appears after 5s */
+@keyframes escapePlan {
+    from {
+        opacity: 0;
+    }
+	to {
+        opacity: 1;
+    }
+}
+
+/* Escape plan if redirect doesn't work */
+#escape-plan {
+    opacity: 0;
+    margin-top: 2rem;
+	font-size: 1rem;
+    animation: escapePlan 0.1s linear 5s forwards; 
+}
+
+#escape-plan a {
+	color: var(--hitori-color);
+}

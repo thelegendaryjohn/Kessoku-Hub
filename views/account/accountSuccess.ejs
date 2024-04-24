@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Success</title>
+  <link rel="stylesheet" href="/css/account/success.css">
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "SUCCESS", headerColor: "var(--ryo-color)" }) %>
+
+  <main id="success-container">
+    <section id="success-section">
+      <h1 id="success-title">[Placeholder] successfully</h1>
+      <div id="success-desc" class="loading-text-container">
+        <span class="loading-text"></span>
+      </div>
+    </section>
+
+    <!-- Escape plan if redirect doesn't work -->
+    <div id="escape-plan">
+      <p class="font-poppins">If redirection didn't start automatically, <a href="/" class="font-poppins">click here</a></p>
+    </div>
+  </main>
+
+</body>
+
+</html>
