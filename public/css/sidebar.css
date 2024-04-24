@@ -1,17 +1,16 @@
 #menu-btn {
-	font-size: 12px !important;
 	position: fixed;
 	z-index: 9;
-	height: 15vw;
-	min-height: 4rem;
+	height: 4.5rem;
+	transform: translateY(calc((6rem - 100%) / 2));
+	/* min-height: 4rem;
 	max-height: 6rem;
-	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2));
+	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2)); */
 	right: 2rem;
 	background-color: #fff;
 	border: 1px solid var(--accent-purple);
 	border-radius: 6px;
 	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
-	-webkit-tap-highlight-color: transparent;
 }
 
 #sidebar-container {
@@ -21,7 +20,7 @@
 #profile-container {
 	position: absolute;
 	display: flex;
-	top: calc(4rem + -4.5em / 2);
+	top: calc(3.5rem + -4.5em / 2);
     height: 4.5em;
 }
 
@@ -45,15 +44,11 @@
 	z-index: 9;
 	background-image: url("/images/side-menu/hamburger-bg.png");
 	overflow-x: hidden;
-	transition: 0.4s;
+	transition: 0.24s;
 }
 
 #nav-buttons {
 	padding-top: 8rem;
-}
-
-#nav-buttons :last-child {
-	padding-top: 4rem;
 }
 
 #nav-buttons :last-child {
@@ -69,7 +64,6 @@
 	display: block;
 	transition: 0.2s;
 	text-wrap: nowrap;
-	-webkit-tap-highlight-color: transparent;
 }
 
 .nav-btn:hover {

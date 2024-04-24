@@ -4,7 +4,7 @@ import { render } from "../../lib/render.js";
 const router = Router();
 
 router.get("/account", (req, res) => {
-	render(req, res, "account/accountPage");
+	render(req, res, "account/accountSignIn");
 });
 
 router.get("/account/success", (req, res) => {

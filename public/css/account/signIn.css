@@ -1,0 +1,91 @@
+footer {
+    position: sticky !important;
+}
+
+.account-section,
+.account-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-section {
+    padding: 2rem 2rem;
+}
+
+.account-form * {
+    font-family: "Poppins", sans-serif;
+}
+
+#signup-header {
+    padding: 10px 0;
+    color: var(--accent-purple);
+    font-size: 2.5rem;
+    padding-left: 1rem;
+}
+
+.input-field,
+.submit-btn {
+    padding: 1.25rem;
+    border-radius: 10px;
+}
+
+.alert {
+    margin: 0.5rem 0 1rem 0;
+    color: red;
+}
+
+input {
+    font-size: 1.2rem;
+}
+
+label:not(.checkbox-container) {
+    font-size: 1.1rem;
+    transform: translateX(1.5rem) translateY(0.8rem);
+    background-color: white;
+    width: fit-content;
+    padding: 0 0.5rem;
+}
+
+.input-field {
+    border: 1px solid var(--accent-grey);
+}
+
+#login-hr-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#forgot-pass {
+    font-size: 1.25rem;
+    color: var(--accent-purple);
+    padding-right: 1rem;
+}
+
+.submit-btn {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--body-color);
+    background-color: var(--accent-purple);
+    border: 1px solid var(--accent-purple);
+}
+
+.signin-redirect-container {
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+    width: 100%;
+    padding-top: 2rem;
+}
+
+.signin-link {
+    font-size: 1.25rem;
+    color: var(--accent-purple);
+    font-weight: 600;
+    padding: 0 5px;
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
