@@ -1,0 +1,56 @@
+swagger: "2.0"
+info:
+    version: "1.0.0"
+    title: "Kessoku API"
+paths:
+    /user/login:
+        post:
+            tags:
+                - "Authentication"
+            summary: "User login"
+            description: "This route allows users to login by providing their username, password and remember-me option."
+            consumes:
+                - "application/json"
+            produces:
+                - "application/json"
+            parameters:
+                - in: "body"
+                  name: "body"
+                  description: "User login information"
+                  required: true
+                  schema:
+                      type: "object"
+                      properties:
+                          username:
+                              type: "string"
+                          password:
+                              type: "string"
+                          remember:
+                              type: "boolean"
+                      required:
+                          - "username"
+                          - "password"
+                          - "remember"
+            responses:
+                "200":
+                    description: "Login successful"
+                    schema:
+                        type: "object"
+                        properties:
+                            username:
+                                type: "string"
+                "401":
+                    description: "Returns an array of error objects."
+                    schema:
+                        type: "array"
+                        items:
+                            type: "object"
+                            properties:
+                                path:
+                                    type: "array"
+                                    items:
+                                        type: "string"
+                                message:
+                                    type: "string"
+                "500":
+                    description: "Internal server error"
