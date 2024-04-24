@@ -20,6 +20,8 @@
   <!-- Main content -->
   <main>
 
+    <div id="coverup-box"></div>
+
     <!-- Sign up section -->
     <section id="signup-section" class="account-section">
       <!-- Sign up header -->
@@ -46,7 +48,7 @@
       </form>
 
       <span class="signin-redirect-container">
-        <p class="font-poppins signin-ask">Already have an account?</p><button class="font-poppins signin-link">Log In</button>
+        <p class="font-poppins signin-ask">Already have an account?</p><button id="login" class="font-poppins signin-link">Log In</button>
       </span>
     </section>
 
@@ -82,11 +84,11 @@
       </form>
 
       <span class="signin-redirect-container">
-        <p class="font-poppins signin-ask">Don’t have an account?</p><button class="font-poppins signin-link">Sign up</button>
+        <p class="font-poppins signin-ask">Don’t have an account?</p><button id="signup" class="font-poppins signin-link">Sign up</button>
       </span>
     </section>
   </main>
-
+  <script src="/js/account.js"></script>
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
