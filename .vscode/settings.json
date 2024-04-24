@@ -12,5 +12,6 @@
 	"files.associations": {
 		"*.ejs": "html"
 	},
-	"html.format.templating": true
+	"html.format.templating": true,
+	"css.validate": false
 }
