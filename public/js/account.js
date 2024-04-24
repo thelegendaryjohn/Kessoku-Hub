@@ -42,6 +42,7 @@ document
 			body: JSON.stringify({
 				username: formData.get("username"),
 				password: formData.get("password"),
+				remember: formData.get("remember") === "on" ? true : false,
 			}),
 		});
 
