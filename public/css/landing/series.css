@@ -62,3 +62,64 @@
 .episode.featured .episode-cover-container {
 	height: 10rem;
 }
+
+#series-header {
+	color: var(--ikuyo-color);
+}
+
+#series-container {
+	display: flex;
+	flex-direction: column;
+	padding: 5px 10px;
+	gap: 1rem;
+}
+
+/* Global Episode Styling */
+.episode-link {
+	text-decoration: none;
+	color: #000;
+}
+
+.episode {
+	display: flex;
+	gap: 1rem;
+}
+
+.episode-cover-container {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	overflow: clip;
+	border: 0px solid #000;
+	border-radius: 10px;
+}
+
+.episode-cover {
+	flex-shrink: 0;
+	min-width: 100%;
+	min-height: 100%;
+	width: 100%;
+}
+
+.episode-name {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+/* Normal Episode Styling */
+.episode.normal .episode-cover-container {
+	height: 8rem;
+	width: 50%;
+}
+
+/* Featured Episode Styling */
+.episode.featured {
+	flex-direction: column;
+}
+
+.episode.featured .episode-cover-container {
+	height: 10rem;
+}
