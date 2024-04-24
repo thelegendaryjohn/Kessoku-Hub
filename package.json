@@ -30,10 +30,11 @@
 		"express-session": "^1.18.0",
 		"jsonschema": "^1.4.1",
 		"jsonwebtoken": "^9.0.2",
-		"mongoose": "^8.3.1"
+		"mongoose": "^8.3.1",
+		"yaml": "^2.4.1"
 	},
 	"nodemonConfig": {
-		"ext": "js,json,ejs"
+		"ext": "js,json,ejs,yaml"
 	},
 	"devDependencies": {
 		"connect-livereload": "^0.6.1",
@@ -41,7 +42,7 @@
 		"livereload": "^0.9.3",
 		"mocha": "^10.4.0",
 		"nodemon": "^3.1.0",
-		"supertest": "^6.3.4",
+		"supertest": "^7.0.0",
 		"swagger-jsdoc": "^6.2.8",
 		"swagger-ui-express": "^5.0.0"
 	}
