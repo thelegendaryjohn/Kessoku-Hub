@@ -23,8 +23,8 @@
 
 .item-img-container {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 	overflow: clip;
 	width: 60%;
 	height: fit-content;
