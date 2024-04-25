@@ -3,7 +3,7 @@ let NODE_ENV = process.env.NODE_ENV;
 import rateLimit from "express-rate-limit";
 import { Router } from "express";
 import { Validator } from "jsonschema";
-import { User } from "../../schemas/user.js";
+import { User } from "../../models/user.js";
 
 //
 const router = Router();
