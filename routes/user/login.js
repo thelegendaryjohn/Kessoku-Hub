@@ -14,6 +14,7 @@ let schema = {
 	required: ["username", "password", "remember"],
 };
 
+// Apply the user login route
 router.post("/user/login", (req, res, next) => {
 	let result = v.validate(req.body, schema);
 	if (!result.valid) {
@@ -31,21 +32,20 @@ router.post("/user/login", (req, res, next) => {
 					throw err;
 				}
 				if (isMatch) {
-					req.body.remember
-						? (req.session.user = user)
-						: (req.session.user = null);
 					// Saves the user info into the session
 					req.session.regenerate((err) => {
 						if (err) return next(err);
 
 						req.session.user = {
 							username: user.username,
-							// TODO: Add more user info here, like profile picture, etc.
 						};
+						// Set expires if remember is false
+						req.session.cookie.maxAge = req.body.remember
+							? 24 * 60 * 60 * 1000 // 24 hours
+							: null;
 
 						req.session.save(function (err) {
 							if (err) return next(err);
-
 							return res
 								.status(200)
 								.json({ username: req.body.username });
