@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { User } from "../../schemas/user.js";
+import { User } from "../../models/user.js";
 import { Validator } from "jsonschema";
 //
 const router = Router();
