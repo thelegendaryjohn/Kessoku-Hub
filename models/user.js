@@ -21,7 +21,11 @@ const userSchema = new Schema({
 	},
 	password: { type: String, required: [true, "Password is required."] },
 	role: { type: Number, default: roles.unverified },
-	email: { type: String, unique: [true, "This email is already in use."] },
+	email: {
+		type: String,
+		unique: [true, "This email is already in use."],
+		sparse: true,
+	},
 	//
 	created: { type: Date, default: Date.now },
 });
