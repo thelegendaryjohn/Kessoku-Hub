@@ -98,6 +98,15 @@ label:not(.checkbox-container) {
 	cursor: pointer;
 }
 
+.error-highlight {
+	border-color: red;
+	border-width: 2px;
+}
+
+.error-label {
+	color: red;
+}
+
 /* Anims */
 #coverup-box {
 	position: absolute;

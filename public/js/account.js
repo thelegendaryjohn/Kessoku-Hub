@@ -46,6 +46,26 @@ function errorAlert(element, content) {
 	}, 3000);
 }
 
+function errorHightlight(element) {
+	element.classList.add("error-highlight");
+}
+
+function errorLabelColor(element) {
+	element.classList.add("error-label");
+}
+
+function clearErrorHighlight() {
+	document.querySelectorAll(".input-field").forEach((element) => {
+		element.classList.remove("error-highlight");
+	})
+}
+
+function clearErrorLabelColor() {
+	document.querySelectorAll(".signup-label").forEach((element) => {
+		element.classList.remove("error-label");
+	})
+}
+
 // Listen to the form submission
 document
 	.querySelector("#login-form")
@@ -63,6 +83,8 @@ document
 			window.location.href =
 				"/account/success?username=" + formData.get("username");
 		} else {
+			clearErrorHighlight();
+			clearErrorLabelColor();
 			errorAlert(
 				document.querySelector("#error-login-alert"),
 				"Invalid username/password."
@@ -79,6 +101,8 @@ document
 		let formData = new FormData(event.target);
 		// Verify whether confirm password matches password
 		if (formData.get("password") !== formData.get("confirm-password")) {
+			clearErrorHighlight();
+			clearErrorLabelColor();
 			errorAlert(
 				document.querySelector("#error-signup-alert"),
 				"Passwords do not match."
@@ -109,6 +133,7 @@ document
 				window.location.href =
 					"/account/success?username=" + formData.get("username");
 			} else {
+				clearErrorHighlight();
 				errorAlert(
 					document.querySelector("#error-login-alert"),
 					"Invalid username/password."
@@ -119,12 +144,16 @@ document
 			// Handle individual errors
 			if (response.status === 400) {
 				error.forEach((e) => {
+					clearErrorHighlight();
 					errorAlert(
 						document.querySelector(`#${e.path[0]}-signup-alert`),
 						e.message
 					);
+					errorHightlight(document.querySelector(`#${e.path[0]}-signup-input`));
+					errorLabelColor(document.querySelector(`#${e.path[0]}-signup-label`));
 				});
 			} else {
+				clearErrorHighlight();
 				errorAlert(
 					document.querySelector("#error-signup-alert"),
 					error
