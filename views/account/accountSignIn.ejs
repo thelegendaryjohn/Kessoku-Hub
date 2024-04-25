@@ -34,11 +34,19 @@
         <span id="username-signup-alert" class="alert">[Placeholder]</span>
 
         <label for="password">Password</label>
-        <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+        <div class="input-box">
+          <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+
+          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+        </div>
         <span id="password-signup-alert" class="alert">[Placeholder]</span>
 
         <label for="confirmPassword">Confirm Password</label>
-        <input class="input-field" type="password" name="confirmPassword" placeholder="bocchitherock" required>
+        <div class="input-box">
+          <input class="input-field" type="password" name="confirmPassword" placeholder="bocchitherock" required>
+
+          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+        </div>
         <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
 
         <span id="error-signup-alert" class="alert">[Placeholder]</span>
@@ -64,7 +72,11 @@
         <span id="username-login-alert" class="alert">[Placeholder]</span>
 
         <label for="password">Password</label>
-        <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+        <div class="input-box">
+          <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+
+          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+        </div>
         <span id="password-login-alert" class="alert">[Placeholder]</span>
 
         <span id="error-login-alert" class="alert">[Placeholder]</span>
@@ -89,6 +101,7 @@
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
+  <script src="/js/account/signIn.js"></script>
 </body>
 
 </html>
