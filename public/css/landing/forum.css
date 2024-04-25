@@ -32,11 +32,11 @@
 	align-items: flex-start;
 	gap: 0.5rem;
 	max-width: 40rem;
-	padding: 0.8rem;
+	padding: 0 0.8rem;
+	margin-bottom: 0.5rem;
 	text-shadow: none;
 	align-self: center;
-	border: 1px solid var(--hitori-color);
-	border-radius: 6px;
+	border-left: 2px solid var(--hitori-color);
 }
 
 .topic a {
