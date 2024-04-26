@@ -46,24 +46,13 @@ function errorAlert(element, content) {
 	}, 3000);
 }
 
-function errorHightlight(element) {
-	element.classList.add("error-highlight");
-}
-
-function errorLabelColor(element) {
-	element.classList.add("error-label");
-}
-
 function clearErrorHighlight() {
 	document.querySelectorAll(".input-field").forEach((element) => {
 		element.classList.remove("error-highlight");
-	})
-}
-
-function clearErrorLabelColor() {
+	});
 	document.querySelectorAll(".signup-label").forEach((element) => {
 		element.classList.remove("error-label");
-	})
+	});
 }
 
 // Listen to the form submission
@@ -84,7 +73,6 @@ document
 				"/account/success?username=" + formData.get("username");
 		} else {
 			clearErrorHighlight();
-			clearErrorLabelColor();
 			errorAlert(
 				document.querySelector("#error-login-alert"),
 				"Invalid username/password."
@@ -102,7 +90,6 @@ document
 		// Verify whether confirm password matches password
 		if (formData.get("password") !== formData.get("confirm-password")) {
 			clearErrorHighlight();
-			clearErrorLabelColor();
 			errorAlert(
 				document.querySelector("#error-signup-alert"),
 				"Passwords do not match."
@@ -143,14 +130,18 @@ document
 			let error = await response.json();
 			// Handle individual errors
 			if (response.status === 400) {
+				clearErrorHighlight();
 				error.forEach((e) => {
-					clearErrorHighlight();
 					errorAlert(
 						document.querySelector(`#${e.path[0]}-signup-alert`),
 						e.message
 					);
-					errorHightlight(document.querySelector(`#${e.path[0]}-signup-input`));
-					errorLabelColor(document.querySelector(`#${e.path[0]}-signup-label`));
+					document
+						.querySelector(`#${e.path[0]}-signup-input`)
+						.classList.add("error-highlight");
+					document
+						.querySelector(`#${e.path[0]}-signup-label`)
+						.classList.add("error-label");
 				});
 			} else {
 				clearErrorHighlight();
