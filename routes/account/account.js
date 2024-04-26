@@ -8,7 +8,9 @@ router.get("/account", (req, res) => {
 });
 
 router.get("/account/success", (req, res) => {
-	render(req, res, "account/accountSuccess");
+	render(req, res, "account/accountSuccess", {
+		message: `Logging you in as <b>${req.query.username}</b>`,
+	});
 });
 
 export default router;

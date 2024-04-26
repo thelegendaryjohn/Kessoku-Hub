@@ -20,6 +20,8 @@
   <!-- Main content -->
   <main>
 
+    <div id="coverup-box"></div>
+
     <!-- Sign up section -->
     <section id="signup-section" class="account-section">
       <!-- Sign up header -->
@@ -28,25 +30,23 @@
       </div>
 
       <!-- Sign up form -->
-      <form id="signup-form" class="account-form" target="_self" action="https://wp.zybooks.com/form-viewer.php" method="post">
-        <label for="username">Username</label>
-        <input class="input-field" type="username" name="username" placeholder="guitarhero" required>
+      <form id="signup-form" class="account-form" target="_self" method="post">
+        <label id="username-signup-label" class="signup-label" for="username">Username</label>
+        <input id="username-signup-input" class="input-field" type="username" name="username" placeholder="guitarhero" required>
         <span id="username-signup-alert" class="alert">[Placeholder]</span>
-
-        <label for="password">Password</label>
+        
+        <label id="password-signup-label" class="signup-label" for="password">Password</label>
         <div class="input-box">
-          <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
-
+          <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
           <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
         </div>
         <span id="password-signup-alert" class="alert">[Placeholder]</span>
 
-        <label for="confirmPassword">Confirm Password</label>
+        <label id="confirm-signup-label" class="signup-label" for="confirm-password">Confirm Password</label>
         <div class="input-box">
-          <input class="input-field" type="password" name="confirmPassword" placeholder="bocchitherock" required>
-
+          <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" required>
           <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
-        </div>
+         </div>
         <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
 
         <span id="error-signup-alert" class="alert">[Placeholder]</span>
@@ -54,7 +54,7 @@
       </form>
 
       <span class="signin-redirect-container">
-        <p class="font-poppins signin-ask">Already have an account?</p><button class="font-poppins signin-link">Log In</button>
+        <p class="font-poppins signin-ask">Already have an account?</p><button id="login" class="font-poppins signin-link">Log In</button>
       </span>
     </section>
 
@@ -66,24 +66,26 @@
       </div>
 
       <!-- Log in form -->
-      <form id="login-form" class="account-form" target="_self" action="https://wp.zybooks.com/form-viewer.php" method="post">
+      <form id="login-form" class="account-form" target="_self" method="post">
         <label for="username">Username or Email</label>
-        <input class="input-field" type="username" name="username" placeholder="guitarhero" required>
+        <input id="username-login-input" class="input-field" type="username" name="username" placeholder="guitarhero" required>
         <span id="username-login-alert" class="alert">[Placeholder]</span>
 
         <label for="password">Password</label>
-        <div class="input-box">
-          <input class="input-field" type="password" name="password" placeholder="bocchitherock" required>
 
+        <div class="input-box">
+          <input id="password-login-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+          
           <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
         </div>
+
         <span id="password-login-alert" class="alert">[Placeholder]</span>
 
         <span id="error-login-alert" class="alert">[Placeholder]</span>
 
         <div id="login-hr-div">
           <label class="checkbox-container">Remember me
-            <input type="checkbox" checked>
+            <input type="checkbox" checked name="remember">
             <span class="checkmark"></span>
           </label>
 
@@ -94,11 +96,11 @@
       </form>
 
       <span class="signin-redirect-container">
-        <p class="font-poppins signin-ask">Don’t have an account?</p><button class="font-poppins signin-link">Sign up</button>
+        <p class="font-poppins signin-ask">Don’t have an account?</p><button id="signup" class="font-poppins signin-link">Sign up</button>
       </span>
     </section>
   </main>
-
+  <script src="/js/account.js"></script>
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
   <script src="/js/account/signIn.js"></script>

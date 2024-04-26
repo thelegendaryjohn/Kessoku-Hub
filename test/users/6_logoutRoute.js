@@ -1,6 +1,6 @@
 import request from "supertest";
 import assert from "assert";
-import { User } from "../../schemas/user.js";
+import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 
 describe("GET /user/logout", () => {

@@ -1,4 +1,4 @@
-import { User } from "../../schemas/user.js";
+import { User } from "../../models/user.js";
 import assert from "assert";
 
 describe(`Deleting a document from MongoDB`, () => {
