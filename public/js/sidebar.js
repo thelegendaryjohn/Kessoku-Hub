@@ -42,6 +42,3 @@ document.querySelector("body").addEventListener("click", closeNav);
 document.querySelectorAll(".ignoreSidebarToggle").forEach((e) => {
 	e.addEventListener("click", detectIgnoredClass);
 });
-document.querySelectorAll(".nav-btn").forEach((e) => {
-	e.addEventListener("click", closeNav);
-});

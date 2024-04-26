@@ -54,4 +54,38 @@ describe("GET /user/logout", () => {
 				done();
 			});
 	});
+
+	// should also be able to logout via the account route
+	it("should logout a user and return status code 200", (done) => {
+		// create a user before running the tests
+		request(app)
+			.post("/user/login")
+			.send({
+				username: "testuser",
+				password: "testpassword",
+				remember: true,
+			})
+			.set("Accept", "application/json")
+			.expect("Content-Type", /json/)
+			.expect(200)
+			.end((err, res) => {
+				if (err) {
+					return done(err);
+				}
+				assert(res.body.username === "testuser");
+			});
+
+		request(app)
+			.get("/account/logout")
+			.set("Accept", "application/json")
+			.expect("Content-Type", /html/)
+			.expect(200)
+			.end((err, res) => {
+				if (err) {
+					return done(err);
+				}
+				console.log(res.body);
+				done();
+			});
+	});
 });
