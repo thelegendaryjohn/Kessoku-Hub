@@ -34,13 +34,19 @@
         <label id="username-signup-label" class="signup-label" for="username">Username</label>
         <input id="username-signup-input" class="input-field" type="username" name="username" placeholder="guitarhero" required>
         <span id="username-signup-alert" class="alert">[Placeholder]</span>
-
+        
         <label id="password-signup-label" class="signup-label" for="password">Password</label>
-        <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+        <div class="input-box">
+          <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+        </div>
         <span id="password-signup-alert" class="alert">[Placeholder]</span>
 
         <label id="confirm-signup-label" class="signup-label" for="confirm-password">Confirm Password</label>
-        <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" required>
+        <div class="input-box">
+          <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" required>
+          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+         </div>
         <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
 
         <span id="error-signup-alert" class="alert">[Placeholder]</span>
@@ -66,7 +72,13 @@
         <span id="username-login-alert" class="alert">[Placeholder]</span>
 
         <label for="password">Password</label>
-        <input id="password-login-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+
+        <div class="input-box">
+          <input id="password-login-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
+          
+          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+        </div>
+
         <span id="password-login-alert" class="alert">[Placeholder]</span>
 
         <span id="error-login-alert" class="alert">[Placeholder]</span>
@@ -91,6 +103,7 @@
   <script src="/js/account.js"></script>
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
+  <script src="/js/account/signIn.js"></script>
 </body>
 
 </html>
