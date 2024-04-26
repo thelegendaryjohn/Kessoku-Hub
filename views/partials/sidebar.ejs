@@ -15,7 +15,9 @@
       <a id="nav-store" class="btn nav-btn" href="/">STORE</a>
       <!-- <a id="nav-create-account" class="btn nav-btn" href="#">CREATE ACCOUNT</a> -->
       <div class="divider"></div>
-      <a id="nav-login" class="btn nav-btn" href="/account">LOG IN / CREATE ACCOUNT</a>
+      <a id="nav-login" class="btn nav-btn" href="<%= user ? "/logout" : "/account" %>">
+        <%= user ? "LOG OUT" : "LOG IN / CREATE ACCOUNT"%>
+      </a>
     </div>
   </div>
 </nav>
