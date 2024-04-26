@@ -14,20 +14,20 @@
 }
 
 #sidebar-container {
-	padding-left: 2.8rem;
+	padding: 2.8rem;
 }
 
 #profile-container {
 	position: absolute;
 	display: flex;
 	top: calc(3.5rem + -4.5em / 2);
-    height: 4.5em;
+	height: 4.5em;
 }
 
 #profile-img {
-    background-color: #ddd;
-    border-radius: 100%;
-    border: 2px solid #fff;
+	background-color: #ddd;
+	border-radius: 100%;
+	border: 2px solid #fff;
 }
 
 #profile-name {
@@ -48,15 +48,11 @@
 }
 
 #nav-buttons {
-	padding-top: 8rem;
-}
-
-#nav-buttons :last-child {
 	padding-top: 4rem;
 }
 
 .sidebar a {
-	padding: 20px 10px 8px 0;
+	padding: 0.75rem 0rem;
 	text-decoration: none;
 	font-size: 2.2rem;
 	font-weight: bold;
@@ -67,7 +63,7 @@
 }
 
 .nav-btn:hover {
-	color: var(--nijika-color);
+	color: white;
 }
 
 .toggleSidebar {
@@ -79,6 +75,13 @@
 	animation-duration: 0.12s;
 	animation-fill-mode: both;
 	animation-direction: alternate;
+}
+
+.divider {
+	height: 1px;
+	background-color: #000;
+	width: 100%;
+	margin: 0.5rem 0;
 }
 
 /* Menu button animations */
