@@ -1,4 +1,9 @@
-<div class="episode">
-  <img src="/images/top-section/top-bg.jpg" alt="Episode cover art" class="episode-cover box-shadow <%= (!!locals.isFeatured === true) ? 'featured' : '' %>">
-  <p class="episode-name text-shadow">E6 - Eight Views</p>
+<div class="episode <%= (!!locals.isFeatured) ? 'featured' : 'normal' %>">
+  <div class="episode-cover-container box-shadow">
+    <img src="/images/top-section/top-bg.jpg" alt="Episode cover art" class="episode-cover">
+  </div>
+
+  <div class="episode-name">
+    <p class="text-shadow"><%= locals.episodeName %></p>
+  </div>
 </div>
