@@ -1,87 +1,172 @@
+main {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	overflow-x: hidden;
+}
+
 .account-section,
 .account-form {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .account-section {
-    padding: 2rem 2rem;
+	box-sizing: border-box;
+	padding: 2rem 2rem;
+	width: 100%;
 }
 
 .account-form * {
-    font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 #signup-header {
-    padding: 10px 0;
-    color: var(--accent-purple);
-    font-size: 2.5rem;
-    padding-left: 1rem;
+	padding: 10px 0;
+	color: var(--accent-purple);
+	font-size: 2.5rem;
+	padding-left: 1rem;
 }
 
 .input-field,
 .submit-btn {
-    padding: 1.25rem;
-    border-radius: 10px;
+	padding: 1.25rem;
+	border-radius: 10px;
 }
 
 .alert {
-    margin: 0.5rem 0 1rem 0;
-    color: red;
+	margin: 0.25rem 0rem;
+	color: red;
 }
 
 input {
-    font-size: 1.2rem;
+	font-size: 1.2rem;
+}
+
+label {
+	z-index: 1;
 }
 
 label:not(.checkbox-container) {
-    font-size: 1.1rem;
-    transform: translateX(1.5rem) translateY(0.8rem);
-    background-color: white;
-    width: fit-content;
-    padding: 0 0.5rem;
+	font-size: 1.1rem;
+	transform: translateX(1.5rem) translateY(0.8rem);
+	background-color: white;
+	width: fit-content;
+	padding: 0 0.5rem;
+}
+
+.input-box {
+	z-index: 0;
+	position: relative;
+	display: flex;
+}
+
+.input-box > .input-field {
+	width: 100%;
+}
+
+.pass-visibility {
+	position: absolute;
+	right: 2rem;
+	width: 2rem;
+	height: 100%;
+	cursor: pointer;
 }
 
 .input-field {
-    border: 1px solid var(--accent-grey);
+	border: 1px solid var(--accent-grey);
+}
+
+.input-field::-ms-reveal,
+.input-field::-ms-clear {
+	display: none;
 }
 
 #login-hr-div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 #forgot-pass {
-    font-size: 1.25rem;
-    color: var(--accent-purple);
-    padding-right: 1rem;
+	font-size: 1.25rem;
+	color: var(--accent-purple);
+	padding-right: 1rem;
 }
 
 .submit-btn {
-    font-family: "Oswald", sans-serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--body-color);
-    background-color: var(--accent-purple);
-    border: 1px solid var(--accent-purple);
+	font-family: "Oswald", sans-serif;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--body-color);
+	background-color: var(--accent-purple);
+	border: 1px solid var(--accent-purple);
 }
 
 .signin-redirect-container {
-    display: flex;
-    justify-content: center;
-    font-size: 1.25rem;
-    width: 100%;
-    padding-top: 2rem;
+	display: flex;
+	justify-content: center;
+	font-size: 1.25rem;
+	width: 100%;
+	padding-top: 2rem;
 }
 
 .signin-link {
-    font-size: 1.25rem;
-    color: var(--accent-purple);
-    font-weight: 600;
-    padding: 0 5px;
-    border: none;
-    background-color: transparent;
-    text-decoration: underline;
+	font-size: 1.25rem;
+	color: var(--accent-purple);
+	font-weight: 600;
+	padding: 0 5px;
+	border: none;
+	background-color: transparent;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
+.error-highlight {
+	border-color: red;
+	border-width: 2px;
+}
+
+.error-label {
+	color: red;
+}
+
+/* Anims */
+#coverup-box {
+	position: absolute;
+	left: 0%;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	background-color: var(--body-color);
+	clip-path: inset(0 100% 0 0);
+}
+
+.slideIn {
+	animation: slideIn 0.25s forwards;
+}
+
+.slideOut {
+	animation: slideOut 0.25s forwards;
+}
+
+@keyframes slideIn {
+	0% {
+		clip-path: inset(0 100% 0 0);
+	}
+	100% {
+		clip-path: inset(0 0 0 0);
+	}
+}
+
+@keyframes slideOut {
+	0% {
+		clip-path: inset(0 0 0 0);
+	}
+	100% {
+		clip-path: inset(0 0 0 100%);
+	}
+}

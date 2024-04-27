@@ -3,7 +3,7 @@ let NODE_ENV = process.env.NODE_ENV;
 import rateLimit from "express-rate-limit";
 import { Router } from "express";
 import { Validator } from "jsonschema";
-import { User } from "../../schemas/user.js";
+import { User } from "../../models/user.js";
 
 //
 const router = Router();
@@ -62,9 +62,14 @@ router.post("/user/register", useRateLimit, async (req, res) => {
 		}
 	} else {
 		// Loop through all the errors
-		result.errors.map((error) => {
-			res.status(400).json(error.message);
-		});
+		res.status(400).json(
+			result.errors.map((error) => {
+				return {
+					path: error.path,
+					message: error.message,
+				};
+			})
+		);
 	}
 });
 export default router;

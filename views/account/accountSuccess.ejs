@@ -18,7 +18,7 @@
 
   <main id="success-container">
     <section id="success-section">
-      <h1 id="success-title">[Placeholder] successfully</h1>
+      <h1 id="success-title"><%- message %></h1>
       <div id="success-desc" class="loading-text-container">
         <span class="loading-text"></span>
       </div>
@@ -29,7 +29,11 @@
       <p class="font-poppins">If redirection didn't start automatically, <a href="/" class="font-poppins">click here</a></p>
     </div>
   </main>
-
+  <script>
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 1000);
+  </script>
 </body>
 
 </html>
