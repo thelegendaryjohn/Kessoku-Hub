@@ -4,9 +4,13 @@
     <%- include("albumHeader.ejs") %>
 
     <div id="album-song-list">
-      <%- include("albumSong.ejs") %>
+      <%- include("albumSong.ejs", { index: 1, name: "Seishun Complex", length: "3:23" }) %>
 
-      <%- include("albumSong.ejs") %>
+      <%- include("albumSong.ejs", { index: 2, name: "Hitoribocchi Tokyo", length: "3:52" }) %>
+
+      <%- include("albumSong.ejs", { index: 3, name: "Distortion!!", length: "3:23" }) %>
+
+      <%- include("albumSong.ejs", { index: 4, name: "Secret Base", length: "3:52" }) %>
     </div>
   </div>
 
