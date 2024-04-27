@@ -9,6 +9,13 @@ let items = [
 		price: 20.0,
 		stock: 10,
 	},
+	{
+		id: 2,
+		name: "Kessoku Hoodie",
+		description: "A hoodie with the Kessoku logo.",
+		price: 30.0,
+		stock: 5,
+	},
 ];
 //
 const router = Router();
