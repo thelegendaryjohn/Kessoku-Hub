@@ -1,6 +1,11 @@
 <section id="series" class="box-shadow">
   <h2 id="series-header" class="section-header">VIDEOS</h2>
-  <%- include("seriesEpisode.ejs", { isFeatured: true }) %>
-
+  <div id="series-container">
+    <%- include("seriesEpisode.ejs", { isFeatured: true, episodeName: "E6 - Eight Views" }) %>
+  
+    <%- include("seriesEpisode.ejs", { episodeName: "E5 - Flightless Fish" }) %>
+  
+    <%- include("seriesEpisode.ejs", { episodeName: "E4 - Jumping Girl(s)" }) %>
+  </div>
   <a href="#" class="see-all-anchor">See all...</a>
 </section>
