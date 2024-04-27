@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { render } from "../lib/render.js";
+import { render } from "../../lib/render.js";
 // TODO: This should import from the database instead
 let items = [
 	{
