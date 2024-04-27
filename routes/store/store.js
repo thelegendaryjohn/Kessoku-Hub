@@ -20,7 +20,7 @@ let items = [
 //
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
 		items: items,
 	});
