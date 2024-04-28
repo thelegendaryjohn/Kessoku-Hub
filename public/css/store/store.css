@@ -26,12 +26,13 @@ main {
 	gap: 0px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	min-height: 10rem;
 	width: 50%;
+	border-radius: 5px;
 }
 .item-container:hover {
 	border: 1px solid black;
-	border-radius: 5px;
 }
 
 .item-image {
@@ -45,14 +46,20 @@ main {
 	width: 100%;
 	/* overflow setting */
 	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
 .item-description {
 	padding-left: 0.5rem;
 	color: var(--accent-grey);
-	font-size: 1rem;
+	font-size: 1.2rem;
+	/* overflow setting */
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
 .price-stock-container {
