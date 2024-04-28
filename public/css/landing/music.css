@@ -58,10 +58,13 @@
 	justify-content: center;
 }
 
-#album-link img {
-	height: 100%;
+#album-link a {
 	width: 17%;
 	padding: 12px 5px;
+}
+
+#album-link img {
+	width: 100%;
 }
 
 #album-song-list {
