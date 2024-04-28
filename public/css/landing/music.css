@@ -86,7 +86,7 @@
 }
 
 .song:hover {
-	border-color: var(--hitori-color);
+	border-color: rgba(229, 20, 111, 0.3);
 }
 
 .song.selected {
