@@ -56,6 +56,7 @@
 }
 
 .size-select-container {
+	cursor: pointer;
 	display: flex;
 	font-size: 1.2rem;
 	flex-wrap: nowrap;
@@ -104,15 +105,7 @@
 	color: var(--ryo-color);
 }
 
-/* .add-to-cart-btn a {
-	
-} */
-
 .buy-btn {
 	background-color: var(--ryo-color);
 	color: #fff;
 }
-
-/* .buy-btn a {
-	
-} */

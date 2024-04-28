@@ -19,7 +19,7 @@
   <!-- Size selector -->
   <script>
     const sizeBtn = document.querySelectorAll(".size-select");
-    let selected;
+    let selectedSize;
 
     sizeBtn.forEach((e) => {
       e.addEventListener("click", (e) => {
@@ -32,7 +32,7 @@
         e.target.classList.add("selected");
 
         // Set selected size
-        selected = e.target.textContent;
+        selectedSize = e.target.textContent;
       })
     })
   </script>
