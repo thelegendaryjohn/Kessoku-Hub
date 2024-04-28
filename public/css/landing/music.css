@@ -107,6 +107,14 @@
 	border-color: rgba(229, 20, 111, 0.3);
 }
 
+.song:hover .play-pause-btn {
+	display: block !important;
+}
+
+.song:hover .song-index {
+	opacity: 0 !important;
+}
+
 .song.selected {
 	border-color: var(--hitori-color);
 }
