@@ -89,6 +89,10 @@
 	border-color: var(--hitori-color);
 }
 
+.song.selected {
+	border-color: var(--hitori-color);
+}
+
 .song-index,
 .song-length {
 	padding: 0 2rem;
