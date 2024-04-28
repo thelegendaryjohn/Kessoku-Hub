@@ -13,5 +13,6 @@
 		"*.ejs": "html"
 	},
 	"html.format.templating": true,
-	"css.validate": false
+	"css.validate": false,
+	"cSpell.words": ["divs"]
 }

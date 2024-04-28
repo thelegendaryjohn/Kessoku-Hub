@@ -24,21 +24,21 @@
           <!-- Item container -->
           <div class="item-container">
             <img class="item-image" src="images/store-section/<%- items[0].imageName%>" alt="band logo tee shirt">
-            <p class="item-name"><%- items[0].name%></p>
-            <p class="item-description"><%- items[0].description%></p>
+            <div class="item-name"><%- items[0].name%></div>
+            <div class="item-description"><%- items[0].description%></div>
             <div class="price-stock-container">
-              <p class="item-price"><%- items[0].price%>$</p>
-              <p class="item-stock">in stock: <%- items[0].stock%></p>
+              <div class="item-price"><%- items[0].price%>$</div>
+              <div class="item-stock">in stock: <%- items[0].stock%></div>
             </div>
         </div>
             <!-- Item container -->
             <div class="item-container">
               <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
-              <p class="item-name">This is an item</p>
-              <p class="item-description">This is an item description</p>
+              <div class="item-name">This is an item with a really long name</div>
+              <div class="item-description">This is an item description</div>
               <div class="price-stock-container">
-                <p class="item-price">50$</p>
-                <p class="item-stock">in stock: 2</p>
+                <div class="item-price">50$</div>
+                <div class="item-stock">in stock: 2</div>
               </div>
           </div>
         </div>
@@ -47,21 +47,21 @@
           <!-- Item container -->
             <div class="item-container">
                 <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
-                <p class="item-name">This is an item</p>
-                <p class="item-description">This is an item description</p>
+                <div class="item-name">This is an item with an even longer nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</div>
+                <div class="item-description">This is an item description</div>
                 <div class="price-stock-container">
-                  <p class="item-price">50$</p>
-                  <p class="item-stock">in stock: 2</p>
+                  <div class="item-price">50$</div>
+                  <div class="item-stock">in stock: 2</div>
                 </div>
             </div>
             <!-- Item container -->
             <div class="item-container">
               <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
-              <p class="item-name">This is an item</p>
-              <p class="item-description">This is an item description</p>
+              <div class="item-name">This is an item</div>
+              <div class="item-description">This is an item description</div>
               <div class="price-stock-container">
-                <p class="item-price">50$</p>
-                <p class="item-stock">in stock: 2</p>
+                <div class="item-price">50$</div>
+                <div class="item-stock">in stock: 2</div>
               </div>
           </div>
         </div>
@@ -75,7 +75,70 @@
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
 
-<script>
-  const itemListContainer = document.querySelector('#item-list-container');
+<script type="module">
+  const itemListContainer = document.querySelector("#item-list-container");
+
+  function appendItemContent(item, i) {
+    //create item's elements
+    let itemImage = document.createElement("img");
+    let itemName = document.createElement("div");
+    let itemDescription = document.createElement("div");
+    let priceStockContainer = document.createElement("div");
+    let itemPrice = document.createElement("div");
+    let itemStock = document.createElement("div");
+
+    //append classes for items's elements
+    itemImage.classList.add("item-image");
+    itemName.classList.add("item-name");
+    itemDescription.classList.add("item-description");
+    priceStockContainer.classList.add("price-stock-container");
+    itemPrice.classList.add("item-price");
+    itemStock.classList.add("item-stock");
+
+    //append elements to its parents
+    item.appendChild(itemImage);
+    item.appendChild(itemName);
+    item.appendChild(itemDescription);
+    item.appendChild(priceStockContainer);
+    priceStockContainer.appendChild(itemPrice);
+    priceStockContainer.appendChild(itemStock);
+
+    //add content for each element
+    itemImage.alt = items[i].description;
+    itemImage.src = "images/store-section/" + items[i].imageName;
+    itemName.innerText = items[i].name;
+    itemDescription.innerText = items[i].description;
+    itemPrice.innerText = items[i].price + "$";
+    itemStock.innerText = "in stock: " + items[i].stock;
+  }
+
+  function generateEvenItemRowContent() {
+
+  }
+  function generateItemListContent(loopTimes) {
+      //loop through each 2 item in items array
+      for (let i = 0; i < items.length - 1;) {
+        //create divs
+        let itemRowContainer = document.createElement("div");
+        let itemContainer1 = document.createElement("div");
+        let itemContainer2 = document.createElement("div");
+
+        //append class for divs
+        itemRowContainer.classList.add("item-row-container");
+        itemContainer1.classList.add("item-container");
+        itemContainer2.classList.add("item-container");
+
+        //append child for divs
+        itemListContainer.appendChild(itemRowContainer);
+        itemRowContainer.appendChild(itemContainer1);
+        itemRowContainer.appendChild(itemContainer2);
+
+        appendItemContent(itemContainer1, i);
+        appendItemContent(itemContainer2, i+1);
+    }
+
+  }
+  generateItemListContent();
+  
 </script>
 </html>
