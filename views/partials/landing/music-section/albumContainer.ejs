@@ -17,7 +17,7 @@
   <!-- Song select -->
   <script>
     const song = document.querySelectorAll(".song");
-    let selectedSong;
+    let selectedSongIndex;
 
     song.forEach((e) => {
       e.addEventListener("click", (e) => {
@@ -30,8 +30,7 @@
         e.currentTarget.classList.add("selected");
 
         // Set selected song
-        selectedSong = e.currentTarget.textContent;
-        console.log(selectedSong);
+        selectedSongIndex = e.currentTarget.querySelector(".song-index").textContent;
       })
     })
   </script>
