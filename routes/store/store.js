@@ -4,7 +4,7 @@ import { render } from "../../lib/render.js";
 let items = [
 	{
 		id: 1, // Should be a unique identifier, randomly generated. Take _id from the database
-		imageName: "kessoku-tshirt.png",
+		imageName: "bocchi-sweater.png",
 		name: "Bocchi's Face T-Shirt",
 		description: "A T-shirt with Bocchi's face on it.",
 		price: 20.0,
@@ -12,7 +12,7 @@ let items = [
 	},
 	{
 		id: 2,
-		imageName: "bocchi-sweater.png",
+		imageName: "kessoku-tshirt.png ",
 		name: "Kessoku Hoodie",
 		description: "A hoodie with the Kessoku logo.",
 		price: 30.0,
