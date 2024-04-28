@@ -97,20 +97,22 @@
 
 .item-action-container a {
 	text-decoration: none;
-	color: var(--ryo-color);
-}
-.add-to-cart-btn {
-	background-color: #fff;
 }
 
-.add-to-cart-btn a {
+.add-to-cart-btn {
+	background-color: #fff;
 	color: var(--ryo-color);
 }
+
+/* .add-to-cart-btn a {
+	
+} */
 
 .buy-btn {
 	background-color: var(--ryo-color);
-}
-
-.buy-btn a {
 	color: #fff;
 }
+
+/* .buy-btn a {
+	
+} */
