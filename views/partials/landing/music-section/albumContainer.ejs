@@ -4,36 +4,33 @@
     <%- include("albumHeader.ejs") %>
 
     <div id="album-song-list">
-      <%- include("albumSong.ejs", { index: 1, name: "Seishun Complex", length: "3:23" }) %>
+      <%- include("albumSong.ejs", { 
+        index: 1,
+        name: "Seishun Complex",
+        length: "3:23"
+      }) %>
 
-      <%- include("albumSong.ejs", { index: 2, name: "Hitoribocchi Tokyo", length: "3:52" }) %>
+      <%- include("albumSong.ejs", {
+        index: 2,
+        name: "Hitoribocchi Tokyo",
+        length: "3:52"
+      }) %>
 
-      <%- include("albumSong.ejs", { index: 3, name: "Distortion!!", length: "3:23" }) %>
+      <%- include("albumSong.ejs", {
+        index: 3,
+        name: "Distortion!!",
+        length: "3:23"
+      }) %>
 
-      <%- include("albumSong.ejs", { index: 4, name: "Secret Base", length: "3:52" }) %>
+      <%- include("albumSong.ejs", {
+        index: 4,
+        name: "Secret Base",
+        length: "3:52"
+      }) %>
     </div>
   </div>
 
-  <!-- Song select -->
-  <script>
-    const song = document.querySelectorAll(".song");
-    let selectedSongIndex;
-
-    song.forEach((e) => {
-      e.addEventListener("click", (e) => {
-        // Remove all "selected" classes in the same parent
-        e.currentTarget.parentNode.querySelectorAll(".selected").forEach((e) => {
-          e.classList.remove("selected");
-        })
-
-        // Add "selected" class to clicked button
-        e.currentTarget.classList.add("selected");
-
-        // Set selected song
-        selectedSongIndex = e.currentTarget.querySelector(".song-index").textContent;
-      })
-    })
-  </script>
+  <script src="/js/landing/music-section/songSelection.js"></script>
 
   <a href="#" class="see-all-anchor">See all...</a>
 </section>
