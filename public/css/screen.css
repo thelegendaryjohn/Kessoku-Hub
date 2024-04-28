@@ -27,6 +27,8 @@
 	:root {
 		font-size: 0.7rem;
 	}
+
+	
 }
 
 @media screen and (orientation: portrait) and (max-width: 320px) {

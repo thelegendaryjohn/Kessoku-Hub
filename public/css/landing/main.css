@@ -90,3 +90,23 @@
 		padding: 0 !important;
 	}
 }
+
+@media screen and (orientation: portrait) and (max-width: 360px) {
+	.item {
+		flex-direction: column !important;
+	}
+
+	.item-action-container {
+		justify-content: center;
+	}
+}
+
+@media screen and (orientation: portrait) and (max-width: 500px) {
+	.item-action-container {
+		flex-wrap: wrap;
+	}
+
+	.item-action-container > * {
+		max-width: 80%;
+	}
+}

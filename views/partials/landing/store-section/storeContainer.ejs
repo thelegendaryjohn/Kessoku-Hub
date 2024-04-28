@@ -1,6 +1,41 @@
 <section id="store" class="box-shadow">
   <h2 id="store-header" class="section-header">STORE</h2>
-  <%- include("storeItem.ejs") %>
+  <div id="store-item-container">
+    <%- include("storeItem.ejs", { 
+      imageSrc: "/images/store-section/kessoku-tshirt.png",
+      imageAlt: "Kessoku Band T-Shirt image",
+      name: "KESSOKU BAND T-SHIRT",
+      price: "$48"
+    }) %>
+
+    <%- include("storeItem.ejs", {
+      imageSrc: "/images/store-section/bocchi-sweater.png",
+      imageAlt: "Bocchi The Rock Sweater image",
+      name: "BOCCHI FACE SWEATER",
+      price: "$62"
+    }) %>
+  </div>
+
+  <!-- Size selector -->
+  <script>
+    const sizeBtn = document.querySelectorAll(".size-select");
+    let selected;
+
+    sizeBtn.forEach((e) => {
+      e.addEventListener("click", (e) => {
+        // Remove all "selected" classes in the same parent
+        e.target.parentNode.querySelectorAll(".selected").forEach((e) => {
+          e.classList.remove("selected");
+        })
+
+        // Add "selected" class to clicked button
+        e.target.classList.add("selected");
+
+        // Set selected size
+        selected = e.target.textContent;
+      })
+    })
+  </script>
 
   <a href="#" class="see-all-anchor">See all...</a>
 </section>
