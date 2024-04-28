@@ -23,12 +23,12 @@
         <div class="item-row-container">
           <!-- Item container -->
           <div class="item-container">
-            <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
-            <p class="item-name">This is an item but with a really long name</p>
-            <p class="item-description">This is an item description</p>
+            <img class="item-image" src="images/store-section/<%- items[0].imageName%>" alt="band logo tee shirt">
+            <p class="item-name"><%- items[0].name%></p>
+            <p class="item-description"><%- items[0].description%></p>
             <div class="price-stock-container">
-              <p class="item-price">50$</p>
-              <p class="item-stock">in stock: 2</p>
+              <p class="item-price"><%- items[0].price%>$</p>
+              <p class="item-stock">in stock: <%- items[0].stock%></p>
             </div>
         </div>
             <!-- Item container -->
@@ -74,4 +74,8 @@
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
+
+<script>
+  const itemListContainer = document.querySelector('#item-list-container');
+</script>
 </html>
