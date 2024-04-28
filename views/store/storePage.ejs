@@ -1,11 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/store/store.css">
+
+  <title>Kessoku Hub | Store</title>
 </head>
 <body>
-    
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "STORE" }) %>
+
+  <!-- Store page -->
+  <main>
+
+    <!-- Item list container -->
+    <div id="item-list-container">
+        <!-- Item row container -->
+        <div class="item-row-container">
+          <!-- Item container -->
+          <div class="item-container">
+            <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
+            <p class="item-name">This is an item but with a really long name</p>
+            <p class="item-description">This is an item description</p>
+            <div class="price-stock-container">
+              <p class="item-price">50$</p>
+              <p class="item-stock">in stock: 2</p>
+            </div>
+        </div>
+            <!-- Item container -->
+            <div class="item-container">
+              <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
+              <p class="item-name">This is an item</p>
+              <p class="item-description">This is an item description</p>
+              <div class="price-stock-container">
+                <p class="item-price">50$</p>
+                <p class="item-stock">in stock: 2</p>
+              </div>
+          </div>
+        </div>
+        <!-- Item row container -->
+        <div class="item-row-container">
+          <!-- Item container -->
+            <div class="item-container">
+                <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
+                <p class="item-name">This is an item</p>
+                <p class="item-description">This is an item description</p>
+                <div class="price-stock-container">
+                  <p class="item-price">50$</p>
+                  <p class="item-stock">in stock: 2</p>
+                </div>
+            </div>
+            <!-- Item container -->
+            <div class="item-container">
+              <img class="item-image" src="images/store-section/kessoku-tshirt.png" alt="band logo tee shirt">
+              <p class="item-name">This is an item</p>
+              <p class="item-description">This is an item description</p>
+              <div class="price-stock-container">
+                <p class="item-price">50$</p>
+                <p class="item-stock">in stock: 2</p>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Cart page button container -->
+    <div></div>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
 </body>
 </html>
