@@ -66,19 +66,29 @@
 	background-color: #fff;
 }
 
+#other-sections > section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 #other-sections .section-container {
 	padding: 0 14px;
+	max-width: 40rem;
 }
 
 #other-sections .section-header {
+	width: 100%;
 	font-size: 2.2rem;
+	margin-left: 1rem;
 	padding: 0 6px 8px 6px;
 }
 
 #other-sections .see-all-anchor {
 	display: flex;
 	justify-content: flex-end;
-	padding: 3% 2%;
+	width: 95%;
+	margin: 1rem;
 	font-size: 1.4rem;
 	font-style: italic;
 	color: #000;
