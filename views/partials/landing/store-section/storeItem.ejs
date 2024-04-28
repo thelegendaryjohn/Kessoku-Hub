@@ -1,5 +1,23 @@
-<div class="store-item-container">
-  <a href="#" class="store-item-anchor">
-    <img src="" alt="Item image" class="store-item-img">
-  </a>
+<div class="item">
+  <div class="item-img-container">
+    <img src=<%= locals.imageSrc %> alt=<%= locals.imageAlt %> class="item-img">
+  </div>
+
+  <div class="item-content-container">
+
+    <h2 class="item-name"><%= locals.name %></h2>
+    <h3 class="item-price"><%= locals.price %></h3>
+
+    <div class="size-select-container">
+      <div class="size-select small ">S</div>
+      <div class="size-select medium selected">M</div>
+      <div class="size-select large">L</div>
+    </div>
+
+    <div class="item-action-container">
+      <div class="add-to-cart-btn"><a href="#">Add to cart</a></div>
+      <div class="buy-btn"><a href="#">Buy now</a></div>
+    </div>
+
+  </div>
 </div>
