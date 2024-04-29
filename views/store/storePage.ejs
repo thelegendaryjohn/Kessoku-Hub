@@ -24,7 +24,7 @@
       <!-- Dynamically generate the item container -->
       <% items.forEach(item => { %>
       <div class="item-container">
-        <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="band logo tee shirt">
+        <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="<%- item.description%>">
         <div class="item-name"><%- item.name%></div>
         <div class="item-description"><%- item.description%></div>
         <div class="price-stock-container">
@@ -35,8 +35,34 @@
       <% }) %>
 
     </div>
+    <div class="pop-up-container">
+
+    </div>
     <!-- Cart page button container -->
     <div></div>
+
+    <!-- pop up container -->
+    <div id="pop-up-container">
+      
+        <img class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
+        <div class="description-container">
+          
+            <div class="item-name"><%- items[0].name%></div>
+            <div class="item-description"><%- items[0].description%></div>
+            <div class="item-price"><%- items[0].price%> $</div>
+        </div>
+        Select your size
+        <div class="size-selection-container">
+          
+          <button class="size-btn">Size S</button>
+          <button class="size-btn">Size M</button>
+          <button class="size-btn">Size L</button>
+        </div>
+        <button id="add-to-cart-btn">Add to cart</button>
+      </div>
+      
+    
+
   </main>
 
   <!-- Footer partial -->
