@@ -18,7 +18,6 @@
 
   <!-- Store page -->
   <main>
-
     <!-- Item list container -->
     <div id="item-list-container">
       <!-- Dynamically generate the item container -->
@@ -33,36 +32,31 @@
         </div>
       </div>
       <% }) %>
-
     </div>
     <div class="pop-up-container">
-
     </div>
     <!-- Cart page button container -->
     <div></div>
 
     <!-- pop up container -->
     <div id="pop-up-container">
-      
-        <img class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
+        <div class="image-close-btn-container">
+          <img class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
+        <button id="close-pop-up-btn">X</button>
+        </div>
         <div class="description-container">
-          
             <div class="item-name"><%- items[0].name%></div>
             <div class="item-description"><%- items[0].description%></div>
             <div class="item-price"><%- items[0].price%> $</div>
         </div>
-        Select your size
+        <div>Select your size</div>
         <div class="size-selection-container">
-          
           <button class="size-btn">Size S</button>
           <button class="size-btn">Size M</button>
           <button class="size-btn">Size L</button>
         </div>
         <button id="add-to-cart-btn">Add to cart</button>
       </div>
-      
-    
-
   </main>
 
   <!-- Footer partial -->
@@ -70,7 +64,22 @@
 </body>
 
 <script type="module">
+//initialize
+let items = document.querySelectorAll(".item-container");
+let closeBtn = document.querySelector("#close-pop-up-btn");
+var popup = document.getElementById("pop-up-container");
 
+//close the pop up when user click the close button
+closeBtn.addEventListener("click",()=>{
+  popup.style.display = "none";
+});
+
+//when click on any item show the popup
+items.forEach((e)=> {
+  e.addEventListener("click",() => {
+    popup.style.display = "flex";
+  })
+})
 </script>
 
 </html>
