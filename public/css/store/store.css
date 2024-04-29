@@ -103,12 +103,14 @@ main {
 	text-align: center;
 	font-size: 1rem;
 }
+.size-selection-container {
+	display: flex;
+	width: 100%;
+	gap: 1rem;
+}
 .size-btn {
-	height: 2rem;
-	width: 5rem;
+	flex: 1;
 }
 #add-to-cart-btn {
-	font-weight: bold;
-	height: 2rem;
 	width: 100%;
 }
