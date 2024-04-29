@@ -49,11 +49,11 @@
             <div class="item-description"><%- items[0].description%></div>
             <div class="item-price"><%- items[0].price%> $</div>
         </div>
-        <div>Select your size</div>
+        <span id="instruction">Select your size</span>
         <div class="size-selection-container">
-          <button class="size-btn">Size S</button>
-          <button class="size-btn">Size M</button>
-          <button class="size-btn">Size L</button>
+          <button class="size-btn selected-btn" id="size-s">Size S</button>
+          <button class="size-btn" id="size-m">Size M</button>
+          <button class="size-btn" id="size-l">Size L</button>
         </div>
         <button id="add-to-cart-btn">Add to cart</button>
       </div>
@@ -65,12 +65,13 @@
 
 <script type="module">
 //initialize
-let items = document.querySelectorAll(".item-container");
-let closeBtn = document.querySelector("#close-pop-up-btn");
-var popup = document.getElementById("pop-up-container");
+const items = document.querySelectorAll(".item-container");
+const closePopUpBtn = document.querySelector("#close-pop-up-btn");
+const popup = document.getElementById("pop-up-container");
+const allSizeBtn = document.querySelectorAll(".size-btn");
 
 //close the pop up when user click the close button
-closeBtn.addEventListener("click",()=>{
+closePopUpBtn.addEventListener("click",()=>{
   popup.style.display = "none";
 });
 
@@ -80,6 +81,24 @@ items.forEach((e)=> {
     popup.style.display = "flex";
   })
 })
+
+//turn off other button when one is clicked
+function turnOffBtn(clickedBtn) {
+  allSizeBtn.forEach((btnInfo, i)=> {
+    if (clickedBtn.id !== btnInfo.id) {
+      btnInfo.classList.remove("selected-btn")
+    }
+  })
+}
+
+//add eventListener for all size buttons
+allSizeBtn.forEach((btn)=>{
+  btn.addEventListener("click",(e)=>{
+      e.target.classList.add("selected-btn");
+      turnOffBtn(e.target);
+  })
+})
+
 </script>
 
 </html>
