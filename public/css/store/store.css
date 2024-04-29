@@ -42,6 +42,8 @@ main {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 .item-description {
 	padding-left: 0.5rem;
@@ -66,17 +68,16 @@ main {
 #pop-up-container {
 	/* position settings */
 	position: fixed;
-	right: 0px;
-	bottom: 0px;
+	right: 1rem;
+	bottom: 1rem;
 	z-index: 3;
 	/* size settings */
-	width: 50%;
-	max-width: 20rem;
-	height: 50%;
-	max-height: 30rem;
+	width: 20rem;
+	height: 30rem;
 	/* display/flex settings */
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: flex-start;
 	gap: 1rem;
 	padding: 2rem 2rem;
@@ -99,12 +100,15 @@ main {
 	height: 1.5rem;
 	width: 1.5rem;
 	font-weight: bold;
+	text-align: center;
+	font-size: 1rem;
 }
 .size-btn {
 	height: 2rem;
 	width: 5rem;
 }
 #add-to-cart-btn {
+	font-weight: bold;
 	height: 2rem;
 	width: 100%;
 }
