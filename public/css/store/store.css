@@ -30,6 +30,7 @@ main {
 }
 .item-container:hover {
 	border: 3px solid var(--accent-grey);
+	cursor: pointer;
 }
 .item-image {
 	border-radius: 5px;
@@ -109,8 +110,9 @@ main {
 	color: var(--ryo-color);
 }
 #instruction {
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 }
+/* size selection settings */
 .size-selection-container {
 	display: flex;
 	width: 100%;
@@ -124,7 +126,30 @@ main {
 .size-btn:hover {
 	border: 2px solid var(--ryo-color);
 	border-radius: 5px;
+	cursor: pointer;
 }
+.selected-btn {
+	background: var(--ryo-color);
+	color: var(--body-color);
+}
+/* quantity selection settings */
+.qty-selection-container {
+	display: flex;
+	flex-direction: row;
+}
+/* disable arrow for number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.qty-input {
+	text-align: center;
+}
+.qty-btn {
+	font-size: 1.5rem;
+}
+/* add to cart btn settings */
 #add-to-cart-btn {
 	font-size: 2rem;
 	width: 100%;
@@ -137,12 +162,9 @@ main {
 #add-to-cart-btn:hover {
 	border: 2px solid black;
 	border-radius: 5px;
+	cursor: pointer;
 }
 #add-to-cart-btn:active {
 	color: var(--ryo-color);
 	background-color: var(--body-color);
-}
-.selected-btn {
-	background: var(--ryo-color);
-	color: var(--body-color);
 }
