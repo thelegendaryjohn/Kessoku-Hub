@@ -63,6 +63,7 @@ main {
 .item-price,
 .item-stock {
 	font-size: 1.75rem;
+	font-weight: bold;
 }
 /* pop up settings */
 #pop-up-container {
@@ -103,7 +104,7 @@ main {
 	font-weight: bold;
 	text-align: center;
 	font-size: 1rem;
-	border: 1px solid var(--ryo-color);
+	border: 1px transparent var(--ryo-color);
 	border-radius: 5px;
 	color: var(--ryo-color);
 }
