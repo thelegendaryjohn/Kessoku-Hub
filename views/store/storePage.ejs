@@ -46,14 +46,18 @@
         </div>
         <div class="description-container">
             <div class="item-name"><%- items[0].name%></div>
-            <div class="item-description"><%- items[0].description%></div>
             <div class="item-price"><%- items[0].price%> $</div>
         </div>
-        <span id="instruction">Select your size</span>
         <div class="size-selection-container">
           <button class="size-btn selected-btn" id="size-s">Size S</button>
           <button class="size-btn" id="size-m">Size M</button>
           <button class="size-btn" id="size-l">Size L</button>
+        </div>
+        <div class="qty-selection-container">
+          <div class="instruction">Quantity:</div>
+            <button class="qty-btn" type="button">-</button>
+            <input class="qty-input" type="number"  min="0" max="10" value="1">
+            <button class="qty-btn" type="button">+</button>
         </div>
         <button id="add-to-cart-btn">Add to cart</button>
       </div>
