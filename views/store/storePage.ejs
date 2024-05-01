@@ -39,7 +39,8 @@
     <div></div>
 
     <!-- pop up container -->
-    <div id="pop-up-container">
+    <form action="#">
+      <div id="pop-up-container">
         <div class="image-close-btn-container">
           <img class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
         <button id="close-pop-up-btn">X</button>
@@ -49,17 +50,18 @@
             <div class="item-price"><%- items[0].price%> $</div>
         </div>
         <div class="size-selection-container">
-          <button class="size-btn selected-btn" id="size-s">Size S</button>
-          <button class="size-btn" id="size-m">Size M</button>
-          <button class="size-btn" id="size-l">Size L</button>
+          <button type="radio" name="size" class="size-btn selected-btn" id="size-s">Size S</button>
+          <button type="radio" name="size" class="size-btn" id="size-m">Size M</button>
+          <button type="radio" name="size" class="size-btn" id="size-l">Size L</button>
         </div>
         <div class="qty-selection-container">
             <button class="qty-btn" id="qty-minus" type="button">-</button>
             <input class="qty-input" type="number"  min="0" max="10" value="1">
             <button class="qty-btn" id="qty-plus" type="button">+</button>
         </div>
-        <button id="add-to-cart-btn">Add to cart</button>
-      </div>
+        <button type="submit" id="add-to-cart-btn">Add to cart</button>
+    </div>
+    </form>
   </main>
 
   <!-- Footer partial -->
@@ -104,7 +106,7 @@ allSizeBtn.forEach((btn)=>{
       turnOffBtn(e.target);
   })
 })
-
+//quantity selection buttons
 qtyMinus.addEventListener("click",()=>{
   if (qtyInput.value > qtyInput.min && Number(qtyInput.value) <= qtyInput.max) {
     qtyInput.value -= 1;
@@ -112,7 +114,6 @@ qtyMinus.addEventListener("click",()=>{
   else {
     qtyInput.value = qtyInput.min;
   }
-  
 })
 qtyPlus.addEventListener("click",()=>{
   if (qtyInput.value >= qtyInput.min && Number(qtyInput.value) < qtyInput.max) {
@@ -121,7 +122,6 @@ qtyPlus.addEventListener("click",()=>{
   else{
     qtyInput.value = qtyInput.max;
   }
-  
 })
 
 </script>
