@@ -106,7 +106,7 @@ allSizeBtn.forEach((btn)=>{
 })
 
 qtyMinus.addEventListener("click",()=>{
-  if (qtyInput.value > qtyInput.min && Number(qtyInput.value) < qtyInput.max) {
+  if (qtyInput.value > qtyInput.min && Number(qtyInput.value) <= qtyInput.max) {
     qtyInput.value -= 1;
   }
   else {
@@ -115,7 +115,7 @@ qtyMinus.addEventListener("click",()=>{
   
 })
 qtyPlus.addEventListener("click",()=>{
-  if (qtyInput.value > qtyInput.min && Number(qtyInput.value) < qtyInput.max) {
+  if (qtyInput.value >= qtyInput.min && Number(qtyInput.value) < qtyInput.max) {
     qtyInput.value = Number(qtyInput.value) + 1;
   }
   else{
