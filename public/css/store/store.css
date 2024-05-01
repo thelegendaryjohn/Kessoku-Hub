@@ -159,6 +159,11 @@ input::-webkit-inner-spin-button {
 	background-color: var(--body-color);
 	border-radius: 5px;
 	text-align: center;
+	cursor: pointer;
+}
+.qty-btn:hover {
+	cursor: pointer;
+	border: 2px solid var(--ryo-color);
 }
 /* add to cart btn settings */
 #add-to-cart-btn {
