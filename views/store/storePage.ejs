@@ -22,7 +22,7 @@
     <div id="item-list-container">
       <!-- Dynamically generate the item container -->
       <% items.forEach(item => { %>
-      <div class="item-container">
+      <div class="item-container" id="<%- item.id%>">
         <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="<%- item.description%>">
         <div class="item-name"><%- item.name%></div>
         <div class="item-description"><%- item.description%></div>
@@ -42,12 +42,12 @@
     <form action="#">
       <div id="pop-up-container">
         <div class="image-close-btn-container">
-          <img class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
+          <img id="pop-up-image" class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
         <button id="close-pop-up-btn">X</button>
         </div>
         <div class="description-container">
-            <div class="item-name"><%- items[0].name%></div>
-            <div class="item-price"><%- items[0].price%> $</div>
+            <div class="item-name" id="pop-up-name"><%- items[0].name%></div>
+            <div class="item-price" id="pop-up-price"><%- items[0].price%> $</div>
         </div>
         <div class="size-selection-container">
           <button type="radio" name="size" class="size-btn selected-btn" id="size-s">Size S</button>
@@ -69,10 +69,14 @@
 </body>
 
 <script type="module">
+//import itemsArray
+import {
+    items
+  } from "/js/store/items.js";
 //initialize
-const items = document.querySelectorAll(".item-container");
+const itemsList = document.querySelectorAll(".item-container");
 const closePopUpBtn = document.querySelector("#close-pop-up-btn");
-const popup = document.getElementById("pop-up-container");
+const popup = document.querySelector("#pop-up-container");
 const allSizeBtn = document.querySelectorAll(".size-btn");
 const qtyInput = document.querySelector(".qty-input");
 const qtyMinus = document.querySelector("#qty-minus");
@@ -84,9 +88,13 @@ closePopUpBtn.addEventListener("click",()=>{
 });
 
 //when click on any item show the popup
-items.forEach((e)=> {
-  e.addEventListener("click",() => {
+itemsList.forEach((item)=> {
+  item.addEventListener("click",() => {
     popup.style.display = "flex";
+    // let clickedItem = document.getElementById(item.id);
+    document.querySelector("#pop-up-name").innerText = items[item.id].name;
+    document.querySelector("#pop-up-image").src = "images/store-section/" + items[item.id].imageName;
+    document.querySelector("#pop-up-price").innerText = items[item.id].price + "$";
   })
 })
 
