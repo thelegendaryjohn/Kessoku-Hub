@@ -91,7 +91,7 @@ closePopUpBtn.addEventListener("click",()=>{
 itemsList.forEach((item)=> {
   item.addEventListener("click",() => {
     popup.style.display = "flex";
-    // let clickedItem = document.getElementById(item.id);
+    // update information to the pop up
     document.querySelector("#pop-up-name").innerText = items[item.id].name;
     document.querySelector("#pop-up-image").src = "images/store-section/" + items[item.id].imageName;
     document.querySelector("#pop-up-price").innerText = items[item.id].price + "$";
