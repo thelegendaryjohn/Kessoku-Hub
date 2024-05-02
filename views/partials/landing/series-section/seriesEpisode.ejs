@@ -1,11 +1,13 @@
-<a href="#" class="episode-link">
-  <div class="episode <%= (!!locals.isFeatured) ? 'featured' : 'normal' %>">
-    <div class="episode-cover-container box-shadow">
-      <img src="/images/top-section/top-bg.jpg" alt="Episode cover art" class="episode-cover">
-    </div>
-  
-    <div class="episode-name">
-      <p class="text-shadow"><%= locals.episodeName %></p>
-    </div>
+<div class="episode <%= (!!locals.isFeatured) ? 'featured' : 'normal' %>">
+  <div class="episode-cover-container box-shadow">
+    <img src="https://i.ytimg.com/vi_webp/<%- locals.episodeID %>/maxresdefault.webp" alt="Episode cover art" class="episode-cover">
   </div>
-</a>
+
+  <div class="episode-name">
+    <p class="text-shadow"><%= locals.episodeName %></p>
+  </div>
+
+  <!-- Episode Embed View -->
+  <%- include("episodeView.ejs") %>
+
+</div>

@@ -95,6 +95,20 @@
 }
 
 /* Specific Media Queries */
+@media screen and (orientation: landscape) {
+	.episode-embed-container {
+		height: calc(70vh + 10vh) !important;
+		width: calc(70vh * 16 / 9) !important;
+		max-width: 80vw !important;
+	}
+
+	.embed-iframe-container {
+		height: 70vh !important;
+		width: calc(70vh * 16 / 9) !important;
+		max-width: 80vw !important;
+	}
+}
+
 @media screen and (orientation: portrait) and (max-width: 300px) {
 	.section-container {
 		padding: 0 !important;

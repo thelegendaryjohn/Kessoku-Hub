@@ -1,11 +1,33 @@
 <section id="series" class="box-shadow">
   <h2 id="series-header" class="section-header">VIDEOS</h2>
   <div id="series-container" class="section-container">
-    <%- include("seriesEpisode.ejs", { isFeatured: true, episodeName: "E6 - Eight Views" }) %>
+    <%- include("seriesEpisode.ejs", { 
+      episodeName: "Ep. 9 PV - Enoshima Escar",
+      episodeID: "q0tX10H8VGA",
+      isFeatured: true
+    }) %>
   
-    <%- include("seriesEpisode.ejs", { episodeName: "E5 - Flightless Fish" }) %>
+    <%- include("seriesEpisode.ejs", {
+      episodeName: "Ep. 8 PV - Bocchi the Rock",
+      episodeID: "IUO4neBlZI8",
+      episodeSrcTitle: "BOCCHI THE ROCK! (ぼっち・さ・ろっく！) | Episode #08 Preview (English Subtitles)"
+    }) %>
   
-    <%- include("seriesEpisode.ejs", { episodeName: "E4 - Jumping Girl(s)" }) %>
+    <%- include("seriesEpisode.ejs", {
+      episodeName: "Ep. 7 PV - To Your House",
+      episodeID: "Hi3dGsvgciI",
+      episodeSrcTitle: "BOCCHI THE ROCK! (ぼっち・さ・ろっく！) | Episode #07 Preview (English Subtitles)"
+    }) %>
   </div>
+
+  <!-- Script -->
+  <script>
+    document.querySelectorAll(".episode").forEach(episode => {
+      episode.addEventListener("click", () => {
+        console.log("Episode clicked");
+        episode.querySelector(".episode-embed-bg").classList.toggle("show");
+      })
+    })
+  </script>
   <a href="#" class="see-all-anchor">See all...</a>
 </section>
