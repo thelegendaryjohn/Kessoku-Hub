@@ -92,6 +92,24 @@ footer p {
 }
 
 /* Custom Styling */
+@keyframes fadeShowHide {
+	from {
+		opacity: 0;
+	}
+	
+	to {
+		opacity: 1;
+	}
+}
+
+.show {
+	display: block !important;
+	animation-name: fadeShowHide;
+	animation-duration: 0.12s;
+	animation-fill-mode: both;
+	animation-direction: alternate;
+}
+
 .btn {
 	cursor: pointer;
 }
