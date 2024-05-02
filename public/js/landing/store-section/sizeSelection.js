@@ -1,5 +1,5 @@
 const sizeBtn = document.querySelectorAll(".size-select");
-let selectedSize = "M";
+// let selectedSize = "M";
 
 sizeBtn.forEach((e) => {
 	e.addEventListener("click", (e) => {
@@ -12,6 +12,6 @@ sizeBtn.forEach((e) => {
 		e.target.classList.add("selected");
 
 		// Set selected size
-		selectedSize = e.target.textContent;
+		// selectedSize = e.target.textContent;
 	});
 });
