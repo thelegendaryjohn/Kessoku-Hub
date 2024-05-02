@@ -1,6 +1,6 @@
 export const items = [
 	{
-		id: 1, // Should be a unique identifier, randomly generated. Take _id from the database
+		id: 0, // Should be a unique identifier, randomly generated. Take _id from the database
 		imageName: "bocchi-sweater.png",
 		name: "Bocchi's Face T-Shirt",
 		description: "A T-shirt with Bocchi's face on it.",
@@ -8,7 +8,7 @@ export const items = [
 		stock: 10,
 	},
 	{
-		id: 2,
+		id: 1,
 		imageName: "kessoku-tshirt.png ",
 		name: "Kessoku Hoodie",
 		description: "A hoodie with the Kessoku logo.",
@@ -16,7 +16,7 @@ export const items = [
 		stock: 5,
 	},
 	{
-		id: 3, // Should be a unique identifier, randomly generated. Take _id from the database
+		id: 2, // Should be a unique identifier, randomly generated. Take _id from the database
 		imageName: "bocchi-sweater.png",
 		name: "Bocchi's Face T-Shirt",
 		description: "A T-shirt with Bocchi's face on it.",
