@@ -88,6 +88,18 @@ main {
 	background-color: var(--body-color);
 	border: 2px solid var(--ryo-color);
 	border-radius: 5px;
+	/* animation settings */
+	animation-name: slide-in-from-under;
+	animation-timing-function: ease-in-out;
+	animation-duration: 0.8s;
+}
+@keyframes slide-in-from-under {
+	from {
+		bottom: -30rem;
+	}
+	to {
+		bottom: 1rem;
+	}
 }
 .image-close-btn-container {
 	display: flex;
