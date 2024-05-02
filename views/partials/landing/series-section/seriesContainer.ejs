@@ -6,13 +6,13 @@
       episodeID: "q0tX10H8VGA",
       isFeatured: true
     }) %>
-  
+
     <%- include("seriesEpisode.ejs", {
       episodeName: "Ep. 8 PV - Bocchi the Rock",
       episodeID: "IUO4neBlZI8",
       episodeSrcTitle: "BOCCHI THE ROCK! (ぼっち・さ・ろっく！) | Episode #08 Preview (English Subtitles)"
     }) %>
-  
+
     <%- include("seriesEpisode.ejs", {
       episodeName: "Ep. 7 PV - To Your House",
       episodeID: "Hi3dGsvgciI",
@@ -20,11 +20,11 @@
     }) %>
   </div>
 
-  <!-- Script -->
+  <!-- Show embed popup when clicked -->
   <script>
     document.querySelectorAll(".episode").forEach(episode => {
       episode.addEventListener("click", () => {
-        console.log("Episode clicked");
+        // console.log("Episode clicked");
         episode.querySelector(".episode-embed-bg").classList.toggle("show");
       })
     })

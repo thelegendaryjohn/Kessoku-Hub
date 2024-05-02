@@ -99,6 +99,7 @@
 	.episode-embed-container {
 		height: calc(70vh + 10vh) !important;
 		width: calc(70vh * 16 / 9) !important;
+		transform: translateY(0vw) !important;
 		max-width: 80vw !important;
 	}
 
