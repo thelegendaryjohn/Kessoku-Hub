@@ -1,6 +1,23 @@
 <section id="store" class="box-shadow">
   <h2 id="store-header" class="section-header">STORE</h2>
-  <%- include("storeItem.ejs") %>
+  <div id="store-item-container" class="section-container">
+    <%- include("storeItem.ejs", { 
+      imageSrc: "/images/store-section/kessoku-tshirt.png",
+      imageAlt: "Kessoku Band T-Shirt image",
+      name: "KESSOKU BAND T-SHIRT",
+      price: "$48"
+    }) %>
+
+    <%- include("storeItem.ejs", {
+      imageSrc: "/images/store-section/bocchi-sweater.png",
+      imageAlt: "Bocchi The Rock Sweater image",
+      name: "BOCCHI FACE SWEATER",
+      price: "$62"
+    }) %>
+  </div>
+
+  <!-- Size selector -->
+  <script src="/js/landing/store-section/sizeSelection.js"></script>
 
   <a href="#" class="see-all-anchor">See all...</a>
 </section>

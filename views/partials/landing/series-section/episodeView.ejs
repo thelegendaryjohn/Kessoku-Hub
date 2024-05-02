@@ -1,0 +1,28 @@
+<div class="episode-embed-bg">
+  <div class="episode-embed-view">
+    <div class="episode-embed-container">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#fff" stroke-width=".5" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+        <path d="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7"></path>
+      </svg>
+
+      <div class="embed-iframe-container">
+        <iframe class="embed-iframe" src="" title="<%= locals.episodeSrcTitle %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Unload iframe when not visible -->
+      <script>
+        document.querySelectorAll(".episode").forEach(episode => {
+          episode.addEventListener("click", () => {
+            // console.log("Episode clicked another");
+            if (episode.querySelector(".episode-embed-bg").classList.contains("show")) {
+              //   console.log("Command ran");
+              episode.querySelector(".embed-iframe").src = "";
+            } else {
+              episode.querySelector(".embed-iframe").src = "https://www.youtube.com/embed/<%= locals.episodeID %>";
+            }
+          })
+        })
+      </script>
+    </div>
+  </div>
+</div>

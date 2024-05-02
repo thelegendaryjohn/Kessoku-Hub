@@ -43,7 +43,7 @@
 
 #banner-desc {
 	position: absolute;
-	color: var(--nijika-color);
+	color: var(--accent-yellow);
 	font-size: 42.5%;
 	bottom: 33%;
 	left: 5.2%;
@@ -62,31 +62,76 @@
 	padding: 12px;
 	margin: 0 25px 30px 25px;
 	border-radius: 8px;
-	border: 3px solid #000;
+	border: 2px solid #000;
 	background-color: #fff;
+}
+
+#other-sections > section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #other-sections .section-container {
 	padding: 0 14px;
+	max-width: 40rem;
 }
 
 #other-sections .section-header {
+	width: 100%;
 	font-size: 2.2rem;
+	margin-left: 1rem;
 	padding: 0 6px 8px 6px;
 }
 
 #other-sections .see-all-anchor {
 	display: flex;
 	justify-content: flex-end;
-	padding: 3% 2%;
+	width: 95%;
+	margin: 1rem;
 	font-size: 1.4rem;
 	font-style: italic;
 	color: #000;
 }
 
 /* Specific Media Queries */
+@media screen and (orientation: landscape) {
+	.episode-embed-container {
+		height: calc(70vh + 10vh) !important;
+		width: calc(70vh * 16 / 9) !important;
+		transform: translateY(0vw) !important;
+		max-width: 80vw !important;
+	}
+
+	.embed-iframe-container {
+		height: 70vh !important;
+		width: calc(70vh * 16 / 9) !important;
+		max-width: 80vw !important;
+	}
+}
+
 @media screen and (orientation: portrait) and (max-width: 300px) {
 	.section-container {
 		padding: 0 !important;
+	}
+}
+
+@media screen and (orientation: portrait) and (max-width: 360px) {
+	.item {
+		flex-direction: column !important;
+	}
+
+	.item-action-container {
+		justify-content: center;
+	}
+}
+
+@media screen and (orientation: portrait) and (max-width: 500px) {
+	.item-action-container {
+		flex-wrap: wrap;
+	}
+
+	.item-action-container > * {
+		max-width: 80%;
 	}
 }

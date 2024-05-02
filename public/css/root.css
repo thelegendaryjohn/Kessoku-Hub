@@ -8,6 +8,7 @@
 	--accent-purple: rgb(170, 21, 228);
 	--accent-yellow: rgb(255, 240, 0);
 	--accent-grey: rgb(149, 149, 149);
+	--accent-lightgrey: rgb(211, 211, 211);
 	/* --accent-rainbow: linear-gradient(
 		145deg,
 		rgb(16, 103, 216),
@@ -91,6 +92,14 @@ footer p {
 }
 
 /* Custom Styling */
+.show {
+	display: block !important;
+	animation-name: adjustOpacity;
+	animation-duration: 0.12s;
+	animation-fill-mode: both;
+	animation-direction: alternate;
+}
+
 .btn {
 	cursor: pointer;
 }

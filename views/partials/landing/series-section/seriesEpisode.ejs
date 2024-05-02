@@ -1,4 +1,13 @@
-<div class="episode">
-  <img src="" alt="Episode cover art" class="episode-cover">
-  <p class="episode-name">E6 - Eight Views</p>
+<div class="episode <%= (!!locals.isFeatured) ? 'featured' : 'normal' %>">
+  <div class="episode-cover-container box-shadow">
+    <img src="https://i.ytimg.com/vi_webp/<%- locals.episodeID %>/maxresdefault.webp" alt="Episode cover art" class="episode-cover">
+  </div>
+
+  <div class="episode-name">
+    <p class="text-shadow"><%= locals.episodeName %></p>
+  </div>
+
+  <!-- Episode Embed View -->
+  <%- include("episodeView.ejs") %>
+
 </div>
