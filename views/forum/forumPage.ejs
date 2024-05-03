@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/forum/forum.css">
+  <link rel="stylesheet" href="/css/landing/forum.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Thread functions -->
+    <section id="thread-btn-container">
+      <a href="#">
+        <div id="thread-post-btn-container">
+          <div id="thread-post-btn-text" class="text-shadow">Post a Thread</div>
+          <img id="thread-post-btn-img" src="/images/button/btn-next.svg" alt="Post a thread">
+        </div>
+      </a>
+
+      <img id="thread-post-notif-btn" src="/images/forum-section/bell-icon.svg" alt="Notification">
+    </section>
+
+    <!-- Thread section -->
+    <section id="thread-section-container">
+      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+
+      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+
+      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+    </section>
+  </main>
+
+  <!-- Page switching -->
+  <!-- For asthetic purpose at the moment -->
+  <%- include("../partials/pageSwitching.ejs") %>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
