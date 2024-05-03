@@ -67,6 +67,36 @@ main {
 	font-size: 1.75rem;
 	font-weight: bold;
 }
+/* cart page button settings */
+#cart-button-container {
+	/* position settings */
+	position: fixed;
+	left: 2rem;
+	bottom: 2rem;
+	z-index: 3;
+	/* size settings */
+	width: 4rem;
+	height: 4rem;
+	/* display/flex settings */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem;
+	/* background and border settings */
+	background-color: var(--body-color);
+	border: 3px solid var(--ryo-color);
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+#cart-button-container:hover {
+	background-color: var(--ryo-color);
+	border: 3px solid var(--body-color);
+}
+.cart-svg {
+	width: 100%;
+	color: var(--ryo-color);
+}
 /* pop up settings */
 #pop-up-container {
 	/* position settings */
@@ -92,6 +122,13 @@ main {
 	animation-name: slide-in-from-under;
 	animation-timing-function: ease-in-out;
 	animation-duration: 0.8s;
+}
+/* align the pop up center in portrait */
+@media (orientation: portrait) {
+	#pop-up-container {
+		left: 50%;
+		transform: translate(-50%, 0);
+	}
 }
 @keyframes slide-in-from-under {
 	from {
