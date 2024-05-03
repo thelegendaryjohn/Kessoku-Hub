@@ -1,165 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<!-- Head partial -->
+		<%- include("../partials/htmlHead.ejs") %>
+		<link rel="stylesheet" href="/css/store/store.css" />
 
-<head>
-  <!-- Head partial -->
-  <%- include("../partials/htmlHead.ejs") %>
-  <link rel="stylesheet" href="/css/store/store.css">
+		<title>Kessoku Hub | Store</title>
+	</head>
 
-  <title>Kessoku Hub | Store</title>
-</head>
+	<body>
+		<!-- Sidebar -->
+		<%- include("../partials/sidebar.ejs") %>
 
-<body>
-  <!-- Sidebar -->
-  <%- include("../partials/sidebar.ejs") %>
+		<!-- Nav bar partial -->
+		<%- include("../partials/navBar.ejs", { headerTitle: "STORE" }) %>
 
-  <!-- Nav bar partial -->
-  <%- include("../partials/navBar.ejs", { headerTitle: "STORE" }) %>
-
-  <!-- Store page -->
-  <main>
-    <!-- Item list container -->
-    <div id="item-list-container">
-      <!-- Dynamically generate the item container -->
-      <% items.forEach(item => { %>
-      <div class="item-container" id="<%- item.id%>">
-        <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="<%- item.description%>">
-        <div class="item-name"><%- item.name%></div>
-        <div class="item-description"><%- item.description%></div>
-        <div class="price-stock-container">
-          <div class="item-price"><%- item.price%>$</div>
-          <div class="item-stock">in stock: <%- item.stock%></div>
-        </div>
-      </div>
-      <% }) %>
-    </div>
-    <div class="pop-up-container">
-    </div>
-    <!-- Cart page button container -->
-    <a href="#">
-      <div id="cart-button-container">
-        <svg fill="#2254c0" class="cart-svg" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-          viewBox="0 0 483.1 483.1" xml:space="preserve">
-        <g>
-          <path d="M434.55,418.7l-27.8-313.3c-0.5-6.2-5.7-10.9-12-10.9h-58.6c-0.1-52.1-42.5-94.5-94.6-94.5s-94.5,42.4-94.6,94.5h-58.6
+		<!-- Store page -->
+		<main>
+			<!-- Item list container -->
+			<div id="item-list-container">
+				<!-- Dynamically generate the item container -->
+				<% items.forEach(item => { %>
+				<div class="item-container" id="<%- item.id%>">
+					<img
+						class="item-image"
+						src="images/store-section/<%- item.imageName%>"
+						alt="<%- item.description%>"
+					/>
+					<div class="item-name"><%- item.name%></div>
+					<div class="item-description"><%- item.description%></div>
+					<div class="price-stock-container">
+						<div class="item-price"><%- item.price%>$</div>
+						<div class="item-stock">in stock: <%- item.stock%></div>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+			<div class="pop-up-container"></div>
+			<!-- Cart page button container -->
+			<a href="#">
+				<div id="cart-button-container">
+					<svg
+						fill="#2254c0"
+						class="cart-svg"
+						height="800px"
+						width="800px"
+						version="1.1"
+						id="Capa_1"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						viewBox="0 0 483.1 483.1"
+						xml:space="preserve"
+					>
+						<g>
+							<path
+								d="M434.55,418.7l-27.8-313.3c-0.5-6.2-5.7-10.9-12-10.9h-58.6c-0.1-52.1-42.5-94.5-94.6-94.5s-94.5,42.4-94.6,94.5h-58.6
             c-6.2,0-11.4,4.7-12,10.9l-27.8,313.3c0,0.4,0,0.7,0,1.1c0,34.9,32.1,63.3,71.5,63.3h243c39.4,0,71.5-28.4,71.5-63.3
             C434.55,419.4,434.55,419.1,434.55,418.7z M241.55,24c38.9,0,70.5,31.6,70.6,70.5h-141.2C171.05,55.6,202.65,24,241.55,24z
             M363.05,459h-243c-26,0-47.2-17.3-47.5-38.8l26.8-301.7h47.6v42.1c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h141.2v42.1
-            c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z"/>
-        </g>
-        </svg>
-      </div>
-    </a>
-    
+            c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z"
+							/>
+						</g>
+					</svg>
+				</div>
+			</a>
 
-    <!-- pop up container -->
-    <form action="#">
-      <div id="pop-up-container">
-        <div class="image-close-btn-container">
-          <img id="pop-up-image" class="pop-up-image" src="images/store-section/<%- items[0].imageName%>" alt="<%- items[0].description%>">
-        <button id="close-pop-up-btn">X</button>
-        </div>
-        <div class="description-container">
-            <div class="item-name" id="pop-up-name"><%- items[0].name%></div>
-            <div class="item-price" id="pop-up-price"><%- items[0].price%> $</div>
-        </div>
-        <div class="size-selection-container">
-          <button type="radio" name="size" class="size-btn selected-btn" id="size-s">Size S</button>
-          <button type="radio" name="size" class="size-btn" id="size-m">Size M</button>
-          <button type="radio" name="size" class="size-btn" id="size-l">Size L</button>
-        </div>
-        <div class="qty-selection-container">
-            <button class="qty-btn" id="qty-minus" type="button">-</button>
-            <input class="qty-input" type="number"  min="0" max="10" value="1">
-            <button class="qty-btn" id="qty-plus" type="button">+</button>
-        </div>
-        <button type="submit" id="add-to-cart-btn">Add to cart</button>
-    </div>
-    </form>
-  </main>
+			<!-- pop up container -->
+			<form action="#">
+				<div id="pop-up-container">
+					<div class="image-close-btn-container">
+						<img
+							id="pop-up-image"
+							class="pop-up-image"
+							src="images/store-section/<%- items[0].imageName%>"
+							alt="<%- items[0].description%>"
+						/>
+						<button id="close-pop-up-btn">X</button>
+					</div>
+					<div class="description-container">
+						<div class="item-name" id="pop-up-name">
+							<%- items[0].name%>
+						</div>
+						<div class="item-price" id="pop-up-price">
+							<%- items[0].price%> $
+						</div>
+					</div>
+					<div class="size-selection-container">
+						<button
+							type="radio"
+							name="size"
+							class="size-btn selected-btn"
+							id="size-s"
+						>
+							Size S
+						</button>
+						<button
+							type="radio"
+							name="size"
+							class="size-btn"
+							id="size-m"
+						>
+							Size M
+						</button>
+						<button
+							type="radio"
+							name="size"
+							class="size-btn"
+							id="size-l"
+						>
+							Size L
+						</button>
+					</div>
+					<div class="qty-selection-container">
+						<button class="qty-btn" id="qty-minus" type="button">
+							-
+						</button>
+						<input
+							class="qty-input"
+							type="number"
+							min="0"
+							max="10"
+							value="1"
+						/>
+						<button class="qty-btn" id="qty-plus" type="button">
+							+
+						</button>
+					</div>
+					<button type="submit" id="add-to-cart-btn">
+						Add to cart
+					</button>
+				</div>
+			</form>
+		</main>
 
-  <!-- Footer partial -->
-  <%- include("../partials/htmlFooter.ejs") %>
-</body>
+		<!-- Footer partial -->
+		<%- include("../partials/htmlFooter.ejs") %>
+	</body>
 
-<script type="module">
-//import itemsArray
-import {
-    items
-  } from "/js/store/items.js";
-//initialize
-const itemsList = document.querySelectorAll(".item-container");
-const closePopUpBtn = document.querySelector("#close-pop-up-btn");
-const popup = document.querySelector("#pop-up-container");
-const allSizeBtn = document.querySelectorAll(".size-btn");
-const qtyInput = document.querySelector(".qty-input");
-const qtyMinus = document.querySelector("#qty-minus");
-const qtyPlus = document.querySelector("#qty-plus");
-const addToCartBtn = document.querySelector("#add-to-cart-btn");
-const cartSvg = document.querySelector(".cart-svg");
-const cartBtn = document.querySelector("#cart-button-container");
+	<script type="module">
+		//import itemsArray
+		import { items } from "/js/store/items.js";
+		//initialize
+		const itemsList = document.querySelectorAll(".item-container");
+		const closePopUpBtn = document.querySelector("#close-pop-up-btn");
+		const popup = document.querySelector("#pop-up-container");
+		const allSizeBtn = document.querySelectorAll(".size-btn");
+		const qtyInput = document.querySelector(".qty-input");
+		const qtyMinus = document.querySelector("#qty-minus");
+		const qtyPlus = document.querySelector("#qty-plus");
+		const addToCartBtn = document.querySelector("#add-to-cart-btn");
+		const cartSvg = document.querySelector(".cart-svg");
+		const cartBtn = document.querySelector("#cart-button-container");
 
-//close the pop up when user click the close button
-closePopUpBtn.addEventListener("click",()=>{
-  popup.style.display = "none";
-});
+		//close the pop up when user click the close button
+		closePopUpBtn.addEventListener("click", () => {
+			popup.style.display = "none";
+		});
 
-//when click on any item show the popup
-itemsList.forEach((item)=> {
-  item.addEventListener("click",() => {
-    popup.style.display = "flex";
-    // update information to the pop up
-    document.querySelector("#pop-up-name").innerText = items[item.id].name;
-    document.querySelector("#pop-up-image").src = "images/store-section/" + items[item.id].imageName;
-    document.querySelector("#pop-up-price").innerText = items[item.id].price + "$";
-  })
-})
-//change svg color when hover
-cartBtn.addEventListener("mouseover",()=> {
-  cartSvg.setAttribute("fill", "white");
-})
-cartBtn.addEventListener("mouseout",()=> {
-  cartSvg.setAttribute("fill", "#2254c0");
-})
+		//when click on any item show the popup
+		itemsList.forEach((item) => {
+			item.addEventListener("click", () => {
+				popup.style.display = "flex";
+				// update information to the pop up
+				document.querySelector("#pop-up-name").innerText =
+					items[item.id].name;
+				document.querySelector("#pop-up-image").src =
+					"images/store-section/" + items[item.id].imageName;
+				document.querySelector("#pop-up-price").innerText =
+					items[item.id].price + "$";
+			});
+		});
+		//change svg color when hover
+		cartBtn.addEventListener("mouseover", () => {
+			cartSvg.setAttribute("fill", "white");
+		});
+		cartBtn.addEventListener("mouseout", () => {
+			cartSvg.setAttribute("fill", "#2254c0");
+		});
 
-//turn off other button when one is clicked
-function turnOffBtn(clickedBtn) {
-  allSizeBtn.forEach((btnInfo, i)=> {
-    if (clickedBtn.id !== btnInfo.id) {
-      btnInfo.classList.remove("selected-btn")
-    }
-  })
-}
+		//turn off other button when one is clicked
+		function turnOffBtn(clickedBtn) {
+			allSizeBtn.forEach((btnInfo, i) => {
+				if (clickedBtn.id !== btnInfo.id) {
+					btnInfo.classList.remove("selected-btn");
+				}
+			});
+		}
 
-//add eventListener for all size buttons
-allSizeBtn.forEach((btn)=>{
-  btn.addEventListener("click",(e)=>{
-      e.target.classList.add("selected-btn");
-      turnOffBtn(e.target);
-  })
-})
-//quantity selection buttons
-qtyMinus.addEventListener("click",()=>{
-  if (qtyInput.value > qtyInput.min && Number(qtyInput.value) <= qtyInput.max) {
-    qtyInput.value -= 1;
-  }
-  else {
-    qtyInput.value = qtyInput.min;
-  }
-})
-qtyPlus.addEventListener("click",()=>{
-  if (qtyInput.value >= qtyInput.min && Number(qtyInput.value) < qtyInput.max) {
-    qtyInput.value = Number(qtyInput.value) + 1;
-  }
-  else{
-    qtyInput.value = qtyInput.max;
-  }
-})
+		//add eventListener for all size buttons
+		allSizeBtn.forEach((btn) => {
+			btn.addEventListener("click", (e) => {
+				e.target.classList.add("selected-btn");
+				turnOffBtn(e.target);
+			});
+		});
+		//quantity selection buttons
+		qtyMinus.addEventListener("click", () => {
+			if (
+				qtyInput.value > qtyInput.min &&
+				Number(qtyInput.value) <= qtyInput.max
+			) {
+				qtyInput.value -= 1;
+			} else {
+				qtyInput.value = qtyInput.min;
+			}
+		});
+		qtyPlus.addEventListener("click", () => {
+			if (
+				qtyInput.value >= qtyInput.min &&
+				Number(qtyInput.value) < qtyInput.max
+			) {
+				qtyInput.value = Number(qtyInput.value) + 1;
+			} else {
+				qtyInput.value = qtyInput.max;
+			}
+		});
 
-//prevent default behavior for add to cart button
-addToCartBtn.addEventListener("click",(e) =>{
-  e.preventDefault();
-})
-</script>
-
+		//prevent default behavior for add to cart button
+		addToCartBtn.addEventListener("click", (e) => {
+			e.preventDefault();
+		});
+	</script>
 </html>
