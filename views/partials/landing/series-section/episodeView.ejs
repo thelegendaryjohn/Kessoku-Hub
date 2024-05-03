@@ -6,7 +6,7 @@
       </svg>
 
       <div class="embed-iframe-container">
-        <iframe class="embed-iframe" src="" title="<%= locals.episodeSrcTitle %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class="embed-iframe" src="https://www.youtube.com/embed/<%= locals.episodeID %>?enablejsapi=1" title="<%= locals.episodeSrcTitle %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
 
       <!-- Unload iframe when not visible -->
@@ -15,11 +15,12 @@
           episode.addEventListener("click", () => {
             // console.log("Episode clicked another");
             if (episode.querySelector(".episode-embed-bg").classList.contains("show")) {
-              //   console.log("Command ran");
-              episode.querySelector(".embed-iframe").src = "";
-            } else {
-              episode.querySelector(".embed-iframe").src = "https://www.youtube.com/embed/<%= locals.episodeID %>";
-            }
+              // console.log("Command ran when visible");
+              episode.querySelector(".embed-iframe").contentWindow.postMessage(JSON.stringify({
+                event: 'command',
+                func: 'stopVideo'
+              }), '*');
+            } 
           })
         })
       </script>
