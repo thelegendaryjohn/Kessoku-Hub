@@ -16,9 +16,13 @@
 		rgb(255, 230, 0),
 		rgb(218, 39, 39)
 	); */
-	--base-font-size: 16px;
+
+	--xxsmall-font-size: 8px;
+	--xsmall-font-size: 10px;
 	--small-font-size: 12px;
-	--heading-font-size: 32px;
+	--medium-font-size: 16px;
+	--large-font-size: 24px;
+	--xlarge-font-size: 32px;
 }
 
 /* Global Styling */
