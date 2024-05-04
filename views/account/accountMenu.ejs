@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/menu.css">
+
+  <title>Kessoku Hub | Account</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "ACCOUNT" }) %>
+
+  <!-- Welcome page -->
+  <main>
+    <!-- User profile image -->
+    <div id="profile-img-container">
+      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+      <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
