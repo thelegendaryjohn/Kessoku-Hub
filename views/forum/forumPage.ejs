@@ -33,11 +33,10 @@
 
     <!-- Thread section -->
     <section id="thread-section-container">
+      <% const numTopics = 7; %>
+      <% for (let i = 0; i < numTopics; i++) { %>
       <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
-
-      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
-
-      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+      <% } %>
     </section>
   </main>
 
