@@ -6,6 +6,7 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/forum/main.css">
   <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/landing/forum.css">
 </head>
@@ -23,7 +24,7 @@
     <%- include("../partials/forum/threadAction.ejs") %>
 
     <!-- Topic section -->
-    <section id="topic-section-container">
+    <section id="content-section-container">
       <% const numTopics = 7; %>
       <% for (let i = 0; i < numTopics; i++) { %>
       <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
