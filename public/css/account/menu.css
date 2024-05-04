@@ -91,3 +91,51 @@ a {
 #logout-btn:hover {
 	background-color: rgba(218, 39, 39, 0.2);
 }
+
+#menu-section-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	padding: 0 2rem;
+	gap: 1rem;
+}
+
+.menu-section {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+.menu-section-title {
+	font-size: 2.5rem;
+	color: var(--accent-grey);
+}
+
+.function-btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1.5rem;
+	padding: 0 1rem;
+}
+
+.function-btn .function-img {
+	height: 3rem;
+}
+
+.function-btn .function-name {
+	font-size: 2.5rem;
+	width: 100%;
+	color: var(--black-color);
+	font-weight: bold;
+}
+
+.function-btn .function-arrow-btn {
+	height: 2rem;
+}
+
+#logout-btn .function-name {
+    color: var(--ikuyo-color);
+}
