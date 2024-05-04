@@ -1,10 +1,8 @@
-/* Landing Page */
-
 /* Desktop (>=1400px, landscape): 1920×1080 */
 @media (orientation: landscape) and (min-width: 1400px) {
 	/* Your CSS styles for Desktop */
 	:root {
-		font-size: 1rem;
+		font-size: var(--medium-font-size);
 	}
 }
 
@@ -12,31 +10,25 @@
 @media (orientation: landscape) and (min-width: 768px) and (max-width: 1400px) {
 	/* Your CSS styles for Tablet */
 	:root {
-		font-size: 1rem;
+		font-size: var(--medium-font-size);
 	}
 }
 
 /* Mobile (<=768px, portrait): 390×844 */
 @media (orientation: portrait) and (max-width: 768px) {
 	:root {
-		font-size: 0.9rem;
+		font-size: var(--small-font-size);
 	}
 }
-
-@media screen and (orientation: portrait) and (max-width: 450px) {
+ 
+/* @media screen and (orientation: portrait) and (max-width: 450px) {
 	:root {
-		font-size: 0.7rem;
+		font-size: var(--xsmall-font-size);
 	}
+} */
 
-	
-}
-
-@media screen and (orientation: portrait) and (max-width: 320px) {
+@media screen and (orientation: portrait) and (max-width: 350px) {
 	:root {
-		font-size: 0.5rem;
-	}
-
-	#logo {
-		padding: 25% !important;
+		font-size: var(--xsmall-font-size);
 	}
 }
