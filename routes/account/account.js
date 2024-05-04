@@ -30,8 +30,4 @@ router.get("/account/logout", (req, res, next) => {
 	});
 });
 
-router.get("/account/menu", (req, res) => {
-	render(req, res, "account/accountMenu");
-});
-
 export default router;
