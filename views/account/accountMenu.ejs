@@ -18,11 +18,93 @@
 
   <!-- Welcome page -->
   <main>
-    <!-- User profile image -->
-    <div id="profile-img-container">
+    <!-- User profile header -->
+    <div id="user-profile-container">
       <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
       <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+    </div>
+
+    <!-- User profile functions -->
+    <div id="menu-section-container">
+      <!-- "Account" section -->
+      <section id="account-section" class="menu-section">
+        <h1 class="menu-section-title">ACCOUNT</h1>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/thread-icon.svg" alt="My Thread">
+            <p class="function-name">My Thread</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="My Thread">
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/comment-icon.svg" alt="My Comments">
+            <p class="function-name">My Comments</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="My Comments">
+          </div>
+        </a>
+      </section>
+
+      <!-- "Settings" section -->
+      <section id="settings-section" class="menu-section">
+        <h1 class="menu-section-title">SETTINGS</h1>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/language-icon.svg" alt="Language">
+            <p class="function-name">Language</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="Language">
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/theme-icon.svg" alt="Theme & Accent">
+            <p class="function-name">Theme & Accent</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="Theme & Accent">
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/profile-icon.svg" alt="Edit Profile">
+            <p class="function-name">Edit Profile</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="Edit Profile">
+          </div>
+        </a>
+      </section>
+
+      <!-- "Support" section -->
+      <section id="support-section" class="menu-section">
+        <h1 class="menu-section-title">SUPPORT</h1>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/ban-icon.svg" alt="Deactivate Account">
+            <p class="function-name">Deactivate Account</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="Deactivate Account">
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/email-icon.svg" alt="Support">
+            <p class="function-name">Support</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="Support">
+          </div>
+        </a>
+
+        <a href="#">
+          <div id="logout-btn" class="function-btn">
+            <img class="function-img" src="/images/account-section/log-out-icon.svg" alt="Logout">
+            <p class="function-name">Logout</p>
+            <img class="function-arrow-btn" src="/images/button/btn-next.svg" alt="Logout">
+          </div>
+        </a>
+    </div>
   </main>
 
   <!-- Footer partial -->
