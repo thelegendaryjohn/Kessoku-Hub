@@ -110,7 +110,7 @@ a {
 }
 
 .menu-section-title {
-	font-size: 2.5rem;
+	font-size: 2rem;
 	color: var(--accent-grey);
 }
 
@@ -118,16 +118,16 @@ a {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 1.5rem;
-	padding: 0 1rem;
+	gap: 1rem;
+	padding: 0 0.5rem;
 }
 
 .function-btn .function-img {
-	height: 3rem;
+	height: 2.5rem;
 }
 
 .function-btn .function-name {
-	font-size: 2.5rem;
+	font-size: 2rem;
 	width: 100%;
 	color: var(--black-color);
 	font-weight: bold;
