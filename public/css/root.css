@@ -1,6 +1,7 @@
 /* Custom variables */
 :root {
 	--body-color: #ffffff;
+	--black-color: #000000;
 	--hitori-color: rgb(229, 20, 112);
 	--nijika-color: rgb(219, 126, 5);
 	--ryo-color: rgb(34, 84, 192);
@@ -41,7 +42,7 @@ body {
 }
 
 main {
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 /* Footer Styling */
@@ -79,9 +80,8 @@ footer p {
 }
 
 #footer-social img:hover {
-	filter: 
-		invert(86%) sepia(23%) saturate(2892%) 
-		hue-rotate(2deg) brightness(107%) contrast(108%);
+	filter: invert(86%) sepia(23%) saturate(2892%) hue-rotate(2deg)
+		brightness(107%) contrast(108%);
 }
 
 #footer-arrow-container {
@@ -92,7 +92,7 @@ footer p {
 }
 
 #footer-help-link a:hover {
-	color: var(--nijika-color);
+	color: var(--accent-yellow);
 }
 
 /* Custom Styling */
@@ -135,7 +135,6 @@ footer p {
 	width: 100%;
 	height: 6rem;
 	background-color: var(--body-color);
-
 }
 
 #nav-title {
