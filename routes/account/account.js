@@ -14,16 +14,16 @@ router.get("/account/success", (req, res) => {
 	});
 });
 
+router.get("/account/menu", (req, res) => {
+	render(req, res, "account/accountMenu");
+});
+
 router.get("/account/logout", (req, res, next) => {
 	// Logs the user out
 	logout(req, res, next);
 	render(req, res, "account/accountSuccess", {
 		message: `Logging you out`,
 	});
-});
-
-router.get("/account/menu", (req, res) => {
-	render(req, res, "account/accountMenu");
 });
 
 export default router;
