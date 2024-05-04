@@ -192,3 +192,35 @@ footer p {
 	color: #000;
 	/* box-sizing: content-box; */
 }
+
+#thread-action-btn-container {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 8rem;
+}
+
+#thread-action-post-btn-container {
+	display: flex;
+	border: 2px solid var(--accent-purple);
+	padding: 0 1rem;
+	border-radius: 5px;
+	gap: 2rem;
+}
+
+#thread-action-post-btn-text {
+	display: flex;
+	color: var(--accent-purple);
+	align-items: center;
+	font-size: 2.5rem;
+	font-weight: bold;
+}
+
+#thread-action-post-btn-img {
+	width: 1.5rem;
+}
+
+#thread-action-notif-btn {
+	cursor: pointer;
+	width: 3rem;
+}
