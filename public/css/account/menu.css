@@ -27,6 +27,7 @@ main #user-profile-container #profile-name {
 	align-items: center;
 	height: 100%;
 	padding: 0 2rem;
+	margin-bottom: 3rem;
 	gap: 1rem;
 }
 
@@ -66,5 +67,5 @@ main #user-profile-container #profile-name {
 }
 
 #logout-btn .function-name {
-    color: var(--ikuyo-color);
+	color: var(--ikuyo-color);
 }
