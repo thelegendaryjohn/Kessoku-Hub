@@ -2,36 +2,8 @@ a {
 	text-decoration: none;
 }
 
-#thread-btn-container {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	height: 8rem;
-}
-
-#thread-post-btn-container {
-	display: flex;
-	border: 2px solid var(--accent-purple);
-	padding: 0 1rem;
-	border-radius: 5px;
-	gap: 2rem;
-}
-
-#thread-post-btn-text {
-	display: flex;
-	color: var(--accent-purple);
-	align-items: center;
-	font-size: 2.5rem;
-	font-weight: bold;
-}
-
-#thread-post-btn-img {
-	width: 1.5rem;
-}
-
-#thread-post-notif-btn {
-	cursor: pointer;
-	width: 3rem;
+#nav-title {
+	font-size: 2rem;
 }
 
 #topic-section-container {
