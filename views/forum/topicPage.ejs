@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/forum/forum.css">
+  <link rel="stylesheet" href="/css/landing/forum.css">
+</head>
+
+<body>
+  <% const topicName = "THIS IS TOPIC 1"; %>
+
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: topicName, headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Thread functions partial -->
+    <%- include("../partials/forum/threadAction.ejs") %>
+
+    <!-- Thread section -->
+    <section id="topic-section-container">
+      <% const numTopics = 7; %>
+      <% for (let i = 0; i < numTopics; i++) { %>
+      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+      <% } %>
+    </section>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
