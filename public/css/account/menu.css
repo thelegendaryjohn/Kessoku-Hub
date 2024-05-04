@@ -115,11 +115,17 @@ a {
 }
 
 .function-btn {
+	transition: 0.12s;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 1rem;
 	padding: 0 0.5rem;
+	border-radius: 5px;
+}
+
+.function-btn:hover {
+	background-color: var(--accent-lightgrey);
 }
 
 .function-btn .function-img {
@@ -139,4 +145,8 @@ a {
 
 #logout-btn .function-name {
 	color: var(--ikuyo-color);
+}
+
+#logout-btn:hover {
+	background-color: rgba(218, 39, 39, 0.3);
 }
