@@ -1,3 +1,11 @@
 #nav-title {
 	font-size: 2rem;
 }
+
+.topic {
+    padding: 0;
+}
+
+.thread-link-container {
+    border-left: 0;
+}
