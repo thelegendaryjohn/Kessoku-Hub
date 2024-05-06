@@ -1,46 +1,34 @@
 import "dotenv/config";
 import { Router } from "express";
-import nodemailer from "nodemailer";
+import { User } from "../../models/user.js";
 //
 const router = Router();
-//
-let transporter = nodemailer.createTransport({
-	host: "smtp-relay.brevo.com",
-	port: 587,
-	secure: false, // true for 465, false for other ports
-	auth: {
-		user: process.env.EMAIL_USER,
-		pass: process.env.EMAIL_PASS,
-	},
-});
-// verify connection configuration
-transporter.verify(function (error, success) {
-	if (error) {
-		console.log(error);
-	} else {
-		console.log("Server is ready to take our messages: " + success);
-	}
-});
 
-router.get("/user/verify", (req, res) => {
-	// send mail with defined transport object
-	transporter.sendMail(
-		{
-			from: "support@bocchi.band", // sender address
-			to: "azgamedeveloper@gmail.com", // testing
-			subject: "Verify your Kessoku Hub account", // Subject line
-			text: "Hello world?", // plain text body
-		},
-		(error, info) => {
-			if (error) {
-				console.log(error);
-				res.status(500).json("Error sending email");
-			} else {
-				console.log("Email sent: " + info.response);
-				res.status(200).json("Email sent");
-			}
-		}
-	);
+router.post("/user/verify", async (req, res) => {
+	const email = req.body.email;
+	if (!email) return res.status(400).send("Email is required.");
+	// Set session to verifying
+	if (!req.session.verifying) {
+		req.session.verifying = true;
+	} else {
+		return res.status(400).send("Already verifying.");
+	}
+	// Also prevents non logged in users from verifying
+	if (!req.session.user) {
+		req.session.verifying = false;
+		return res.status(401).send("Unauthorized.");
+	}
+	// Prevents alerady verified users from verifying
+	if (req.session.user.role !== User.roles.unverified) {
+		req.session.verifying = false;
+		return res.status(409).send("User is already verified.");
+	}
+	// Find the user
+	User.verifyEmail(function (data, err) {
+		if (err) return res.status(500).json(err);
+
+		return res.status(200).json(data);
+	});
 });
 
 export default router;
