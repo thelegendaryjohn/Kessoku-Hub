@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/menu.css">
+  <link rel="stylesheet" href="/css/account/signIn.css">
+  <link rel="stylesheet" href="/css/account/edit.css">
+
+  <title>Kessoku Hub | Edit Profile</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "ACCOUNT" }) %>
+
+  <!-- Welcome page -->
+  <main>
+    <!-- User profile header -->
+    <div id="user-profile-container">
+      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+    </div>
+
+    <!-- User profile functions -->
+    <div id="menu-section-container">
+      <!-- "Profile" section -->
+      <section id="edit-section" class="menu-section">
+        <form id="edit-form" class="account-form" target="_self" method="post">
+          <label id="username-label" class="form-label" for="username">Username</label>
+          <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero">
+
+          <label id="birthday" class="form-label" for="birthday">Birthday</label>
+          <div class="input-box">
+            <input id="birthday-input" class="input-field" type="date" name="birthday">
+          </div>
+
+          <label id="confirm-label" class="form-label" for="confirm-password">Confirm Password</label>
+          <div class="input-box">
+            <input id="confirm-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock">
+            <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+          </div>
+
+          <input class="submit-btn" type="submit" value="Sign Up">
+        </form>
+      </section>
+
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
