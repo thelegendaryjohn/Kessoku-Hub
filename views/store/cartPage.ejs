@@ -71,6 +71,7 @@
             <div class="total-price-container">
                 <div class="total-price-text">Total:</div>
                 <div class="total-price"></div>
+                <div class="dollar-sign">$</div>
             </div>
             <!-- Check out button -->
             <button class="check-out-btn">Check Out</button>
@@ -80,6 +81,11 @@
     <!-- Footer partial -->
     <%- include("../partials/htmlFooter.ejs") %>    
 </body>
+<% if (items) { %>
+    <script>
+        const items = <%- JSON.stringify(items) %>;
+    </script>
+<% } %>
 <script type="module">
     //initialize
 	const itemsList = document.querySelectorAll(".item-container");
@@ -88,12 +94,12 @@
     const qtyPlus = document.querySelectorAll(".qty-plus");
     const totalPrice = document.querySelector(".total-price");
     const deleteBtn = document.querySelectorAll(".svg-container");
-    // items.forEach((item)=>{
-    //     totalPrice.textContent = totalPrice.textContent + number(item.quantity * item.price);
-    // });
+    items.forEach((item)=>{
+        totalPrice.textContent = Number(totalPrice.textContent) + (Number(item.quantity) * Number(item.price));
+    });
     deleteBtn.forEach((btn)=>{
         btn.addEventListener("click",()=>{
-            console.log(btn.parentElement.parentElement.parentElement.id);
+            btn.parentElement.parentElement.parentElement.remove();
         })
     });
     //quantity selection buttons

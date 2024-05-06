@@ -1,5 +1,5 @@
 main {
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 }
 /* item list setting */
 #item-list-container {
@@ -59,7 +59,8 @@ main {
 	width: 100%;
 }
 .item-size {
-	width: 100%;
+	width: fit-content;
+	text-wrap: nowrap;
 }
 .item-price {
 	color: var(--ryo-color);
@@ -72,6 +73,7 @@ main {
 	flex-direction: row;
 	justify-content: center;
 	width: 100%;
+	gap: 0.5rem;
 }
 /* disable arrow for number input */
 input::-webkit-outer-spin-button,
@@ -81,11 +83,14 @@ input::-webkit-inner-spin-button {
 }
 .qty-input {
 	text-align: center;
-	border: 2px solid transparent;
+	border: 2px solid var(--accent-grey);
 	border-radius: 5px;
 	width: fit-content;
 	min-width: 1.5rem;
 	width: 100%;
+}
+.qty-input:focus {
+	outline: 2px solid var(--ryo-color);
 }
 .qty-btn {
 	font-size: 1.5rem;
@@ -123,6 +128,9 @@ input::-webkit-inner-spin-button {
 	gap: 1rem;
 }
 .total-price {
+	color: var(--ryo-color);
+}
+.dollar-sign {
 	color: var(--ryo-color);
 }
 .check-out-btn {
