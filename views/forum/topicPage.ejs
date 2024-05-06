@@ -6,9 +6,9 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/landing/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
   <link rel="stylesheet" href="/css/forum/topic.css">
-  <link rel="stylesheet" href="/css/landing/forum.css">
 </head>
 
 <body>
@@ -22,20 +22,17 @@
 
   <!-- Main content -->
   <main>
-    <!-- Thread functions partial -->
-    <%- include("../partials/forum/threadAction.ejs") %>
-
     <!-- Thread section -->
     <section id="content-section-container">
-      <% const numTopics = 7; %>
-      <% for (let i = 0; i < numTopics; i++) { %>
+      <% const numThread = 14; %>
+      <% for (let i = 0; i < numThread; i++) { %>
       <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
       <% } %>
     </section>
   </main>
 
-  <!-- Footer partial -->
-  <%- include("../partials/htmlFooter.ejs") %>
+  <!-- Forum action partial -->
+  <%- include("../partials/forum/forumAction.ejs") %>
 </body>
 
 </html>
