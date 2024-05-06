@@ -137,6 +137,11 @@
 		<%- include("../partials/htmlFooter.ejs") %>
 	</body>
 
+	<% if (items) { %>
+		<script>
+			const items = <%- JSON.stringify(items) %>;
+		</script>
+	<% } %>
 	<script type="module">
 		//initialize
 		const itemsList = document.querySelectorAll(".item-container");
