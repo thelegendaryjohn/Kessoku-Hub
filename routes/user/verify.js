@@ -1,4 +1,5 @@
 import "dotenv/config";
+import jwt from "jsonwebtoken";
 import { Router } from "express";
 import { User } from "../../models/user.js";
 //
@@ -29,6 +30,25 @@ router.post("/user/verify", async (req, res) => {
 
 		return res.status(200).json(data);
 	});
+});
+
+router.get("/user/verify/:token", async (req, res) => {
+	// Check if the token is valid
+	jwt.verify(
+		req.params.token,
+		process.env.JWT_SECRET,
+		async (err, decoded) => {
+			if (err) return res.status(400).json(err);
+			// Find the user
+			const user = User.findById(decoded.id);
+			if (!user) return res.status(404).send("User not found.");
+			// Verify the user
+			user.role = User.roles.user;
+			await user.save();
+
+			return res.status(200).send("User verified.");
+		}
+	);
 });
 
 export default router;

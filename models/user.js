@@ -65,7 +65,7 @@ userSchema.methods.verifyEmail = async function (cb) {
 		from: "Support <support@bocchi.band>",
 		to: ["azgamedeveloper@gmail.com"],
 		subject: "Kessoku Hub - Verify your email",
-		html: `Your verification link is <a href="${homelink}/user/verify?token=${token}">here</a>.`,
+		html: `Your verification link is <a href="${homelink}/user/verify/${token}">here</a>.`,
 	});
 
 	if (error) {
