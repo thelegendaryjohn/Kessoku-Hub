@@ -50,7 +50,7 @@ function clearErrorHighlight() {
 	document.querySelectorAll(".input-field").forEach((element) => {
 		element.classList.remove("error-highlight");
 	});
-	document.querySelectorAll(".signup-label").forEach((element) => {
+	document.querySelectorAll(".form-label").forEach((element) => {
 		element.classList.remove("error-label");
 	});
 }
