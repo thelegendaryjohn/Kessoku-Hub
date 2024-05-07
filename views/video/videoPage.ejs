@@ -6,7 +6,7 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Videos</title>
-  <link rel="stylesheet" href="/css/landing/video.css">
+  <link rel="stylesheet" href="/css/video/video.css">
 </head>
 
 <body>
@@ -18,29 +18,31 @@
   <%- include("../partials/navBar.ejs", { headerTitle: "VIDEOS", headerColor: "var(--ikuyo-color)" }) %>
   <main>
   <!-- Video section -->
-  <div id="series-container" class="section-container">
-    <h2 id="series-header" class="section-header .text-shadow">Episode Previews</h2>
-    <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-      episodeName: "Ep. 9 PV - Enoshima Escar",
-      episodeID: "q0tX10H8VGA",
-      isFeatured: true
-    }) %>
+  <section id="preview-section" class="">
+    <div id="video-container" class="section-container">
+      <h2 id="video-header" class="section-header .text-shadow">Episode Previews</h2>
+      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+        episodeName: "Ep. 9 PV - Enoshima Escar",
+        episodeID: "q0tX10H8VGA",
+        isFeatured: true
+      }) %>
 
-    <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-      episodeName: "Ep. 9 PV - Enoshima Escar",
-      episodeID: "q0tX10H8VGA",
-      isFeatured: true
-    }) %>
+      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+        episodeName: "Ep. 9 PV - Enoshima Escar",
+        episodeID: "q0tX10H8VGA",
+        isFeatured: true
+      }) %>
 
-    <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-      episodeName: "Ep. 9 PV - Enoshima Escar",
-      episodeID: "q0tX10H8VGA",
-      isFeatured: true
-    }) %>
-    </div>
+      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+        episodeName: "Ep. 9 PV - Enoshima Escar",
+        episodeID: "q0tX10H8VGA",
+        isFeatured: true
+      }) %>
+      </div>
+    </section>
 
-    <div id="series-container" class="section-container">
-      <h2 id="series-header" class="section-header">Music Videos</h2>
+    <div id="video-container" class="section-container">
+      <h2 id="video-header" class="section-header">Music Videos</h2>
       <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
         episodeName: "Seishun Complex - Music Video",
         episodeID: "Yd8kUoB72xU",
