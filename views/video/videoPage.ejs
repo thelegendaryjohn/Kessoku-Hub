@@ -5,7 +5,8 @@
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
 
-  <title>Kessoku Hub | Videos Page</title>
+  <title>Kessoku Hub | Videos</title>
+  <link rel="stylesheet" href="/css/landing/video.css">
 </head>
 
 <body>
@@ -15,9 +16,62 @@
 
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "VIDEOS", headerColor: "var(--ikuyo-color)" }) %>
-
+  <main>
   <!-- Video section -->
-  <%- include("../partials/landing/video-section/videoContainer") %>
+  <div id="series-container" class="section-container">
+    <h2 id="series-header" class="section-header .text-shadow">Episode Previews</h2>
+    <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+      episodeName: "Ep. 9 PV - Enoshima Escar",
+      episodeID: "q0tX10H8VGA",
+      isFeatured: true
+    }) %>
+
+    <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+      episodeName: "Ep. 9 PV - Enoshima Escar",
+      episodeID: "q0tX10H8VGA",
+      isFeatured: true
+    }) %>
+
+    <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+      episodeName: "Ep. 9 PV - Enoshima Escar",
+      episodeID: "q0tX10H8VGA",
+      isFeatured: true
+    }) %>
+    </div>
+
+    <div id="series-container" class="section-container">
+      <h2 id="series-header" class="section-header">Music Videos</h2>
+      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+        episodeName: "Seishun Complex - Music Video",
+        episodeID: "Yd8kUoB72xU",
+        isFeatured: true
+      }) %>
+  
+      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+        episodeName: "Ep. 9 PV - Enoshima Escar",
+        episodeID: "q0tX10H8VGA",
+        isFeatured: true
+      }) %>
+  
+      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+        episodeName: "Ep. 9 PV - Enoshima Escar",
+        episodeID: "q0tX10H8VGA",
+        isFeatured: true
+      }) %>
+      </div>
+
+    <script>
+      document.querySelectorAll(".episode").forEach(episode => {
+        episode.addEventListener("click", () => {
+          // console.log("Episode clicked");
+          episode.querySelector(".episode-embed-bg").classList.toggle("show");
+        })
+      })
+    </script>
+
+  <!--Music Video-->
+
+  </main>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
