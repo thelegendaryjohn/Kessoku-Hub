@@ -40,7 +40,7 @@
       }) %>
       </div>
     </section>
-
+  <section id="music-video-section">
     <div id="video-container" class="section-container">
       <h2 id="video-header" class="section-header">Music Videos</h2>
       <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
@@ -61,7 +61,7 @@
         isFeatured: true
       }) %>
       </div>
-
+  </section>
     <script>
       document.querySelectorAll(".episode").forEach(episode => {
         episode.addEventListener("click", () => {
