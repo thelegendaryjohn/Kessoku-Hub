@@ -68,6 +68,11 @@ label:not(.checkbox-container) {
 	width: 100%;
 }
 
+input[type="date"] {
+	-webkit-appearance: none;
+	background-color: transparent;
+}
+
 .pass-visibility {
 	position: absolute;
 	right: 2rem;

@@ -29,18 +29,23 @@
     <div id="menu-section-container">
       <!-- "Profile" section -->
       <section id="edit-section" class="menu-section">
-        <form id="edit-form" class="account-form" target="_self" method="post">
+
+        <form id="account-info-form" class="account-form" target="_self" method="post">
+          <h1 class="menu-section-title font-oswald">Account Info</h1>
+
           <label id="username-label" class="form-label" for="username">Username</label>
           <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero">
 
-          <label id="birthday" class="form-label" for="birthday">Birthday</label>
+          <label id="birthday-label" class="form-label" for="birthday">Birthday</label>
           <div class="input-box">
             <input id="birthday-input" class="input-field" type="date" name="birthday">
           </div>
 
-          <label id="confirm-label" class="form-label" for="confirm-password">Confirm Password</label>
+          <h1 class="menu-section-title font-oswald">Bio</h1>
+
+          <label id="bio-label" class="form-label" for="bio">Bio</label>
           <div class="input-box">
-            <input id="confirm-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock">
+            <textarea id="confirm-input" class="input-field" type="text" name="bio" placeholder="bocchitherock" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
             <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
           </div>
 
