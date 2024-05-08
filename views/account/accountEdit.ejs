@@ -23,6 +23,10 @@
     <!-- User profile header -->
     <div id="user-profile-container">
       <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+      <div id="change-profile-img-container">
+        <p>Change</p>
+      </div>
     </div>
 
     <!-- User profile functions -->
@@ -34,22 +38,23 @@
           <h1 class="menu-section-title font-oswald">Account Info</h1>
 
           <label id="username-label" class="form-label" for="username">Username</label>
-          <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero">
+          <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero" value="<%= user ? user.username : "" %>" >
 
           <label id="birthday-label" class="form-label" for="birthday">Birthday</label>
           <div class="input-box">
             <input id="birthday-input" class="input-field" type="date" name="birthday">
           </div>
 
+          <span class="form-spacer"></span>
           <h1 class="menu-section-title font-oswald">Bio</h1>
+          <span class="form-spacer"></span>
 
-          <label id="bio-label" class="form-label" for="bio">Bio</label>
+          <!-- <label id="bio-label" class="form-label" for="bio">Bio</label> -->
           <div class="input-box">
-            <textarea id="confirm-input" class="input-field" type="text" name="bio" placeholder="bocchitherock" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-            <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+            <textarea id="bio-input" class="input-field" type="text" name="bio" placeholder="Something about yourself..." onblur='this.style.height=4 + "rem"'; oninput='this.style.height = "";this.style.height = this.scrollHeight - 20 + "px"' onfocus='this.style.height = "";this.style.height = this.scrollHeight - 20 + "px"'></textarea>
           </div>
 
-          <input class="submit-btn" type="submit" value="Sign Up">
+          <input class="submit-btn" type="submit" value="Save Changes">
         </form>
       </section>
 

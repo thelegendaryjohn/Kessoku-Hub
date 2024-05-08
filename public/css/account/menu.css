@@ -7,9 +7,10 @@ a {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 1.5rem 0;
+	margin: 1.5rem 0;
 	height: 100%;
 	gap: 1rem;
+	border-radius: 100%;
 }
 
 #user-profile-container #profile-img {
@@ -55,6 +56,10 @@ a {
 
 .function-btn:hover {
 	background-color: var(--accent-lightgrey);
+}
+
+.function-btn:not(:hover) {
+	background-color: transparent;
 }
 
 .function-btn .function-img {
