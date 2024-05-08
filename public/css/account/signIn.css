@@ -67,6 +67,11 @@ label:not(.checkbox-container) {
 	border-style: none;
 }
 
+input[type="date"] {
+	-webkit-appearance: none;
+	background-color: transparent;
+}
+
 .input-field:focus {
 	outline: none;
 }
