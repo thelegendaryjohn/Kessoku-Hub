@@ -31,6 +31,15 @@ main {
 	padding-left: 1rem;
 }
 
+.input-field,
+.submit-btn {
+	border-radius: 0.8rem;
+}
+
+.input-field {
+	padding: 1.25rem;
+}
+
 .alert {
 	margin: 0.25rem 0rem;
 	color: red;
@@ -41,6 +50,7 @@ input {
 }
 
 label {
+	user-select: none;
 	z-index: 1;
 }
 
@@ -117,8 +127,9 @@ input[type="date"] {
 
 .submit-btn {
 	font-family: "Oswald", sans-serif;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: bold;
+	padding: 0.8rem;
 	color: var(--body-color);
 	background-color: var(--accent-purple);
 	border: 1px solid var(--accent-purple);
