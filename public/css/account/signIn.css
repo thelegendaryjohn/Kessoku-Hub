@@ -33,8 +33,11 @@ main {
 
 .input-field,
 .submit-btn {
+	border-radius: 0.8rem;
+}
+
+.input-field {
 	padding: 1.25rem;
-	border-radius: 10px;
 }
 
 .alert {
@@ -47,6 +50,7 @@ input {
 }
 
 label {
+	user-select: none;
 	z-index: 1;
 }
 
@@ -66,11 +70,6 @@ label:not(.checkbox-container) {
 
 .input-box > .input-field {
 	width: 100%;
-}
-
-input[type="date"] {
-	-webkit-appearance: none;
-	background-color: transparent;
 }
 
 .pass-visibility {
@@ -109,8 +108,9 @@ input[type="date"] {
 
 .submit-btn {
 	font-family: "Oswald", sans-serif;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: bold;
+	padding: 0.8rem;
 	color: var(--body-color);
 	background-color: var(--accent-purple);
 	border: 1px solid var(--accent-purple);
