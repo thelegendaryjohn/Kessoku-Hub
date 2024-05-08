@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
-    <a href="/account/menu">
+    <a href="<%= user ? "/account/menu" : "/account" %>">
       <div id="profile-container">
         <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
         <h1 id="profile-name"><%= 
