@@ -31,6 +31,15 @@ main {
 	padding-left: 1rem;
 }
 
+.input-field,
+.submit-btn {
+	border-radius: 0.8rem;
+}
+
+.input-field {
+	padding: 1.25rem;
+}
+
 .alert {
 	margin: 0.25rem 0rem;
 	color: red;
