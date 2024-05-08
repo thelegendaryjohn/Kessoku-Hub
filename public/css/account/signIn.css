@@ -88,6 +88,11 @@ label:not(.checkbox-container) {
 	width: 2rem;
 }
 
+.input-field:focus {
+	outline: none;
+	border: 2px solid var(--nijika-color);
+}
+
 .input-field::-ms-reveal,
 .input-field::-ms-clear {
 	display: none;
