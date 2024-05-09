@@ -60,6 +60,27 @@ textarea {
 	padding-top: 1rem;
 }
 
+.longtext-input-box {
+	position: relative;
+}
+
+.char-count-container {
+	user-select: none;
+	position: absolute;
+	right: 1.5rem;
+	bottom: 0.6rem;
+	color: var(--accent-grey);
+	font-size: 1rem;
+}
+
+#bio-input:focus + .char-count-container {
+	display: block;
+}
+
+#bio-input:not(:focus) + .char-count-container {
+	display: none;
+}
+
 .submit-btn {
 	margin-top: 3rem;
 }
