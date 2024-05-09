@@ -68,12 +68,14 @@
               const currentCount = document.querySelector(".char-count-current");
               currentCount.textContent = characterCount;
 
+              // Get maxlength
+              const maxlength = parseInt(this.getAttribute("maxlength"));
+
+              // Trim content to maxlength on input
+              this.value = this.value.slice(0, maxlength - 1);
+
               // Change count color to red if =<500 chars, else grey
-              if (characterCount >= 500) {
-                countContainer.style.color = "var(--ikuyo-color)";
-              } else {
-                countContainer.style.color = "var(--accent-grey)";
-              }
+              characterCount >= 500 ? countContainer.style.color = "var(--ikuyo-color)" : countContainer.style.color = "var(--accent-grey)";
             });
           </script>
 
