@@ -38,7 +38,7 @@
           <h1 class="menu-section-title font-oswald">Account Info</h1>
 
           <label id="username-label" class="form-label" for="username">Username</label>
-          <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero" value="<%= user ? user.username : "" %>" >
+          <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero" value="<%= user ? user.username : "" %>">
 
           <label id="birthday-label" class="form-label" for="birthday">Birthday</label>
           <div class="input-box">
@@ -50,9 +50,32 @@
           <span class="form-spacer"></span>
 
           <!-- <label id="bio-label" class="form-label" for="bio">Bio</label> -->
-          <div class="input-box">
-            <textarea id="bio-input" class="input-field" type="text" name="bio" placeholder="Something about yourself..." onblur='this.style.height=4 + "rem"'; oninput='this.style.height = "";this.style.height = this.scrollHeight - 20 + "px"' onfocus='this.style.height = "";this.style.height = this.scrollHeight - 20 + "px"'></textarea>
+          <div class="input-box longtext-input-box">
+            <textarea id="bio-input" class="input-field" type="text" name="bio" placeholder="Something about yourself..." maxlength="500" onblur='this.style.height=4 + "rem"' ; oninput='this.style.height = "";this.style.height = this.scrollHeight - 15 + "px"' onfocus='this.style.height = "";this.style.height = this.scrollHeight - 20 + "px"'></textarea>
+
+            <div class="char-count-container">
+              <span class="char-count-current">0 </span>
+              <span class="char-count-max">/ 500</span>
+            </div>
           </div>
+
+          <script>
+            // Set character count elements
+            document.querySelector("#bio-input").addEventListener("input", function() {
+              // Update character count on input
+              const countContainer = document.querySelector(".char-count-container");
+              const characterCount = this.value.length;
+              const currentCount = document.querySelector(".char-count-current");
+              currentCount.textContent = characterCount;
+
+              // Change count color to red if =<500 chars, else grey
+              if (characterCount >= 500) {
+                countContainer.style.color = "var(--ikuyo-color)";
+              } else {
+                countContainer.style.color = "var(--accent-grey)";
+              }
+            });
+          </script>
 
           <input class="submit-btn" type="submit" value="Save Changes">
         </form>
