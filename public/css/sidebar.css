@@ -62,7 +62,8 @@
 	text-wrap: nowrap;
 }
 
-.nav-btn:hover {
+.nav-btn:hover,
+#profile-container:hover > #profile-name {
 	transition: 0.2s;
 	color: white !important;
 }
