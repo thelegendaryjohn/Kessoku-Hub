@@ -18,7 +18,7 @@ router.get("/account/menu", (req, res) => {
 	render(req, res, "account/accountMenu");
 });
 
-router.get("/account/edit", (req, res) => {
+router.get("/account/preferences/profile", (req, res) => {
 	render(req, res, "account/accountEdit");
 })
 
