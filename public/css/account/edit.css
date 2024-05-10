@@ -73,11 +73,19 @@ textarea {
 	font-size: 1rem;
 }
 
-#bio-input:focus + .char-count-container {
+#bio-input:not(:focus) {
+	background: -webkit-linear-gradient(top, #000000 30%, #fff);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	overflow: hidden;
+}
+
+#bio-input:focus ~ .char-count-container {
 	display: block;
 }
 
-#bio-input:not(:focus) + .char-count-container {
+#bio-input:not(:focus) ~ .char-count-container {
 	display: none;
 }
 
