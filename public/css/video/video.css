@@ -5,7 +5,7 @@
 #video-container {
 	display: flex;
 	flex-direction: column;
-	padding: 5px 10px;
+	padding: 1rem 2rem;
 	gap: 1rem;
 }
 
@@ -17,11 +17,22 @@
 
 .episode-cover-container {
 	display: flex;
+	position: relative;
 	justify-content: center;
 	align-items: center;
 	overflow: clip;
 	border: 0px solid #000;
 	border-radius: 10px;
+}
+
+.overlay-video-length {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	color: white;
+	padding: 0 1rem 0 1rem;
+	bottom: 1rem;
+	right: 1rem;
 }
 
 .episode-cover {
