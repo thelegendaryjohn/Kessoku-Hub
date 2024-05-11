@@ -31,27 +31,16 @@ main {
 	padding-left: 1rem;
 }
 
-.input-field,
-.submit-btn {
-	border-radius: 0.8rem;
-}
-
-.input-field {
-	padding: 1.25rem;
-}
-
 .alert {
 	margin: 0.25rem 0rem;
 	color: red;
 }
 
-input,
-textarea {
+input {
 	font-size: 1.2rem;
 }
 
 label {
-	user-select: none;
 	z-index: 1;
 }
 
@@ -78,11 +67,6 @@ label:not(.checkbox-container) {
 	border-style: none;
 }
 
-input[type="date"] {
-	-webkit-appearance: none;
-	background-color: transparent;
-}
-
 .input-field:focus {
 	outline: none;
 }
@@ -104,11 +88,6 @@ input[type="date"] {
 	width: 2rem;
 }
 
-.input-field:focus {
-	outline: none;
-	border: 2px solid var(--nijika-color);
-}
-
 .input-field::-ms-reveal,
 .input-field::-ms-clear {
 	display: none;
@@ -127,12 +106,9 @@ input[type="date"] {
 }
 
 .submit-btn {
-	transition: 0.12s;
-	cursor: pointer;
 	font-family: "Oswald", sans-serif;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: bold;
-	padding: 0.8rem;
 	color: var(--body-color);
 	background-color: var(--accent-purple);
 	border: 1px solid var(--accent-purple);
