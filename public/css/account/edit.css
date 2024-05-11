@@ -2,17 +2,6 @@ main {
 	flex-direction: column;
 	justify-content: flex-start;
 }
-#user-profile-container {
-	position: relative;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-#user-profile-container {
-	position: relative;
-	overflow: hidden;
-	cursor: pointer;
-}
 
 #user-profile-container {
 	position: relative;
