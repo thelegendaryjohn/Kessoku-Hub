@@ -37,6 +37,7 @@ main {
 }
 
 input {
+input {
 	font-size: 1.2rem;
 }
 
@@ -59,9 +60,15 @@ label:not(.checkbox-container) {
 	border: 1px solid var(--accent-grey);
 	border-radius: 10px;
 	overflow: hidden;
+	border: 1px solid var(--accent-grey);
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 .input-field {
+	width: 100%;
+	padding: 1.5rem;
+	border-style: none;
 	width: 100%;
 	padding: 1.5rem;
 	border-style: none;
@@ -69,6 +76,23 @@ label:not(.checkbox-container) {
 
 .input-field:focus {
 	outline: none;
+}
+
+.input-box:focus-within {
+	border-width: 2px;
+	border-color: var(--nijika-color);
+}
+
+.input-function {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 9rem;
+	cursor: pointer;
+}
+
+.pass-visibility-img {
+	width: 2rem;
 }
 
 .input-box:focus-within {
@@ -107,6 +131,7 @@ label:not(.checkbox-container) {
 
 .submit-btn {
 	font-family: "Oswald", sans-serif;
+	font-size: 1.5rem;
 	font-size: 1.5rem;
 	font-weight: bold;
 	color: var(--body-color);
