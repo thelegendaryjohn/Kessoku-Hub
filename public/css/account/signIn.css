@@ -31,15 +31,6 @@ main {
 	padding-left: 1rem;
 }
 
-.input-field,
-.submit-btn {
-	border-radius: 0.8rem;
-}
-
-.input-field {
-	padding: 1.25rem;
-}
-
 .alert {
 	margin: 0.25rem 0rem;
 	color: red;
@@ -67,27 +58,36 @@ label:not(.checkbox-container) {
 	z-index: 0;
 	position: relative;
 	display: flex;
-}
-
-.input-box > .input-field {
-	width: 100%;
-}
-
-.pass-visibility {
-	position: absolute;
-	right: 2rem;
-	width: 2rem;
-	height: 100%;
-	cursor: pointer;
+	border: 1px solid var(--accent-grey);
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 .input-field {
-	border: 1px solid var(--accent-grey);
+	width: 100%;
+	padding: 1.5rem;
+	border-style: none;
 }
 
 .input-field:focus {
 	outline: none;
-	border: 2px solid var(--nijika-color);
+}
+
+.input-box:focus-within {
+	border-width: 2px;
+	border-color: var(--nijika-color);
+}
+
+.input-function {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 9rem;
+	cursor: pointer;
+}
+
+.pass-visibility-img {
+	width: 2rem;
 }
 
 .input-field::-ms-reveal,
@@ -117,6 +117,8 @@ label:not(.checkbox-container) {
 	color: var(--body-color);
 	background-color: var(--accent-purple);
 	border: 1px solid var(--accent-purple);
+	padding: 1.25rem;
+	border-radius: 10px;
 }
 
 .submit-btn:hover {
