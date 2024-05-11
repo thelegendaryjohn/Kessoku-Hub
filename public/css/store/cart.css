@@ -54,7 +54,7 @@ main {
 	flex-direction: row;
 }
 .item-name {
-	width: 100%;
+	width: auto;
 }
 .item-size {
 	width: fit-content;
@@ -150,4 +150,23 @@ input::-webkit-inner-spin-button {
 	border: 2px solid var(--ryo-color);
 	color: var(--body-color);
 	cursor: pointer;
+}
+/* desktop/landscape view settings */
+@media only screen and (min-width: 763px) {
+	/* change font size */
+	main {
+		font-size: 2rem;
+	}
+	.item-container {
+		height: auto;
+	}
+	.item-image {
+		height: 10rem;
+	}
+	.item-price {
+		text-align: left;
+	}
+	.trash-icon {
+		min-width: 7rem;
+	}
 }
