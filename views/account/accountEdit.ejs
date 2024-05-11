@@ -38,7 +38,9 @@
           <h1 class="menu-section-title font-oswald">Account Info</h1>
 
           <label id="username-label" class="form-label" for="username">Username</label>
-          <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero" autocapitalize="off" value="<%= user ? user.username : "" %>">
+          <div class="input-box">
+            <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero" autocapitalize="off" value="<%= user ? user.username : "" %>">
+          </div>
 
           <label id="birthday-label" class="form-label" for="birthday">Birthday</label>
           <div class="input-box">
