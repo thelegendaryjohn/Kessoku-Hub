@@ -109,6 +109,11 @@ input[type="date"] {
 	border: 2px solid var(--nijika-color);
 }
 
+.input-field:focus {
+	outline: none;
+	border: 2px solid var(--nijika-color);
+}
+
 .input-field::-ms-reveal,
 .input-field::-ms-clear {
 	display: none;
@@ -138,6 +143,14 @@ input[type="date"] {
 	border: 1px solid var(--accent-purple);
 	padding: 1.25rem;
 	border-radius: 10px;
+}
+
+.submit-btn:hover {
+	opacity: 0.7;
+}
+
+.submit-btn:not(:hover) {
+	opacity: 1;
 }
 
 .submit-btn:hover {
