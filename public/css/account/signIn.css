@@ -81,6 +81,7 @@ label:not(.checkbox-container) {
 	align-items: center;
 	justify-content: center;
 	width: 9rem;
+  cursor: pointer;
 }
 
 .pass-visibility-img {
@@ -90,6 +91,11 @@ label:not(.checkbox-container) {
 
 .pass-visibility-img:hover {
 	opacity: 0.7;
+}
+
+.input-field:focus {
+	outline: none;
+	border: 2px solid var(--nijika-color);
 }
 
 .input-field::-ms-reveal,
