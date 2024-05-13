@@ -1,6 +1,8 @@
 <a class="post-link-container" href="/forum/thread">
   <!-- Post link -->
-  <%- include("threadPost.ejs") %>
+  <%- include("threadPost.ejs", {
+    postTitle: locals.post.postTitle,
+  }) %>
 
   <!-- Post link arrow -->
   <img class="post-link-arrow" src="/images/button/btn-next.svg" alt="Go to thread">

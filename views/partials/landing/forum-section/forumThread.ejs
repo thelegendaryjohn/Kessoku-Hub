@@ -2,13 +2,17 @@
   <!-- Thread header -->
   <div class="thread-header">
     <a href="#">
-      <h3 class="thread-title">Walkman Colaboration</h3>
+      <h3 class="thread-title"><%= locals.threadTitle %></h3>
     </a>
   </div>
 
   <!-- Thread content -->
   <div class="thread-content">
     <!-- Post link container -->
-    <%- include("postContainer.ejs") %>
+    <% locals.threadPosts.forEach((p, i) => { %>
+    <%- include("postContainer.ejs", {
+      post: locals.threadPosts[i],
+    }) %>
+    <% }); %>
   </div>
 </div>
