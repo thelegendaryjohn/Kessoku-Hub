@@ -22,10 +22,6 @@ router.get("/account/preferences/profile", (req, res) => {
 	render(req, res, "account/accountEdit");
 })
 
-router.get("/account/security/settings", (req, res) => {
-	render(req, res, "account/accountSettings");
-})
-
 router.get("/account/logout", (req, res, next) => {
 	// Logs the user out
 	logout(req, res, next);
