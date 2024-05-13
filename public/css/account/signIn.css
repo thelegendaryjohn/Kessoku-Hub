@@ -36,11 +36,13 @@ main {
 	color: red;
 }
 
-input {
+input,
+textarea {
 	font-size: 1.2rem;
 }
 
 label {
+	user-select: none;
 	z-index: 1;
 }
 
@@ -65,15 +67,11 @@ label:not(.checkbox-container) {
 	width: 100%;
 	padding: 1.5rem;
 	border-style: none;
-}
-
-.input-field:focus {
 	outline: none;
 }
 
 .input-box:focus-within {
-	border-width: 2px;
-	border-color: var(--nijika-color);
+	border: 2px solid var(--nijika-color);
 }
 
 .input-function {
@@ -81,7 +79,7 @@ label:not(.checkbox-container) {
 	align-items: center;
 	justify-content: center;
 	width: 9rem;
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .pass-visibility-img {
@@ -91,11 +89,6 @@ label:not(.checkbox-container) {
 
 .pass-visibility-img:hover {
 	opacity: 0.7;
-}
-
-.input-field:focus {
-	outline: none;
-	border: 2px solid var(--nijika-color);
 }
 
 .input-field::-ms-reveal,
