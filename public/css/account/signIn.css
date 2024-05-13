@@ -83,7 +83,6 @@ label:not(.checkbox-container) {
 }
 
 .pass-visibility-img {
-	cursor: pointer;
 	width: 2rem;
 }
 
@@ -109,10 +108,12 @@ label:not(.checkbox-container) {
 }
 
 .submit-btn {
+	transition: 0.12s;
+	cursor: pointer;
 	font-family: "Oswald", sans-serif;
-	font-size: 1.5rem;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: bold;
+	padding: 0.8rem;
 	color: var(--body-color);
 	background-color: var(--accent-purple);
 	border: 1px solid var(--accent-purple);
