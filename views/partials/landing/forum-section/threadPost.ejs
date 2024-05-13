@@ -1,7 +1,11 @@
 <div class="post-container">
   <!-- Post link text -->
-  <p class="post-title"><%= locals.postTitle %></p>
+  <p class="post-title"><%= locals.title %></p>
 
   <!-- Post status -->
-  <%- include("forumStatus.ejs") %>
+  <%- include("forumStatus.ejs", {
+    views: locals.status.views,
+    comments: locals.status.comments,
+    likes: locals.status.likes,
+  }) %>
 </div>
