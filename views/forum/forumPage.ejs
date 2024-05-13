@@ -20,11 +20,11 @@
 
   <!-- Main content -->
   <main>
-    <!-- Topic section -->
+    <!-- Thread section -->
     <section id="content-section-container">
-      <% const numTopics = 14; %>
-      <% for (let i = 0; i < numTopics; i++) { %>
-      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+      <% const numThreads = 14; %>
+      <% for (let i = 0; i < numThreads; i++) { %>
+      <%- include("../partials/landing/forum-section/forumThread.ejs") %>
       <% } %>
     </section>
   </main>

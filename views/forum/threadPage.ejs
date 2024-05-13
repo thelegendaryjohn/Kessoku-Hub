@@ -8,25 +8,25 @@
   <title>Kessoku Hub | Forum</title>
   <link rel="stylesheet" href="/css/landing/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
-  <link rel="stylesheet" href="/css/forum/topic.css">
+  <link rel="stylesheet" href="/css/forum/thread.css">
 </head>
 
 <body>
-  <% const topicName = "THIS IS TOPIC 1"; %>
+  <% const threadName = "THIS IS TOPIC 1"; %>
 
   <!-- Sidebar -->
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
-  <%- include("../partials/navBar.ejs", { headerTitle: topicName, headerColor: "var(--accent-purple)" }) %>
+  <%- include("../partials/navBar.ejs", { headerTitle: threadName, headerColor: "var(--accent-purple)" }) %>
 
   <!-- Main content -->
   <main>
-    <!-- Thread section -->
+    <!-- Post section -->
     <section id="content-section-container">
-      <% const numThread = 14; %>
-      <% for (let i = 0; i < numThread; i++) { %>
-      <%- include("../partials/landing/forum-section/forumTopic.ejs") %>
+      <% const numPost = 14; %>
+      <% for (let i = 0; i < numPost; i++) { %>
+      <%- include("../partials/landing/forum-section/forumThread.ejs") %>
       <% } %>
     </section>
   </main>
