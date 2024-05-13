@@ -7,8 +7,8 @@ router.get("/forum", (req, res) => {
 	render(req, res, "forum/forumPage");
 });
 
-router.get("/forum/topic", (req, res) => {
-	render(req, res, "forum/topicPage");
+router.get("/forum/thread", (req, res) => {
+	render(req, res, "forum/threadPage");
 });
 
 export default router;
