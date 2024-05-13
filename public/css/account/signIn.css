@@ -67,15 +67,11 @@ label:not(.checkbox-container) {
 	width: 100%;
 	padding: 1.5rem;
 	border-style: none;
-}
-
-.input-field:focus {
 	outline: none;
 }
 
 .input-box:focus-within {
-	border-width: 2px;
-	border-color: var(--nijika-color);
+	border: 2px solid var(--nijika-color);
 }
 
 .input-function {
@@ -90,10 +86,8 @@ label:not(.checkbox-container) {
 	width: 2rem;
 }
 
-.input-field:focus {
-	outline: none;
-	border: 2px solid var(--nijika-color);
-
+.pass-visibility-img:hover {
+	opacity: 0.7;
 }
 
 .input-field::-ms-reveal,
