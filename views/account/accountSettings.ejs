@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/menu.css">
+  <link rel="stylesheet" href="/css/account/signIn.css">
+  <link rel="stylesheet" href="/css/account/edit.css">
+  <link rel="stylesheet" href="/css/account/settings.css">
+
+  <title>Kessoku Hub | Edit Profile</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "ACCOUNT" }) %>
+
+  <!-- Welcome page -->
+  <main>
+    <!-- Account settings functions -->
+    <div id="menu-section-container">
+      <!-- "Profile" section -->
+      <section id="settings-section" class="menu-section">
+
+        <form id="account-info-form" class="account-form" target="_self" method="post">
+          <h1 class="menu-section-title font-oswald">Verify Account</h1>
+
+          <label id="email-label" class="form-label" for="email">Email</label>
+          <div class="input-box">
+            <input id="email-input" class="input-field" type="email" name="email" placeholder="guitarhero@kessoku.band" autocapitalize="off">
+
+            <div class="input-function">
+              <div class="verify-btn-container">
+                <p class="verify-btn-text">Verify</p>
+              </div>
+            </div>
+          </div>
+
+          <span class="form-spacer"></span>
+          <h1 class="menu-section-title font-oswald">Change Password</h1>
+
+          <label id="password-signup-label" class="form-label" for="password">Old Password</label>
+          <div class="input-box">
+            <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+
+            <div class="input-function pass-visibility">
+              <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+            </div>
+          </div>
+          <span id="password-signup-alert" class="alert">[Placeholder]</span>
+
+          <label id="password-signup-label" class="form-label" for="password">New Password</label>
+          <div class="input-box">
+            <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+
+            <div class="input-function pass-visibility">
+              <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+            </div>
+          </div>
+          <span id="password-signup-alert" class="alert">[Placeholder]</span>
+
+          <label id="confirm-signup-label" class="form-label" for="confirm-password">Confirm New Password</label>
+          <div class="input-box">
+            <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" required>
+
+            <div class="input-function pass-visibility">
+              <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+            </div>
+          </div>
+          <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
+
+
+          <input class="submit-btn" type="submit" value="Save Changes">
+        </form>
+      </section>
+
+      <script src="/js/showHidePass.js"></script>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
