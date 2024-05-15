@@ -14,13 +14,13 @@ router.get("/account/success", (req, res) => {
 	});
 });
 
-router.get("/account/menu", (req, res) => {
+router.get("/account/settings", (req, res) => {
 	render(req, res, "account/accountMenu");
 });
 
-router.get("/account/preferences/profile", (req, res) => {
+router.get("/account/profile", (req, res) => {
 	render(req, res, "account/accountEdit");
-})
+});
 
 router.get("/account/logout", (req, res, next) => {
 	// Logs the user out
