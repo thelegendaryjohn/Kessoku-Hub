@@ -31,22 +31,18 @@ main {
 	padding-left: 1rem;
 }
 
-.input-field,
-.submit-btn {
-	padding: 1.25rem;
-	border-radius: 10px;
-}
-
 .alert {
 	margin: 0.25rem 0rem;
 	color: red;
 }
 
-input {
+input,
+textarea {
 	font-size: 1.2rem;
 }
 
 label {
+	user-select: none;
 	z-index: 1;
 }
 
@@ -62,22 +58,36 @@ label:not(.checkbox-container) {
 	z-index: 0;
 	position: relative;
 	display: flex;
-}
-
-.input-box > .input-field {
-	width: 100%;
-}
-
-.pass-visibility {
-	position: absolute;
-	right: 2rem;
-	width: 2rem;
-	height: 100%;
-	cursor: pointer;
+	border: 1px solid var(--accent-grey);
+	border-radius: 10px;
+	overflow: hidden;
 }
 
 .input-field {
-	border: 1px solid var(--accent-grey);
+	width: 100%;
+	padding: 1.5rem;
+	border-style: none;
+	outline: none;
+}
+
+.input-box:focus-within {
+	border: 2px solid var(--nijika-color);
+}
+
+.input-function {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 9rem;
+	cursor: pointer;
+}
+
+.pass-visibility-img {
+	width: 2rem;
+}
+
+.pass-visibility-img:hover {
+	opacity: 0.7;
 }
 
 .input-field::-ms-reveal,
@@ -98,12 +108,25 @@ label:not(.checkbox-container) {
 }
 
 .submit-btn {
+	transition: 0.12s;
+	cursor: pointer;
 	font-family: "Oswald", sans-serif;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: bold;
+	padding: 0.8rem;
 	color: var(--body-color);
 	background-color: var(--accent-purple);
 	border: 1px solid var(--accent-purple);
+	padding: 1.25rem;
+	border-radius: 10px;
+}
+
+.submit-btn:hover {
+	opacity: 0.7;
+}
+
+.submit-btn:not(:hover) {
+	opacity: 1;
 }
 
 .signin-redirect-container {

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/menu.css">
+  <link rel="stylesheet" href="/css/account/signIn.css">
+  <link rel="stylesheet" href="/css/account/edit.css">
+
+  <title>Kessoku Hub | Edit Profile</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "ACCOUNT" }) %>
+
+  <!-- Welcome page -->
+  <main>
+    <!-- User profile header -->
+    <div id="user-profile-container">
+      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+      <div id="change-profile-img-container">
+        <p>Change</p>
+      </div>
+    </div>
+
+    <!-- User profile functions -->
+    <div id="menu-section-container">
+      <!-- "Profile" section -->
+      <section id="edit-section" class="menu-section">
+
+        <form id="account-info-form" class="account-form" target="_self" method="post">
+          <h1 class="menu-section-title font-oswald">Account Info</h1>
+
+          <label id="username-label" class="form-label" for="username">Username</label>
+          <div class="input-box">
+            <input id="username-input" class="input-field" type="text" name="username" placeholder="guitarhero" autocapitalize="off" value="<%= user ? user.username : "" %>">
+          </div>
+
+          <label id="birthday-label" class="form-label" for="birthday">Birthday</label>
+          <div class="input-box">
+            <input id="birthday-input" class="input-field" type="date" name="birthday">
+          </div>
+
+          <span class="form-spacer"></span>
+          <h1 class="menu-section-title font-oswald">Bio</h1>
+          <span class="form-spacer"></span>
+
+          <!-- <label id="bio-label" class="form-label" for="bio">Bio</label> -->
+          <div class="input-box longtext-input-box">
+            <textarea id="bio-input" class="input-field" type="text" name="bio" maxlength="500" onblur='this.style.height=4 + "rem"' ; oninput='this.style.height = "";this.style.height = this.scrollHeight - 15 + "px"' onfocus='this.style.height = "";this.style.height = this.scrollHeight - 20 + "px"'></textarea>
+
+            <div class="char-count-container">
+              <span class="char-count-current">0 </span>
+              <span class="char-count-max">/ 500</span>
+            </div>
+          </div>
+
+          <script>
+            // Set character count elements
+            document.querySelector("#bio-input").addEventListener("input", function() {
+              // Update character count on input
+              const countContainer = document.querySelector(".char-count-container");
+              const characterCount = this.value.length;
+              const currentCount = document.querySelector(".char-count-current");
+              currentCount.textContent = characterCount;
+
+              // Get maxlength
+              const maxlength = parseInt(this.getAttribute("maxlength"));
+
+              // Trim content to maxlength on input
+              this.value = this.value.slice(0, maxlength - 1);
+
+              // Change count color to red if =<500 chars, else grey
+              characterCount >= 500 ? countContainer.style.color = "var(--ikuyo-color)" : countContainer.style.color = "var(--accent-grey)";
+            });
+          </script>
+
+          <input class="submit-btn" type="submit" value="Save Changes">
+        </form>
+      </section>
+
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
