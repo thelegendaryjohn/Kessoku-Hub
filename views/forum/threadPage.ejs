@@ -24,10 +24,13 @@
   <main>
     <!-- Post section -->
     <section id="content-section-container">
-      <% const numPost = 14; %>
-      <% for (let i = 0; i < numPost; i++) { %>
-      <%- include("../partials/landing/forum-section/forumThread.ejs") %>
-      <% } %>
+      <% thread.forEach((t, i) => { %>
+      <%- include("../partials/landing/forum-section/forumThread.ejs", { 
+            threadTitle: thread[i].threadTitle,
+            threadPosts: thread[i].threadPosts,
+            threadStatus: thread[i].threadStatus,
+          }) %>
+      <% }); %>
     </section>
   </main>
 
