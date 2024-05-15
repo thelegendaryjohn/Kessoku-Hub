@@ -3,6 +3,12 @@
   <div class="thread-header">
     <a href="#">
       <h3 class="thread-title"><%= locals.threadTitle %></h3>
+
+      <div class="thread-status">
+        <%- include("forumStatus.ejs", {
+          status: locals.threadStatus
+        }) %>
+      </div>
     </a>
   </div>
 
