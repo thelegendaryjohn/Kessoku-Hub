@@ -31,8 +31,7 @@
 
       <!-- Sign up form -->
       <form id="signup-form" class="account-form" target="_self" method="post">
-
-        <label id="username-signup-label" class="signup-label" for="username">Username</label>
+        <label id="username-signup-label" class="form-label" for="username">Username</label>
         <div class="input-box">
           <input id="username-signup-input" class="input-field" type="username" name="username" placeholder="guitarhero" autocapitalize="off" required>
         </div>
@@ -41,7 +40,6 @@
         <label id="password-signup-label" class="signup-label" for="password">Password</label>
         <div class="input-box">
           <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
-
           <div class="input-function pass-visibility">
             <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
           </div>
@@ -51,7 +49,6 @@
         <label id="confirm-signup-label" class="form-label" for="confirm-password">Confirm Password</label>
         <div class="input-box">
           <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" required>
-
           <div class="input-function pass-visibility">
             <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
           </div>
@@ -85,7 +82,7 @@
         <label for="password">Password</label>
 
         <div class="input-box">
-          <input id="password-login-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+          <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
 
           <div class="input-function pass-visibility">
             <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
@@ -112,8 +109,11 @@
         <p class="font-poppins signin-ask">Don’t have an account?</p><button id="signup" class="font-poppins signin-link">Sign up</button>
       </span>
     </section>
+
+    <script src="/js/account.js"></script>
+    <script src="/js/showHidePass.js"></script>
   </main>
-  <script src="/js/account.js"></script>
+
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
