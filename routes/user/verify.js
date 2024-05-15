@@ -1,44 +1,52 @@
 import "dotenv/config";
+import jwt from "jsonwebtoken";
 import { Router } from "express";
-import nodemailer from "nodemailer";
+import { User } from "../../models/user.js";
 //
 const router = Router();
-//
-let transporter = nodemailer.createTransport({
-	host: "smtp-relay.brevo.com",
-	port: 587,
-	secure: false, // true for 465, false for other ports
-	auth: {
-		user: process.env.EMAIL_USER,
-		pass: process.env.EMAIL_PASS,
-	},
-});
-// verify connection configuration
-transporter.verify(function (error, success) {
-	if (error) {
-		console.log(error);
+
+router.post("/user/verify", async (req, res) => {
+	const email = req.body.email;
+	if (!email) return res.status(400).send("Email is required.");
+	// Set session to verifying
+	if (!req.session.verifying) {
+		req.session.verifying = true;
 	} else {
-		console.log("Server is ready to take our messages: " + success);
+		return res.status(400).send("Already verifying.");
 	}
+	// Also prevents non logged in users from verifying
+	if (!req.session.user) {
+		req.session.verifying = false;
+		return res.status(401).send("Unauthorized.");
+	}
+	// Prevents alerady verified users from verifying
+	if (req.session.user.role !== User.roles.unverified) {
+		req.session.verifying = false;
+		return res.status(409).send("User is already verified.");
+	}
+	// Find the user
+	User.verifyEmail(function (data, err) {
+		if (err) return res.status(500).json(err);
+
+		return res.status(200).json(data);
+	});
 });
 
-router.get("/user/verify", (req, res) => {
-	// send mail with defined transport object
-	transporter.sendMail(
-		{
-			from: "support@bocchi.band", // sender address
-			to: "azgamedeveloper@gmail.com", // testing
-			subject: "Verify your Kessoku Hub account", // Subject line
-			text: "Hello world?", // plain text body
-		},
-		(error, info) => {
-			if (error) {
-				console.log(error);
-				res.status(500).json("Error sending email");
-			} else {
-				console.log("Email sent: " + info.response);
-				res.status(200).json("Email sent");
-			}
+router.get("/user/verify/:token", async (req, res) => {
+	// Check if the token is valid
+	jwt.verify(
+		req.params.token,
+		process.env.JWT_SECRET,
+		async (err, decoded) => {
+			if (err) return res.status(400).json(err);
+			// Find the user
+			const user = User.findById(decoded.id);
+			if (!user) return res.status(404).send("User not found.");
+			// Verify the user
+			user.role = User.roles.user;
+			await user.save();
+
+			return res.status(200).send("User verified.");
 		}
 	);
 });

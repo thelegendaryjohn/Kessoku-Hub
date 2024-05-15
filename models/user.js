@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { Resend } from "resend";
+//
+const env = process.env.NODE_ENV;
 const Schema = mongoose.Schema;
+const resend = new Resend(process.env.RESEND_KEY);
 
 // Configs
 const SALT_WORK_FACTOR = 10;
@@ -45,10 +50,30 @@ userSchema.pre("save", function (next) {
 	});
 });
 
-// Create a token to verify with email for new users
-userSchema.post("init", function () {
-	// TODO: Use nodemailer to send the email with the generated token with JWT
-});
+userSchema.methods.verifyEmail = async function (cb) {
+	// Only allow unverified users to verify their email
+	if (this.role !== roles.unverified)
+		return cb(new Error("User is already verified."));
+	// Create a token
+	const homelink =
+		env == "dev" ? "http://localhost:3000" : "https://bocchi.band";
+	const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+		expiresIn: "5m",
+	});
+
+	const { data, error } = await resend.emails.send({
+		from: "Support <support@bocchi.band>",
+		to: ["azgamedeveloper@gmail.com"],
+		subject: "Kessoku Hub - Verify your email",
+		html: `Your verification link is <a href="${homelink}/user/verify/${token}">here</a>.`,
+	});
+
+	if (error) {
+		return cb(null, error);
+	}
+
+	return cb(data);
+};
 
 // Method to compare password for login
 userSchema.methods.comparePassword = function (candidatePassword, cb) {
