@@ -9,12 +9,6 @@ main {
 	cursor: pointer;
 }
 
-#user-profile-container {
-	position: relative;
-	overflow: hidden;
-	cursor: pointer;
-}
-
 #user-profile-container #profile-img {
 	width: 100%;
 	max-width: 15rem;
