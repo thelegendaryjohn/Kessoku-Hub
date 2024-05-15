@@ -87,3 +87,10 @@ main {
     background-color: rgb(224, 224, 224);
 
 }
+
+/* Specific Media Queries */
+@media screen and (orientation: portrait) and (max-width: 300px) {
+	#logo {
+		padding: 25%;
+	}
+}

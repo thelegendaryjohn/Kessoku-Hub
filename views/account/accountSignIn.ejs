@@ -31,22 +31,31 @@
 
       <!-- Sign up form -->
       <form id="signup-form" class="account-form" target="_self" method="post">
+
         <label id="username-signup-label" class="signup-label" for="username">Username</label>
-        <input id="username-signup-input" class="input-field" type="username" name="username" placeholder="guitarhero" required>
+        <div class="input-box">
+          <input id="username-signup-input" class="input-field" type="username" name="username" placeholder="guitarhero" autocapitalize="off" required>
+        </div>
         <span id="username-signup-alert" class="alert">[Placeholder]</span>
-        
+
         <label id="password-signup-label" class="signup-label" for="password">Password</label>
         <div class="input-box">
-          <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
-          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+          <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+
+          <div class="input-function pass-visibility">
+            <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+          </div>
         </div>
         <span id="password-signup-alert" class="alert">[Placeholder]</span>
 
-        <label id="confirm-signup-label" class="signup-label" for="confirm-password">Confirm Password</label>
+        <label id="confirm-signup-label" class="form-label" for="confirm-password">Confirm Password</label>
         <div class="input-box">
-          <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" required>
-          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
-         </div>
+          <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" required>
+
+          <div class="input-function pass-visibility">
+            <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+          </div>
+        </div>
         <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
 
         <span id="error-signup-alert" class="alert">[Placeholder]</span>
@@ -68,15 +77,19 @@
       <!-- Log in form -->
       <form id="login-form" class="account-form" target="_self" method="post">
         <label for="username">Username or Email</label>
-        <input id="username-login-input" class="input-field" type="username" name="username" placeholder="guitarhero" required>
+        <div class="input-box">
+          <input id="username-login-input" class="input-field" type="username" name="username" placeholder="guitarhero" autocapitalize="off" required>
+        </div>
         <span id="username-login-alert" class="alert">[Placeholder]</span>
 
         <label for="password">Password</label>
 
         <div class="input-box">
-          <input id="password-login-input" class="input-field" type="password" name="password" placeholder="bocchitherock" required>
-          
-          <img class="pass-visibility visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+          <input id="password-login-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+
+          <div class="input-function pass-visibility">
+            <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+          </div>
         </div>
 
         <span id="password-login-alert" class="alert">[Placeholder]</span>
@@ -103,7 +116,6 @@
   <script src="/js/account.js"></script>
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
-  <script src="/js/account/signIn.js"></script>
 </body>
 
 </html>

@@ -34,10 +34,16 @@
 	background-color: #eeeeee;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a background color */
 .checkbox-container input:checked ~ .checkmark {
-    transition: 0.1s;
+    transition: 0.05s;
 	background-color: #c45aff;
+}
+
+/* When the checkbox is unchecked, remove the background color */
+.checkbox-container input:not(:checked) ~ .checkmark {
+    transition: 0.05s;
+	background-color: #e6e6e6;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
