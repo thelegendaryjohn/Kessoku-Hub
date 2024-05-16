@@ -20,7 +20,7 @@
       <a id="nav-login" class="btn nav-btn" href="<%= user ? "/account/logout" : "/account" %>">
         <%= user ? "LOG OUT" : "LOG IN / CREATE ACCOUNT"%>
       </a>
-      <a id="nav-menu" class="btn nav-btn" href="/account/menu">ACCOUNT MENU</a>
+      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='<%= user ? "" : "display: none"%>'>ACCOUNT MENU</a>
     </div>
   </div>
 </nav>

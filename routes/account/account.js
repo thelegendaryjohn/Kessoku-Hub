@@ -15,6 +15,10 @@ router.get("/account/success", (req, res) => {
 });
 
 router.get("/account/menu", (req, res) => {
+	if (!req.session.user) {
+		return res.redirect("/account");
+	}
+
 	render(req, res, "account/accountMenu");
 });
 
@@ -23,7 +27,11 @@ router.get("/account/profile", (req, res) => {
 });
 
 router.get("/account/settings", (req, res) => {
-	render(req, res, "account/accountSettings");
+	if (!req.session.user) {
+		return res.redirect("/account");
+	}
+
+	return render(req, res, "account/accountSettings");
 });
 
 router.get("/account/logout", (req, res, next) => {
