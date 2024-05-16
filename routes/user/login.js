@@ -36,9 +36,7 @@ router.post("/user/login", (req, res, next) => {
 					req.session.regenerate((err) => {
 						if (err) return next(err);
 
-						req.session.user = {
-							username: user.username,
-						};
+						req.session.user = user;
 						// Set expires if remember is false
 						req.session.cookie.maxAge = req.body.remember
 							? 24 * 60 * 60 * 1000 // 24 hours

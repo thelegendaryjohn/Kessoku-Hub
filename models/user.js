@@ -50,7 +50,7 @@ userSchema.pre("save", function (next) {
 	});
 });
 
-userSchema.methods.verifyEmail = async function (cb) {
+userSchema.methods.verifyEmail = async function (email, cb) {
 	// Only allow unverified users to verify their email
 	if (this.role !== roles.unverified)
 		return cb(new Error("User is already verified."));
@@ -63,7 +63,7 @@ userSchema.methods.verifyEmail = async function (cb) {
 
 	const { data, error } = await resend.emails.send({
 		from: "Support <support@bocchi.band>",
-		to: ["azgamedeveloper@gmail.com"],
+		to: [email],
 		subject: "Kessoku Hub - Verify your email",
 		html: `Your verification link is <a href="${homelink}/user/verify/${token}">here</a>.`,
 	});

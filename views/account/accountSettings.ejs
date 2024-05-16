@@ -33,12 +33,13 @@
           <div class="input-box">
             <input id="email-input" class="input-field" type="email" name="email" placeholder="guitarhero@kessoku.band" autocapitalize="off">
 
-            <div class="input-function">
+            <div class="input-function" id="verifyButton">
               <div class="verify-btn-container">
                 <p class="verify-btn-text">Verify</p>
               </div>
             </div>
           </div>
+          <span id="email-input-alert" class="alert">[Placeholder]</span>
 
           <span class="form-spacer"></span>
           <h1 class="menu-section-title font-oswald">Change Password</h1>
@@ -81,6 +82,58 @@
   </main>
 
   <script src="/js/showHidePass.js"></script>
+  <script>
+    // By default, hide all the alerts
+    document.querySelectorAll(".alert").forEach((alert) => {
+      alert.style.opacity = "0";
+    });
+
+    function errorAlert(element, content) {
+      element.style.opacity = "1";
+      element.textContent = content;
+      setTimeout(() => {
+        element.style.opacity = "0";
+      }, 3000);
+    }
+    // Add an event listener to the verify button
+    document.querySelector("#verifyButton").addEventListener("click", e => {
+      const emailInput = document.querySelector("#email-input");
+      // Verify the email input with regex
+      if (!emailInput.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+        errorAlert(document.querySelector("#email-input-alert"), "Please enter a valid email address.");
+        return;
+      }
+      // If the email input is valid, send a request to the verify email route
+      fetch("/user/verify", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: emailInput.value
+          })
+        })
+        .then(res => {
+          if (res.status === 200) {
+            // If the email is sent, show a success alert
+            const alert = document.querySelector("#email-input-alert");
+            alert.classList.add("success");
+            alert.textContent = "Email sent! Please verify within 5 minutes.";
+            alert.style.opacity = "1";
+            setTimeout(() => {
+              alert.style.opacity = "0";
+            }, 3000);
+          } else {
+            // If there is an error, show an error alert
+            errorAlert(document.querySelector("#email-input-alert"), "There was an error sending the email. Please try again later.");
+          }
+        })
+        .catch(err => {
+          // If there is an error, show an error alert
+          errorAlert(document.querySelector("#email-input-alert"), "There was an error sending the email. Please try again later.");
+        });
+    })
+  </script>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>

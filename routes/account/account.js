@@ -14,7 +14,7 @@ router.get("/account/success", (req, res) => {
 	});
 });
 
-router.get("/account/settings", (req, res) => {
+router.get("/account/menu", (req, res) => {
 	render(req, res, "account/accountMenu");
 });
 
