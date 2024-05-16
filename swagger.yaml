@@ -110,3 +110,49 @@ paths:
                     description: "Successfully logged out"
                 "500":
                     description: "Internal server error"
+    /user/verify:
+        post:
+            tags:
+                - "Authentication"
+            summary: "Starts the user verification process"
+            description: "This route is used to start the user verification process. It requires the user to be logged in and not already verified."
+            parameters:
+                - in: "body"
+                  name: "body"
+                  description: "Email of the user to be verified"
+                  required: true
+                  schema:
+                      type: "object"
+                      properties:
+                      email:
+                          type: "string"
+            responses:
+                "200":
+                    description: "Verification process started successfully"
+                "400":
+                    description: "Bad request, email is required or user is already in verification process"
+                "401":
+                    description: "Unauthorized, user is not logged in"
+                "409":
+                    description: "Conflict, user is already verified"
+                "500":
+                    description: "Internal server error"
+    /user/verify/{token}:
+        get:
+            tags:
+                - "Authentication"
+            summary: "Completes the user verification process"
+            description: "This route is used to complete the user verification process. It requires a valid JWT token."
+            parameters:
+                - in: "path"
+                  name: "token"
+                  description: "JWT token for verification"
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "User verified successfully"
+                "400":
+                    description: "Bad request, invalid token"
+                "404":
+                    description: "Not found, user not found"

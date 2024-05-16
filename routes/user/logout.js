@@ -8,6 +8,8 @@ export function logout(req, res, next) {
 		if (err) next(err);
 
 		req.session.regenerate((err) => {
+			res.status(200).json("Successfully logged out.");
+
 			if (err) next(err);
 		});
 	});
@@ -15,7 +17,6 @@ export function logout(req, res, next) {
 
 router.get("/user/logout", (req, res, next) => {
 	logout(req, res, next);
-	res.status(200).json("Successfully logged out.");
 });
 
 export default router;
