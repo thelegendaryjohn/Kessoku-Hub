@@ -31,7 +31,7 @@
 
           <label id="email-label" class="form-label" for="email">Email</label>
           <div class="input-box">
-            <input id="email-input" class="input-field" type="email" name="email" placeholder="guitarhero@kessoku.band" autocapitalize="off">
+            <input id="email-input" class="input-field" type="email" name="email" placeholder="guitarhero@kessoku.band" autocapitalize="off" autocomplete="new-password">
 
             <div class="input-function" id="verifyButton">
               <div class="verify-btn-container">
@@ -56,7 +56,7 @@
 
           <label id="password-signup-label" class="form-label" for="password">New Password</label>
           <div class="input-box">
-            <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+            <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" autocomplete="new-password" required>
 
             <div class="input-function pass-visibility">
               <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
@@ -66,7 +66,7 @@
 
           <label id="confirm-signup-label" class="form-label" for="confirm-password">Confirm New Password</label>
           <div class="input-box">
-            <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" required>
+            <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" autocomplete="new-password" required>
 
             <div class="input-function pass-visibility">
               <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
@@ -80,13 +80,27 @@
       </section>
     </div>
   </main>
-
+  <script>
+    let user = '<%-JSON.stringify(user) %>';
+    if (user) {
+      user = JSON.parse(user);
+    }
+    console.log(user);
+  </script>
   <script src="/js/showHidePass.js"></script>
   <script>
     // By default, hide all the alerts
     document.querySelectorAll(".alert").forEach((alert) => {
       alert.style.opacity = "0";
     });
+
+    // Show email and disable verify button if the email is already verified
+    console.log(user);
+    if (user.email) {
+      document.querySelector("#email-input").value = user.email;
+      document.querySelector("#email-input").disabled = true;
+      document.querySelector("#verifyButton").style.display = "none";
+    }
 
     function errorAlert(element, content) {
       element.style.opacity = "1";
