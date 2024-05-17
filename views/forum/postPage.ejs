@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/forum/main.css">
+  <link rel="stylesheet" href="/css/forum/forum.css">
+  <link rel="stylesheet" href="/css/landing/forum.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Thread section -->
+    <section id="content-section-container">
+      <% thread.forEach((t, i) => { %>
+      <%- include("../partials/landing/forum-section/forumThread.ejs", { 
+        threadTitle: thread[i].threadTitle,
+        threadPosts: thread[i].threadPosts,
+        threadStatus: thread[i].threadStatus,
+      }) %>
+      <% }); %>
+    </section>
+  </main>
+
+  <!-- Forum actions partial -->
+  <%- include("../partials/forum/forumAction.ejs") %>
+</body>
+
+</html>
