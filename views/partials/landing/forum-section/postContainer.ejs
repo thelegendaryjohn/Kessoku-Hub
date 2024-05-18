@@ -6,5 +6,5 @@
   }) %>
 
   <!-- Post link arrow -->
-  <img class="post-link-arrow" src="/images/button/btn-next.svg" alt="Go to thread">
+  <img class="post-link-arrow" style="display:<%= (locals.isPost) === true ? 'none' : 'block' %>;" src="/images/button/btn-next.svg" alt="Go to thread">
 </a>

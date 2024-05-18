@@ -1,0 +1,27 @@
+#nav-title {
+	font-size: 2rem;
+}
+
+.thread {
+	padding: 0.5rem;
+    border: 2px solid var(--hitori-color);
+    border-radius: 10px;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.post-link-container {
+	border-left: 0;
+}
+
+#post-section {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: 2rem;
+    width: 100%;
+	max-width: 40rem;
+}
+
+#post-content {
+    font-size: 1.2rem;
+}

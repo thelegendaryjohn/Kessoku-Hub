@@ -16,4 +16,10 @@ router.get("/forum/thread", (req, res) => {
 	});
 });
 
+router.get("/forum/post", (req, res) => {
+	render(req, res, "forum/postPage", {
+		thread: thread,
+	});
+})
+
 export default router;

@@ -3,6 +3,7 @@ function threadData() {
 		// Thread 0
 		{
 			threadTitle: "Walkman Collaboration",
+			threadDateTime: "2024-02-10T16:22:34Z",
 			threadStatus: {
 				views: 0,
 				comments: 0,
@@ -20,6 +21,8 @@ function threadData() {
 						comments: 12,
 						likes: 35,
 					},
+					postContent:
+						"🎉 Excited to announce that the latest collaboration between Walkman and Tokyo's hottest fashion labels has just hit the shelves! Swing by your nearest store to pick up the limited edition pieces before they're gone. Share your favorite finds and let's see how you're rocking the Walkman x Tokyo Threads collab! 💃👗🎧",
 				},
 
 				// Post 1
@@ -33,6 +36,8 @@ function threadData() {
 						comments: 45,
 						likes: 352,
 					},
+					postContent:
+						"🔥 Tech meets style in the Walkman x Street Gear collaboration! Whether you're a gadget guru or a fashion-forward trendsetter, this fusion of technology and streetwear is sure to elevate your style game. Share your thoughts on this innovative collaboration and how you're incorporating it into your wardrobe! 💻👟🎧📱🕶️",
 				},
 
 				// Post 2
@@ -46,6 +51,8 @@ function threadData() {
 						comments: 75,
 						likes: 642,
 					},
+					postContent:
+						"🎉 Exciting news! Walkman x 'Bocchi The Rock!' limited edition gear is now available at the AniPlex Spring Fair! Grab exclusive Blu-rays 📀, collectible postcards 📬, and life-size standees 🎤. Perfect for any fan - don't miss out! 🤩",
 				},
 
 				// Post 3
@@ -59,6 +66,8 @@ function threadData() {
 						comments: 32,
 						likes: 145,
 					},
+					postContent:
+						"Walkman x SHEIN collab is here! 🎉 Get limited edition graphic tees, hoodies, and Walkman-themed bags. Perfect blend of music and fashion. Hurry, they're selling fast! Who's got theirs? Share your picks!",
 				},
 			],
 		},
@@ -66,6 +75,7 @@ function threadData() {
 		// Thread 1
 		{
 			threadTitle: "AniPlex Spring Fair",
+			threadDateTime: "2024-10-29T12:00:00Z",
 			threadStatus: {
 				// views: 21912,
 				// comments: 1378,
@@ -99,6 +109,8 @@ function threadData() {
 						comments: 274,
 						likes: 734,
 					},
+					postContent:
+						"🌟 Calling all cosplayers! The AniPlex Spring Fair is hosting a cosplay contest with amazing prizes up for grabs. Whether you're dressing up as your favorite character from 'My Hero Academia,' 'Sword Art Online,' or any other AniPlex title, strut your stuff and showcase your creativity. Don't miss this chance to shine! ✨🎭🏆",
 				},
 
 				// Post 2
@@ -124,6 +136,8 @@ function threadData() {
 						comments: 975,
 						likes: 7452,
 					},
+					postContent:
+						"🎮 Embark on an epic adventure without leaving your seat! The AniPlex Spring Fair is offering a virtual reality experience where you can immerse yourself in the world of 'Sword Art Online.' Explore breathtaking landscapes, battle fierce monsters, and live out your SAO fantasies. Are you ready to dive in? ⚔️🌟🎮",
 				},
 			],
 		},
@@ -145,6 +159,14 @@ function threadData() {
 		threadItem.threadStatus.views = calcStatus(threadItem, "views");
 		threadItem.threadStatus.comments = calcStatus(threadItem, "comments");
 		threadItem.threadStatus.likes = calcStatus(threadItem, "likes");
+
+		let threadDateTime = new Date(threadItem.threadDateTime);
+		threadItem.threadDate = `${threadDateTime.getMonth()}.${threadDateTime.getDate()}.${threadDateTime.getFullYear()}`;
+
+		threadItem.threadPosts.forEach((post) => {
+			let postDateTime = new Date(post.postDateTime);
+			post.postDate = `${postDateTime.getMonth()}.${postDateTime.getDate()}.${postDateTime.getFullYear()}`;
+		});
 	}
 
 	return thread;
