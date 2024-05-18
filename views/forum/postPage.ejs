@@ -6,29 +6,51 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Forum</title>
-  <link rel="stylesheet" href="/css/forum/main.css">
-  <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/landing/forum.css">
+  <link rel="stylesheet" href="/css/forum/main.css">
+  <link rel="stylesheet" href="/css/forum/post.css">
 </head>
 
 <body>
+  <!-- Values for testing purpose -->
+  <% const currThread = thread[0] %>
+  <% const currPost = currThread.threadPosts[2] %>
+
+  <% const threadName = currThread.threadTitle %>
+  <% const postAuthor = currPost.postAuthor %>
+  <% const postDate = currPost.postDate %>
+  <% const postStatus = currPost.postStatus %>
+  <% const postContent = currPost.postContent %>
+
   <!-- Sidebar -->
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
-  <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
+  <%- include("../partials/navBar.ejs", { headerTitle: threadName, headerColor: "var(--accent-purple)" }) %>
 
   <!-- Main content -->
   <main>
     <!-- Thread section -->
     <section id="content-section-container">
-      <% thread.forEach((t, i) => { %>
-      <%- include("../partials/landing/forum-section/forumThread.ejs", { 
-        threadTitle: thread[i].threadTitle,
-        threadPosts: thread[i].threadPosts,
-        threadStatus: thread[i].threadStatus,
-      }) %>
-      <% }); %>
+      <div id="post-section">
+        <div id="post-title">
+          <%- include("../partials/landing/forum-section/forumThread.ejs", { 
+                isPost: true,
+                showDate: true,
+                showThreadStatus: false,
+                threadTitle: postAuthor,
+                threadPosts: currPost,
+                threadDate: postDate,
+                threadStatus: currThread.threadStatus,
+            }) %>
+        </div>
+
+        <div id="post-content">
+          <p class="post-content-text font-poppins"><%= postContent %></p>
+        </div>
+      </div>
+
+
     </section>
   </main>
 

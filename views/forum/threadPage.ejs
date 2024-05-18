@@ -26,9 +26,12 @@
     <section id="content-section-container">
       <% thread.forEach((t, i) => { %>
       <%- include("../partials/landing/forum-section/forumThread.ejs", { 
+            showDate: true,
+            showThreadStatus: false,
             threadTitle: thread[i].threadTitle,
             threadPosts: thread[i].threadPosts,
             threadStatus: thread[i].threadStatus,
+            threadDate: thread[i].threadDate,
           }) %>
       <% }); %>
     </section>

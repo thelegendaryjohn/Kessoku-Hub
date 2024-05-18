@@ -38,6 +38,7 @@
 	border-left: 2px solid var(--hitori-color);
 	width: 100%;
 	max-width: 40rem;
+	box-sizing: border-box;
 }
 
 .thread a {
@@ -53,8 +54,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	gap: 0.5rem;
+}
+
+.thread-header-date-title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
 }
 
 .thread-header > a > * {
@@ -68,7 +76,7 @@
 .thread-content {
 	display: flex;
 	flex-direction: column;
-	font-size: 1.25rem;
+	font-size: 1.45rem;
 	gap: 1.25rem;
 	width: 100%;
 }
@@ -93,6 +101,7 @@
 	justify-content: space-between;
 	width: 100%;
 	margin: 0 0.5rem;
+	gap: 0.5rem;
 }
 
 .post-title {

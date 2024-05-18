@@ -6,9 +6,9 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/landing/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
   <link rel="stylesheet" href="/css/forum/forum.css">
-  <link rel="stylesheet" href="/css/landing/forum.css">
 </head>
 
 <body>
@@ -27,6 +27,7 @@
         threadTitle: thread[i].threadTitle,
         threadPosts: thread[i].threadPosts,
         threadStatus: thread[i].threadStatus,
+        threadDate: thread[i].threadDate,
       }) %>
       <% }); %>
     </section>
