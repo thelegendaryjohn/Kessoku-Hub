@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { render } from "../../lib/render.js";
+import session from "express-session";
 // TODO: This should import from the database instead
 let items = [
 	{
@@ -62,6 +63,29 @@ let items = [
 //
 const router = Router();
 
+// set up a session
+router.use(
+	session({
+		secret: "your-secret-key", // Replace with your own secret key
+		cookie: {
+			maxAge: 999999999, // Session duration in milliseconds (e.g., 1 minute)
+		},
+	})
+);
+
+//
+router.get("/store/views", (req, res) => {
+	if (req.session.views) {
+		req.session.views++; // Increment views count
+		res.setHeader("Content-Type", "text/html");
+		res.write(`<p>Views: ${req.session.views}</p>`);
+		res.end();
+	} else {
+		req.session.views = 1; // Initialize views count
+		res.send("Welcome! This is your first visit.");
+	}
+});
+
 // add store page view
 router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
@@ -75,7 +99,7 @@ router.get("/store/add/:id", (req, res) => {
 	const item = items.find((item) => item.id == req.params.id);
 
 	// Create a cookie to store selected items
-	const cartCookie = req.cookies.cart || "[]";
+	let cartCookie = req.session.cart || "[]";
 	let cartItems = JSON.parse(decodeURIComponent(cartCookie));
 
 	// Check if the item is in the cart
@@ -99,6 +123,8 @@ router.get("/store/add/:id", (req, res) => {
 		expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
 		path: "/",
 	});
+
+	res.redirect("/store");
 });
 
 // router.get("store/cart", (req, res) => {
