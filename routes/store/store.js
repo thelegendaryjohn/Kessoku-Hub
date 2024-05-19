@@ -77,7 +77,7 @@ router.get("/store/add/:id", (req, res) => {
 
 	// Create a cart if it doesn't exist
 	if (!req.session.cart) {
-		req.session.cart = [];
+		req.session.cart = {};
 	}
 
 	// Check if the item is in the cart
@@ -86,10 +86,29 @@ router.get("/store/add/:id", (req, res) => {
 		req.session.cart[req.params.id]++;
 	} else {
 		// Add the item to the cart
-		req.session.cart.push(req.params.id);
+		req.session.cart[req.params.id] = 1;
 	}
 
 	res.redirect("/store");
+});
+
+// remove item from cart
+router.get("/store/remove/:id", (req, res) => {
+	// Validate the id
+	if (!req.params.id) {
+		return res.status(400).send("Invalid item id");
+	}
+
+	// Check if the item is in the cart
+	if (req.session.cart.includes(req.params.id)) {
+		// Decrement the quantity of the item
+		req.session.cart[req.params.id]--;
+		if (req.session.cart[req.params.id] <= 0) {
+			delete req.session.cart[req.params.id];
+		}
+	}
+
+	res.redirect("/store/cart");
 });
 
 router.get("store/cart", (req, res) => {
