@@ -13,8 +13,8 @@
 
 <body>
   <!-- Values for testing purpose -->
-  <% const currThread = thread[0] %>
-  <% const currPost = currThread.threadPosts[2] %>
+  <% const currThread = thread[1] %>
+  <% const currPost = currThread.threadPosts[1] %>
 
   <% const threadName = currThread.threadTitle %>
   <% const postAuthor = currPost.postAuthor %>
@@ -50,6 +50,50 @@
         </div>
       </div>
 
+      <div id="comment-section">
+        <div id="comment-section-sticky-box">
+          <!-- Header -->
+          <div id="comment-header">
+            <h3 id="comment-header-text">Comments</h3>
+          </div>
+  
+          <!-- Comment posting -->
+          <form id="comment-post-container">
+            <textarea id="comment-post-input" class="longtext-input font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+            
+            <div id="comment-post-btn-container">
+              <button id="comment-post-cancel" class="comment-post-btn" onclick="clearText(); event.preventDefault();">Cancel</button>
+              <input id="comment-post-submit" class="comment-post-btn" type="submit" value="Post" onclick="event.preventDefault();">
+            </div>
+          </form>
+  
+            <script>
+              function clearText() {
+                document.querySelector("#comment-post-input").value = "";
+                document.querySelector("#comment-post-input").style.height = "8rem";
+              }
+            </script>
+          </form>
+        </div>
+
+        <% const repeatCount = 10; %>
+        <% for (let i = 0; i < repeatCount; i++) { %>
+        <%- include("../partials/forum/forumComment.ejs", {
+          authorName: "Ikuyo Kita",
+          commentDate: "1.10.2024",
+          likes: 12,
+          commentText: "Omg this is soo cool! <3"
+        }) %>
+
+        <%- include("../partials/forum/forumComment.ejs", {
+          authorName: "Hiori Gotoh",
+          commentDate: "3.10.2024",
+          likes: 31,
+          commentText: "I'll definitely not gonna miss this one!"
+        }) %>
+        <% } %>
+
+      </div>
 
     </section>
   </main>
