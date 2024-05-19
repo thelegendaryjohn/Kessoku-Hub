@@ -1,4 +1,4 @@
-let NODE_ENV = process.env.NODE_ENV;
+const NODE_ENV = process.env.NODE_ENV;
 //
 import rateLimit from "express-rate-limit";
 import { Router } from "express";
@@ -9,8 +9,8 @@ import { User } from "../../models/user.js";
 const router = Router();
 
 // Set up the validator
-let v = new Validator();
-let schema = {
+const v = new Validator();
+const schema = {
 	type: "object",
 	properties: {
 		username: { type: "string", pattern: "^[A-Za-z][A-Za-z0-9_]{0,31}$" },
@@ -49,14 +49,14 @@ router.post("/user/register", useRateLimit, async (req, res) => {
 		schema
 	);
 	if (result.valid) {
-		let creds = result.instance;
+		const creds = result.instance;
 		// Check if the username is already taken
-		let user = await User.findOne({ username: creds.username });
+		const user = await User.findOne({ username: creds.username });
 		if (user) {
 			res.status(409).json("Username already taken.");
 		} else {
 			// Create the user
-			let newUser = new User(creds);
+			const newUser = new User(creds);
 			await newUser.save();
 			res.status(201).json({ username: creds.username });
 		}
