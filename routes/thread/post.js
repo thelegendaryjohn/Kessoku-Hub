@@ -12,6 +12,10 @@ let schema = {
 	},
 	required: ["title", "content"],
 };
+// Functions
+export const getPost = (id) => {
+	return Post.findById(id).populate("authorId");
+};
 
 // Creating a new post
 router.post("/thread/post", (req, res) => {
@@ -43,8 +47,10 @@ router.post("/thread/post", (req, res) => {
 
 // Getting a post by ID
 router.get("/thread/post/:id", (req, res) => {
-	Post.findById(req.params.id)
-		.populate("authorId")
+	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+	getPost(req.params.id)
 		.then((post) => {
 			return res.status(200).json(post);
 		})

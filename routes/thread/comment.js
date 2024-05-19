@@ -13,7 +13,16 @@ let schema = {
 	},
 	required: ["content", "postId"],
 };
-
+// Functions
+export const getComment = (singleComment, id) => {
+	let comment;
+	if (singleComment) {
+		comment = Comment.findById(id);
+	} else {
+		comment = Comment.find({ postId: id });
+	}
+	return comment.populate("authorId");
+};
 // Posting a comment
 router.post("/thread/comment", (req, res) => {
 	// Validate the input
@@ -46,8 +55,12 @@ router.post("/thread/comment", (req, res) => {
 
 // Getting comments by post ID
 router.get("/thread/comment/post/:id", (req, res) => {
-	Comment.find({ postId: req.params.id })
-		.populate("authorId")
+	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	const comments = getComment(false, req.params.id);
+	comments
 		.then((comments) => {
 			return res.status(200).json(comments);
 		})
@@ -58,8 +71,13 @@ router.get("/thread/comment/post/:id", (req, res) => {
 
 // Getting a comment by ID
 router.get("/thread/comment/:id", (req, res) => {
-	Comment.findById(req.params.id)
-		.populate("authorId")
+	// Validate the input
+	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	const comment = getComment(true, req.params.id);
+	comment
 		.then((comment) => {
 			return res.status(200).json(comment);
 		})

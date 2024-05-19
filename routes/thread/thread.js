@@ -1,12 +1,14 @@
 import { Router } from "express";
+import { getPost } from "./post.js";
+import { getComment } from "./comment.js";
 //
 const router = Router();
 
 // Getting a thread (a post with comments)
 router.get("/thread/:id", async (req, res) => {
 	// Fetch posts and comments from their routes
-	const post = fetch(`/thread/post/${req.params.id}`);
-	const comments = fetch(`/comment/${req.params.id}`);
+	const post = getPost(req.params.id);
+	const comments = getComment(false, req.params.id);
 	//
 	try {
 		const results = await Promise.all([post, comments]);
