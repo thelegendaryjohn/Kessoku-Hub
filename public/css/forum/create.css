@@ -1,3 +1,7 @@
+#content-section-container {
+    gap: 0;
+}
+
 input::placeholder {
 	font-weight: normal;
 }
