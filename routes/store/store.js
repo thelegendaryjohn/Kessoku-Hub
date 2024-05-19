@@ -81,7 +81,7 @@ router.get("/store/add/:id", (req, res) => {
 	}
 
 	// Check if the item is in the cart
-	if (req.session.cart.includes(req.params.id)) {
+	if (Object.keys(req.session.cart).includes(req.params.id)) {
 		// Increment the quantity of the item
 		req.session.cart[req.params.id]++;
 	} else {
