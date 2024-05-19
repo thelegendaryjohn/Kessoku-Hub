@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import * as colors from "../../lib/consoleThemes.js";
+import * as colors from "../lib/consoleThemes.js";
 import "dotenv/config";
 
 // Connect to the database

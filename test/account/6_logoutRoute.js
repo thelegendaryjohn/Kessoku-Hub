@@ -3,9 +3,11 @@ import assert from "assert";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 
-describe("POST /user/login", () => {
+let cookie;
+
+describe("GET /account/logout", () => {
 	// Create a user before running these tests
-	beforeEach(function (done) {
+	before(function (done) {
 		User.collection.drop(() => {
 			// Creating a new Instance of User Model
 			let user = new User({
@@ -18,15 +20,17 @@ describe("POST /user/login", () => {
 		});
 	});
 
-	it("should login a user and return status code 200", (done) => {
+	// Login a user before running the tests
+	beforeEach((done) => {
 		request(app)
-			.post("/user/login")
+			.post("/account/login")
 			.send({
 				username: "testuser",
 				password: "testpassword",
 				remember: true,
 			})
 			.set("Accept", "application/json")
+			.expect("set-cookie", /connect.sid/)
 			.expect("Content-Type", /json/)
 			.expect(200)
 			.end((err, res) => {
@@ -34,44 +38,41 @@ describe("POST /user/login", () => {
 					return done(err);
 				}
 				assert(res.body.username === "testuser");
+				cookie = res.header["set-cookie"];
+				console.log("Cookie set: ", cookie);
 				done();
 			});
 	});
 
-	// Should fail if the username or password is incorrect
-	it("should fail if the username or password is incorrect", (done) => {
+	//
+	it("should logout a user and return status code 200", (done) => {
 		request(app)
-			.post("/user/login")
-			.send({
-				username: "wronguser",
-				password: "wrongpassword",
-				remember: true,
-			}) // replace with invalid credentials
+			.get("/account/logout")
 			.set("Accept", "application/json")
-			.expect("Content-Type", /json/)
-			.expect(401)
-			.end((err, res) => {
+			.set("Cookie", cookie)
+			.expect("Content-Type", "text/html; charset=utf-8")
+			.expect(200)
+			.end((err) => {
 				if (err) {
 					return done(err);
 				}
-				assert(res.body === "Invalid credentials.");
 				done();
 			});
 	});
 
-	// Should fail if the input is of invalid type
-	it("should fail if the input is of invalid type", (done) => {
+	// should also be able to logout via the account route
+	it("should logout a user via a post request and return status code 200", (done) => {
 		request(app)
-			.post("/user/login")
-			.send({ username: 123, password: 123, remember: "true" }) // replace with invalid credentials
+			.post("/account/logout")
 			.set("Accept", "application/json")
+			.set("Cookie", cookie)
 			.expect("Content-Type", /json/)
-			.expect(401)
+			.expect(200)
 			.end((err, res) => {
 				if (err) {
 					return done(err);
 				}
-				assert(res.body === "Invalid input.");
+				console.log(res.body);
 				done();
 			});
 	});
