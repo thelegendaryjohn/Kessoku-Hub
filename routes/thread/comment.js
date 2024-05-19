@@ -43,3 +43,27 @@ router.post("/thread/comment", (req, res) => {
 			return res.status(500).json(err);
 		});
 });
+
+// Getting comments by post ID
+router.get("/thread/comment/post/:id", (req, res) => {
+	Comment.find({ postId: req.params.id })
+		.populate("authorId")
+		.then((comments) => {
+			return res.status(200).json(comments);
+		})
+		.catch((err) => {
+			return res.status(500).json(err);
+		});
+});
+
+// Getting a comment by ID
+router.get("/thread/comment/:id", (req, res) => {
+	Comment.findById(req.params.id)
+		.populate("authorId")
+		.then((comment) => {
+			return res.status(200).json(comment);
+		})
+		.catch((err) => {
+			return res.status(500).json(err);
+		});
+});
