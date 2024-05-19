@@ -83,11 +83,6 @@
 	flex-direction: row;
 }
 
-.thread-status {
-	display: flex;
-	flex-direction: row;
-}
-
 .post-link-container {
 	display: flex;
 	flex-direction: row;
