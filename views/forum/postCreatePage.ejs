@@ -38,15 +38,17 @@
       <!-- Post creating -->
       <form id="post-create-container" class="form-container">
         <div id="post-create-option-container">
+          <label for="post-create-option-thread-select" class="font-poppins">Thread</label>
           <input id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" placeholder="Select a thread, or make a new one">
 
+          <label for="post-create-option-title" class="font-poppins">Title</label>
           <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make a title for your post...">
         </div>
 
-        <textarea id="post-create-input" class="input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
 
         <div id="post-create-btn-container">
-          <button id="post-create-attachments" class="form-btn" onclick="event.preventDefault();">Cancel</button>
+          <button id="post-create-attachments" class="form-btn" onclick="event.preventDefault();">Add Files</button>
           <input id="post-create-submit" class="form-btn" type="submit" value="Post" onclick="event.preventDefault();">
         </div>
       </form>
