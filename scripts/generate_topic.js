@@ -1,5 +1,5 @@
-import { startDatabase } from "../lib/db";
-import { Topic } from "../models/topic";
+import { startDatabase } from "../lib/db.js";
+import { Topic } from "../models/topic.js";
 
 // Add topics into the mongo DB database based on the object array
 const topics = [
@@ -34,9 +34,10 @@ startDatabase();
 
 // Drop the existing topics
 Topic.collection.drop().then(async () => {
+	console.log("Topics dropped.");
 	// Generate the topics
-	topics.forEach(async (topic) => {
-		const newTopic = new Topic(topic);
-		await newTopic.save();
+	Topic.create(topics).then(() => {
+		console.log("Topics creation finished.");
+		process.exit();
 	});
 });
