@@ -8,15 +8,19 @@ export function logout(req, res, next) {
 		if (err) next(err);
 
 		req.session.regenerate((err) => {
-			res.status(200).json("Successfully logged out.");
-
 			if (err) next(err);
 		});
 	});
 }
 
-router.get("/account/logout", (req, res, next) => {
+router.post("/account/logout", (req, res, next) => {
+	// See if the user is logged in and the request is valid
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	}
+
 	logout(req, res, next);
+	return res.status(200).json("Logged out.");
 });
 
 export default router;
