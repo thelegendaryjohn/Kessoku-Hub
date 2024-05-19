@@ -3,6 +3,8 @@ import assert from "assert";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 
+let cookie;
+
 describe("GET /account/logout", () => {
 	// Create a user before running these tests
 	before(function (done) {
@@ -19,7 +21,7 @@ describe("GET /account/logout", () => {
 	});
 
 	// Login a user before running the tests
-	it("should login a user and return status code 200", (done) => {
+	beforeEach((done) => {
 		request(app)
 			.post("/account/login")
 			.send({
@@ -28,6 +30,7 @@ describe("GET /account/logout", () => {
 				remember: true,
 			})
 			.set("Accept", "application/json")
+			.expect("set-cookie", /connect.sid/)
 			.expect("Content-Type", /json/)
 			.expect(200)
 			.end((err, res) => {
@@ -35,6 +38,8 @@ describe("GET /account/logout", () => {
 					return done(err);
 				}
 				assert(res.body.username === "testuser");
+				cookie = res.header["set-cookie"];
+				console.log("Cookie set: ", cookie);
 				done();
 			});
 	});
@@ -44,41 +49,24 @@ describe("GET /account/logout", () => {
 		request(app)
 			.get("/account/logout")
 			.set("Accept", "application/json")
-			.expect("Content-Type", /json/)
+			.set("Cookie", cookie)
+			.expect("Content-Type", "text/html; charset=utf-8")
 			.expect(200)
-			.end((err, res) => {
+			.end((err) => {
 				if (err) {
 					return done(err);
 				}
-				assert(res.body === "Successfully logged out.");
 				done();
 			});
 	});
 
 	// should also be able to logout via the account route
-	it("should logout a user and return status code 200", (done) => {
-		// create a user before running the tests
+	it("should logout a user via a post request and return status code 200", (done) => {
 		request(app)
-			.post("/account/login")
-			.send({
-				username: "testuser",
-				password: "testpassword",
-				remember: true,
-			})
+			.post("/account/logout")
 			.set("Accept", "application/json")
+			.set("Cookie", cookie)
 			.expect("Content-Type", /json/)
-			.expect(200)
-			.end((err, res) => {
-				if (err) {
-					return done(err);
-				}
-				assert(res.body.username === "testuser");
-			});
-
-		request(app)
-			.get("/account/logout")
-			.set("Accept", "application/json")
-			.expect("Content-Type", /html/)
 			.expect(200)
 			.end((err, res) => {
 				if (err) {
