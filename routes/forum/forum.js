@@ -28,4 +28,10 @@ router.get("/forum/post/create", (req, res) => {
 	});
 });
 
+router.get("/forum/inbox", (req, res) => {
+	render(req, res, "forum/notifPage", {
+		thread: thread,
+	});
+});
+
 export default router;
