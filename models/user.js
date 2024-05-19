@@ -32,7 +32,11 @@ const userSchema = new Schema({
 		sparse: true,
 	},
 	//
-	created: { type: Date, default: Date.now },
+	bio: { type: String, default: "" },
+	avatar: { type: String, default: "" },
+	//
+	createdAt: { type: Date, default: Date.now },
+	updatedAt: { type: Date, default: Date.now },
 });
 
 // Hash password before saving
