@@ -51,28 +51,21 @@
       </div>
 
       <div id="comment-section">
+
         <div id="comment-section-sticky-box">
-          <!-- Header -->
-          <div id="comment-header">
-            <h3 id="comment-header-text">Comments</h3>
+          <!-- Comment header -->
+          <div id="comment-header" class="section-header">
+            <h2 id="comment-header-text" class="section-header-text">Comments</h2>
           </div>
-  
+
           <!-- Comment posting -->
-          <form id="comment-post-container">
-            <textarea id="comment-post-input" class="longtext-input font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-            
+          <form id="comment-post-container" class="form-container box-shadow">
+            <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+
             <div id="comment-post-btn-container">
-              <button id="comment-post-cancel" class="comment-post-btn" onclick="clearText(); event.preventDefault();">Cancel</button>
-              <input id="comment-post-submit" class="comment-post-btn" type="submit" value="Post" onclick="event.preventDefault();">
+              <button id="comment-post-cancel" class="form-btn comment-post-btn" onclick="event.preventDefault();">Cancel</button>
+              <input id="comment-post-submit" class="form-btn comment-post-btn" type="submit" value="Post" onclick="event.preventDefault();">
             </div>
-          </form>
-  
-            <script>
-              function clearText() {
-                document.querySelector("#comment-post-input").value = "";
-                document.querySelector("#comment-post-input").style.height = "8rem";
-              }
-            </script>
           </form>
         </div>
 

@@ -22,4 +22,10 @@ router.get("/forum/post", (req, res) => {
 	});
 })
 
+router.get("/forum/post/create", (req, res) => {
+	render(req, res, "forum/postCreatePage", {
+		thread: thread,
+	});
+});
+
 export default router;

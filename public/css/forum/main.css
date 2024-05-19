@@ -5,22 +5,53 @@ a {
 #content-section-container {
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: 1rem;
 	padding: 2rem;
 	align-items: center;
 }
 
-.longtext-input {
+.input-field {
 	padding: 1rem;
-	/* border-radius: 10px; */
 	font-size: 1.2rem;
 	width: 100%;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.longtext-input-field {
 	height: 8rem;
 	max-height: 20rem;
-	box-sizing: border-box;
-	overflow-y: visible;
-	-webkit-overflow-scrolling: touch;
 	border: none;
-	outline: none;
 	resize: none;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.5rem;
+	border: 2px solid var(--accent-grey);
+	border-radius: 10px;
+	box-sizing: border-box;
+	/* box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2); */
+}
+
+.form-btn {
+	font-size: 1.2rem;
+	padding: 0.2rem 1rem;
+	font-size: 1.5rem;
+	border-radius: 10px;
+	border: 1px solid var(--accent-grey);
+	color: var(--body-color);
+	border: none;
+}
+
+.form-btn:hover {
+	opacity: 0.8;
+}
+
+.section-header {
+	font-size: 2rem;
+	color: var(--accent-purple);
+	width: 100%;
 }
