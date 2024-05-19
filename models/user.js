@@ -5,7 +5,9 @@ import { Resend } from "resend";
 //
 const env = process.env.NODE_ENV;
 const Schema = mongoose.Schema;
-const resend = new Resend(process.env.RESEND_KEY);
+//
+let resend;
+if (process.env.RESEND_KEY) resend = new Resend(process.env.RESEND_KEY);
 
 // Configs
 const SALT_WORK_FACTOR = 10;
