@@ -50,11 +50,6 @@
 	padding-top: 0.5rem;
 }
 
-#comment-header {
-	font-size: 2rem;
-	color: var(--accent-purple);
-}
-
 #comment-section .thread {
 	width: 95%;
     padding: 0;
@@ -70,16 +65,6 @@
 	width: 100%;
 }
 
-#comment-post-container {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-	padding: 0.5rem;
-	border: 2px solid var(--accent-grey);
-	border-radius: 10px;
-	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
-}
-
 #comment-post-btn-container {
 	display: flex;
 	flex-direction: row;
@@ -89,18 +74,7 @@
 }
 
 .comment-post-btn {
-	font-size: 1.2rem;
-	padding: 0.2rem 1rem;
 	min-width: 6rem;
-	font-size: 1.5rem;
-	border-radius: 10px;
-	border: 1px solid var(--accent-grey);
-	color: var(--body-color);
-    border: none;
-}
-
-.comment-post-btn:hover {
-	opacity: 0.8;
 }
 
 #comment-post-cancel {
