@@ -85,3 +85,5 @@ router.get("/thread/comment/:id", (req, res) => {
 			return res.status(500).json(err);
 		});
 });
+
+export default router;

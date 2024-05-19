@@ -17,3 +17,5 @@ router.get("/thread/:id", async (req, res) => {
 		return res.status(500).json(err);
 	}
 });
+
+export default router;
