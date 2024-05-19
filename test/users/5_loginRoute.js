@@ -3,7 +3,7 @@ import assert from "assert";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 
-describe("POST /user/login", () => {
+describe("POST /account/login", () => {
 	// Create a user before running these tests
 	beforeEach(function (done) {
 		User.collection.drop(() => {
@@ -20,7 +20,7 @@ describe("POST /user/login", () => {
 
 	it("should login a user and return status code 200", (done) => {
 		request(app)
-			.post("/user/login")
+			.post("/account/login")
 			.send({
 				username: "testuser",
 				password: "testpassword",
@@ -41,7 +41,7 @@ describe("POST /user/login", () => {
 	// Should fail if the username or password is incorrect
 	it("should fail if the username or password is incorrect", (done) => {
 		request(app)
-			.post("/user/login")
+			.post("/account/login")
 			.send({
 				username: "wronguser",
 				password: "wrongpassword",
@@ -62,7 +62,7 @@ describe("POST /user/login", () => {
 	// Should fail if the input is of invalid type
 	it("should fail if the input is of invalid type", (done) => {
 		request(app)
-			.post("/user/login")
+			.post("/account/login")
 			.send({ username: 123, password: 123, remember: "true" }) // replace with invalid credentials
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)

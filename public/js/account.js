@@ -29,7 +29,7 @@ document.querySelector("#login").addEventListener("click", toggleSections);
 
 //
 async function loginRequest(body) {
-	return fetch("/user/login", {
+	return fetch("/account/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -97,7 +97,7 @@ document
 			return false;
 		}
 		// Send the request
-		let response = await fetch("/user/register", {
+		let response = await fetch("/account/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

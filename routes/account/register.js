@@ -39,7 +39,7 @@ function useRateLimit(req, res, next) {
 
 // Apply the user register route
 
-router.post("/user/register", useRateLimit, async (req, res) => {
+router.post("/account/register", useRateLimit, async (req, res) => {
 	// Sanitize the input
 	let result = v.validate(
 		{

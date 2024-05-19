@@ -15,7 +15,7 @@ export function logout(req, res, next) {
 	});
 }
 
-router.get("/user/logout", (req, res, next) => {
+router.get("/account/logout", (req, res, next) => {
 	logout(req, res, next);
 });
 

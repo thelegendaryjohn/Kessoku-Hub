@@ -6,7 +6,7 @@ import { User, roles } from "../../models/user.js";
 //
 const router = Router();
 
-router.post("/user/verify", async (req, res) => {
+router.post("/account/verify", async (req, res) => {
 	const email = req.body.email;
 	if (!email) return res.status(400).send("Email is required.");
 	// Set session to verifying
@@ -39,7 +39,7 @@ router.post("/user/verify", async (req, res) => {
 	});
 });
 
-router.get("/user/verify/:token", async (req, res) => {
+router.get("/account/verify/:token", async (req, res) => {
 	// Check if the token is valid
 	jwt.verify(
 		req.params.token,

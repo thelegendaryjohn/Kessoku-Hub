@@ -3,7 +3,7 @@ import assert from "assert";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 
-describe("GET /user/logout", () => {
+describe("GET /account/logout", () => {
 	// Create a user before running these tests
 	before(function (done) {
 		User.collection.drop(() => {
@@ -21,7 +21,7 @@ describe("GET /user/logout", () => {
 	// Login a user before running the tests
 	it("should login a user and return status code 200", (done) => {
 		request(app)
-			.post("/user/login")
+			.post("/account/login")
 			.send({
 				username: "testuser",
 				password: "testpassword",
@@ -42,7 +42,7 @@ describe("GET /user/logout", () => {
 	//
 	it("should logout a user and return status code 200", (done) => {
 		request(app)
-			.get("/user/logout")
+			.get("/account/logout")
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
 			.expect(200)
@@ -59,7 +59,7 @@ describe("GET /user/logout", () => {
 	it("should logout a user and return status code 200", (done) => {
 		// create a user before running the tests
 		request(app)
-			.post("/user/login")
+			.post("/account/login")
 			.send({
 				username: "testuser",
 				password: "testpassword",
