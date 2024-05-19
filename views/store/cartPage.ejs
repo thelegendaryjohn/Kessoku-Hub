@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="css/store/cart.css">
+
+  <title>Kessoku Hub | Store</title>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "CART" , headerColor: "var(--ryo-color)"}) %>
+
+  <!-- Cart page -->
+  <main>
+    <!-- item List container -->
+    <div id="item-list-container">
+      <% items.forEach((item, index) => { %>
+      <div class="item-container" id="<%- item.id%>">
+        <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="<%- item.description%>">
+        <!-- right container -->
+        <div class="item-right-container">
+          <!-- upper container -->
+          <div class="item-upper-container">
+            <div class="item-name"><%- item.name%></div>
+          </div>
+          <!-- lower container -->
+          <div class="item-lower-container">
+            <div class="item-price"><%- item.price%> $</div>
+            <div class="qty-selection-container">
+              <button class="qty-btn qty-minus" type="button">
+                -
+              </button>
+              <input class="qty-input" type="number" min="0" max="10" value="<%- item.quantity%>" />
+              <button class="qty-btn qty-plus" type="button">
+                +
+              </button>
+            </div>
+            <div class="svg-container">
+              <svg class="trash-icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="trash-icon-stroke" d="M1.32373 4.375H19.1663" stroke="var(--accent-grey)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path class="trash-icon-stroke" d="M6.89941 1H13.5904" stroke="var(--accent-grey)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path class="trash-icon-stroke" d="M16.9361 4.375H3.5542V19H16.9361V4.375Z" stroke="var(--accent-grey)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% }) %>
+    </div>
+
+    <!-- Check out container -->
+    <div class="check-out-container">
+      <!-- total price container -->
+      <div class="total-price-container">
+        <div class="total-price-text">Total:</div>
+        <div class="total-price"></div>
+        <div class="dollar-sign">$</div>
+      </div>
+      <!-- Check out button -->
+      <button class="check-out-btn">Check Out</button>
+    </div>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+<!-- add the items array from the route/cart.js -->
+<% if (items) { %>
+<script>
+  const items = <%- JSON.stringify(items) %>;
+</script>
+<% } %>
+<script type="module">
+  //initialize
+  const itemsList = document.querySelectorAll(".item-container");
+  const qtyInput = document.querySelectorAll(".qty-input");
+  const qtyMinus = document.querySelectorAll(".qty-minus");
+  const qtyPlus = document.querySelectorAll(".qty-plus");
+  const totalPrice = document.querySelector(".total-price");
+  const deleteBtn = document.querySelectorAll(".svg-container");
+  // calculate the total price
+  items.forEach((item) => {
+    totalPrice.textContent = Number(totalPrice.textContent) + (Number(item.quantity) * Number(item.price));
+  });
+  // delete button function
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      btn.parentElement.parentElement.parentElement.remove();
+    })
+  });
+  //quantity selection buttons
+  qtyMinus.forEach((minusBtn) => {
+    minusBtn.addEventListener("click", () => {
+      if (
+        minusBtn.nextElementSibling.value > minusBtn.nextElementSibling.min &&
+        Number(minusBtn.nextElementSibling.value) <= minusBtn.nextElementSibling.max
+      ) {
+        minusBtn.nextElementSibling.value = Number(minusBtn.nextElementSibling.value) - 1;
+      } else {
+        minusBtn.nextElementSibling.value = minusBtn.nextElementSibling.min;
+      }
+    });
+  });
+  qtyPlus.forEach((plusBtn) => {
+    plusBtn.addEventListener("click", () => {
+      if (
+        plusBtn.previousElementSibling.value >= plusBtn.previousElementSibling.min &&
+        Number(plusBtn.previousElementSibling.value) < plusBtn.previousElementSibling.max
+      ) {
+        plusBtn.previousElementSibling.value = Number(plusBtn.previousElementSibling.value) + 1;
+      } else {
+        plusBtn.previousElementSibling.value = plusBtn.previousElementSibling.max;
+      }
+    });
+  });
+</script>
+
+</html>
