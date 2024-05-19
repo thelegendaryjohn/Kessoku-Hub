@@ -59,6 +59,11 @@ router.get("/thread/comment/post/:id", (req, res) => {
 		return res.status(401).json("Invalid input.");
 	}
 
+	// Validate the input
+	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+		return res.status(401).json("Invalid input.");
+	}
+
 	const comments = getComment(false, req.params.id);
 	comments
 		.then((comments) => {
@@ -73,6 +78,11 @@ router.get("/thread/comment/post/:id", (req, res) => {
 router.get("/thread/comment/:id", (req, res) => {
 	// Validate the input
 	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	// Validate the input
+	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
 		return res.status(401).json("Invalid input.");
 	}
 
