@@ -1,4 +1,4 @@
-<a class="post-link-container" href="/forum/thread">
+<a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
   <!-- Post link -->
   <%- include("threadPost.ejs", {
     title: post.title,
