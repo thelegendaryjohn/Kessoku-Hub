@@ -3,6 +3,9 @@ import { render } from "../../lib/render.js";
 import { Topic } from "../../models/topic.js";
 import { Post } from "../../models/post.js";
 //
+import { getPost } from "../thread/post.js";
+import { getComment } from "../thread/comment.js";
+//
 const router = Router();
 
 router.get("/forum", async (req, res) => {
@@ -21,14 +24,29 @@ router.get("/forum", async (req, res) => {
 });
 
 router.get("/forum/topic/:id", (req, res) => {
-	render(req, res, "forum/topicPage", {});
+	const topic = Topic.findById(req.params.id);
+	if (!topic) {
+		return res.status(404).json("Topic not found.");
+	}
+	//
+	const posts = Post.find({ topicId: req.params.id }).populate("author");
+	render(req, res, "forum/topicPage", {
+		topic: topic,
+		posts: posts,
+	});
 });
 
-router.get("/forum/post", (req, res) => {
-	render(req, res, "forum/postPage", {});
+router.get("/forum/thread/:id", (req, res) => {
+	const post = getPost(req.params.id);
+	const comments = getComment(false, req.params.id);
+
+	render(req, res, "forum/postPage", {
+		post: post,
+		comments: comments,
+	});
 });
 
-router.get("/forum/post/create", (req, res) => {
+router.get("/forum/thread/create", (req, res) => {
 	render(req, res, "forum/postCreatePage", {});
 });
 
