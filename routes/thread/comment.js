@@ -21,7 +21,7 @@ export const getComment = (singleComment, id) => {
 	} else {
 		comment = Comment.find({ postId: id });
 	}
-	return comment.populate("authorId");
+	return comment.populate("author");
 };
 // Posting a comment
 router.post("/thread/comment", (req, res) => {
