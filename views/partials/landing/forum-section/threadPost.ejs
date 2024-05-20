@@ -1,6 +1,9 @@
 <div class="post-container">
   <!-- Post link text -->
-  <p class="post-title"><%= title %></p>
+  <h3 class="post-title"><%= post.title %></h3>
+
+  <p class="post-text font-poppins"><%= post.content %></p>
+
 
   <!-- Post status -->
   <%- include("forumStatus.ejs") %>
