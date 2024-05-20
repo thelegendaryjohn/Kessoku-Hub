@@ -22,10 +22,12 @@
     <div id="video-container" class="section-container">
       <h2 id="video-header" class="section-header text-shadow">Episode Previews</h2>
       <% videos.forEach((video, index) => { %>
+        <% if ( video.videoType === "previews" ) { %>
         <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
           episodeName: video.name,
           episodeID: video.id,
-        }) %>
+        })%>
+      <% } %>
         <% }) %>
       </div>
   </section>
@@ -33,10 +35,12 @@
     <div id="video-container" class="section-container">
       <h2 id="video-header" class="section-header text-shadow">Music Videos</h2>
       <% videos.forEach((video, index) => { %>
+        <% if ( video.videoType === "music" ) { %>
         <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
           episodeName: video.name,
           episodeID: video.id,
-        }) %>
+        })%>
+      <% } %>
         <% }) %>
       </div>
   </section>

@@ -7,18 +7,22 @@ let videos = [
     {
         id: "Yd8kUoB72xU",
         name: "Seishun Complex - Music Video",
+		videoType: "music"
     },
     {
         id: "Yd8kUoB72xU",
         name: "Seishun Complex - Music Video",
+		videoType: "music"
     },
     {
         id: "Yd8kUoB72xU",
         name: "Seishun Complex - Music Video",
+		videoType: "music"
     },
     {
         id: "q0tX10H8VGA",
         name: "Ep. 9 PV - Enoshima Escar",
+		videoType: "previews"
     }
 	
 ];
