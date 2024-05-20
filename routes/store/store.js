@@ -111,7 +111,7 @@ router.get("/store/remove/:id", (req, res) => {
 	res.redirect("/store/cart");
 });
 
-router.get("store/cart", (req, res) => {
+router.get("/store/cart", (req, res) => {
 	render(req, res, "store/cartPage", {
 		items: items,
 		cart: req.session.cart,
