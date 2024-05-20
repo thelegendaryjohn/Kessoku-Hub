@@ -1,17 +1,7 @@
 <div class="topic">
   <!-- topic header -->
   <div class="topic-header">
-    <a href="/forum/topic/<%= locals.topic.title %>">
-      <!-- <div class="topic-header-date-title">
-        <h3 class="topic-title"><%= locals.topicTitle %></h3>
-        <h4 class="topic-date" style="display:<%= (locals.showDate) === true ? 'block' : 'none' %>;"><%= locals.topicDate %></h4>
-      </div> -->
-
-      <div class="topic-status" style="display:<%= (locals.showtopicStatus) === true ? 'block' : 'none' %>;">
-        <%- include("forumStatus.ejs", {
-          status: locals.topicStatus
-        }) %>
-      </div>
+    <a href="/forum/topic/<%= topic.name %>">
     </a>
   </div>
 
@@ -20,12 +10,12 @@
     <!-- Post link container -->
     <% if (locals.isPost) { %>
     <%- include("postContainer.ejs", {
-      post: locals.topicPosts,
+      post: post,
     }) %>
     <% } else { %>
-    <% locals.topicPosts.forEach((p, i) => { %>
+    <% Object.entries(posts).map((topicId, post) => { %>
     <%- include("postContainer.ejs", {
-      post: locals.topicPosts[i],
+      post: post,
     }) %>
     <% }); %>
     <% } %>

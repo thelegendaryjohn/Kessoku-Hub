@@ -14,13 +14,15 @@ router.get("/forum", async (req, res) => {
 			.limit(3)
 			.populate("authorId");
 	}
+	console.log(posts);
+	console.log(topics);
 	render(req, res, "forum/forumPage", {
 		topics: topics,
 		posts: posts,
 	});
 });
 
-router.get("/forum/topic", (req, res) => {
+router.get("/forum/topic/:id", (req, res) => {
 	render(req, res, "forum/topicPage", {});
 });
 

@@ -1,8 +1,12 @@
 <a class="post-link-container" href="/forum/thread">
   <!-- Post link -->
   <%- include("threadPost.ejs", {
-    title: locals.post.postTitle,
-    status: locals.post.postStatus,
+    title: locals.post.title,
+    status: {
+      views: locals.post.viewCount,
+      comments: locals.post.commentCount,
+      likes: locals.post.likes
+    }
   }) %>
 
   <!-- Post link arrow -->
