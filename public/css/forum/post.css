@@ -1,0 +1,95 @@
+#nav-container {
+	z-index: 1;
+}
+
+#nav-title {
+	font-size: 2rem;
+}
+
+#post-section .thread {
+	padding: 0.5rem;
+	border: 2px solid var(--hitori-color);
+	border-radius: 10px;
+	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
+.post-link-container {
+	border-left: 0;
+}
+
+.section-divider {
+	margin-top: 3rem;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid var(--accent-lightgrey);
+	opacity: 0.5;
+}
+
+#post-section {
+	background-color: var(--body-color);
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	gap: 2rem;
+	width: 100%;
+	max-width: 40rem;
+}
+
+#post-content {
+	font-size: 1.2rem;
+}
+
+#comment-section {
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	gap: 1rem;
+	width: 100%;
+	max-width: 40rem;
+}
+
+#comment-section-sticky-box {
+	position: sticky;
+	margin: 2rem 0;
+	top: 6rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	background-color: var(--body-color);
+	padding-top: 0.5rem;
+}
+
+#comment-section .thread {
+	width: 95%;
+	padding: 0;
+	border-color: var(--ryo-color);
+}
+
+#comment-section .thread-header {
+	font-size: 1.2rem;
+}
+
+#comment-section .post-title {
+	font-size: 1.4rem;
+	width: 100%;
+}
+
+#comment-post-btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	gap: 1rem;
+	margin-right: 1rem;
+}
+
+.comment-post-btn {
+	min-width: 6rem;
+}
+
+#comment-post-cancel {
+	background-color: var(--ikuyo-color);
+}
+
+#comment-post-submit {
+	background-color: var(--ryo-color);
+}

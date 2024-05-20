@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/landing/forum.css">
+  <link rel="stylesheet" href="/css/forum/main.css">
+  <link rel="stylesheet" href="/css/forum/create.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Thread select datalist -->
+    <datalist id="thread-list">
+      <% thread.forEach((t, i) => { %>
+      <option value="<%= thread[i].threadTitle %>"></option>
+      <% }) %>
+    </datalist>
+
+    <!-- Thread section -->
+    <section id="content-section-container">
+      <!-- Post creating header -->
+      <div id="post-create-header" class="section-header">
+        <h2 id="post-create-header-text" class="section-header-text text-shadow">Create A Post</h2>
+      </div>
+
+      <!-- Post creating -->
+      <form id="post-create-container" class="form-container">
+        <div id="post-create-option-container">
+          <label for="post-create-option-thread-select" class="font-poppins">Thread</label>
+          <input id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" placeholder="Select a thread, or make a new one">
+
+          <label for="post-create-option-title" class="font-poppins">Title</label>
+          <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make a title for your post...">
+        </div>
+
+        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+
+        <div id="post-create-btn-container">
+          <button id="post-create-attachments" class="form-btn" onclick="event.preventDefault();">Add Files</button>
+          <input id="post-create-submit" class="form-btn" type="submit" value="Post" onclick="event.preventDefault();">
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <!-- Forum actions partial -->
+  <%- include("../partials/forum/forumAction.ejs") %>
+</body>
+
+</html>
