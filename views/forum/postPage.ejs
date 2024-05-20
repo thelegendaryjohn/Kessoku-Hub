@@ -6,7 +6,7 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Forum</title>
-  <link rel="stylesheet" href="/css/landing/forum.css">
+  <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
   <link rel="stylesheet" href="/css/forum/post.css">
 </head>
@@ -17,7 +17,7 @@
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
-  <%- include("../partials/navBar.ejs", { headerTitle: threadName, headerColor: "var(--accent-purple)" }) %>
+  <%- include("../partials/navBar.ejs", { headerTitle: post.topicId.name, headerColor: "var(--accent-purple)" }) %>
 
   <!-- Main content -->
   <main>
@@ -25,15 +25,11 @@
     <section id="content-section-container">
       <div id="post-section">
         <div id="post-title">
-          <%- include("../partials/landing/forum-section/forumTopic.ejs", { 
-                isPost: true,
-                showDate: true,
-                showThreadStatus: false,
-            }) %>
+          <%- include("../partials/forum/forumPostTitle.ejs") %>
         </div>
 
         <div id="post-content">
-          <p class="post-content-text font-poppins"><%= postContent %></p>
+          <p class="post-content-text font-poppins"><%= post.content %></p>
         </div>
       </div>
 

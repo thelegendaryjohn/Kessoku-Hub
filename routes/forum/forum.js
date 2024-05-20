@@ -36,11 +36,14 @@ router.get("/forum/topic/:id", (req, res) => {
 	});
 });
 
-router.get("/forum/thread/:id", (req, res) => {
-	const post = getPost(req.params.id);
-	const comments = getComment(false, req.params.id);
+router.get("/forum/thread/:id", async (req, res) => {
+	let post = getPost(req.params.id);
+	let comments = getComment(false, req.params.id);
+
+	[post, comments] = await Promise.all([post, comments]);
 
 	render(req, res, "forum/postPage", {
+		topic: post.topicId,
 		post: post,
 		comments: comments,
 	});

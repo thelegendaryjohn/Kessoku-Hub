@@ -6,7 +6,7 @@
   <%- include("../partials/htmlHead.ejs") %>
 
   <title>Kessoku Hub | Forum</title>
-  <link rel="stylesheet" href="/css/landing/forum.css">
+  <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
   <link rel="stylesheet" href="/css/forum/forum.css">
 </head>
@@ -23,7 +23,7 @@
     <!-- Thread section -->
     <section id="content-section-container">
       <% topics.forEach((topic) => { %>
-      <%- include("../partials/landing/forum-section/forumTopic.ejs", { 
+      <%- include("../partials/forum/forumTopic.ejs", { 
         topic: topic,
         posts: posts[topic._id],
       }) %>
