@@ -22,12 +22,10 @@
   <main>
     <!-- Thread section -->
     <section id="content-section-container">
-      <% thread.forEach((t, i) => { %>
-      <%- include("../partials/landing/forum-section/forumThread.ejs", { 
-        threadTitle: thread[i].threadTitle,
-        threadPosts: thread[i].threadPosts,
-        threadStatus: thread[i].threadStatus,
-        threadDate: thread[i].threadDate,
+      <% threads.forEach((topic) => { %>
+      <%- include("../partials/landing/forum-section/forumTopic.ejs", { 
+        topicTitle: topic.topicTitle,
+        topicPosts: topic.topicPosts,
       }) %>
       <% }); %>
     </section>
