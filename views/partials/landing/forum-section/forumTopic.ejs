@@ -16,7 +16,7 @@
       post: post,
     }) %>
     <% } else { %>
-    <% Object.values(posts[topic._id]).map((post) => { %>
+    <% Object.values(posts).map((post) => { %>
     <%- include("postContainer.ejs", {
       post: post,
     }) %>
