@@ -5,20 +5,55 @@
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
 
-  <title>Kessoku Hub | Videos</title>
+  <title>Kessoku Hub | Music</title>
   <link rel="stylesheet" href="/css/music/music.css">
 </head>
 
 <body>
-  
+
   <!-- Sidebar -->
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
-  <%- include("../partials/navBar.ejs", { headerTitle: "MUSIC", headerColor: "var(--ikuyo-color)" }) %>
+  <%- include("../partials/navBar.ejs", { headerTitle: "MUSIC", headerColor: "var(--hitori-color)" }) %>
   <main>
-    <!-- Music -->
-    <%- include("../partials/landing/music-section/albumContainer.ejs") %>
+    <!-- Music section -->
+    <section id="music">
+      <div id="album-container" class="section-container">
+      <h2 id="music-header" class="section-header text-shadow">Music</h2>
+        <%- include("../partials/landing/music-section/albumHeader.ejs") %>
+
+        <!-- <div class="play-all-btn"></div> -->
+
+        <div id="album-song-list">
+          <%- include("../partials/landing/music-section/albumSong.ejs", { 
+              index: 1,
+              name: "Seishun Complex",
+              length: "3:23"
+            }) %>
+
+          <%- include("../partials/landing/music-section/albumSong.ejs", {
+              index: 2,
+              name: "Hitoribocchi Tokyo",
+              length: "3:52"
+            }) %>
+
+          <%- include("../partials/landing/music-section/albumSong.ejs", {
+              index: 3,
+              name: "Distortion!!",
+              length: "3:23"
+            }) %>
+
+          <%- include("../partials/landing/music-section/albumSong.ejs", {
+              index: 4,
+              name: "Secret Base",
+              length: "3:52"
+            }) %>
+        </div>
+      </div>
+
+      <script src="/js/landing/music-section/songSelection.js"></script>
+    </section>
   </main>
 
   <!-- Footer partial -->
