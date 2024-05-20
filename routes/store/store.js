@@ -78,6 +78,7 @@ router.get("/store/add/:id", (req, res) => {
 	// Create a cart if it doesn't exist
 	if (!req.session.cart) {
 		req.session.cart = {};
+		req.session.cart.maxAge = 24 * 60 * 60 * 1000;
 	}
 
 	// Check if the item is in the cart
@@ -100,7 +101,7 @@ router.get("/store/remove/:id", (req, res) => {
 	}
 
 	// Check if the item is in the cart
-	if (req.session.cart.includes(req.params.id)) {
+	if (Object.keys(req.session.cart).includes(req.params.id)) {
 		// Decrement the quantity of the item
 		req.session.cart[req.params.id]--;
 		if (req.session.cart[req.params.id] <= 0) {
