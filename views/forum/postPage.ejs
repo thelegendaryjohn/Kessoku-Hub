@@ -12,15 +12,6 @@
 </head>
 
 <body>
-  <!-- Values for testing purpose -->
-  <% const currThread = thread[1] %>
-  <% const currPost = currThread.threadPosts[1] %>
-
-  <% const threadName = currThread.threadTitle %>
-  <% const postAuthor = currPost.postAuthor %>
-  <% const postDate = currPost.postDate %>
-  <% const postStatus = currPost.postStatus %>
-  <% const postContent = currPost.postContent %>
 
   <!-- Sidebar -->
   <%- include("../partials/sidebar.ejs") %>
@@ -34,14 +25,10 @@
     <section id="content-section-container">
       <div id="post-section">
         <div id="post-title">
-          <%- include("../partials/landing/forum-section/forumThread.ejs", { 
+          <%- include("../partials/landing/forum-section/forumTopic.ejs", { 
                 isPost: true,
                 showDate: true,
                 showThreadStatus: false,
-                threadTitle: postAuthor,
-                threadPosts: currPost,
-                threadDate: postDate,
-                threadStatus: currThread.threadStatus,
             }) %>
         </div>
 

@@ -4,6 +4,10 @@
     <a href="/forum/topic/<%= topic.name %>">
       <div class="thread-header-date-title">
         <h3 class="thread-title"><%= topic.name %></h3>
+        <h4 class="thread-date" style="display:<%= (locals.showDate) === true ? 'block' : 'none' %>;"><%= post.createdAt   %></h4>
+        <div class="thread-status" style="display:<%= (locals.showThreadStatus) === true ? 'block' : 'none' %>;">
+        <%- include("forumStatus.ejs") %>
+      </div>
       </div>
     </a>
   </div>
