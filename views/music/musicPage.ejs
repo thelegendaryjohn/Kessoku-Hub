@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Videos</title>
+  <link rel="stylesheet" href="/css/music/music.css">
+</head>
+
+<body>
+  
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "MUSIC", headerColor: "var(--ikuyo-color)" }) %>
+  <main>
+    <!-- Music -->
+    <%- include("../partials/landing/music-section/albumContainer.ejs") %>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
