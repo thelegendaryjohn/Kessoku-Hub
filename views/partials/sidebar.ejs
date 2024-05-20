@@ -1,22 +1,25 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
-    <div id="profile-container">
-      <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
-      <h1 id="profile-name"><%= 
-        user ? user.username : "Guest"
-        %></h1>
-    </div>
+    <a href="<%= user ? "/account/profile" : "/account" %>">
+      <div id="profile-container">
+        <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
+        <h1 id="profile-name"><%= 
+          user ? user.username : "Guest"
+          %></h1>
+      </div>
+    </a>
     <div id="nav-buttons">
       <a id="nav-top" class="btn nav-btn" href="/">TOP</a>
       <a id="nav-forum" class="btn nav-btn" href="/">FORUM</a>
       <a id="nav-videos" class="btn nav-btn" href="/videos">VIDEOS</a>
       <a id="nav-music" class="btn nav-btn" href="/">MUSIC</a>
-      <a id="nav-store" class="btn nav-btn" href="/">STORE</a>
+      <a id="nav-store" class="btn nav-btn" href="/store">STORE</a>
       <!-- <a id="nav-create-account" class="btn nav-btn" href="#">CREATE ACCOUNT</a> -->
       <div class="divider"></div>
       <a id="nav-login" class="btn nav-btn" href="<%= user ? "/account/logout" : "/account" %>">
         <%= user ? "LOG OUT" : "LOG IN / CREATE ACCOUNT"%>
       </a>
+      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='<%= user ? "" : "display: none"%>'>ACCOUNT MENU</a>
     </div>
   </div>
 </nav>

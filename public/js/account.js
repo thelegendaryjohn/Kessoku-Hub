@@ -29,7 +29,7 @@ document.querySelector("#login").addEventListener("click", toggleSections);
 
 //
 async function loginRequest(body) {
-	return fetch("/user/login", {
+	return fetch("/account/login", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -50,7 +50,7 @@ function clearErrorHighlight() {
 	document.querySelectorAll(".input-field").forEach((element) => {
 		element.classList.remove("error-highlight");
 	});
-	document.querySelectorAll(".signup-label").forEach((element) => {
+	document.querySelectorAll(".form-label").forEach((element) => {
 		element.classList.remove("error-label");
 	});
 }
@@ -97,7 +97,7 @@ document
 			return false;
 		}
 		// Send the request
-		let response = await fetch("/user/register", {
+		let response = await fetch("/account/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -152,18 +152,3 @@ document
 			}
 		}
 	});
-
-// Listen to the visibility icon clicks
-document.querySelectorAll(".pass-visibility").forEach((e) => {
-	e.addEventListener("click", () => {
-		// Switch icons
-		e.src = e.classList.contains("visible")
-			? "/images/account-section/hide-icon.svg"
-			: "/images/account-section/show-icon.svg";
-		e.classList.toggle("visible");
-
-		// Change input type
-		const input = e.previousElementSibling;
-		input.type = input.type === "password" ? "text" : "password";
-	});
-});

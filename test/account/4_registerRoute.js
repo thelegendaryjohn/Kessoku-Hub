@@ -3,11 +3,11 @@ import assert from "assert";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 
-describe("POST /user/register", () => {
+describe("POST /account/register", () => {
 	it("should register a new user", (done) => {
 		User.collection.drop(() => {
 			request(app)
-				.post("/user/register")
+				.post("/account/register")
 				.send({ username: "testuser", password: "testpassword1" })
 				.set("Accept", "application/json")
 				.expect("Content-Type", /json/)
@@ -25,7 +25,7 @@ describe("POST /user/register", () => {
 	// Should fail if the user already exists
 	it("should fail if the user already exists", (done) => {
 		request(app)
-			.post("/user/register")
+			.post("/account/register")
 			.send({ username: "testuser", password: "testpassword1" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
@@ -39,7 +39,7 @@ describe("POST /user/register", () => {
 			});
 	});
 });
-describe("POST /user/register sanitization", () => {
+describe("POST /account/register sanitization", () => {
 	// Flush the collection before these tests
 	beforeEach(function (done) {
 		User.collection.drop(() => {
@@ -50,7 +50,7 @@ describe("POST /user/register sanitization", () => {
 	// Should fail if the username is not provided
 	it("should fail if the username is not provided", (done) => {
 		request(app)
-			.post("/user/register")
+			.post("/account/register")
 			.send({ password: "testpassword1" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
@@ -68,7 +68,7 @@ describe("POST /user/register sanitization", () => {
 	// Should fail if the username is of invalid regex
 	it("should fail if the username is of invalid regex", (done) => {
 		request(app)
-			.post("/user/register")
+			.post("/account/register")
 			.send({ username: "1test", password: "testpassword1" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
@@ -90,7 +90,7 @@ describe("POST /user/register sanitization", () => {
 	// Should fail if the password is not provided
 	it("should fail if the password is not provided", (done) => {
 		request(app)
-			.post("/user/register")
+			.post("/account/register")
 			.send({ username: "testuser" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
@@ -106,7 +106,7 @@ describe("POST /user/register sanitization", () => {
 	});
 	it("should fail if the password is of invalid regex", (done) => {
 		request(app)
-			.post("/user/register")
+			.post("/account/register")
 			.send({ username: "testuser", password: "test" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
@@ -127,7 +127,7 @@ describe("POST /user/register sanitization", () => {
 	// Should fail with a combination of errors
 	it("should fail with a combination of errors", (done) => {
 		request(app)
-			.post("/user/register")
+			.post("/account/register")
 			.send({ username: "1test", password: "test" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)

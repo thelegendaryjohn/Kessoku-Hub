@@ -1,9 +1,13 @@
 <section id="forum" class="box-shadow">
   <h2 id="forum-header" class="section-header">FORUM</h2>
-  <div id="topic-container" class="section-container">
-    <%- include("forumTopic.ejs") %>
-
-    <%- include("forumTopic.ejs") %>
+  <div id="thread-container" class="section-container">
+    <% thread.forEach((t, i) => { %>
+    <%- include("forumThread.ejs", { 
+        threadTitle: thread[i].threadTitle,
+        threadPosts: thread[i].threadPosts,
+        threadStatus: thread[i].threadStatus,
+      }) %>
+    <% }); %>
   </div>
 
   <a href="#" class="see-all-anchor">See all...</a>

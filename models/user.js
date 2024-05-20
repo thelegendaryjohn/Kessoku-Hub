@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { Resend } from "resend";
+//
+const env = process.env.NODE_ENV;
 const Schema = mongoose.Schema;
+//
+let resend;
+if (process.env.RESEND_KEY) resend = new Resend(process.env.RESEND_KEY);
 
 // Configs
 const SALT_WORK_FACTOR = 10;
@@ -27,7 +34,11 @@ const userSchema = new Schema({
 		sparse: true,
 	},
 	//
-	created: { type: Date, default: Date.now },
+	bio: { type: String, default: "" },
+	avatar: { type: String, default: "" },
+	//
+	createdAt: { type: Date, default: Date.now },
+	updatedAt: { type: Date, default: Date.now },
 });
 
 // Hash password before saving
@@ -45,10 +56,30 @@ userSchema.pre("save", function (next) {
 	});
 });
 
-// Create a token to verify with email for new users
-userSchema.post("init", function () {
-	// TODO: Use nodemailer to send the email with the generated token with JWT
-});
+userSchema.methods.verifyEmail = async function (email, cb) {
+	// Only allow unverified users to verify their email
+	if (this.role !== roles.unverified)
+		return cb(new Error("User is already verified."));
+	// Create a token
+	const homelink =
+		env == "dev" ? "http://localhost:3000" : "https://bocchi.band";
+	const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+		expiresIn: "5m",
+	});
+
+	const { data, error } = await resend.emails.send({
+		from: "Support <support@bocchi.band>",
+		to: [email],
+		subject: "Kessoku Hub - Verify your email",
+		html: `Your verification link is <a href="${homelink}/account/verify/${token}">here</a>.`,
+	});
+
+	if (error) {
+		return cb(null, error);
+	}
+
+	return cb(data);
+};
 
 // Method to compare password for login
 userSchema.methods.comparePassword = function (candidatePassword, cb) {

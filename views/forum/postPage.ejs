@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/landing/forum.css">
+  <link rel="stylesheet" href="/css/forum/main.css">
+  <link rel="stylesheet" href="/css/forum/post.css">
+</head>
+
+<body>
+  <!-- Values for testing purpose -->
+  <% const currThread = thread[1] %>
+  <% const currPost = currThread.threadPosts[1] %>
+
+  <% const threadName = currThread.threadTitle %>
+  <% const postAuthor = currPost.postAuthor %>
+  <% const postDate = currPost.postDate %>
+  <% const postStatus = currPost.postStatus %>
+  <% const postContent = currPost.postContent %>
+
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: threadName, headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Thread section -->
+    <section id="content-section-container">
+      <div id="post-section">
+        <div id="post-title">
+          <%- include("../partials/landing/forum-section/forumThread.ejs", { 
+                isPost: true,
+                showDate: true,
+                showThreadStatus: false,
+                threadTitle: postAuthor,
+                threadPosts: currPost,
+                threadDate: postDate,
+                threadStatus: currThread.threadStatus,
+            }) %>
+        </div>
+
+        <div id="post-content">
+          <p class="post-content-text font-poppins"><%= postContent %></p>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+
+      <div id="comment-section">
+        <div id="comment-section-sticky-box">
+          <!-- Comment posting -->
+          <form id="comment-post-container" class="form-container box-shadow">
+            <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+
+            <div id="comment-post-btn-container">
+              <button id="comment-post-cancel" class="form-btn comment-post-btn" onclick="event.preventDefault();">Cancel</button>
+              <input id="comment-post-submit" class="form-btn comment-post-btn" type="submit" value="Post" onclick="event.preventDefault();">
+            </div>
+          </form>
+        </div>
+
+        <% const repeatCount = 10; %>
+        <% for (let i = 0; i < repeatCount; i++) { %>
+        <%- include("../partials/forum/forumComment.ejs", {
+          authorName: "Ikuyo Kita",
+          commentDate: "1.10.2024",
+          likes: 12,
+          commentText: "Omg this is soo cool! <3"
+        }) %>
+
+        <%- include("../partials/forum/forumComment.ejs", {
+          authorName: "Hiori Gotoh",
+          commentDate: "3.10.2024",
+          likes: 31,
+          commentText: "I'll definitely not gonna miss this one!"
+        }) %>
+        <% } %>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Forum actions partial -->
+  <%- include("../partials/forum/forumAction.ejs") %>
+</body>
+
+</html>

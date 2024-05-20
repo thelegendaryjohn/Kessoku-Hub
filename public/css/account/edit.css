@@ -1,0 +1,94 @@
+main {
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+#user-profile-container {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+#user-profile-container #profile-img {
+	width: 100%;
+	max-width: 15rem;
+	border: none;
+}
+
+#change-profile-img-container {
+	transition: 0.12s;
+	position: absolute;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 3.5rem;
+	font-size: 1.5rem;
+	background-color: rgba(105, 105, 105, 0.3);
+	color: var(--accent-lightgrey);
+}
+
+#user-profile-container:hover > #change-profile-img-container {
+	background-color: rgba(105, 105, 105, 0.5);
+	color: var(--body-color);
+}
+
+#user-profile-container:not(:hover) > #change-profile-img-container {
+	background-color: rgba(105, 105, 105, 0.3);
+	color: var(--accent-lightgrey);
+}
+
+#menu-section-container {
+	width: 100%;
+	max-width: 60rem;
+	padding: 0 1.5rem;
+	box-sizing: border-box;
+}
+
+input[type="date"] {
+	-webkit-appearance: none;
+	background-color: transparent;
+}
+
+textarea {
+	height: 4rem;
+	resize: none;
+}
+
+.form-spacer {
+	padding-top: 1rem;
+}
+
+.longtext-input-box {
+	position: relative;
+}
+
+.char-count-container {
+	user-select: none;
+	position: absolute;
+	right: 1.5rem;
+	bottom: 0.6rem;
+	color: var(--accent-grey);
+	font-size: 1rem;
+}
+
+#bio-input:not(:focus) {
+	background: -webkit-linear-gradient(top, #000000 30%, #fff);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	overflow: hidden;
+}
+
+#bio-input:focus ~ .char-count-container {
+	display: block;
+}
+
+#bio-input:not(:focus) ~ .char-count-container {
+	display: none;
+}
+
+.submit-btn {
+	margin-top: 3rem;
+}

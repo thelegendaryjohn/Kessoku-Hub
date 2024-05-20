@@ -148,7 +148,7 @@
 }
 
 /* <230px */
-@media screen and (orientation: portrait) and (max-width: 230px) {
+/* @media screen and (orientation: portrait) and (max-width: 230px) {
 	#album-name {
 		font-size: 1.4rem;
 	}
@@ -161,4 +161,4 @@
 	.song {
 		font-size: 1.4rem;
 	}
-}
+} */

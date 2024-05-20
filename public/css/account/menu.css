@@ -1,0 +1,93 @@
+a {
+	text-decoration: none;
+}
+
+#user-profile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 1.5rem 0;
+	height: 100%;
+	gap: 1rem;
+	border-radius: 100%;
+}
+
+#user-profile-container #profile-img {
+	width: 8rem;
+}
+
+#user-profile-container #profile-name {
+	font-size: 2.5rem;
+	padding-left: 0;
+}
+
+#menu-section-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	padding: 0 1.5rem;
+	margin-bottom: 2rem;
+	gap: 1rem;
+}
+
+.section-spacer {
+	margin: 1rem 0;
+	width: 100%;
+	height: 2px;
+	background-color: var(--accent-lightgrey);
+}
+
+.menu-section {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+.menu-section-title {
+	font-size: 2rem;
+	color: var(--accent-grey);
+}
+
+.function-btn {
+	transition: 0.12s;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+	padding: 0 0.5rem;
+	border-radius: 5px;
+}
+
+.function-btn:hover {
+	background-color: rgb(227, 227, 227);
+}
+
+.function-btn:not(:hover) {
+	background-color: transparent;
+}
+
+.function-btn .function-img {
+	height: 2.5rem;
+}
+
+.function-btn .function-name {
+	font-size: 2rem;
+	width: 100%;
+	color: var(--black-color);
+	font-weight: bold;
+}
+
+.function-btn .function-arrow-btn {
+	height: 2rem;
+}
+
+#logout-btn .function-name {
+	color: var(--ikuyo-color);
+}
+
+#logout-btn:hover {
+	background-color: rgba(218, 39, 39, 0.2);
+}

@@ -13,9 +13,14 @@ export function logout(req, res, next) {
 	});
 }
 
-router.get("/user/logout", (req, res, next) => {
+router.post("/account/logout", (req, res, next) => {
+	// See if the user is logged in and the request is valid
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	}
+
 	logout(req, res, next);
-	res.status(200).json("Successfully logged out.");
+	return res.status(200).json("Logged out.");
 });
 
 export default router;

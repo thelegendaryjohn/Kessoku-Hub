@@ -3,7 +3,7 @@ info:
     version: "1.0.0"
     title: "Kessoku API"
 paths:
-    /user/login:
+    /account/login:
         post:
             tags:
                 - "Authentication"
@@ -43,7 +43,7 @@ paths:
                     description: "Invalid input or Invalid credentials"
                 "500":
                     description: "Internal server error"
-    /user/register:
+    /account/register:
         post:
             tags:
                 - "Authentication"
@@ -97,7 +97,7 @@ paths:
                     description: "Username already taken"
                 "500":
                     description: "Internal server error"
-    /user/logout:
+    /account/logout:
         get:
             tags:
                 - "Authentication"
@@ -108,5 +108,232 @@ paths:
             responses:
                 "200":
                     description: "Successfully logged out"
+                "500":
+                    description: "Internal server error"
+    /account/verify:
+        post:
+            tags:
+                - "Authentication"
+            summary: "Starts the user verification process"
+            description: "This route is used to start the user verification process. It requires the user to be logged in and not already verified."
+            parameters:
+                - in: "body"
+                  name: "body"
+                  description: "Email of the user to be verified"
+                  required: true
+                  schema:
+                      type: "object"
+                      properties:
+                          email:
+                              type: "string"
+            responses:
+                "200":
+                    description: "Verification process started successfully"
+                "400":
+                    description: "Bad request, email is required or user is already in verification process"
+                "401":
+                    description: "Unauthorized, user is not logged in"
+                "409":
+                    description: "Conflict, user is already verified"
+                "500":
+                    description: "Internal server error"
+    /account/verify/{token}:
+        get:
+            tags:
+                - "Authentication"
+            summary: "Completes the user verification process"
+            description: "This route is used to complete the user verification process. It requires a valid JWT token."
+            parameters:
+                - in: "path"
+                  name: "token"
+                  description: "JWT token for verification"
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "User verified successfully"
+                "400":
+                    description: "Bad request, invalid token"
+                "404":
+                    description: "Not found, user not found"
+    /thread/comment:
+        post:
+            tags:
+                - "Comments"
+            summary: "Create a new comment"
+            description: "This route allows a logged-in user to create a new comment on a post."
+            consumes:
+                - "application/json"
+            produces:
+                - "application/json"
+            parameters:
+                - in: "body"
+                  name: "body"
+                  description: "Comment information"
+                  required: true
+                  schema:
+                      type: "object"
+                      properties:
+                          content:
+                              type: "string"
+                          postId:
+                              type: "string"
+                      required:
+                          - "content"
+                          - "postId"
+            responses:
+                "200":
+                    description: "Comment created successfully"
+                    schema:
+                        type: "object"
+                        properties:
+                            content:
+                                type: "string"
+                            authorId:
+                                type: "string"
+                            postId:
+                                type: "string"
+                "401":
+                    description: "Invalid input or Unauthorized"
+                "500":
+                    description: "Internal server error"
+    /thread/comment/post/{id}:
+        get:
+            tags:
+                - "Comments"
+            summary: "Get comments by post ID"
+            description: "This route allows users to retrieve all comments associated with a specific post ID."
+            produces:
+                - "application/json"
+            parameters:
+                - in: "path"
+                  name: "id"
+                  description: "Post ID"
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "Comments retrieved successfully"
+                    schema:
+                        type: "array"
+                        items:
+                            type: "object"
+                            properties:
+                                content:
+                                    type: "string"
+                                authorId:
+                                    type: "string"
+                                postId:
+                                    type: "string"
+                "401":
+                    description: "Invalid input"
+                "500":
+                    description: "Internal server error"
+    /thread/comment/{id}:
+        get:
+            tags:
+                - "Comments"
+            summary: "Get a comment by ID"
+            description: "This route allows users to retrieve a comment by its ID."
+            produces:
+                - "application/json"
+            parameters:
+                - in: "path"
+                  name: "id"
+                  description: "Comment ID"
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "Comment retrieved successfully"
+                    schema:
+                        type: "object"
+                        properties:
+                            content:
+                                type: "string"
+                            authorId:
+                                type: "string"
+                            postId:
+                                type: "string"
+                "401":
+                    description: "Invalid input"
+                "500":
+                    description: "Internal server error"
+    /thread/post:
+        post:
+            tags:
+                - "Posts"
+            summary: "Create a new post"
+            description: "This route allows a logged-in user to create a new post."
+            consumes:
+                - "application/json"
+            produces:
+                - "application/json"
+            parameters:
+                - in: "body"
+                  name: "body"
+                  description: "Post information"
+                  required: true
+                  schema:
+                      type: "object"
+                      properties:
+                          title:
+                              type: "string"
+                          content:
+                              type: "string"
+                          topic:
+                              type: "string"
+                      required:
+                          - "title"
+                          - "content"
+                          - "topic"
+            responses:
+                "200":
+                    description: "Post created successfully"
+                    schema:
+                        type: "object"
+                        properties:
+                            title:
+                                type: "string"
+                            content:
+                                type: "string"
+                            authorId:
+                                type: "string"
+                            topicId:
+                                type: "string"
+                "401":
+                    description: "Invalid input, topic not found or Unauthorized"
+                "500":
+                    description: "Internal server error"
+    /thread/post/{id}:
+        get:
+            tags:
+                - "Posts"
+            summary: "Get a post by ID"
+            description: "This route allows users to retrieve a post by its ID."
+            produces:
+                - "application/json"
+            parameters:
+                - in: "path"
+                  name: "id"
+                  description: "Post ID"
+                  required: true
+                  type: "string"
+            responses:
+                "200":
+                    description: "Post retrieved successfully"
+                    schema:
+                        type: "object"
+                        properties:
+                            title:
+                                type: "string"
+                            content:
+                                type: "string"
+                            authorId:
+                                type: "string"
+                            topicId:
+                                type: "string"
+                "401":
+                    description: "Invalid input"
                 "500":
                     description: "Internal server error"
