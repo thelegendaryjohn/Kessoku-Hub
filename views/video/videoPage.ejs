@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Videos</title>
+  <link rel="stylesheet" href="/css/video/video.css">
+</head>
+
+<body>
+  
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "VIDEOS", headerColor: "var(--ikuyo-color)" }) %>
+  <main>
+  <!-- Video section -->
+  <section id="preview-section">
+    <div id="video-container" class="section-container">
+      <h2 id="video-header" class="section-header text-shadow">Episode Previews</h2>
+      <% videos.forEach((video, index) => { %>
+        <% if ( video.videoType === "previews" ) { %>
+        <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+          episodeName: video.name,
+          episodeID: video.id,
+        })%>
+      <% } %>
+        <% }) %>
+      </div>
+  </section>
+  <section id="music-video-section">
+    <div id="video-container" class="section-container">
+      <h2 id="video-header" class="section-header text-shadow">Music Videos</h2>
+      <% videos.forEach((video, index) => { %>
+        <% if ( video.videoType === "music" ) { %>
+        <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+          episodeName: video.name,
+          episodeID: video.id,
+        })%>
+      <% } %>
+        <% }) %>
+      </div>
+  </section>
+    <script>
+      document.querySelectorAll(".episode").forEach(episode => {
+        episode.addEventListener("click", () => {
+          // console.log("Episode clicked");
+          episode.querySelector(".episode-embed-bg").classList.toggle("show");
+        })
+      })
+    </script>
+
+  <!--Music Video-->
+
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>

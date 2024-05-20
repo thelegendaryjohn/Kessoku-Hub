@@ -1,15 +1,12 @@
-#series {
-	border-color: var(--ikuyo-color);
-}
-
-#series-header {
+#video-header {
 	color: var(--ikuyo-color);
+	font-size: 3rem;
 }
 
-#series-container {
+#video-container {
 	display: flex;
 	flex-direction: column;
-	padding: 5px 10px;
+	padding: 1rem 2rem;
 	gap: 1rem;
 }
 
@@ -21,6 +18,7 @@
 
 .episode-cover-container {
 	display: flex;
+	position: relative;
 	justify-content: center;
 	align-items: center;
 	overflow: clip;
@@ -29,7 +27,13 @@
 }
 
 .overlay-video-length {
-	display: none;
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	border-radius: 5px;
+	color: white;
+	padding: 0 1rem 0 1rem;
+	bottom: 1rem;
+	right: 1rem;
 }
 
 .episode-cover {
@@ -43,7 +47,7 @@
 	display: flex;
 	align-items: center;
 	width: 100%;
-	font-size: 1.8rem;
+	font-size: 2rem;
 	font-weight: bold;
 }
 
@@ -97,16 +101,10 @@
 }
 
 /* Normal Episode Styling */
-.episode.normal .episode-cover-container {
-	height: 8rem;
-	width: 50%;
-}
-
-/* Featured Episode Styling */
-.episode.featured {
+.episode.normal {
 	flex-direction: column;
 }
 
-.episode.featured .episode-cover-container {
-	height: 10rem;
+.episode.normal .episode-cover-container{
+	height: 12rem;
 }
