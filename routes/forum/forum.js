@@ -12,10 +12,8 @@ router.get("/forum", async (req, res) => {
 		posts[topic._id] = await Post.find({ topicId: topic._id })
 			.sort({ createdAt: -1 })
 			.limit(3)
-			.populate("authorId");
+			.populate("author");
 	}
-	console.log(posts);
-	console.log(topics);
 	render(req, res, "forum/forumPage", {
 		topics: topics,
 		posts: posts,
