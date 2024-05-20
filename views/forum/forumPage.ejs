@@ -22,10 +22,10 @@
   <main>
     <!-- Thread section -->
     <section id="content-section-container">
-      <% threads.forEach((topic) => { %>
+      <% topics.forEach((topic) => { %>
       <%- include("../partials/landing/forum-section/forumTopic.ejs", { 
-        topicTitle: topic.topicTitle,
-        topicPosts: topic.topicPosts,
+        topic: topic,
+        posts: posts,
       }) %>
       <% }); %>
     </section>

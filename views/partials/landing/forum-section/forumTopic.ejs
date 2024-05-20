@@ -1,31 +1,31 @@
-<div class="thread">
-  <!-- Thread header -->
-  <div class="thread-header">
-    <a href="/forum/thread?thread=<%= locals.threadTitle %>">
-      <div class="thread-header-date-title">
-        <h3 class="thread-title"><%= locals.threadTitle %></h3>
-        <h4 class="thread-date" style="display:<%= (locals.showDate) === true ? 'block' : 'none' %>;"><%= locals.threadDate %></h4>
-      </div>
+<div class="topic">
+  <!-- topic header -->
+  <div class="topic-header">
+    <a href="/forum/topic/<%= locals.topic.title %>">
+      <!-- <div class="topic-header-date-title">
+        <h3 class="topic-title"><%= locals.topicTitle %></h3>
+        <h4 class="topic-date" style="display:<%= (locals.showDate) === true ? 'block' : 'none' %>;"><%= locals.topicDate %></h4>
+      </div> -->
 
-      <div class="thread-status" style="display:<%= (locals.showThreadStatus) === true ? 'block' : 'none' %>;">
+      <div class="topic-status" style="display:<%= (locals.showtopicStatus) === true ? 'block' : 'none' %>;">
         <%- include("forumStatus.ejs", {
-          status: locals.threadStatus
+          status: locals.topicStatus
         }) %>
       </div>
     </a>
   </div>
 
-  <!-- Thread content -->
-  <div class="thread-content">
+  <!-- topic content -->
+  <div class="topic-content">
     <!-- Post link container -->
     <% if (locals.isPost) { %>
     <%- include("postContainer.ejs", {
-      post: locals.threadPosts,
+      post: locals.topicPosts,
     }) %>
     <% } else { %>
-    <% locals.threadPosts.forEach((p, i) => { %>
+    <% locals.topicPosts.forEach((p, i) => { %>
     <%- include("postContainer.ejs", {
-      post: locals.threadPosts[i],
+      post: locals.topicPosts[i],
     }) %>
     <% }); %>
     <% } %>
