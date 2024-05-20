@@ -21,39 +21,23 @@
   <section id="preview-section">
     <div id="video-container" class="section-container">
       <h2 id="video-header" class="section-header text-shadow">Episode Previews</h2>
-      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-        episodeName: "Ep. 9 PV - Enoshima Escar",
-        episodeID: "q0tX10H8VGA",
-      }) %>
-
-      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-        episodeName: "Ep. 9 PV - Enoshima Escar",
-        episodeID: "q0tX10H8VGA",
-      }) %>
-
-      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-        episodeName: "Ep. 9 PV - Enoshima Escar",
-        episodeID: "q0tX10H8VGA",
-      }) %>
+      <% videos.forEach((video, index) => { %>
+        <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+          episodeName: video.name,
+          episodeID: video.id,
+        }) %>
+        <% }) %>
       </div>
   </section>
   <section id="music-video-section">
     <div id="video-container" class="section-container">
       <h2 id="video-header" class="section-header text-shadow">Music Videos</h2>
-      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-        episodeName: "Seishun Complex - Music Video",
-        episodeID: "Yd8kUoB72xU",
-      }) %>
-  
-      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-        episodeName: "Ep. 9 PV - Enoshima Escar",
-        episodeID: "q0tX10H8VGA",
-      }) %>
-  
-      <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-        episodeName: "Ep. 9 PV - Enoshima Escar",
-        episodeID: "q0tX10H8VGA",
-      }) %>
+      <% videos.forEach((video, index) => { %>
+        <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+          episodeName: video.name,
+          episodeID: video.id,
+        }) %>
+        <% }) %>
       </div>
   </section>
     <script>
