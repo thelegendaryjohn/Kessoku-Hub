@@ -1,12 +1,11 @@
 <section id="forum" class="box-shadow">
   <h2 id="forum-header" class="section-header">FORUM</h2>
-  <div id="thread-container" class="section-container">
-    <% topic.forEach((t, i) => { %>
-    <%- include("forumThread.ejs", { 
-        threadTitle: thread[i].threadTitle,
-        threadPosts: thread[i].threadPosts,
-        threadStatus: thread[i].threadStatus,
-      }) %>
+  <div id="topic-container" class="section-container">
+    <% topics.forEach((topic) => { %>
+          <%- include("forumTopic.ejs", { 
+            topic: topic,
+            posts: posts[topic._id],
+          }) %>
     <% }); %>
   </div>
 
