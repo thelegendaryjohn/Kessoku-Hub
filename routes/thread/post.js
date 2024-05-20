@@ -8,11 +8,11 @@ const v = new Validator();
 let schema = {
 	type: "object",
 	properties: {
-		title: { type: "string" },
+		title: { type: "string", minLength: 8, maxLength: 64 },
 		content: { type: "string" },
 		topic: { type: "string" },
 	},
-	required: ["title", "content"],
+	required: ["title", "content", "topic"],
 };
 // Functions
 export const getPost = (id) => {

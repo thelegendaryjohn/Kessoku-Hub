@@ -16,7 +16,7 @@ const postSchema = new Schema({
 		index: true,
 	},
 	//
-	title: { type: String, required: true },
+	title: { type: String, required: true, minLength: 8, maxLength: 64 },
 	content: { type: String, required: true },
 	//
 	viewCount: { type: Number, default: 0 },
