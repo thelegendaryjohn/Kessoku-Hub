@@ -17,6 +17,14 @@
 	border-left: 0;
 }
 
+.section-divider {
+	margin-top: 3rem;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid var(--accent-lightgrey);
+	opacity: 0.5;
+}
+
 #post-section {
 	background-color: var(--body-color);
 	display: flex;
@@ -42,6 +50,7 @@
 
 #comment-section-sticky-box {
 	position: sticky;
+	margin: 2rem 0;
 	top: 6rem;
 	display: flex;
 	flex-direction: column;
@@ -52,7 +61,7 @@
 
 #comment-section .thread {
 	width: 95%;
-    padding: 0;
+	padding: 0;
 	border-color: var(--ryo-color);
 }
 
