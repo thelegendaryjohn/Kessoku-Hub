@@ -2,6 +2,9 @@
   <!-- topic header -->
   <div class="topic-header">
     <a href="/forum/topic/<%= topic.name %>">
+      <div class="thread-header-date-title">
+        <h3 class="thread-title"><%= topic.name %></h3>
+      </div>
     </a>
   </div>
 
@@ -13,7 +16,7 @@
       post: post,
     }) %>
     <% } else { %>
-    <% Object.entries(posts).map((topicId, post) => { %>
+    <% Object.values(posts[topic._id]).map((post) => { %>
     <%- include("postContainer.ejs", {
       post: post,
     }) %>
