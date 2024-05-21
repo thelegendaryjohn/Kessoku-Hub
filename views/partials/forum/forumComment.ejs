@@ -1,7 +1,7 @@
 <div class="topic">
   <!-- topic header -->
   <div class="topic-header">
-    <a href="<%= `/user/${post.author.username}` %>">
+    <a href="<%= `/user/${comment.author.username}` %>">
       <div class="topic-header-date-title">
         <h3 class="topic-author"><%= comment.author.username %></h3>
         <h4 class="topic-date"><%- include("./forumDate.ejs", {obj: comment}) %></h4>
