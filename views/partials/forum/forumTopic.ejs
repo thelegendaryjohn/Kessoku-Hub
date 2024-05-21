@@ -1,0 +1,26 @@
+<div class="topic">
+  <!-- topic header -->
+  <div class="topic-header">
+    <a href="/forum/topic/<%= topic.name %>">
+      <div class="topic-header-date-title">
+        <h3 class="topic-title"><%= topic.name %></h3>
+      </div>
+    </a>
+  </div>
+
+  <!-- topic content -->
+  <div class="topic-content">
+    <!-- Post link container -->
+    <% Object.values(posts).map((post) => { %>
+    <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
+      <div class="post-container">
+        <!-- Post link text -->
+        <h3 class="post-title topic-header"><%= post.title %></h3>
+        <p class="post-text font-poppins"><%= post.content %></p>
+      </div>
+      <!-- Post link arrow -->
+      <img class="post-link-arrow" style="display:<%= (locals.isPost) === true ? 'none' : 'block' %>;" src="/images/button/btn-next.svg" alt="Go to thread">
+    </a>
+    <% }) %>
+  </div>
+</div>

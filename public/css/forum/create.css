@@ -1,5 +1,5 @@
 #content-section-container {
-    gap: 0;
+	gap: 0;
 }
 
 input::placeholder {
@@ -15,7 +15,7 @@ input::placeholder {
 #post-create-input {
 	border: 2px solid var(--accent-grey);
 	border-radius: 10px;
-    height: 30rem;
+	height: 30rem;
 	max-height: 30rem;
 }
 
@@ -37,7 +37,7 @@ input::placeholder {
 
 #post-create-option-title {
 	border-color: var(--nijika-color) !important;
-    font-weight: 550;
+	font-weight: 550;
 }
 
 .form-container {
@@ -56,6 +56,7 @@ input::placeholder {
 #post-create-btn-container > .form-btn {
 	width: 40%;
 	font-size: 2rem;
+	cursor: pointer;
 }
 
 #post-create-attachments {
