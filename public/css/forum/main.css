@@ -1,14 +1,19 @@
 a {
 	text-decoration: none;
+	color: black;
+}
+
+a:visited {
+	color: rgb(80, 80, 80);
 }
 
 label {
 	/* z-index: 1; */
 	font-size: 1.1rem;
-    transform: translateX(1.5rem) translateY(1.8rem);
-    background-color: white;
-    width: fit-content;
-    padding: 0 0.5rem;
+	transform: translateX(1.5rem) translateY(1.8rem);
+	background-color: white;
+	width: fit-content;
+	padding: 0 0.5rem;
 }
 
 ::-webkit-scrollbar {

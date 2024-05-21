@@ -56,12 +56,22 @@
 	gap: 0.5rem;
 }
 
+.topic-author {
+	font-size: 1.5rem;
+}
+
 .topic-header-date-title {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 1rem;
-	height: 2rem;
+}
+
+.topic-date {
+	font-size: 1rem;
+}
+.topic-date::before {
+	content: " • ";
 }
 
 .topic-header > a > * {
@@ -148,6 +158,9 @@
 .status-container {
 	display: flex;
 	gap: 0.2rem;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 .status-icon {
