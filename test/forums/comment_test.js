@@ -44,6 +44,7 @@ describe("Comment Routes", () => {
 		topic = new Topic({
 			name: "Test Topic",
 			description: "Test Description",
+			allowedRole: 0,
 		});
 		await topic.save();
 	});
@@ -55,7 +56,7 @@ describe("Comment Routes", () => {
 		post = new Post({
 			title: "Test Title",
 			content: "Test Content",
-			authorId: user._id,
+			author: user._id,
 			topicId: topic._id,
 		});
 		await post.save();
@@ -78,7 +79,7 @@ describe("Comment Routes", () => {
 						"Test Comment"
 					);
 					expect(res.body)
-						.to.have.property("authorId")
+						.to.have.property("author")
 						.eql(user._id.toString());
 					expect(res.body).to.have.property(
 						"postId",
@@ -112,7 +113,7 @@ describe("Comment Routes", () => {
 			// Create a comment first
 			const comment = new Comment({
 				content: "Test Comment",
-				authorId: user._id,
+				author: user._id,
 				postId: post._id,
 			});
 			comment.save().then(() => {
@@ -127,8 +128,8 @@ describe("Comment Routes", () => {
 							"content",
 							"Test Comment"
 						);
-						expect(res.body[0]).to.have.property("authorId");
-						expect(res.body[0].authorId)
+						expect(res.body[0]).to.have.property("author");
+						expect(res.body[0].author)
 							.to.have.property("_id")
 							.eql(user._id.toString());
 						done();
@@ -148,7 +149,7 @@ describe("Comment Routes", () => {
 			// Create a comment first
 			const comment = new Comment({
 				content: "Test Comment",
-				authorId: user._id,
+				author: user._id,
 				postId: post._id,
 			});
 			comment.save().then((savedComment) => {
@@ -161,8 +162,8 @@ describe("Comment Routes", () => {
 							"content",
 							"Test Comment"
 						);
-						expect(res.body).to.have.property("authorId");
-						expect(res.body.authorId)
+						expect(res.body).to.have.property("author");
+						expect(res.body.author)
 							.to.have.property("_id")
 							.eql(user._id.toString());
 						done();
