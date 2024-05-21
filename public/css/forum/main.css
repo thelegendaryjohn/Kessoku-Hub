@@ -1,12 +1,3 @@
-a {
-	text-decoration: none;
-	color: black;
-}
-
-a:visited {
-	color: rgb(80, 80, 80);
-}
-
 label {
 	/* z-index: 1; */
 	font-size: 1.1rem;

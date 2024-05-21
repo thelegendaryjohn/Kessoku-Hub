@@ -21,11 +21,6 @@
   <!-- Main content -->
   <main>
     <!-- Thread select datalist -->
-    <datalist id="thread-list">
-      <% thread.forEach((t, i) => { %>
-      <option value="<%= thread[i].threadTitle %>"></option>
-      <% }) %>
-    </datalist>
 
     <!-- Thread section -->
     <section id="content-section-container">
@@ -37,14 +32,20 @@
       <!-- Post creating -->
       <form id="post-create-container" class="form-container">
         <div id="post-create-option-container">
-          <label for="post-create-option-thread-select" class="font-poppins">Thread</label>
-          <input id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" placeholder="Select a thread, or make a new one">
+          <label for="post-create-option-thread-select" class="font-poppins">Topics</label>
+          <select id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" default="Select a topic!">
+            <% topics.forEach((topic) => { %>
+            <% if (topic.allowedRole <= user.role) { %>
+            <option value=<%= topic.name %> id=<%= topic._id %>><%= topic.name %> </option>
+            <% } %>
+            <% }) %>
+          </select>
 
           <label for="post-create-option-title" class="font-poppins">Title</label>
-          <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make a title for your post...">
+          <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make sure it's at least 5 characters!">
         </div>
 
-        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write the content..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
 
         <div id="post-create-btn-container">
           <button id="post-create-attachments" class="form-btn" onclick="event.preventDefault();">Add Files</button>
@@ -57,6 +58,43 @@
 
   <!-- Forum actions partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
+
+  <script>
+    // Upon form submission, send a POST request to the server to create a new post
+    document.getElementById("post-create-submit").addEventListener("click", async (event) => {
+      event.preventDefault();
+
+      const threadSelect = document.getElementById("post-create-option-thread-select");
+      const titleInput = document.getElementById("post-create-option-title");
+      const contentInput = document.getElementById("post-create-input");
+
+      const threadId = threadSelect.options[threadSelect.selectedIndex].id;
+      const title = titleInput.value;
+      const content = contentInput.value;
+
+      const response = await fetch("/thread/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          topic: threadId,
+          title: title,
+          content: content,
+        }),
+      });
+
+      if (response.ok) {
+        response.json().then((data) => {
+          window.location.href = `/forum/thread/${data._id}`;
+        });
+      } else {
+        response.json().then((data) => {
+          alert("Failed to create post: " + data);
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

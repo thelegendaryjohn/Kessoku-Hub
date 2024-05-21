@@ -21,7 +21,7 @@ export const getComment = (singleComment, id) => {
 	} else {
 		comment = Comment.find({ postId: id });
 	}
-	return comment.populate("author").sort({ createdAt: 1 });
+	return comment.populate("author").sort({ createdAt: -1 });
 };
 // Posting a comment
 router.post("/thread/comment", (req, res) => {
@@ -39,7 +39,7 @@ router.post("/thread/comment", (req, res) => {
 	// Create a new comment
 	let comment = new Comment({
 		content: req.body.content,
-		authorId: req.session.user._id,
+		author: req.session.user._id,
 		postId: req.body.postId,
 	});
 

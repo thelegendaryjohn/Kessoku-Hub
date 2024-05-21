@@ -39,10 +39,9 @@
         <div id="comment-section-sticky-box">
           <!-- Comment posting -->
           <form id="comment-post-container" class="form-container box-shadow">
-            <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-
+            <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
             <div id="comment-post-btn-container">
-              <button id="comment-post-cancel" class="form-btn comment-post-btn" onclick="event.preventDefault();">Cancel</button>
+              <button id="comment-post-cancel" class="form-btn comment-post-btn">Cancel</button>
               <input id="comment-post-submit" class="form-btn comment-post-btn" type="submit" value="Post" onclick="event.preventDefault();">
             </div>
           </form>
@@ -59,6 +58,36 @@
 
   <!-- Forum actions partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
+
+  <script>
+    // Posting a comment
+    document.querySelector("#comment-post-submit").addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const content = document.querySelector("#comment-post-input").value;
+      const postId = "<%= post._id %>";
+
+      const response = await fetch(`/thread/comment/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          postId: postId,
+          content: content,
+        }),
+      });
+
+      if (response.ok) {
+        window.location.reload();
+      } else {
+        response.json().then((data) => {
+          console.log(data);
+          alert("Failed to create comment: " + data);
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
