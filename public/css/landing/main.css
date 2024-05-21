@@ -84,6 +84,11 @@
 	padding: 0 6px 8px 6px;
 }
 
+#other-sections .header-anchor {
+	text-decoration: none !important;
+	align-self: flex-start;
+}
+
 #other-sections .see-all-anchor {
 	display: flex;
 	justify-content: flex-end;
