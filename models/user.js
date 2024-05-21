@@ -14,6 +14,7 @@ const SALT_WORK_FACTOR = 10;
 
 // Role enum
 export const roles = {
+	muted: -1,
 	unverified: 0,
 	user: 1,
 	admin: 2,

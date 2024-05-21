@@ -41,6 +41,7 @@ describe("Post Routes", () => {
 		topic = new Topic({
 			name: "Test Topic",
 			description: "Test Description",
+			allowedRole: 0,
 		});
 		await topic.save();
 	});
@@ -51,7 +52,7 @@ describe("Post Routes", () => {
 		post = new Post({
 			title: "Test Title",
 			content: "Test Content",
-			authorId: user._id,
+			author: user._id,
 			topicId: topic._id,
 		});
 		await post.save();
@@ -64,7 +65,7 @@ describe("Post Routes", () => {
 				.send({
 					title: "New Post",
 					content: "New Content",
-					topic: "Test Topic",
+					topic: topic._id.toString(),
 				})
 				.set("Cookie", cookie) // Simulate logged in user
 				.expect(200)
@@ -73,7 +74,7 @@ describe("Post Routes", () => {
 					expect(res.body).to.have.property("title", "New Post");
 					expect(res.body).to.have.property("content", "New Content");
 					expect(res.body)
-						.to.have.property("authorId")
+						.to.have.property("author")
 						.eql(user._id.toString());
 					done();
 				});
@@ -120,8 +121,8 @@ describe("Post Routes", () => {
 						"content",
 						"Test Content"
 					);
-					expect(res.body).to.have.property("authorId");
-					expect(res.body.authorId)
+					expect(res.body).to.have.property("author");
+					expect(res.body.author)
 						.to.have.property("_id")
 						.eql(user._id.toString());
 					done();

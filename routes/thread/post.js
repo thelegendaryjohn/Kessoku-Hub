@@ -8,15 +8,15 @@ const v = new Validator();
 let schema = {
 	type: "object",
 	properties: {
-		title: { type: "string" },
+		title: { type: "string", minLength: 5, maxLength: 64 },
 		content: { type: "string" },
 		topic: { type: "string" },
 	},
-	required: ["title", "content"],
+	required: ["title", "content", "topic"],
 };
 // Functions
 export const getPost = (id) => {
-	return Post.findById(id).populate("authorId").populate("topicId");
+	return Post.findById(id).populate("author").populate("topicId");
 };
 
 // Creating a new post
@@ -32,29 +32,36 @@ router.post("/thread/post", async (req, res) => {
 	}
 
 	// Check whether the topic exists
-	let topic = await Topic.findOne({ name: req.body.topic });
+	let topic = await Topic.findById(req.body.topic);
 	if (!topic) {
 		return res.status(401).json("Topic not found.");
+	}
+
+	// Check whether the user has permission to post in the topic
+	if (topic.allowedRole > req.session.user.role) {
+		return res.status(401).json("Unauthorized.");
 	}
 
 	// Create a new post
 	let post = new Post({
 		title: req.body.title,
 		content: req.body.content,
-		authorId: req.session.user._id,
+		author: req.session.user._id,
 		topicId: topic._id,
 	});
 
 	post.save()
 		.then((post) => {
 			return res.status(200).json({
+				_id: post._id,
 				title: post.title,
 				content: post.content,
-				authorId: post.authorId.toString(),
+				author: post.author.toString(),
 				topicId: post.topicId.toString(),
 			});
 		})
 		.catch((err) => {
+			console.log(err);
 			return res.status(500).json(err);
 		});
 });
@@ -74,7 +81,7 @@ router.get("/thread/post/:id", (req, res) => {
 			return res.status(200).json(post);
 		})
 		.catch((err) => {
-			console.log(err);
+			console.log(err.Error.messages);
 			return res.status(500).json(err);
 		});
 });
