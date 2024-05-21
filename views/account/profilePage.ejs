@@ -19,27 +19,21 @@
 
   <!-- Welcome page -->
   <main>
-    <!-- MOCK USER DATA -->
-    <% const joinDate = new Date(user ? user.createdAt : Date.now()).toLocaleDateString() %>
-    <% const postCount = 32 %>
-    <% const commentCount = 124 %>
-    <% const bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet consectetur. Morbi tristique senectus et netus. Cras semper auctor neque vitae tempus." %>
-
     <!-- User profile header -->
     <div id="user-card-container" class="section-container">
       <!-- User profile -->
       <div id="profile-container">
         <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
-        <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+        <h1 id="profile-name"><%= user.username %></h1>
       </div>
 
       <!-- User stats -->
       <div id="stats-container">
         <!-- Join date -->
         <div id="join-date-container">
-          <p id="join-date-header" class="stats-header">Joined On</p>
-          <p id="join-date-text" class="stats-text"><%= joinDate %></p>
+          <p id="join-date-header" class="stats-header">Joined </p>
+          <p id="join-date-text" class="stats-text"><%- include("../partials/forum/forumDate.ejs", {obj: user}) %></p>
         </div>
 
         <!-- Post count -->
@@ -63,7 +57,7 @@
       <!-- Bio -->
       <div id="bio-container" class="detail-container">
         <p id="bio-header" class="detail-header">Bio</p>
-        <p id="bio-text" class="detail-text font-poppins"><%= bio %></p>
+        <p id="bio-text" class="detail-text font-poppins"><%= user.bio %></p>
       </div>
 
     </div>
