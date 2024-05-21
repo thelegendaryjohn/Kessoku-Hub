@@ -56,7 +56,7 @@ router.post("/thread/post", async (req, res) => {
 				_id: post._id,
 				title: post.title,
 				content: post.content,
-				authorId: post.author.toString(),
+				author: post.author.toString(),
 				topicId: post.topicId.toString(),
 			});
 		})
