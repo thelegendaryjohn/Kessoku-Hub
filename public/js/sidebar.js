@@ -37,8 +37,27 @@ const detectIgnoredClass = (event) => {
 	event.stopPropagation();
 };
 
+const handleShortcutSidebar = (event) => {
+	const inputs = document.querySelectorAll("input");
+	const textareas = document.querySelectorAll("textarea");
+
+	const isInputFocused = Array.from(inputs).some(
+		(input) => input === document.activeElement
+	);
+	const isTextareaFocused = Array.from(textareas).some(
+		(textarea) => textarea === document.activeElement
+	);
+
+	if (!isInputFocused && !isTextareaFocused) {
+		if (event.key === "M" || event.key === "m") {
+			toggleNav();
+		}
+	}
+};
+
 document.querySelector("#menu-btn").addEventListener("click", toggleNav);
 document.querySelector("body").addEventListener("click", closeNav);
 document.querySelectorAll(".ignoreSidebarToggle").forEach((e) => {
 	e.addEventListener("click", detectIgnoredClass);
 });
+document.addEventListener("keydown", handleShortcutSidebar);
