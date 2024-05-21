@@ -19,8 +19,6 @@ router.get("/", async (req, res) => {
 			.populate("author");
 	}
 
-	console.log("topics", topics);
-
 	render(req, res, "landingPage", {
 		charNames: characters.map((char) => char.id),
 		topics: topics,

@@ -49,7 +49,7 @@ router.get("/forum/thread/:id", async (req, res) => {
 	});
 });
 
-router.get("/forum/thread/create", (req, res) => {
+router.get("/forum/post/create", (req, res) => {
 	render(req, res, "forum/postCreatePage", {});
 });
 
