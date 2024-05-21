@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/landing/music.css">
 </head>
 
-<body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
+<body class="<%= env == 'production' ? 'adjustColor' : '' %>">
   <!-- Sidebar -->
   <%- include("partials/sidebar.ejs") %>
 
@@ -22,10 +22,10 @@
   <!-- Header banner -->
   <section id="header-banner" class="text-shadow">
     <div id="banner">
-      <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner" class="<%= env == 'prod' ? 'adjustBrightness' : '' %>">
+      <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner" class="<%= env == 'production' ? 'adjustBrightness' : '' %>">
       <div id="banner-img-overlap" class="banner-overlap">
-        <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
-        <div id="banner-text" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
+        <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo" class="<%= env == 'production' ? 'adjustOpacity' : '' %>">
+        <div id="banner-text" class="<%= env == 'production' ? 'adjustOpacity' : '' %>">
           <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
           <h3 id="banner-desc">THEATER COMPILATION</h3>
         </div>
@@ -33,7 +33,7 @@
     </div>
   </section>
 
-  <main class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
+  <main class="<%= env == 'production' ? 'adjustOpacity' : '' %>">
     <!-- Characters -->
     <%- include("partials/landing/character.ejs") %>
 
