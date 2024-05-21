@@ -4,7 +4,7 @@
 <head>
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
-  <link rel="stylesheet" href="/css/account/menu.css">
+  <!-- <link rel="stylesheet" href="/css/account/menu.css"> -->
   <link rel="stylesheet" href="/css/account/profile.css">
 
   <title>Kessoku Hub | Settings</title>
@@ -19,104 +19,55 @@
 
   <!-- Welcome page -->
   <main>
+    <!-- MOCK USER DATA -->
+    <% const joinDate = new Date(user ? user.createdAt : Date.now()).toLocaleDateString() %>
+    <% const postCount = 32 %>
+    <% const commentCount = 124 %>
+    <% const bio = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet consectetur. Morbi tristique senectus et netus. Cras semper auctor neque vitae tempus." %>
+
     <!-- User profile header -->
-    <div id="user-profile-container">
-      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+    <div id="user-card-container" class="section-container">
+      <!-- User profile -->
+      <div id="profile-container">
+        <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
-      <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
-    </div>
+        <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+      </div>
 
-    <!-- User profile functions -->
-    <div id="menu-section-container">
-      <!-- "Profile" section -->
-      <section id="account-section" class="menu-section">
-        <h1 class="menu-section-title">PROFILE</h1>
+      <!-- User stats -->
+      <div id="stats-container">
+        <!-- Join date -->
+        <div id="join-date-container">
+          <p id="join-date-header" class="stats-header">Joined On</p>
+          <p id="join-date-text" class="stats-text"><%= joinDate %></p>
+        </div>
 
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/thread-icon.svg" alt="My Thread">
-            <p class="function-name">My Thread</p>
-          </div>
-        </a>
+        <!-- Post count -->
+        <div id="post-container">
+          <p id="post-header" class="stats-header">Posts</p>
+          <p id="post-text" class="stats-text"><%= postCount %></p>
+        </div>
 
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/comment-icon.svg" alt="My Comments">
-            <p class="function-name">My Comments</p>
-          </div>
-        </a>
-
-      </section>
-
-      <!-- "Preferences" section -->
-      <section id="settings-section" class="menu-section">
-        <h1 class="menu-section-title">PREFERENCES</h1>
-
-        <a href="/account/profile">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/profile-icon.svg" alt="Edit Profile">
-            <p class="function-name">Edit Profile</p>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/language-icon.svg" alt="Language">
-            <p class="function-name">Language</p>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/theme-icon.svg" alt="Theme & Accent">
-            <p class="function-name">Theme & Accent</p>
-          </div>
-        </a>
-
-      </section>
-
-      <!-- "Security" section -->
-      <section id="security-section" class="menu-section">
-        <h1 class="menu-section-title">SECURITY</h1>
-
-        <a href="/account/settings">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/lock-icon.svg" alt="Account Settings">
-            <p class="function-name">Account Settings</p>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/ban-icon.svg" alt="Deactivate Account">
-            <p class="function-name">Deactivate Account</p>
-          </div>
-        </a>
-
-      </section>
-
-      <!-- "Support" section -->
-      <section id="support-section" class="menu-section">
-        <h1 class="menu-section-title">SUPPORT</h1>
-
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/email-icon.svg" alt="Support">
-            <p class="function-name">Contact Us</p>
-          </div>
-        </a>
-
-        <span class="section-spacer"></span>
-
-        <!-- Logout button -->
-        <a href="/account/logout">
-          <div id="logout-btn" class="function-btn">
-            <img class="function-img" src="/images/account-section/log-out-icon.svg" alt="Logout">
-            <p class="function-name">Logout</p>
-          </div>
-        </a>
+        <!-- Comment count -->
+        <div id="comment-container">
+          <p id="comment-header" class="stats-header">Comments</p>
+          <p id="comment-text" class="stats-text"><%= commentCount %></p>
+        </div>
+      </div>
 
     </div>
+
+    <div class="section-divider"></div>
+
+    <div id="user-detail-container" class="section-container">
+      <!-- Bio -->
+      <div id="bio-container" class="detail-container">
+        <p id="bio-header" class="detail-header">Bio</p>
+        <p id="bio-text" class="detail-text font-poppins"><%= bio %></p>
+      </div>
+
+    </div>
+
   </main>
 
   <!-- Footer partial -->
