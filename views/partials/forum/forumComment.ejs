@@ -1,32 +1,31 @@
-<div class="thread">
-  <!-- Thread header -->
-  <div class="thread-header">
-    <a href="#">
-      <div class="thread-header-date-title">
-        <h3 class="thread-title"><%= locals.authorName %></h3>
-        <h4 class="thread-date"><%= locals.commentDate %></h4>
+<div class="topic">
+  <!-- topic header -->
+  <div class="topic-header">
+    <a href="<%= `/user/${post.author._id}` %>">
+      <div class="topic-header-date-title">
+        <h3 class="topic-author"><%= comment.author.username %></h3>
+        <%- include("./forumDate.ejs", {obj: comment}) %>
       </div>
     </a>
   </div>
 
   <!-- Comment content -->
-  <div class="thread-content">
+  <div class="topic-content">
     <!-- Post link container -->
     <div class="post-link-container">
       <!-- Post link -->
       <div class="post-container">
         <!-- Post link text -->
-        <p class="post-title"><%= locals.commentText %></p>
-        <!-- Thread post status -->
-        <div class="thread-post-link-status">
+        <p class="post-title"><%= comment.content %></p>
+        <!-- topic post status -->
+        <div class="topic-post-link-status">
           <!-- Likes -->
-          <span class="status-likes status-container">
+          <button class="status-likes status-container">
             <img class="status-icon" src="/images/forum-section/heart-icon.svg" alt="Likes">
-            <p><%= locals.likes %></p>
-          </span>
+            <p><%= comment.likes.length %></p>
+          </button>
         </div>
       </div>
     </div>
   </div>
-
 </div>

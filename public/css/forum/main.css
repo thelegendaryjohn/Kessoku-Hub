@@ -1,14 +1,10 @@
-a {
-	text-decoration: none;
-}
-
 label {
 	/* z-index: 1; */
 	font-size: 1.1rem;
-    transform: translateX(1.5rem) translateY(1.8rem);
-    background-color: white;
-    width: fit-content;
-    padding: 0 0.5rem;
+	transform: translateX(1.5rem) translateY(1.8rem);
+	background-color: white;
+	width: fit-content;
+	padding: 0 0.5rem;
 }
 
 ::-webkit-scrollbar {
@@ -22,6 +18,10 @@ label {
 	background-color: var(--accent-lightgrey);
 	border: 4px solid transparent;
 	border-radius: 8px;
+}
+
+#nav-title {
+	font-size: 2rem;
 }
 
 #content-section-container {
@@ -38,6 +38,7 @@ label {
 	width: 100%;
 	box-sizing: border-box;
 	outline: none;
+	background: none;
 }
 
 .longtext-input-field {

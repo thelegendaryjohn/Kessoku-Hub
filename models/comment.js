@@ -8,7 +8,7 @@ const commentSchema = new Schema({
 		required: true,
 		index: true,
 	},
-	authorId: {
+	author: {
 		type: Schema.Types.ObjectId,
 		ref: "User",
 		required: true,
