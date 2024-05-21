@@ -3,8 +3,8 @@
   <div class="topic-header">
     <a href="/forum/user/<%= post.author._id %>">
       <div class="topic-header-date-title">
-        <img src="<%= post.author.avatar %>" alt="User avatar" class="topic-avatar">
-        <h3 class="topic-title"><%= post.author.username %></h3>
+        <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
+        <h3 class="topic-author"><%= post.author.username %></h3>
       </div>
     </a>
   </div>
@@ -12,11 +12,11 @@
   <!-- topic content -->
   <div class="topic-content">
     <!-- Post link container -->
-      <div class="post-link-container">
-        <div class="post-container">
+    <div class="post-link-container">
+      <div class="post-container">
         <!-- Post link text -->
-          <h3 class="post-title"><%= post.title %></h3>
-        </div>
+        <h3 class="post-title"><%= post.title %></h3>
       </div>
+    </div>
   </div>
 </div>
