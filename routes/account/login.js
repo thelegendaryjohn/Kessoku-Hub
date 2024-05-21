@@ -36,7 +36,12 @@ router.post("/account/login", (req, res, next) => {
 					req.session.regenerate((err) => {
 						if (err) return next(err);
 
-						req.session.user = user;
+						// Save user info into session, remove the password
+						let userWithoutPassword = { ...user };
+						delete userWithoutPassword.password;
+
+						req.session.user = userWithoutPassword;
+
 						// Set expires if remember is false
 						req.session.cookie.maxAge = req.body.remember
 							? 24 * 60 * 60 * 1000 // 24 hours
