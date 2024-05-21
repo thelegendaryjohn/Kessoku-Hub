@@ -51,7 +51,11 @@
       <!-- Store -->
       <%- include("partials/landing/store-section/storeContainer.ejs") %>
     </div>
+
   </main>
+
+  <!-- Cookies consent banner -->
+  <%- include("partials/popup/cookiesConsentPopup.ejs", { isVisible: true }) %>
 
   <!-- Footer partial -->
   <%- include("partials/htmlFooter.ejs") %>
