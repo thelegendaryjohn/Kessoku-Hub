@@ -37,6 +37,11 @@ router.post("/thread/post", async (req, res) => {
 		return res.status(401).json("Topic not found.");
 	}
 
+	// Check whether the user has permission to post in the topic
+	if (topic.allowedRole > req.session.user.role) {
+		return res.status(401).json("Unauthorized.");
+	}
+
 	// Create a new post
 	let post = new Post({
 		title: req.body.title,

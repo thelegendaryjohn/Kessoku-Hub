@@ -57,6 +57,7 @@ describe("Topic Model", () => {
 			const newTopic = {
 				name: "Test Topic",
 				description: "Test Description",
+				allowedRole: 1,
 			};
 			const topic1 = new Topic(newTopic);
 			await topic1.save();

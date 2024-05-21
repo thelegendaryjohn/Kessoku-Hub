@@ -41,6 +41,7 @@ describe("Post Routes", () => {
 		topic = new Topic({
 			name: "Test Topic",
 			description: "Test Description",
+			allowedRole: 0,
 		});
 		await topic.save();
 	});
