@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/menu.css">
+  <link rel="stylesheet" href="/css/account/profile.css">
+
+  <title>Kessoku Hub | Settings</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "PROFILE" }) %>
+
+  <!-- Welcome page -->
+  <main>
+    <!-- User profile header -->
+    <div id="user-profile-container">
+      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+      <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+    </div>
+
+    <!-- User profile functions -->
+    <div id="menu-section-container">
+      <!-- "Profile" section -->
+      <section id="account-section" class="menu-section">
+        <h1 class="menu-section-title">PROFILE</h1>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/thread-icon.svg" alt="My Thread">
+            <p class="function-name">My Thread</p>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/comment-icon.svg" alt="My Comments">
+            <p class="function-name">My Comments</p>
+          </div>
+        </a>
+
+      </section>
+
+      <!-- "Preferences" section -->
+      <section id="settings-section" class="menu-section">
+        <h1 class="menu-section-title">PREFERENCES</h1>
+
+        <a href="/account/profile">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/profile-icon.svg" alt="Edit Profile">
+            <p class="function-name">Edit Profile</p>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/language-icon.svg" alt="Language">
+            <p class="function-name">Language</p>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/theme-icon.svg" alt="Theme & Accent">
+            <p class="function-name">Theme & Accent</p>
+          </div>
+        </a>
+
+      </section>
+
+      <!-- "Security" section -->
+      <section id="security-section" class="menu-section">
+        <h1 class="menu-section-title">SECURITY</h1>
+
+        <a href="/account/settings">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/lock-icon.svg" alt="Account Settings">
+            <p class="function-name">Account Settings</p>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/ban-icon.svg" alt="Deactivate Account">
+            <p class="function-name">Deactivate Account</p>
+          </div>
+        </a>
+
+      </section>
+
+      <!-- "Support" section -->
+      <section id="support-section" class="menu-section">
+        <h1 class="menu-section-title">SUPPORT</h1>
+
+        <a href="#">
+          <div class="function-btn">
+            <img class="function-img" src="/images/account-section/email-icon.svg" alt="Support">
+            <p class="function-name">Contact Us</p>
+          </div>
+        </a>
+
+        <span class="section-spacer"></span>
+
+        <!-- Logout button -->
+        <a href="/account/logout">
+          <div id="logout-btn" class="function-btn">
+            <img class="function-img" src="/images/account-section/log-out-icon.svg" alt="Logout">
+            <p class="function-name">Logout</p>
+          </div>
+        </a>
+
+    </div>
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
