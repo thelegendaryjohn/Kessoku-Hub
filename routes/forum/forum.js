@@ -42,6 +42,11 @@ router.get("/forum/topic/:name", async (req, res) => {
 });
 
 router.get("/forum/thread/:id", async (req, res) => {
+	// Validate post id
+	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+		return res.status(401).json("Invalid input.");
+	}
+
 	let post = getPost(req.params.id);
 	let comments = getComment(false, req.params.id);
 
@@ -57,7 +62,7 @@ router.get("/forum/thread/:id", async (req, res) => {
 router.get("/forum/post/create", async (req, res) => {
 	// Get all topics
 	const topics = await Topic.find({});
-	render(req, res, "forum/createPostPage", { topics: topics });
+	render(req, res, "forum/postCreatePage", { topics: topics });
 });
 
 router.get("/forum/inbox", (req, res) => {

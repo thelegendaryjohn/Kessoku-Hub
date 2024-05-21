@@ -37,10 +37,7 @@ router.post("/account/login", (req, res, next) => {
 						if (err) return next(err);
 
 						// Save user info into session, remove the password
-						let userWithoutPassword = { ...user };
-						delete userWithoutPassword.password;
-
-						req.session.user = userWithoutPassword;
+						req.session.user = user;
 
 						// Set expires if remember is false
 						req.session.cookie.maxAge = req.body.remember
