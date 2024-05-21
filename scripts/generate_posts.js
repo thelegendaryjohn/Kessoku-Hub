@@ -1,7 +1,8 @@
 import { startDatabase } from "../lib/db.js";
 import { Topic } from "../models/topic.js";
 import { Post } from "../models/post.js";
-import { User } from "../models/user.js"; // Assuming you have a User model
+import { User } from "../models/user.js";
+import { Comment } from "../models/comment.js";
 
 // Sample posts data
 const postsData = [
@@ -103,12 +104,30 @@ Post.collection.drop().then(async () => {
 			throw new Error("No default user found.");
 		}
 
+		function generateRandomComments(postId, maxComments = 10) {
+			const comments = [];
+			for (
+				let i = 0;
+				i < Math.floor(Math.random() * maxComments) + 1;
+				i++
+			) {
+				comments.push({
+					author: defaultUser._id, // Assuming defaultUser is the author of comments as well
+					postId: postId,
+					content: `Random comment ${i + 1}`,
+					createdAt: new Date(),
+					updatedAt: new Date(),
+				});
+			}
+			return comments;
+		}
+
 		// Generate posts for each topic
 		const postPromises = topics.flatMap((topic) => {
 			return postsData.flatMap((posts) => {
 				return posts
 					.filter((postData) => postData.topic === topic.name)
-					.map((postData) => {
+					.map(async (postData) => {
 						const post = new Post({
 							author: defaultUser._id,
 							topicId: topic._id,
@@ -120,7 +139,19 @@ Post.collection.drop().then(async () => {
 							createdAt: new Date(),
 							updatedAt: new Date(),
 						});
-						return post.save();
+						const savedPost = await post.save();
+
+						// Generate and save comments for the post
+						const comments = generateRandomComments(savedPost._id);
+						const commentPromises = comments.map((commentData) => {
+							const comment = new Comment(commentData);
+							return comment.save();
+						});
+						await Promise.all(commentPromises);
+
+						// Update post comment count
+						savedPost.commentCount = comments.length;
+						await savedPost.save();
 					});
 			});
 		});
