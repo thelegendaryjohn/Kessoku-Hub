@@ -3,8 +3,8 @@
   <div class="topic-header">
     <a href="<%= `/user/${post.author._id}` %>">
       <div class="topic-header-date-title">
-        <h3 class="author-title"><%= comment.author.username %></h3>
-        <h4 class="topic-date"><%= comment.createdAt %></h4>
+        <h3 class="topic-author"><%= comment.author.username %></h3>
+        <%- include("./forumDate.ejs", {obj: comment}) %>
       </div>
     </a>
   </div>

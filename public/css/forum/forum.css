@@ -47,6 +47,10 @@
 	color: #000;
 }
 
+.topic-author a:hover {
+	text-decoration: underline;
+}
+
 .topic-header {
 	display: flex;
 	flex-direction: column;
@@ -80,6 +84,11 @@
 
 .topic-title {
 	color: var(--accent-purple);
+	filter: brightness(0.85);
+	z-index: 0;
+}
+.topic-title:hover {
+	filter: brightness(1) drop-shadow(0 0.4rem 0.3rem rgba(0, 0, 0, 0.2));
 }
 
 .post-title {
@@ -119,7 +128,13 @@
 	padding: 0 0.5rem;
 	border-left: 2px solid var(--accent-lightgrey);
 	box-sizing: border-box;
+	transition: 0.1s;
 	gap: 1rem;
+}
+
+.post-link-container:hover {
+	background-color: var(--accent-lightgrey);
+	border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .post-container {

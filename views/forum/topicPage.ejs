@@ -11,8 +11,13 @@
   <link rel="stylesheet" href="/css/forum/topic.css">
 
   <style>
-    .topic {
-      gap: 1rem;
+    .posts {
+      gap: 2rem;
+    }
+
+    .authored-post {
+      border-left: 2px solid var(--hitori-color);
+      padding: 1rem;
     }
   </style>
 </head>
@@ -28,24 +33,26 @@
   <main>
     <!-- Post section -->
     <section id="content-section-container">
-      <div class="topic">
+      <div class="posts">
         <!-- Post link container -->
         <% Object.values(posts).map((post) => { %>
-        <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
-          <div class="post-container">
-            <div class="topic-header-date-title">
-              <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
-              <h3 class="topic-author"><%= post.author.username %></h3>
-              <h4 class="topic-date"><%= post.createdAt %></h4>
-            </div>
-            <!-- Post link text -->
-            <h3 class="post-title"><%= post.title %></h3>
-            <p class="post-text font-poppins"><%= post.content %></p>
-
+        <div class="authored-post">
+          <div class="topic-header-date-title">
+            <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
+            <h3 class="topic-author"><%= post.author.username %></h3>
+            <%- include("../partials/forum/forumDate.ejs", {obj: post}) %>
           </div>
-          <!-- Post link arrow -->
-          <img class="post-link-arrow" style="display:<%= (locals.isPost) === true ? 'none' : 'block' %>;" src="/images/button/btn-next.svg" alt="Go to thread">
-        </a>
+          <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
+            <div class="post-container">
+              <!-- Post link text -->
+              <h3 class="post-title"><%= post.title %></h3>
+              <p class="post-text font-poppins"><%= post.content %></p>
+
+            </div>
+            <!-- Post link arrow -->
+            <img class="post-link-arrow" style="display:<%= (locals.isPost) === true ? 'none' : 'block' %>;" src="/images/button/btn-next.svg" alt="Go to thread">
+          </a>
+        </div>
         <% }) %>
       </div>
     </section>

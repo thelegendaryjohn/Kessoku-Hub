@@ -29,6 +29,10 @@ label {
 	border-radius: 8px;
 }
 
+#nav-title {
+	font-size: 2rem;
+}
+
 #content-section-container {
 	display: flex;
 	flex-direction: column;

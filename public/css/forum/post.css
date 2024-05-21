@@ -2,10 +2,6 @@
 	z-index: 1;
 }
 
-#nav-title {
-	font-size: 2rem;
-}
-
 #post-section .thread {
 	padding: 0.5rem;
 	border: 2px solid var(--hitori-color);

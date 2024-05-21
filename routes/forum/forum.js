@@ -54,8 +54,10 @@ router.get("/forum/thread/:id", async (req, res) => {
 	});
 });
 
-router.get("/forum/post/create", (req, res) => {
-	render(req, res, "forum/postCreatePage", {});
+router.get("/forum/post/create", async (req, res) => {
+	// Get all topics
+	const topics = await Topic.find({});
+	render(req, res, "forum/createPostPage", { topics: topics });
 });
 
 router.get("/forum/inbox", (req, res) => {
