@@ -1,0 +1,58 @@
+.email-popup {
+    z-index: 20;
+	position: fixed;
+	top: 7rem;
+	display: flex;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+    align-self: center;
+    gap: 0.5rem;
+    padding: 1.5rem 2.5rem 0.5rem 2.5rem;
+	width: 75%;
+	height: fit-content;
+	background-color: rgb(240, 240, 240);
+    border-bottom: 2px solid var(--accent-purple);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+}
+
+.email-popup-text {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.email-popup-text a {
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.email-popup-close {
+    position: absolute;
+    cursor: pointer;
+    border: none;
+    top: 0.5rem;
+    right: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    /* align-self: end; */
+    background-color: var(--ikuyo-color);
+    border-radius: 0.5rem;
+    color: var(--body-color);
+}
+
+.email-popup-ok {
+    cursor: pointer;
+    border: none;
+    padding: 0.2rem 0.5rem;
+    width: 5rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    background-color: var(--accent-purple);
+    color: var(--body-color);
+}
+
+.email-popup-ok:hover,
+.email-popup-close:hover {
+    opacity: 0.7;
+}
