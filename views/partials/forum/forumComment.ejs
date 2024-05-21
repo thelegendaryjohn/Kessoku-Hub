@@ -3,8 +3,8 @@
   <div class="topic-header">
     <a href="<%= `/user/${post.author._id}` %>">
       <div class="topic-header-date-title">
-        <h3 class="topic-title"><%= locals.authorName %></h3>
-        <h4 class="topic-date"><%= locals.commentDate %></h4>
+        <h3 class="author-title"><%= comment.author.username %></h3>
+        <h4 class="topic-date"><%= comment.createdAt %></h4>
       </div>
     </a>
   </div>
@@ -16,14 +16,14 @@
       <!-- Post link -->
       <div class="post-container">
         <!-- Post link text -->
-        <p class="post-title"><%= locals.commentText %></p>
+        <p class="post-title"><%= comment.content %></p>
         <!-- topic post status -->
         <div class="topic-post-link-status">
           <!-- Likes -->
-          <span class="status-likes status-container">
+          <button class="status-likes status-container">
             <img class="status-icon" src="/images/forum-section/heart-icon.svg" alt="Likes">
-            <p><%= locals.likes %></p>
-          </span>
+            <p><%= comment.likes.length %></p>
+          </button>
         </div>
       </div>
     </div>
