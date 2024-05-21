@@ -4,7 +4,7 @@
     <a href="<%= `/user/${post.author._id}` %>">
       <div class="topic-header-date-title">
         <h3 class="topic-author"><%= comment.author.username %></h3>
-        <%- include("./forumDate.ejs", {obj: comment}) %>
+        <h4 class="topic-date"><%- include("./forumDate.ejs", {obj: comment}) %></h4>
       </div>
     </a>
   </div>
