@@ -23,13 +23,18 @@ router.get("/forum", async (req, res) => {
 	});
 });
 
-router.get("/forum/topic/:id", (req, res) => {
-	const topic = Topic.findById(req.params.id);
+router.get("/forum/topic/:name", async (req, res) => {
+	if (!req.params.name) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	const topic = await Topic.findOne({ name: req.params.name });
 	if (!topic) {
 		return res.status(404).json("Topic not found.");
 	}
 	//
-	const posts = Post.find({ topicId: req.params.id }).populate("author");
+	const posts = await Post.find({ topicId: topic._id }).populate("author");
+
 	render(req, res, "forum/topicPage", {
 		topic: topic,
 		posts: posts,
