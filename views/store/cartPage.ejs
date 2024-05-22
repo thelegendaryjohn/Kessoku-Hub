@@ -16,17 +16,20 @@
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "CART" , headerColor: "var(--ryo-color)"}) %>
 
+  <!-- Ty for your purchase popup partial -->
+  <%- include("../partials/popup/purchasePopup.ejs", { isVisible: true }) %>
+
   <!-- Cart page -->
   <main>
-    <div class="no-item-placeholder">There are no item in your cart</div>
+    <div class="no-item-placeholder">* There are no item in your cart</div>
 
     <!-- item list container -->
     <div id="item-list-container">
     </div>
 
     <!-- total price -->
-    <div id="check-out-container" class="item-price">
-      <div id="total-price">Total Price: <span class="total-price-number">0</span> $</div>
+    <div id="check-out-container">
+      <div id="total-price" class="item-price">Total Price: <span class="total-price-number">0</span> $</div>
       <button class="check-out-btn">Check out</button>
     </div>
 
@@ -142,6 +145,13 @@
   // update total price
   let totalPriceNumber = document.querySelector(".total-price-number");
   totalPriceNumber.innerText = totalPrice;
+
+  // get checkout button
+  const checkoutBtn = document.querySelector(".check-out-btn");
+
+  checkoutBtn.addEventListener("click", () => {
+    document.querySelector(".purchase-popup").style.display = "flex";
+  })
 </script>
 
 </html>
