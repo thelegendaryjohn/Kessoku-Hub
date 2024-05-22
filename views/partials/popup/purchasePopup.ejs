@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="/css/popup/purchase.css">
+
+<div class="purchase-popup box-shadow">
+  <svg class="purchase-popup-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#fff" stroke-width=".5" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+    <path d="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7"></path>
+  </svg>
+  <p class="purchase-popup-text font-poppins">
+    Thank you for your purchase. <br>
+  </p>
+  <button class="purchase-popup-ok">OK</button>
+
+  <script>
+    document.querySelector(".purchase-popup-ok").addEventListener("click", () => {
+      document.querySelector(".purchase-popup").style.display = "none";
+    });
+
+    document.querySelector(".purchase-popup-close").addEventListener("click", () => {
+      document.querySelector(".purchase-popup").style.display = "none";
+    });
+  </script>
+</div>
