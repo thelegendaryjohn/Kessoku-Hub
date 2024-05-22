@@ -16,8 +16,12 @@
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "CART" , headerColor: "var(--ryo-color)"}) %>
 
-  <!-- Ty for your purchase popup partial -->
+  <!-- Purchase popup partial -->
+  <% if(displayPopup){ %>
   <%- include("../partials/popup/purchasePopup.ejs", { isVisible: true }) %>
+  <% } %>
+
+
 
   <!-- Cart page -->
   <main>
@@ -149,9 +153,7 @@
   // get checkout button
   const checkoutBtn = document.querySelector(".check-out-btn");
 
-  checkoutBtn.addEventListener("click", () => {
-    document.querySelector(".purchase-popup").style.display = "flex";
-  })
+  checkoutBtn.addEventListener("click", () => {})
 </script>
 
 </html>

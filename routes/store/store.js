@@ -112,10 +112,22 @@ router.get("/store/remove/:id", (req, res) => {
 	res.redirect("/store/cart");
 });
 
+// remove all item from cart
+router.get("/store/remove/:id", (req, res) => {
+	req.session.cart = {};
+
+	render(req, res, "store/cartPage", {
+		items: items,
+		cart: req.session.cart,
+		displayPopup: true,
+	});
+});
+
 router.get("/store/cart", (req, res) => {
 	render(req, res, "store/cartPage", {
 		items: items,
 		cart: req.session.cart,
+		displayPopup: false,
 	});
 });
 
