@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <!-- <link rel="stylesheet" href="/css/account/menu.css"> -->
+  <link rel="stylesheet" href="/css/account/profile.css">
+
+  <title>Kessoku Hub | Settings</title>
+</head>
+
+<body>
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "PROFILE" }) %>
+
+  <!-- Welcome page -->
+  <main>
+    <!-- User profile header -->
+    <div id="user-card-container" class="section-container">
+      <!-- User profile -->
+      <div id="profile-container">
+        <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+        <h1 id="profile-name"><%= user.username %></h1>
+      </div>
+
+      <!-- User stats -->
+      <div id="stats-container">
+        <!-- Join date -->
+        <div id="join-date-container">
+          <p id="join-date-header" class="stats-header">Joined </p>
+          <p id="join-date-text" class="stats-text"><%- include("../partials/forum/forumDate.ejs", {obj: user}) %></p>
+        </div>
+
+        <!-- Post count -->
+        <div id="post-container">
+          <p id="post-header" class="stats-header">Posts</p>
+          <p id="post-text" class="stats-text"><%= postCount %></p>
+        </div>
+
+        <!-- Comment count -->
+        <div id="comment-container">
+          <p id="comment-header" class="stats-header">Comments</p>
+          <p id="comment-text" class="stats-text"><%= commentCount %></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div id="user-detail-container" class="section-container">
+      <!-- Bio -->
+      <div id="bio-container" class="detail-container">
+        <p id="bio-header" class="detail-header">Bio</p>
+        <p id="bio-text" class="detail-text font-poppins"><%= user.bio %></p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>

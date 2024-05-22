@@ -5,13 +5,16 @@ import { Resend } from "resend";
 //
 const env = process.env.NODE_ENV;
 const Schema = mongoose.Schema;
-const resend = new Resend(process.env.RESEND_KEY);
+//
+let resend;
+if (process.env.RESEND_KEY) resend = new Resend(process.env.RESEND_KEY);
 
 // Configs
 const SALT_WORK_FACTOR = 10;
 
 // Role enum
 export const roles = {
+	muted: -1,
 	unverified: 0,
 	user: 1,
 	admin: 2,
@@ -32,7 +35,11 @@ const userSchema = new Schema({
 		sparse: true,
 	},
 	//
-	created: { type: Date, default: Date.now },
+	bio: { type: String, default: "" },
+	avatar: { type: String, default: "" },
+	//
+	createdAt: { type: Date, default: Date.now },
+	updatedAt: { type: Date, default: Date.now },
 });
 
 // Hash password before saving
@@ -65,7 +72,7 @@ userSchema.methods.verifyEmail = async function (email, cb) {
 		from: "Support <support@bocchi.band>",
 		to: [email],
 		subject: "Kessoku Hub - Verify your email",
-		html: `Your verification link is <a href="${homelink}/user/verify/${token}">here</a>.`,
+		html: `Your verification link is <a href="${homelink}/account/verify/${token}">here</a>.`,
 	});
 
 	if (error) {

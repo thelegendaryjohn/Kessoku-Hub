@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/forum/forum.css">
+  <link rel="stylesheet" href="/css/forum/main.css">
+  <link rel="stylesheet" href="/css/forum/post.css">
+  <link rel="stylesheet" href="/css/forum/create.css">
+  <link rel="stylesheet" href="/css/forum/notif.css">
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Unverified email popup partial -->
+  <%- include("../partials/popup/unverifiedEmailPopup.ejs", { isVisible: true }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Thread section -->
+    <section id="content-section-container">
+      <!-- Post creating header -->
+      <div id="notif-header" class="section-header">
+        <h2 id="notif-header-text" class="section-header-text text-shadow">Inbox</h2>
+      </div>
+
+      <div id="notif-container">
+        <% const repeatCount = 20; %>
+        <% for (let i = 0; i < repeatCount; i++) { %>
+        <%- include("../partials/forum/forumNotif.ejs", {
+            threadName: "Walkman Collaboration",
+            notifDate: "23.11.2024",
+            notifText: "@Ikuyo_Kita commented on your post"
+          }) %>
+        <% } %>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Forum actions partial -->
+  <%- include("../partials/forum/forumAction.ejs") %>
+</body>
+
+</html>

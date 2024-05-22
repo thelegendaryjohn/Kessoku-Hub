@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Forum</title>
+  <link rel="stylesheet" href="/css/forum/forum.css">
+  <link rel="stylesheet" href="/css/forum/main.css">
+  <link rel="stylesheet" href="/css/forum/topic.css">
+
+  <style>
+    .posts {
+      gap: 2rem;
+    }
+
+    .authored-post {
+      border-left: 2px solid var(--hitori-color);
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: topic.name, headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Main content -->
+  <main>
+    <!-- Post section -->
+    <section id="content-section-container">
+      <div class="posts">
+        <!-- Post link container -->
+        <% Object.values(posts).map((post) => { %>
+        <div class="authored-post">
+          <div class="topic-header-date-title">
+            <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
+            <a href="/user/<%= post.author.username %>><h3 class=" topic-author"><%= post.author.username %></h3></a>
+            <h4 class="topic-date"><%- include("../partials/forum/forumDate.ejs", {obj: post}) %></h4>
+          </div>
+          <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
+            <div class="post-container">
+              <!-- Post link text -->
+              <h3 class="post-title"><%= post.title %></h3>
+              <p class="post-text font-poppins"><%= post.content %></p>
+
+            </div>
+            <!-- Post link arrow -->
+            <img class="post-link-arrow" style="display:<%= (locals.isPost) === true ? 'none' : 'block' %>;" src="/images/button/btn-next.svg" alt="Go to thread">
+          </a>
+        </div>
+        <% }) %>
+      </div>
+    </section>
+  </main>
+
+  <!-- Forum action partial -->
+  <%- include("../partials/forum/forumAction.ejs") %>
+</body>
+
+</html>

@@ -28,6 +28,10 @@
 	border-radius: 10px;
 }
 
+.overlay-video-length {
+	display: none;
+}
+
 .episode-cover {
 	flex-shrink: 0;
 	min-width: 100%;

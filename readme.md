@@ -11,6 +11,11 @@
 
 This repository is intended to be submitted as the project for RMIT Vietnam's COSC3058 Web Studio course - a fansite for the anime band Kessoku!
 
+## Links
+
+You can find the site here: [Kessoku Band](http://bocchi.band)
+Full GitHub repo link: [Repo](https://github.com/RMIT-Vietnam-Teaching/group-project-cosc3060-2024a-kessoku)
+
 ## Getting Started
 
 To get started with this project, follow these steps:
@@ -19,10 +24,25 @@ To get started with this project, follow these steps:
 
 -   Make sure you have [Node.js](https://nodejs.org/en/download/) installed on your machine.
 -   If you're in the main Kessoku team, add a `.env` file to this repo after cloning, then request Cyfer for the data.
+-   If you're an instructor, then the `.env` file will be included as an appendix in the report(s).
 
 1. Clone the repository: `git clone https://github.com/RMIT-Vietnam-Teaching/group-project-cosc3060-2024a-kessoku`
 2. Install the dependencies: `npm install`
-3. Start the project: `npm start`. For production usage, run `npm production` instead.
+3. Start the project: `npm run start`. For production usage, run `npm run production` instead.
+
+Additionally, some accounts are provided to aid with development:
+
+-   Admin account:
+    username: admin
+    password: bocchitherock
+
+-   Standard account (unverified):
+    username: boccher
+    password: boccher
+
+-   Standard account (verified):
+    username: hitori
+    password: hitori
 
 ## Recommended Extensions
 

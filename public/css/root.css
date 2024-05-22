@@ -42,6 +42,8 @@ body {
 }
 
 main {
+	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
 }
 
@@ -95,6 +97,57 @@ footer p {
 	color: var(--accent-yellow);
 }
 
+/* Page Switching Styling */
+#page-switch-section {
+	display: flex;
+	justify-content: center;
+}
+
+#page-switch-container {
+	display: flex;
+	justify-content: center;
+	margin: 1rem 0;
+	padding: 0 1rem;
+	border-radius: 5px;
+	background-color: var(--accent-purple);
+	color: white;
+	font-size: 1.5rem;
+}
+
+/* Page Switching Styling */
+#page-switch-section {
+	display: flex;
+	justify-content: center;
+}
+
+#page-switch-container {
+	display: flex;
+	justify-content: center;
+	margin: 1rem 0;
+	padding: 0 1rem;
+	border-radius: 5px;
+	background-color: var(--accent-purple);
+	color: white;
+	font-size: 1.5rem;
+}
+
+/* Page Switching Styling */
+#page-switch-section {
+	display: flex;
+	justify-content: center;
+}
+
+#page-switch-container {
+	display: flex;
+	justify-content: center;
+	margin: 1rem 0;
+	padding: 0 1rem;
+	border-radius: 5px;
+	background-color: var(--accent-purple);
+	color: white;
+	font-size: 1.5rem;
+}
+
 /* Custom Styling */
 .show {
 	display: block !important;
@@ -120,6 +173,10 @@ footer p {
 	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
 }
 
+.box-shadow-reverse {
+	box-shadow: 0 -0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+}
+
 .font-poppins {
 	font-family: "Poppins", sans-serif !important;
 }
@@ -129,17 +186,14 @@ footer p {
 }
 
 #nav-container {
+	z-index: 8;
 	position: sticky;
+	top: 0;
 	display: flex;
 	align-items: center;
 	width: 100%;
 	height: 6rem;
 	background-color: var(--body-color);
-}
-
-#nav-title {
-	align-self: center;
-	font-size: 3rem;
 }
 
 #back-btn-container {
@@ -151,11 +205,26 @@ footer p {
 
 #back-btn {
 	padding-left: 2.5rem;
-	max-height: 100%;
+	height: 100%;
 }
 
 #back-btn:hover {
 	opacity: 0.6;
+}
+
+#nav-title {
+	align-self: center;
+	font-size: 3rem;
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#menu-btn-spacer {
+	color: transparent;
+	text-wrap: nowrap;
+	flex: 1;
 }
 
 #exit-button {
@@ -168,4 +237,36 @@ footer p {
 	text-decoration: none;
 	color: #000;
 	/* box-sizing: content-box; */
+}
+
+#forum-action-container {
+	box-sizing: border-box;
+	position: fixed;
+	bottom: 0;
+	display: flex;
+	background-color: var(--body-color);
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	height: 5rem;
+}
+
+.forum-action-btn-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 1rem;
+	border-radius: 5px;
+}
+
+.forum-action-btn-text {
+	display: flex;
+	color: var(--accent-purple);
+	align-items: center;
+	font-size: 1rem;
+}
+
+.forum-action-btn-img {
+	cursor: pointer;
+	width: 2rem;
 }

@@ -1,10 +1,13 @@
 <section id="forum" class="box-shadow">
   <h2 id="forum-header" class="section-header">FORUM</h2>
   <div id="topic-container" class="section-container">
-    <%- include("forumTopic.ejs") %>
-
-    <%- include("forumTopic.ejs") %>
+    <% topics.forEach((topic) => { %>
+    <%- include("../../forum/forumTopic.ejs", { 
+            topic: topic,
+            posts: posts[topic._id],
+          }) %>
+    <% }); %>
   </div>
 
-  <a href="#" class="see-all-anchor">See all...</a>
+  <a href="/forum" class="see-all-anchor">See all...</a>
 </section>

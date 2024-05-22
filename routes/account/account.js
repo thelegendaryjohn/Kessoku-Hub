@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { render } from "../../lib/render.js";
-import logout from "../user/logout.js";
+import logout from "./logout.js";
 //
 const router = Router();
 
@@ -34,11 +34,21 @@ router.get("/account/settings", (req, res) => {
 	return render(req, res, "account/accountSettings");
 });
 
-router.get("/account/logout", (req, res, next) => {
+router.get("/account/logout", (req, res) => {
+	// See if the user is logged in and the request is valid
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	}
 	// Logs the user out
-	logout(req, res, next);
-	render(req, res, "account/accountSuccess", {
-		message: `Logging you out`,
+	req.session.destroy((err) => {
+		console.log("Logging out");
+		if (err) {
+			console.error(err);
+			return res.status(500).json("Error logging out.");
+		}
+		render(req, res, "account/accountSuccess", {
+			message: `Logging you out`,
+		});
 	});
 });
 

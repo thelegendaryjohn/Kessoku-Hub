@@ -8,7 +8,7 @@
   <title>Kessoku Hub | Home</title>
   <link rel="stylesheet" href="/css/landing/main.css">
   <link rel="stylesheet" href="/css/landing/anim.css">
-  <link rel="stylesheet" href="/css/landing/forum.css">
+  <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/landing/store.css">
   <link rel="stylesheet" href="/css/landing/video.css">
   <link rel="stylesheet" href="/css/landing/music.css">
@@ -51,7 +51,11 @@
       <!-- Store -->
       <%- include("partials/landing/store-section/storeContainer.ejs") %>
     </div>
+
   </main>
+
+  <!-- Cookies consent banner -->
+  <%- include("partials/popup/cookiesConsentPopup.ejs", { isVisible: true }) %>
 
   <!-- Footer partial -->
   <%- include("partials/htmlFooter.ejs") %>

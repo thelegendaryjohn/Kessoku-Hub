@@ -1,0 +1,26 @@
+<div class="thread">
+  <!-- Thread header -->
+  <div class="thread-header">
+    <a href="#">
+      <div class="thread-header-date-title">
+        <h3 class="thread-title"><%= locals.threadName %></h3>
+        <h4 class="thread-date"><%= locals.notifDate %></h4>
+      </div>
+    </a>
+  </div>
+
+  <!-- Comment content -->
+  <div class="thread-content">
+    <!-- Post link container -->
+    <div class="post-link-container">
+      <!-- Post link -->
+      <div class="post-container">
+        <!-- Post link text -->
+        <p class="post-title"><%= locals.notifText %></p>
+      </div>
+      <img class="post-link-arrow" style="display:block;" src="/images/button/btn-next.svg" alt="Go to thread">
+    </div>
+    
+  </div>
+
+</div>

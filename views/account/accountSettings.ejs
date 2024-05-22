@@ -118,7 +118,7 @@
         return;
       }
       // If the email input is valid, send a request to the verify email route
-      fetch("/user/verify", {
+      fetch("/account/verify", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
