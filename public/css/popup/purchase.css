@@ -2,7 +2,7 @@
 	z-index: 20;
 	position: fixed;
 	top: 7rem;
-	display: none;
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
