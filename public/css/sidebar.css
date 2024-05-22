@@ -63,7 +63,7 @@
 }
 
 .nav-btn:hover,
-#profile-container:hover > #profile-name {
+#sidebar-container #profile-container:hover > #profile-name {
 	transition: 0.2s;
 	color: white !important;
 }
