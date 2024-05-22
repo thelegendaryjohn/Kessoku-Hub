@@ -19,16 +19,16 @@
   <!-- Cart page -->
   <main>
     <div class="no-item-placeholder">There are no item in your cart</div>
+
     <!-- item list container -->
     <div id="item-list-container">
-
     </div>
+
     <!-- total price -->
     <div id="check-out-container" class="item-price">
       <div id="total-price">Total Price: <span class="total-price-number">0</span> $</div>
       <button class="check-out-btn">Check out</button>
     </div>
-
 
     <!-- Cart page button container -->
     <a href="/store">
@@ -55,9 +55,8 @@
   const items = <%- JSON.stringify(items) %>;
 </script>
 <% } %>
-<!-- add the items array from the route/cart.js -->
 <script type="module">
-  // get no item placeholder div
+  // get "no-item-placeholder" div
   const noItemPlaceholder = document.querySelector(".no-item-placeholder");
   noItemPlaceholder.style.display = "block";
 
@@ -70,6 +69,7 @@
   let itemArray = []
   for (let i = 0; i < cartString.length; i++) {
     if (cartString[i] === ":") {
+      // hide no-item-placeholder
       noItemPlaceholder.style.display = "none";
       let newItemID = cartString.charAt(i - 2);
       let newItemQuantity = cartString.charAt(i + 1);
