@@ -84,6 +84,7 @@ main {
 .check-out-btn {
 	height: 100%;
 	width: 100%;
+	text-align: center;
 	border-radius: 5px;
 	font-size: 3rem;
 	background-color: var(--body-color);
