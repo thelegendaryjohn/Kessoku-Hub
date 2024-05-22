@@ -90,7 +90,7 @@ router.get("/store/add/:id", (req, res) => {
 		req.session.cart[req.params.id] = 1;
 	}
 
-	res.redirect("/store");
+	res.redirect("/store/cart");
 });
 
 // remove item from cart

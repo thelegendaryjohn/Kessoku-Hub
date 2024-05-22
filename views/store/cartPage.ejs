@@ -18,11 +18,13 @@
 
   <!-- Cart page -->
   <main>
+    <div class="no-item-placeholder">There are no item in your cart</div>
     <!-- item list container -->
     <div id="item-list-container">
+
     </div>
     <!-- total price -->
-    <div id="total-price-container item-price">
+    <div id="check-out-container" class="item-price">
       <div id="total-price">Total Price: <span class="total-price-number">0</span> $</div>
       <button class="check-out-btn">Check out</button>
     </div>
@@ -55,6 +57,10 @@
 <% } %>
 <!-- add the items array from the route/cart.js -->
 <script type="module">
+  // get no item placeholder div
+  const noItemPlaceholder = document.querySelector(".no-item-placeholder");
+  noItemPlaceholder.style.display = "block";
+
   // get and filter out the cart string
   let cartString = '<%- JSON.stringify(cart) %>';
   let newStringEnd = cartString.indexOf("m") - 3;
@@ -64,6 +70,7 @@
   let itemArray = []
   for (let i = 0; i < cartString.length; i++) {
     if (cartString[i] === ":") {
+      noItemPlaceholder.style.display = "none";
       let newItemID = cartString.charAt(i - 2);
       let newItemQuantity = cartString.charAt(i + 1);
       let newItem = {
@@ -73,7 +80,7 @@
       itemArray.push(newItem);
     }
   }
-
+  // create a total price variable
   let totalPrice = 0;
   // create element for each item inside itemArray
   const itemListContainer = document.querySelector("#item-list-container");
@@ -97,30 +104,39 @@
     newItemName.innerText = items[item.id].name;
     newItemContainer.appendChild(newItemName);
 
-    // item quantity
-    let newItemQuantity = document.createElement("div");
-    newItemQuantity.classList.add("item-quantity");
-    newItemQuantity.innerText = item.quantity;
-    newItemContainer.appendChild(newItemQuantity);
+    // right container
+    let newRightContainer = document.createElement("div");
+    newRightContainer.classList.add("item-right-container");
+    newItemContainer.appendChild(newRightContainer);
 
     // item price
     let newItemPrice = document.createElement("div");
     newItemPrice.classList.add("item-price");
     newItemPrice.innerText = items[item.id].price * item.quantity + " $";
     totalPrice += items[item.id].price * item.quantity;
-    newItemContainer.appendChild(newItemPrice);
+    newRightContainer.appendChild(newItemPrice);
 
-    // item delete
-    let newItemDelete = document.createElement("div");
-    newItemDelete.classList.add("item-delete");
-    newItemContainer.appendChild(newItemDelete);
+    // item minus button
+    let newItemMinusButton = document.createElement("a");
+    newItemMinusButton.classList.add("item-minus-button");
+    newItemMinusButton.classList.add("btn");
+    newItemMinusButton.innerText = `-`;
+    newItemMinusButton.href = "/store/remove/" + item.id;
+    newRightContainer.appendChild(newItemMinusButton);
 
-    // item delete anchor
-    let newItemDeleteAnchor = document.createElement("a");
-    newItemDeleteAnchor.classList.add("item-delete-anchor");
-    newItemDeleteAnchor.innerText = "Delete";
-    newItemDeleteAnchor.href = "/store/remove/" + item.id;
-    newItemContainer.appendChild(newItemDeleteAnchor);
+    // item quantity
+    let newItemQuantity = document.createElement("div");
+    newItemQuantity.classList.add("item-quantity");
+    newItemQuantity.innerText = item.quantity;
+    newRightContainer.appendChild(newItemQuantity);
+
+    // item plus button
+    let newItemPlusButton = document.createElement("a");
+    newItemPlusButton.classList.add("item-plus-button");
+    newItemPlusButton.classList.add("btn");
+    newItemPlusButton.innerText = `+`;
+    newItemPlusButton.href = "/store/add/" + item.id;
+    newRightContainer.appendChild(newItemPlusButton);
   });
 
   // update total price
