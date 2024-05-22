@@ -85,6 +85,7 @@ main {
 	height: 100%;
 	width: 100%;
 	text-align: center;
+	text-decoration: none;
 	border-radius: 5px;
 	font-size: 3rem;
 	background-color: var(--body-color);
