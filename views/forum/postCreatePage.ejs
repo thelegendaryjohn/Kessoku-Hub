@@ -22,6 +22,9 @@
   <% console.log(isVerified); %>
   <%- include("../partials/popup/unverifiedEmailPopup.ejs", { isVisible: !isVerified }) %>
 
+  <!-- Cookies consent banner -->
+  <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
+
   <!-- Main content -->
   <main>
     <!-- Thread select datalist -->

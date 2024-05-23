@@ -10,40 +10,44 @@
 </head>
 
 <body>
-  
+
   <!-- Sidebar -->
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "VIDEOS", headerColor: "var(--ikuyo-color)" }) %>
+
+  <!-- Cookies consent banner -->
+  <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
+
   <main>
-  <!-- Video section -->
-  <section id="preview-section">
-    <div id="video-container" class="section-container">
-      <h2 id="video-header" class="section-header text-shadow">Episode Previews</h2>
-      <% videos.forEach((video, index) => { %>
+    <!-- Video section -->
+    <section id="preview-section">
+      <div id="video-container" class="section-container">
+        <h2 id="video-header" class="section-header text-shadow">Episode Previews</h2>
+        <% videos.forEach((video, index) => { %>
         <% if ( video.videoType === "previews" ) { %>
         <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
           episodeName: video.name,
           episodeID: video.id,
         })%>
-      <% } %>
+        <% } %>
         <% }) %>
       </div>
-  </section>
-  <section id="music-video-section">
-    <div id="video-container" class="section-container">
-      <h2 id="video-header" class="section-header text-shadow">Music Videos</h2>
-      <% videos.forEach((video, index) => { %>
+    </section>
+    <section id="music-video-section">
+      <div id="video-container" class="section-container">
+        <h2 id="video-header" class="section-header text-shadow">Music Videos</h2>
+        <% videos.forEach((video, index) => { %>
         <% if ( video.videoType === "music" ) { %>
         <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
           episodeName: video.name,
           episodeID: video.id,
         })%>
-      <% } %>
+        <% } %>
         <% }) %>
       </div>
-  </section>
+    </section>
     <script>
       document.querySelectorAll(".episode").forEach(episode => {
         episode.addEventListener("click", () => {
@@ -53,7 +57,7 @@
       })
     </script>
 
-  <!--Music Video-->
+    <!--Music Video-->
 
   </main>
 
