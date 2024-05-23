@@ -23,6 +23,10 @@ router.get("/forum", async (req, res) => {
 	});
 });
 
+router.get("/forum/welcome", (req, res) => {
+	render(req, res, "forum/forumWelcome");
+});
+
 router.get("/forum/topic/:name", async (req, res) => {
 	if (!req.params.name) {
 		return res.status(401).json("Invalid input.");
@@ -60,12 +64,19 @@ router.get("/forum/thread/:id", async (req, res) => {
 });
 
 router.get("/forum/post/create", async (req, res) => {
+	// Redirect user to welcome page if not logged in
+	if (!req.session.user) {
+		return res.redirect("/forum/welcome");
+	}
 	// Get all topics
 	const topics = await Topic.find({});
 	render(req, res, "forum/postCreatePage", { topics: topics });
 });
 
 router.get("/forum/inbox", (req, res) => {
+	if (!req.session.user) {
+		return res.redirect("/forum/welcome");
+	}
 	render(req, res, "forum/notifPage", {});
 });
 
