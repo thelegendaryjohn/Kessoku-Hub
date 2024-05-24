@@ -65,7 +65,6 @@ const router = Router();
 router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
 		items: items,
-		displayPopup: false,
 	});
 });
 
@@ -120,7 +119,6 @@ router.get("/store/remove/all", (req, res) => {
 
 	render(req, res, "store/storePage", {
 		items: items,
-		displayPopup: true,
 	});
 });
 
