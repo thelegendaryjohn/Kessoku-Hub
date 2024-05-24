@@ -12,15 +12,15 @@
 	width: 85%;
 	max-width: 50rem;
 	height: fit-content;
-	background-color: rgb(240, 240, 240);
-	border-bottom: 2px solid var(--accent-purple);
+	background-color: var(--body-color);
+	border: 1px solid var(--black-color);
 	border-radius: 0.5rem;
 	box-sizing: border-box;
 	text-align: center;
 }
 
 .cookies-popup-text {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 }
 
 .cookies-popup-text a {
@@ -45,13 +45,19 @@
 }
 
 .cookies-popup-agree {
-	background-color: var(--accent-purple);
+	background-color: var(--hitori-color);
 	color: var(--body-color);
 }
 
 .cookies-popup-disagree {
-	background-color: var(--ikuyo-color);
-	color: var(--body-color);
+	background-color: var(--body-color);
+	border: 1px solid var(--hitori-color);
+	color: var(--hitori-color);
+}
+.cookies-popup-preference {
+	color: var(--black-color);
+	background-color: var(--body-color);
+	text-decoration: underline;
 }
 
 .cookies-popup-btn:hover {
