@@ -127,6 +127,7 @@ router.get("/store/remove/all", (req, res) => {
 		}
 		render(req, res, "store/storePage", {
 			items: items,
+			cart: req.session.cart ? req.session.cart : {},
 			displayPopup: true,
 		});
 	});
