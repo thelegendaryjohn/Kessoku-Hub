@@ -56,11 +56,13 @@ main {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	gap: 0.4rem;
+	gap: 1rem;
 	align-items: center;
 }
 .item-price {
 	color: var(--ryo-color);
+	width: 100%;
+	min-width: 4rem;
 	text-align: center;
 }
 .btn {
