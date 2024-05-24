@@ -2,7 +2,7 @@ import { Router } from "express";
 import { render } from "../../lib/render.js";
 import { Topic } from "../../models/topic.js";
 import { Post } from "../../models/post.js";
-import { User, roles } from "../../models/user.js";
+import { roles } from "../../models/user.js";
 //
 import { getPost } from "../thread/post.js";
 import { getComment } from "../thread/comment.js";
@@ -57,23 +57,15 @@ router.get("/forum/thread/:id", async (req, res) => {
 
 	[post, comments] = await Promise.all([post, comments]);
 
-	if (!req.session.user) {
-		render(req, res, "forum/postPage", {
-			topic: post.topicId,
-			post: post,
-			comments: comments,
-			isVerified: false,
-			isGuest: true,
-		});
-	} else {
-		render(req, res, "forum/postPage", {
-			topic: post.topicId,
-			post: post,
-			comments: comments,
-			isVerified: req.session.user.role !== roles.unverified,
-			isGuest: false,
-		});
-	}
+	render(req, res, "forum/postPage", {
+		topic: post.topicId,
+		post: post,
+		comments: comments,
+		isGuest: !req.session.user,
+		isVerified: req.session.user
+			? req.session.user.role !== roles.unverified
+			: false,
+	});
 });
 
 router.get("/forum/post/create", async (req, res) => {
