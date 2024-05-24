@@ -117,9 +117,7 @@ router.get("/store/remove/all", (req, res) => {
 	// empty the cart session
 	req.session.cart = {};
 
-	render(req, res, "store/storePage", {
-		items: items,
-	});
+	res.redirect("/store");
 });
 
 router.get("/store/cart", (req, res) => {
