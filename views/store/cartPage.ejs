@@ -18,9 +18,12 @@
 
   <!-- Cart page -->
   <main>
+
     <% if(!cart) {%>
+    <!-- no item placeholder -->
     <div class="no-item-placeholder">* There are no item in your cart</div>
     <% } %>
+
     <!-- item list container -->
     <div id="item-list-container">
       <% let totalPrice = 0; %>
@@ -39,7 +42,7 @@
           <a href="/store/add/<%- itemID %>" class="item-plus-button btn">+</a>
         </div>
       </div>
-      <%totalPrice += items[itemID].price * itemQuantity; %>
+      <% totalPrice += items[itemID].price * itemQuantity; %>
       <% } %>
     </div>
 
