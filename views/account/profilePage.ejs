@@ -29,6 +29,10 @@
         <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
         <h1 id="profile-name"><%= user.username %></h1>
+
+        <h3 id="unverified-badge" class="account-badge" style="display: <%= isNotVerified ? "block" : "none" %>">Unverified ✖</h3>
+        <h3 id="verified-badge" class="account-badge" style="display: <%= isVerified ? "block" : "none" %>;">Verified ✔</h2>
+        <h3 id="admin-badge" class="account-badge" style="display: <%= isAdmin ? "block" : "none" %>">Admin ⚒</h3>
       </div>
 
       <!-- User stats -->
