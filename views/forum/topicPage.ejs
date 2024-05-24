@@ -37,10 +37,14 @@
         <!-- Post link container -->
         <% Object.values(posts).map((post) => { %>
         <div class="authored-post">
-          <div class="topic-header-date-title">
-            <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
-            <a href="/user/<%= post.author.username %>" class="topic-author"><h3><%= post.author.username %></h3></a>
-            <h4 class="topic-date"><%- include("../partials/forum/forumDate.ejs", {obj: post}) %></h4>
+          <div class="topic-header">
+            <a href="/user/<%= post.author.username %>">
+              <div class="topic-header-date-title">
+                <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
+                <h3 class="topic-author"><%= post.author.username %></h3>
+                <h4 class="topic-date"><%- include("../partials/forum/forumDate.ejs", {obj: post}) %></h4>
+              </div>
+            </a>
           </div>
           <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
             <div class="post-container">
