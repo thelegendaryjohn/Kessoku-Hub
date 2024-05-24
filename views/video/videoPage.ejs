@@ -26,6 +26,7 @@
         <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
           episodeName: video.name,
           episodeID: video.id,
+          episodeLength: video.length,
         })%>
       <% } %>
         <% }) %>
@@ -39,6 +40,7 @@
         <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
           episodeName: video.name,
           episodeID: video.id,
+          episodeLength: video.length,
         })%>
       <% } %>
         <% }) %>
@@ -52,9 +54,6 @@
         })
       })
     </script>
-
-  <!--Music Video-->
-
   </main>
 
   <!-- Footer partial -->
