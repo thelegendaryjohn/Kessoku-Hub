@@ -61,6 +61,8 @@ main {
 }
 .item-price {
 	color: var(--ryo-color);
+	width: 100%;
+	min-width: 4rem;
 	text-align: center;
 }
 .btn {
