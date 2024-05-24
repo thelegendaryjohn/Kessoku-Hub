@@ -69,15 +69,5 @@
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
-<% if (items) { %>
-<script>
-  const items = <%- JSON.stringify(items) %>;
-</script>
-<% } %>
-<script type="module">
-  // get "no-item-placeholder" div
-  const noItemPlaceholder = document.querySelector(".no-item-placeholder");
-  noItemPlaceholder.style.display = "block";
-</script>
 
 </html>
