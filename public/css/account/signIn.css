@@ -18,6 +18,7 @@ main {
 	box-sizing: border-box;
 	padding: 2rem 2rem;
 	width: 100%;
+	max-width: 60rem;
 }
 
 .account-form * {
