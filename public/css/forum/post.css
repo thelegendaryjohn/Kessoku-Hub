@@ -31,6 +31,10 @@
 	max-width: 40rem;
 }
 
+.post-link-container:hover {
+	background-color: var(--body-color);
+}
+
 #post-content {
 	font-size: 1.2rem;
 }
