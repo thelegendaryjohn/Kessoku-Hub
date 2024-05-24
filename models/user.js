@@ -63,7 +63,9 @@ userSchema.methods.verifyEmail = async function (email, cb) {
 		return cb(new Error("User is already verified."));
 	// Create a token
 	const homelink =
-		env == "dev" ? "http://localhost:3000" : "https://bocchi.band";
+		env == "dev" || env == "prodtest"
+			? "http://localhost:3000"
+			: "https://bocchi.band";
 	const token = jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
 		expiresIn: "5m",
 	});
