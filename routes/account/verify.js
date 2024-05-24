@@ -56,6 +56,8 @@ router.get("/account/verify/:token", async (req, res) => {
 			user.email = req.session.email;
 			await user.save();
 
+			req.session.user = user;
+
 			render(req, res, "account/accountSuccess", {
 				message: `Your <b>${user.username}</b> account email has been verified!`,
 			});
