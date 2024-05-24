@@ -42,16 +42,6 @@
       <div class="section-divider"></div>
 
       <div id="comment-section">
-        <div id="comment-section-sticky-box">
-          <!-- Comment posting -->
-          <form id="comment-post-container" class="form-container box-shadow">
-            <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
-            <div id="comment-post-btn-container">
-              <button id="comment-post-cancel" class="form-btn comment-post-btn">Cancel</button>
-              <input id="comment-post-submit" class="form-btn comment-post-btn" type="submit" value="Post" onclick="event.preventDefault();">
-            </div>
-          </form>
-        </div>
 
         <% comments.forEach(comment => { %>
         <%- include("../partials/forum/forumComment.ejs", { comment: comment }) %>
@@ -62,8 +52,8 @@
     </section>
   </main>
 
-  <!-- Forum actions partial -->
-  <%- include("../partials/forum/forumAction.ejs") %>
+  <!-- Comment box partial -->
+  <%- include("../partials/forum/commentBox.ejs") %>
 
   <script>
     // Posting a comment

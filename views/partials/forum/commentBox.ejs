@@ -1,0 +1,23 @@
+<div id="comment-section-fixed-box">
+  <!-- Comment posting -->
+  <form id="comment-post-container" class="form-container">
+    <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." autocomplete="off"></textarea>
+    <div id="comment-post-btn-container">
+      <!-- <button id="comment-post-clear" class="form-btn comment-post-btn" onclick="event.preventDefault();">Cancel</button> -->
+      <!-- <input id="comment-post-submit" class="form-btn comment-post-btn" type="submit" value="Post"> -->
+      <img src="/images/forum-section/btn-send.svg" alt="Send" id="comment-post-submit" class="comment-post-btn" type="submit">
+    </div>
+  </form>
+</div>
+
+<script>
+  const commentInput = document.querySelector("#comment-post-input");
+  const commentBox = document.querySelector("#comment-section-fixed-box");
+  const main = document.querySelector("body");
+
+  commentInput.addEventListener("input", () => {
+    commentInput.style.height = "";
+    commentInput.style.height = commentInput.scrollHeight + "px";
+    document.querySelector("main").style.marginBottom = commentBox.offsetHeight + "px";
+  })
+</script>
