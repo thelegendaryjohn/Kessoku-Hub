@@ -61,9 +61,7 @@
   noItemPlaceholder.style.display = "block";
 
   // get and filter out the cart string
-  let cartString = '<%- JSON.stringify(cart) %>';
-  let newStringEnd = cartString.indexOf("m") - 3;
-  cartString = cartString.substr(1, newStringEnd);
+  let cartString = '<%- JSON.parse(JSON.stringify(cart)) %>';
 
   // create an cart items array
   let itemArray = []

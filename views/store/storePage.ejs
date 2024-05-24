@@ -27,9 +27,9 @@
         <div class="item-name"><%- item.name%></div>
         <div class="item-description"><%- item.description%></div>
         <div class="item-price"><%- item.price%>$</div>
-        <div class="item-add-to-cart">
-          <a href="/store/add/<%= item.id %>" type="button" class="add-to-cart">Add to cart</a>
-        </div>
+        <button class="item-add-to-cart">
+          <span class="add-to-cart">Add to cart</span>
+        </button>
       </div>
       <% }) %>
     </div>
@@ -45,6 +45,7 @@
             c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z" />
           </g>
         </svg>
+        <span class="cart-items-count"></span>
       </div>
     </a>
   </main>
@@ -56,13 +57,24 @@
 <% if (items) { %>
 <script>
   const items = <%- JSON.stringify(items) %>;
+  const cart = <%- JSON.parse(JSON.stringify(cart)) %>;
 </script>
 <% } %>
 <script type="module">
+  // Initially hide the cart items count
+  const cartItemsCount = document.querySelector(".cart-items-count");
+  cartItemsCount.style.display = "none";
+  for (let item in cart) {
+    if (item > 0) {
+      console.log("item count: ", item)
+      cartItemsCount.style.display = "block";
+      cartItemsCount.textContent = item;
+    }
+  }
   //initialize
   const cartSvg = document.querySelector(".cart-svg");
   const cartBtn = document.querySelector("#cart-button-container");
-  const addToCartBtn = document.querySelector(".add-to-cart");
+  const addToCartBtn = document.querySelectorAll(".add-to-cart");
 
   //change svg color when hover
   cartBtn.addEventListener("mouseover", () => {
@@ -70,6 +82,31 @@
   });
   cartBtn.addEventListener("mouseout", () => {
     cartSvg.setAttribute("fill", "#2254c0");
+  });
+
+  // Listening to the add to cart button
+  addToCartBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+    console.log(e.target.parentElement.parentElement.id);
+    e.preventDefault();
+    const itemId = e.target.parentElement.parentElement.id;
+    fetch(`/store/add/${itemId}`, {
+        method: "POST",
+      })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Failed to add item to cart");
+        }
+      })
+      .then((data) => {
+        cartItemsCount.textContent = data;
+        if (data > 0) {
+          cartItemsCount.style.display = "flex";
+        }
+      })
+    });
   });
 </script>
 

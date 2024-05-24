@@ -65,21 +65,21 @@ const router = Router();
 router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
 		items: items,
+		cart: req.session.cart ? req.session.cart : {},
 		displayPopup: false,
 	});
 });
 
 // add item to cart
-router.get("/store/add/:id", (req, res) => {
+router.post("/store/add/:id", (req, res) => {
 	// Validate the id
 	if (!req.params.id) {
-		return res.status(400).send("Invalid item id");
+		return res.status(400).json("Invalid item id");
 	}
 
 	// Create a cart if it doesn't exist
 	if (!req.session.cart) {
 		req.session.cart = {};
-		req.session.cart.maxAge = 24 * 60 * 60 * 1000;
 	}
 
 	// Check if the item is in the cart
@@ -90,15 +90,18 @@ router.get("/store/add/:id", (req, res) => {
 		// Add the item to the cart
 		req.session.cart[req.params.id] = 1;
 	}
-
-	res.redirect("/store/cart");
+	let total = 0;
+	for (const key in req.session.cart) {
+		total += req.session.cart[key];
+	}
+	return res.status(200).json(total);
 });
 
 // remove item from cart
-router.get("/store/remove/:id", (req, res) => {
+router.post("/store/remove/:id", (req, res) => {
 	// Validate the id
 	if (!req.params.id) {
-		return res.status(400).send("Invalid item id");
+		return res.status(400).json("Invalid item id");
 	}
 
 	// Check if the item is in the cart
@@ -110,21 +113,27 @@ router.get("/store/remove/:id", (req, res) => {
 		}
 	}
 
-	res.redirect("/store/cart");
+	return res.status(200).json("Item removed from cart");
 });
 
 // remove all item from cart
 router.get("/store/remove/all", (req, res) => {
 	// empty the cart session
 	req.session.cart = {};
-
-	render(req, res, "store/storePage", {
-		items: items,
-		displayPopup: true,
+	req.session.save((err) => {
+		if (err) {
+			console.error(err);
+			return res.status(500).json("Failed to save session");
+		}
+		render(req, res, "store/storePage", {
+			items: items,
+			displayPopup: true,
+		});
 	});
 });
 
 router.get("/store/cart", (req, res) => {
+	console.log(req.session.cart);
 	render(req, res, "store/cartPage", {
 		items: items,
 		cart: req.session.cart,
