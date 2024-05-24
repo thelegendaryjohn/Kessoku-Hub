@@ -1,7 +1,7 @@
 .cookies-popup {
 	z-index: 8;
 	position: fixed;
-	bottom: 2%;
+	bottom: 0%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -9,18 +9,21 @@
 	align-self: center;
 	gap: 1.5rem;
 	padding: 1.5rem 2.5rem;
-	width: 85%;
+	width: 100%;
 	max-width: 50rem;
 	height: fit-content;
 	background-color: var(--body-color);
-	border: 1px solid var(--black-color);
-	border-radius: 0.5rem;
+	border-top: 1px solid var(--hitori-color);
 	box-sizing: border-box;
-	text-align: center;
+	text-align: left;
+}
+
+.cookies-popup-header {
+	font-size: 2rem;
 }
 
 .cookies-popup-text {
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 }
 
 .cookies-popup-text a {
@@ -40,7 +43,7 @@
 	border: none;
 	padding: 0.5rem;
 	width: 100%;
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 	border-radius: 0.5rem;
 }
 
@@ -62,4 +65,8 @@
 
 .cookies-popup-btn:hover {
 	opacity: 0.7;
+}
+
+/* desktop/landscape view settings */
+@media only screen and (min-width: 763px) {
 }
