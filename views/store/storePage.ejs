@@ -57,19 +57,22 @@
 <% if (items) { %>
 <script>
   const items = <%- JSON.stringify(items) %>;
-  const cart = <%- JSON.parse(JSON.stringify(cart)) %>;
+  const cart = <%- JSON.stringify(cart) %>;
 </script>
 <% } %>
 <script type="module">
   // Initially hide the cart items count
   const cartItemsCount = document.querySelector(".cart-items-count");
   cartItemsCount.style.display = "none";
+  let total = 0;
   for (let item in cart) {
     if (item > 0) {
-      console.log("item count: ", item)
-      cartItemsCount.style.display = "block";
-      cartItemsCount.textContent = item;
+      total += cart[item];
     }
+  }
+  if (total > 0) {
+    cartItemsCount.textContent = total;
+    cartItemsCount.style.display = "flex";
   }
   //initialize
   const cartSvg = document.querySelector(".cart-svg");

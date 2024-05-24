@@ -27,22 +27,20 @@
     <!-- item list container -->
     <div id="item-list-container">
       <% let totalPrice = 0; %>
-      <% for (let i = 0; i < Object.keys(cart).length - 1; i++) { %>
-      <% let itemID = [Object.keys(cart)[i]]; %>
-      <% let itemQuantity = [Object.values(cart)[i]]; %>
+      <% for (let id in cart) { %>
       <div class="item-container">
-        <img class="item-image" src="/images/store-section/<%- items[itemID].imageName%>" alt="<%- items[itemID].description%>">
-        <div class="item-name"> <%- items[itemID].name%> </div>
+        <img class="item-image" src="/images/store-section/<%- items[id].imageName%>" alt="<%- items[id].description%>">
+        <div class="item-name"> <%- items[id].name%> </div>
 
         <!-- item's right container -->
         <div class="item-right-container">
-          <div class="item-price"><%- items[itemID].price * itemQuantity%> $</div>
-          <a href="/store/remove/<%- itemID %>" class="item-minus-button btn">-</a>
-          <div class="item-quantity"><%- itemQuantity%></div>
-          <a href="/store/add/<%- itemID %>" class="item-plus-button btn">+</a>
+          <div class="item-price"><%- items[id].price * cart[id]%> $</div>
+          <a href="/store/remove/<%- id %>" class="item-minus-button btn">-</a>
+          <div class="item-quantity"><%- cart[id]%></div>
+          <a href="/store/add/<%- id %>" class="item-plus-button btn">+</a>
         </div>
       </div>
-      <% totalPrice += items[itemID].price * itemQuantity; %>
+      <% totalPrice += items[id].price * cart[id]; %>
       <% } %>
     </div>
 
