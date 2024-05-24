@@ -65,6 +65,7 @@ const router = Router();
 router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
 		items: items,
+		displayPopup: false,
 	});
 });
 
@@ -114,20 +115,19 @@ router.get("/store/remove/:id", (req, res) => {
 
 // remove all item from cart
 router.get("/store/remove/:id", (req, res) => {
+	// empty the cart session
 	req.session.cart = {};
 
 	render(req, res, "store/cartPage", {
 		items: items,
-		cart: req.session.cart,
 		displayPopup: true,
 	});
 });
 
-router.get("/store/cart", (req, res) => {
-	render(req, res, "store/cartPage", {
+router.get("/store", (req, res) => {
+	render(req, res, "store/storePage", {
 		items: items,
 		cart: req.session.cart,
-		displayPopup: false,
 	});
 });
 

@@ -16,6 +16,11 @@
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "STORE" , headerColor: "var(--ryo-color)"}) %>
 
+  <!-- Purchase popup partial -->
+  <% if(displayPopup){ %>
+  <%- include("../partials/popup/purchasePopup.ejs", { isVisible: true }) %>
+  <% } %>
+
   <!-- Store page -->
   <main>
     <!-- Item list container -->

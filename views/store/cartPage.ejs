@@ -16,13 +16,6 @@
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "CART" , headerColor: "var(--ryo-color)"}) %>
 
-  <!-- Purchase popup partial -->
-  <% if(displayPopup){ %>
-  <%- include("../partials/popup/purchasePopup.ejs", { isVisible: true }) %>
-  <% } %>
-
-
-
   <!-- Cart page -->
   <main>
     <div class="no-item-placeholder">* There are no item in your cart</div>
