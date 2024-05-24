@@ -66,7 +66,6 @@ router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
 		items: items,
 		cart: req.session.cart ? req.session.cart : {},
-		displayPopup: false,
 	});
 });
 
@@ -125,11 +124,7 @@ router.get("/store/remove/all", (req, res) => {
 			console.error(err);
 			return res.status(500).json("Failed to save session");
 		}
-		render(req, res, "store/storePage", {
-			items: items,
-			cart: req.session.cart ? req.session.cart : {},
-			displayPopup: true,
-		});
+		res.redirect("/store");
 	});
 });
 
