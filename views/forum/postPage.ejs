@@ -20,8 +20,6 @@
   <%- include("../partials/navBar.ejs", { headerTitle: post.topicId.name, headerColor: "var(--accent-purple)" }) %>
 
   <!-- Unverified email popup partial -->
-  <% console.log(!isVerified); %>
-  <% console.log(!isGuest); %>
   <%- include("../partials/popup/unverifiedEmailPopup.ejs", { isVisible: !isVerified && !isGuest }) %>
 
   <!-- Main content -->
