@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="/css/popup/cookies.css">
 
 <div class="cookies-popup box-shadow">
-  <h1>🍪 We use cookies 🍪</h1>
+  <h1 class="cookies-popup-header">🍪 We use cookies 🍪</h1>
 
   <p class="cookies-popup-text font-poppins">We use cookies and other tracking technologies to improve your browsing experience on our website, to show you personalized content and targeted ads, to analyze our website traffic, and to understand where our visitors are coming from.</p>
 
   <div id="cookies-popup-container">
-    <button class="cookies-popup-agree cookies-popup-btn">I agree</button>
-    <button class="cookies-popup-disagree cookies-popup-btn">I disagree</button>
+    <button class="cookies-popup-agree cookies-popup-btn">I agree and consent</button>
+    <button class="cookies-popup-disagree cookies-popup-btn">I decline</button>
     <button class="cookies-popup-preference cookies-popup-btn">Change my preferences</button>
   </div>
 
@@ -26,14 +26,14 @@
     });
     document.querySelector(".cookies-popup-disagree").addEventListener("click", () => {
       document.querySelector(".cookies-popup").style.display = "none";
-      localStorage.setItem("cookiesConsent", false);
-      window.location.reload();
+      localStorage.setItem("cookiesConsent", true);
+      // window.location.reload();
     });
     document.querySelector(".cookies-popup-preference").addEventListener("click", () => {
       document.querySelector(".cookies-popup").style.display = "none";
-      localStorage.setItem("cookiesConsent", false);
-      console.log(localStorage.getItem("cookiesConsent"));
-      window.location.reload();
+      localStorage.setItem("cookiesConsent", true);
+      // console.log(localStorage.getItem("cookiesConsent"));
+      // window.location.reload();
     });
   </script>
 </div>

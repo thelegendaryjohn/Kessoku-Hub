@@ -2,6 +2,7 @@ import { Router } from "express";
 import { render } from "../../lib/render.js";
 import { Topic } from "../../models/topic.js";
 import { Post } from "../../models/post.js";
+import { User, roles } from "../../models/user.js";
 //
 import { getPost } from "../thread/post.js";
 import { getComment } from "../thread/comment.js";
@@ -21,6 +22,10 @@ router.get("/forum", async (req, res) => {
 		topics: topics,
 		posts: posts,
 	});
+});
+
+router.get("/forum/welcome", (req, res) => {
+	render(req, res, "forum/forumWelcome");
 });
 
 router.get("/forum/topic/:name", async (req, res) => {
@@ -52,20 +57,42 @@ router.get("/forum/thread/:id", async (req, res) => {
 
 	[post, comments] = await Promise.all([post, comments]);
 
-	render(req, res, "forum/postPage", {
-		topic: post.topicId,
-		post: post,
-		comments: comments,
-	});
+	if (!req.session.user) {
+		render(req, res, "forum/postPage", {
+			topic: post.topicId,
+			post: post,
+			comments: comments,
+			isVerified: false,
+			isGuest: true,
+		});
+	} else {
+		render(req, res, "forum/postPage", {
+			topic: post.topicId,
+			post: post,
+			comments: comments,
+			isVerified: req.session.user.role !== roles.unverified,
+			isGuest: false,
+		});
+	}
 });
 
 router.get("/forum/post/create", async (req, res) => {
+	// Redirect user to welcome page if not logged in
+	if (!req.session.user) {
+		return res.redirect("/forum/welcome");
+	}
 	// Get all topics
 	const topics = await Topic.find({});
-	render(req, res, "forum/postCreatePage", { topics: topics });
+	render(req, res, "forum/postCreatePage", {
+		topics: topics,
+		isVerified: req.session.user.role !== roles.unverified,
+	});
 });
 
 router.get("/forum/inbox", (req, res) => {
+	if (!req.session.user) {
+		return res.redirect("/forum/welcome");
+	}
 	render(req, res, "forum/notifPage", {});
 });
 
