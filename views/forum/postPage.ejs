@@ -60,27 +60,29 @@
     document.querySelector("#comment-post-submit").addEventListener("click", async (e) => {
       e.preventDefault();
 
-      const content = document.querySelector("#comment-post-input").value;
-      const postId = "<%= post._id %>";
+      if (document.querySelector("#comment-post-input").value) {
+        const content = document.querySelector("#comment-post-input").value;
+        const postId = "<%= post._id %>";
 
-      const response = await fetch(`/thread/comment/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          postId: postId,
-          content: content,
-        }),
-      });
-
-      if (response.ok) {
-        window.location.reload();
-      } else {
-        response.json().then((data) => {
-          console.log(data);
-          alert("Failed to create comment: " + data);
+        const response = await fetch(`/thread/comment/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            postId: postId,
+            content: content,
+          }),
         });
+
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          response.json().then((data) => {
+            console.log(data);
+            alert("Failed to create comment: " + data);
+          });
+        }
       }
     });
   </script>
