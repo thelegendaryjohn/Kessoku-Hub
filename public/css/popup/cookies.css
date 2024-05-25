@@ -17,6 +17,9 @@
 	/* color settings */
 	background-color: var(--body-color);
 	border-top: 1px solid var(--hitori-color);
+	/* color settings */
+	background-color: var(--body-color);
+	border-top: 1px solid var(--hitori-color);
 	box-sizing: border-box;
 	/* text align settings */
 	text-align: left;
@@ -64,7 +67,6 @@
 .cookies-popup-btn:hover {
 	opacity: 0.7;
 }
-
 /* desktop/landscape view settings */
 @media only screen and (min-width: 763px) {
 	.cookies-popup {
@@ -88,5 +90,8 @@
 	}
 	.cookies-popup-btn {
 		font-size: 1.4rem;
+	}
+	.cookies-popup-preference {
+		font-size: 1rem;
 	}
 }
