@@ -139,7 +139,9 @@
             }, 3000);
           } else {
             // If there is an error, show an error alert
-            errorAlert(document.querySelector("#email-input-alert"), "There was an error sending the email. Please try again later.");
+            res.json().then(data => {
+              errorAlert(document.querySelector("#email-input-alert"), data);
+            });
           }
         })
         .catch(err => {
