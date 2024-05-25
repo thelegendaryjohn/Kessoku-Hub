@@ -1,6 +1,6 @@
 .email-popup {
     z-index: 7;
-	position: fixed;
+	position: sticky;
 	top: 6rem;
 	display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
 	width: 100%;
 	height: fit-content;
 	background-color: rgb(240, 240, 240);
-    border-bottom: 2px solid var(--accent-purple);
+    border-bottom: 1px solid var(--hitori-color);
     box-sizing: border-box;
 }
 
