@@ -1,6 +1,11 @@
 <div id="comment-section-fixed-box">
+  <!-- Signin prompt box for guests -->
+  <div id="comment-signin-container" style="display: <%= isGuest ? "flex" : "none" %>">
+    <p id="comment-signin-text" class="font-poppins"><a href="/account" class="font-poppins">Sign Up or Log In</a> to comment</p>
+  </div>
+
   <!-- Comment posting -->
-  <form id="comment-post-container" class="form-container">
+  <form id="comment-post-container" class="form-container" style="display: <%= isGuest ? "none" : "flex" %>">
     <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." autocomplete="off"></textarea>
     <div id="comment-post-btn-container">
       <!-- <img role="button" src="/images/forum-section/btn-send.svg" alt="Send" id="comment-post-submit-disabled" class="comment-post-submit comment-post-btn" type="submit"> -->
