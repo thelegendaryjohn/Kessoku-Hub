@@ -134,7 +134,7 @@ document
 				error.forEach((e) => {
 					errorAlert(
 						document.querySelector(`#${e.path[0]}-signup-alert`),
-						e.message
+						"Invalid " + e.path[0] + "."
 					);
 					document
 						.querySelector(`#${e.path[0]}-signup-input`)
