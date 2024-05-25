@@ -126,6 +126,61 @@
 	color: var(--hitori-color);
 }
 
+/* Audio widget */
+.audio-widget {
+	z-index: 1;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+	transform: translateX(-50%);
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 30rem;
+}
+
+#play-pause, .play {
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* padding: 5px 10px; */
+    /* border-radius: 5px; */
+    /* background-color: var(--hitori-color); */
+    color: #fff;
+	height: 20px;
+	width: 20px;
+}
+
+.progress-container {
+    flex: 1;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress {
+    background-color: var(--hitori-color);
+    height: 10px;
+    width: 0%;
+}
+
+#current-time, #duration {
+    font-size: 14px;
+}
+
+#volume-slider {
+    width: 60px;
+}
+
+input[type='range']{
+	accent-color: var(--hitori-color);
+}
+
 /* Specific Media Queries */
 /* <300px */
 @media screen and (orientation: portrait) and (max-width: 300px) {
