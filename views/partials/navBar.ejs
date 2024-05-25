@@ -1,12 +1,21 @@
 <div id="nav-container" class="box-shadow">
   <%- include("backBtn.ejs") %>
 
-  <h1 id="nav-title" class="text-shadow" style="
-    <%= (!!locals.headerColor)? `color: ${headerColor}` : 'color: var(--accent-purple)'  %>
-  ">
-    <%= headerTitle %>
-  </h1>
+  <% if (locals.linkedNav) { %>
+  <a href="/forum/topic/<%= headerTitle %>">
+  <% } %>
 
-  <span id="menu-btn-spacer" style="user-select: none;">THISSHALLBEINVIS</span>
+    <h1 id="nav-title" class="text-shadow" style="
+    <%= (!!locals.headerColor)? `color: ${headerColor}` : 'color: var(--accent-purple)'  %>
+    ">
+      <% let headerTitleUppercase = headerTitle.toUpperCase(); %>
+      <%= headerTitleUppercase %>
+    </h1>
+
+  <% if (locals.linkedNav) { %>
+  </a>
+  <% } %>
+
+  <span id="menu-btn-spacer" style="user-select: none; color: transparent;" aria-hidden="true" aria-disabled="true">THISSHALLBEINVIS</span>
 
 </div>
