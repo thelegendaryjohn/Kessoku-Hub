@@ -13,7 +13,7 @@ This repository is intended to be submitted as the project for RMIT Vietnam's CO
 
 ## Links
 
-You can find the site here: [Kessoku Band](http://bocchi.band)
+You can find the site here: [Kessoku Band](https://bocchi.band)
 Full GitHub repo link: [Repo](https://github.com/RMIT-Vietnam-Teaching/group-project-cosc3060-2024a-kessoku)
 
 ## Getting Started
