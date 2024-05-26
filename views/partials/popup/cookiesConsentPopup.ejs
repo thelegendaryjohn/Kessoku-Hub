@@ -14,7 +14,7 @@
   <script>
     // console.log(localStorage.getItem("cookiesConsent"));
     // Make cookies consent pops up only once
-    if (localStorage.getItem("cookiesConsent") === "true") {
+    if (localStorage.getItem("cookiesConsentShown") === "true") {
       document.querySelector(".cookies-popup").style.display = "none"
     } else {
       document.querySelector(".cookies-popup").style.display = "flex";
@@ -22,16 +22,16 @@
 
     document.querySelector(".cookies-popup-agree").addEventListener("click", () => {
       document.querySelector(".cookies-popup").style.display = "none";
-      localStorage.setItem("cookiesConsent", true);
+      localStorage.setItem("cookiesConsentShown", true);
     });
     document.querySelector(".cookies-popup-disagree").addEventListener("click", () => {
       document.querySelector(".cookies-popup").style.display = "none";
-      localStorage.setItem("cookiesConsent", true);
+      localStorage.setItem("cookiesConsentShown", true);
       // window.location.reload();
     });
     document.querySelector(".cookies-popup-preference").addEventListener("click", () => {
       document.querySelector(".cookies-popup").style.display = "none";
-      localStorage.setItem("cookiesConsent", true);
+      localStorage.setItem("cookiesConsentShown", true);
       // console.log(localStorage.getItem("cookiesConsent"));
       // window.location.reload();
     });
