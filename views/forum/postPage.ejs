@@ -19,9 +19,6 @@
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: post.topicId.name, headerColor: "var(--accent-purple)" }) %>
 
-  <!-- Unverified email popup partial -->
-  <%- include("../partials/popup/unverifiedEmailPopup.ejs", { isVisible: !isVerified && !isGuest }) %>
-
   <!-- Cookies consent banner -->
   <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
 
