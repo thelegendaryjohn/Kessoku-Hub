@@ -43,6 +43,7 @@ router.get("/forum/topic/:name", async (req, res) => {
 	render(req, res, "forum/topicPage", {
 		topic: topic,
 		posts: posts,
+		linkedNav: true,
 	});
 });
 
@@ -61,6 +62,7 @@ router.get("/forum/thread/:id", async (req, res) => {
 		topic: post.topicId,
 		post: post,
 		comments: comments,
+		linkedNav: true,
 		isGuest: !req.session.user,
 		isVerified: req.session.user
 			? req.session.user.role !== roles.unverified
@@ -77,6 +79,7 @@ router.get("/forum/post/create", async (req, res) => {
 	const topics = await Topic.find({});
 	render(req, res, "forum/postCreatePage", {
 		topics: topics,
+		linkedNav: true,
 		isVerified: req.session.user.role !== roles.unverified,
 	});
 });
