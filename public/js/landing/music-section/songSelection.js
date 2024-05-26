@@ -1,66 +1,149 @@
-const song = document.querySelectorAll(".song");
-const controlBtn = document.querySelectorAll(".play-pause-btn");
-let selectedSongIndex;
+document.addEventListener('DOMContentLoaded', function () {
+    const audio = document.getElementById('audio');
+    const playPauseBtn = document.getElementById('play-pause');
+    const progressContainer = document.querySelector('.progress-container');
+    const progress = document.getElementById('progress');
+    const currentTimeElement = document.getElementById('current-time');
+    const durationElement = document.getElementById('duration');
+    const volumeSlider = document.getElementById('volume-slider');
 
-song.forEach((e) => {
-	e.addEventListener("click", (e) => {
-		// Check if selected song === current song
-		if (
-			selectedSongIndex ===
-			e.currentTarget.querySelector(".song-index").textContent
-		) {
-			// If TRUE
+    const songItems = document.querySelectorAll('.song');
+    const controlBtns = document.querySelectorAll(".play-pause-btn");
+    let selectedSongIndex;
 
-			// Toggle current song state
-			e.currentTarget.classList.toggle("selected");
-		} else {
-			// If FALSE
+    songItems.forEach((song) => {
+        song.addEventListener("click", () => {
+            const songIndex = song.querySelector(".song-index").textContent;
+            const isSelected = song.classList.contains("selected");
 
-			// Change all pause btn to play
-			controlBtn.forEach((e) => {
-				e.src = "/images/music-section/play-icon.svg";
-				e.alt = "Play";
-			});
+            if (selectedSongIndex === songIndex && isSelected) {
+                song.classList.toggle("selected");
+                toggleAudioPlayPause();
+            } else {
+                resetAllSongs();
+                song.classList.add("selected");
+                selectedSongIndex = songIndex;
+                loadAndPlaySong(song);
+            }
 
-            // Change all control btn's display to "none"
-            controlBtn.forEach((e) => {
-                e.style.display = "none";
-            })
+            updateControlButtonState(song);
+        });
+    });
 
-            // Change all song index elements' opacity to 1
-            song.forEach((e) => {
-                e.querySelector(".song-index").style.opacity = "1";
-            })
+    playPauseBtn.addEventListener('click', () => {
+        toggleAudioPlayPause();
+    });
 
-			// Remove all "selected" classes in the same parent and add it to the selected song
-			e.currentTarget.parentNode
-				.querySelectorAll(".selected")
-				.forEach((e) => {
-					e.classList.remove("selected");
-				});
-			e.currentTarget.classList.add("selected");
-		}
+    audio.addEventListener('play', () => {
+        updatePlayPauseButtonState(true);
+    });
 
-        // Change play/pause btn state
-		const currControlBtn = e.currentTarget.querySelector(".play-pause-btn");
-        const currSongIndexElement = e.currentTarget.querySelector(".song-index")
-			e.currentTarget.querySelector(".song-index");
-		if (e.currentTarget.classList.contains("selected")) {
-            // Change play btn to pause and display to "block"
-			currControlBtn.style.display = "block";
-			currSongIndexElement.style.opacity = "0";
-			currControlBtn.src = "/images/music-section/pause-icon.svg";
-			currControlBtn.alt = "Pause";
-		} else {
-            // Change pause btn to play and display to "none"
-            currControlBtn.style.display = "none";
-            currSongIndexElement.style.opacity = "1";
-			currControlBtn.src = "/images/music-section/play-icon.svg";
-			currControlBtn.alt = "Play";
-		}
+    audio.addEventListener('pause', () => {
+        updatePlayPauseButtonState(false);
+    });
 
-		// Set selected song
-		selectedSongIndex =
-			e.currentTarget.querySelector(".song-index").textContent;
-	});
+    audio.addEventListener('timeupdate', () => {
+        updateProgress();
+        updateCurrentTime();
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+        updateDuration();
+    });
+
+    progressContainer.addEventListener('click', (e) => {
+        seekAudio(e);
+    });
+
+    volumeSlider.addEventListener('input', () => {
+        audio.volume = volumeSlider.value;
+    });
+
+    function loadAndPlaySong(song) {
+        const songSrc = song.getAttribute('data-src');
+        audio.src = songSrc;
+        audio.play();
+        playPauseBtn.setAttribute('src', '/images/music-section/pause-button.svg');
+
+    }
+
+    function toggleAudioPlayPause() {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+    }
+
+    function updatePlayPauseButtonState(isPlaying) {
+        if (isPlaying) {
+            playPauseBtn.src = '/images/music-section/pause-button.svg';
+            updateSelectedSongControlBtn("/images/music-section/pause-icon.svg", "Pause");
+        } else {
+            playPauseBtn.src = '/images/music-section/play-button.svg';
+            updateSelectedSongControlBtn("/images/music-section/play-icon.svg", "Play");
+        }
+    }
+
+    function updateProgress() {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progress.style.width = `${progressPercent}%`;
+    }
+
+    function updateCurrentTime() {
+        const currentMinutes = Math.floor(audio.currentTime / 60);
+        const currentSeconds = Math.floor(audio.currentTime % 60);
+        currentTimeElement.textContent = `${currentMinutes}:${currentSeconds < 10 ? '0' : ''}${currentSeconds}`;
+    }
+
+    function updateDuration() {
+        const durationMinutes = Math.floor(audio.duration / 60);
+        const durationSeconds = Math.floor(audio.duration % 60);
+        durationElement.textContent = `${durationMinutes}:${durationSeconds < 10 ? '0' : ''}${durationSeconds}`;
+    }
+
+    function seekAudio(e) {
+        const width = progressContainer.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / width) * duration;
+    }
+
+    function resetAllSongs() {
+        controlBtns.forEach((btn) => {
+            btn.src = "/images/music-section/play-icon.svg";
+            btn.alt = "Play";
+            btn.style.display = "none";
+        });
+
+        songItems.forEach((song) => {
+            song.querySelector(".song-index").style.opacity = "1";
+            song.classList.remove("selected");
+        });
+    }
+
+    function updateControlButtonState(song) {
+        const controlBtn = song.querySelector(".play-pause-btn");
+        const songIndexElement = song.querySelector(".song-index");
+        if (song.classList.contains("selected")) {
+            controlBtn.style.display = "block";
+            songIndexElement.style.opacity = "0";
+            controlBtn.src = "/images/music-section/pause-icon.svg";
+            controlBtn.alt = "Pause";
+        } else {
+            controlBtn.style.display = "none";
+            songIndexElement.style.opacity = "1";
+            controlBtn.src = "/images/music-section/play-icon.svg";
+            controlBtn.alt = "Play";
+        }
+    }
+
+    function updateSelectedSongControlBtn(src, alt) {
+        const selectedSong = document.querySelector('.song.selected');
+        if (selectedSong) {
+            const controlBtn = selectedSong.querySelector('.play-pause-btn');
+            controlBtn.src = src;
+            controlBtn.alt = alt;
+        }
+    }
 });
