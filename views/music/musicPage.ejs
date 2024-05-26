@@ -20,95 +20,19 @@
     <!-- Music section -->
     <section id="music">
       <div id="album-container" class="section-container">
-        <!-- <h2 id="music-header" class="section-header text-shadow">Music</h2> -->
         <%- include("../partials/landing/music-section/albumHeader.ejs") %>
 
         <!-- <div class="play-all-btn"></div> -->
 
         <div id="album-song-list">
-          <%- include("../partials/landing/music-section/albumSong.ejs", { 
-            index: 1,
-            name: "Seishun Complex",
-            length: "3:23"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 2,
-            name: "Hitoribocchi Tokyo",
-            length: "3:52"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 3,
-            name: "Distortion!!",
-            length: "3:23"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 4,
-            name: "Secret Base",
-            length: "3:52"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 5,
-            name: "Guitar, Loneliness and Blue Planet",
-            length: "3:48"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 6,
-            name: "I Can't Sing a Love Song",
-            length: "3:08"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 7,
-            name: "That Band",
-            length: "3:33"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 8,
-            name: "Karakara",
-            length: "4:25"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 9,
-            name: "The Little Sea",
-            length: "3:43"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 10,
-            name: "What Is Wrong With",
-            length: "3:47"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 11,
-            name: "Never Forget",
-            length: "3:43"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 12,
-            name: "If I Could Be a Constellation",
-            length: "4:18"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 13,
-            name: "Flashbacker",
-            length: "4:35"
-          }) %>
-
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-            index: 14,
-            name: "Rockn' Roll, Morning Light Falls on You",
-            length: "4:31"
-          }) %>
+          <% songs.forEach((song, index) => { %>
+              <%- include("../partials/landing/music-section/albumSong.ejs", {
+                index: song.index,
+                name: song.songName,
+                length: song.length,
+                url: song.url,
+              }) %>
+          <% }) %>
 
         </div>
       </div>
