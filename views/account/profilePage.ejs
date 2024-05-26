@@ -22,6 +22,16 @@
 
   <!-- Welcome page -->
   <main>
+    <!-- Function buttons -->
+    <% console.log(`Searched user: ${locals.user.username}`); %>
+    <% console.log(`Current session user: ${locals.currUser}`); %>
+    <div id="function-btn-container" class="section-container" style="display: <%= locals.currUser === user.username ? "flex" : "none" %>;">
+      <a id="edit-profile-btn" class="function-btn" href="/account/profile">
+        <p class="function-name">Edit</p>
+        <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
+      </a>
+    </div>
+
     <!-- User profile header -->
     <div id="user-card-container" class="section-container">
       <!-- User profile -->

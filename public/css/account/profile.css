@@ -14,7 +14,37 @@ main {
 }
 
 .section-container {
+	width: 100%;
 	max-width: 50rem;
+}
+
+#function-btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	width: 100%;
+	gap: 1rem;
+}
+
+.function-btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	text-decoration: none;
+	font-size: 1.5rem;
+}
+
+.function-img {
+	width: 2rem;
+}
+
+#edit-profile-btn {
+	background-color: var(--accent-purple);
+	color: white;
 }
 
 #user-card-container {
@@ -22,7 +52,6 @@ main {
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	width: 100%;
 	gap: 1rem;
 }
 

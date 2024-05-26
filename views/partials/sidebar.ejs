@@ -1,6 +1,12 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
-    <a href="<%= locals.user ? "/account/profile" : "/account" %>">
+    <a href="
+      <% if (locals.user) { %>
+        /user/<%= locals.user.username %>
+      <% } else { %>
+        /account
+      <% } %>
+    ">
       <div id="profile-container">
         <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
         <h1 id="profile-name"><%= 
