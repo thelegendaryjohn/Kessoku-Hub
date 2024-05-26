@@ -18,6 +18,7 @@ router.get("/user/:username", async (req, res) => {
 			postCount: postCount,
 			commentCount: commentCount,
 			currUser: req.session.user,
+			currUsername: req.session.user?.username,
 			isNotVerified: user.role === roles.unverified && user.role !== roles.admin,
 			isVerified:
 				user.role === roles.user && user.role !== roles.admin,
