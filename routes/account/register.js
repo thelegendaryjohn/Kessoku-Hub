@@ -13,9 +13,9 @@ const v = new Validator();
 const schema = {
 	type: "object",
 	properties: {
-		username: { type: "string", pattern: "^[A-Za-z][A-Za-z0-9_]{0,31}$" },
-		// Between 1 and 32 characters long and must not start with a number or special characters (only letters at the beginning), and the rest of the characters can include letters, numbers, or special characters.
-		password: { type: "string", pattern: "^[A-Za-z][A-Za-z0-9_]{5,31}$" },
+		username: { type: "string", pattern: /^[A-Za-z\d]{3,32}$/ },
+		// Between 3 and 32 characters long and must not start with a number or special characters (only letters at the beginning), and the rest of the characters can include letters, numbers, or special characters.
+		password: { type: "string", pattern: /^[A-Za-z\d]{6,32}$/ },
 		// Between 6 and 32 characters long and must not start with a number or special characters (only letters at the beginning), and the rest of the characters can include letters, numbers, or special characters.
 	},
 	required: ["username", "password"],
