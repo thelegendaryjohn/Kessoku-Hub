@@ -26,7 +26,7 @@
 
         <div id="album-song-list">
           <% songs.forEach((song, index) => { %>
-              <%- include("../partials/landing/music-section/albumSong.ejs", {
+          <%- include("../partials/landing/music-section/albumSong.ejs", {
                 index: song.index,
                 name: song.songName,
                 length: song.length,
@@ -41,6 +41,7 @@
 
       <script src="/js/landing/music-section/songSelection.js"></script>
     </section>
+
   </main>
 
   <!-- Footer partial -->

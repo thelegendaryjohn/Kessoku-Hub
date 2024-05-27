@@ -11,6 +11,7 @@
 	flex-direction: column;
 	text-shadow: none;
 	padding: 5px 20px;
+	gap: 2rem;
 	max-width: 50rem;
 }
 
@@ -73,7 +74,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px 0 0 0;
 }
 
 .song {
@@ -127,56 +127,80 @@
 
 /* Audio Player */
 .audio-widget {
-	z-index: 1;
-    /* position: fixed;
-    bottom: 20px;
-    left: 50%; */
-	/* transform: translateX(-50%); */
-    background-color: #f3f3f3;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 80%;
+	background-color: var(--body-color);
+	box-shadow: none;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+	border-top: 1px solid var(--hitori-color);
 }
 
-#play-pause, .play {
-    background: none;
-    border: none;
-    cursor: pointer;
-    /* padding: 5px 10px; */
-    /* border-radius: 5px; */
-    /* background-color: var(--hitori-color); */
-    color: #fff;
-	height: 20px;
-	width: 20px;
+#playback-seeker-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	gap: 1rem;
+	height: 1.5rem;
+}
+
+#play-pause,
+.play {
+	background: none;
+	border: none;
+	cursor: pointer;
+	/* padding: 5px 10px; */
+	/* border-radius: 5px; */
+	/* background-color: var(--hitori-color); */
+	color: #fff;
+	height: 100%;
 }
 
 .progress-container {
-    flex: 1;
-    background-color: #ddd;
-    border-radius: 5px;
-    overflow: hidden;
-    cursor: pointer;
-    position: relative;
+	flex: 1;
+	background-color: #ddd;
+	border-radius: 5px;
+	overflow: hidden;
+	cursor: pointer;
+	position: relative;
 }
 
 .progress {
-    background-color: var(--hitori-color);
-    height: 10px;
-    width: 0%;
+	background-color: var(--hitori-color);
+	height: 100%;
+	width: 0%;
 }
 
-#current-time, #duration {
-    font-size: 14px;
+#current-time,
+#duration-divider,
+#duration {
+	height: 1.5rem;
+	font-size: 1rem;
+}
+
+#volume-control-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-self: flex-start;
+	width: 40%;
+	gap: 1rem;
 }
 
 #volume-slider {
-    width: 15%;
+	/* display: none; */
+	width: 100%;
 }
 
-input[type='range']{
+#volume-icon {
+	width: 2.5rem;
+}
+
+input[type="range"] {
 	accent-color: var(--hitori-color);
 }
 
@@ -195,7 +219,7 @@ input[type='range']{
 	#album-name {
 		font-size: 2rem;
 	}
-	
+
 	#album-artist,
 	#album-desc {
 		font-size: 1.7rem;
