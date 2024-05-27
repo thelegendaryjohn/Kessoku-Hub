@@ -19,6 +19,7 @@ main {
 }
 
 #function-btn-container {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;

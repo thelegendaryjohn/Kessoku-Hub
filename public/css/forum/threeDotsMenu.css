@@ -7,6 +7,10 @@
 	align-items: center;
 }
 
+.three-dots-menu.hide {
+	display: none;
+}
+
 .three-dots-svg {
 	position: relative;
 	justify-self: flex-end;
@@ -18,8 +22,8 @@
 }
 
 .three-dots-menu {
-	font-size: 1.5rem;
 	display: flex;
+	font-size: 1.5rem;
 	flex-direction: column;
 	position: absolute;
 	background: white;
@@ -28,8 +32,8 @@
 	width: 100%;
 	max-width: 10rem;
 	border-radius: 5px;
-	right: 5rem;
-	top: 10rem;
+	right: 3rem;
+	top: 0;
 }
 
 .three-dots-menu-button {
