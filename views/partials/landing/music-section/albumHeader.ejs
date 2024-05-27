@@ -1,6 +1,12 @@
 <div id="album-header">
   <div id="album-cover-container">
-    <img src="/images/music-section/album-cover.webp" alt="Album cover art" id="album-cover">
+    <% if (locals.isLanding) { %>
+    <a href="/music">
+    <% } %>
+      <img src="/images/music-section/album-cover.webp" alt="Album cover art" id="album-cover">
+    <% if (locals.isLanding) { %>
+    </a>
+    <% } %>
   </div>
   <div id="album-info-container">
     <h1 id="album-name">Kessoku Band</h1>
