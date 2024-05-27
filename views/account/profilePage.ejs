@@ -25,12 +25,14 @@
     <!-- Function buttons -->
     <% console.log(`Searched user: ${locals.user.username}`); %>
     <% console.log(`Current session user: ${locals.currUsername}`); %>
-    <div id="function-btn-container" class="section-container" style="display: <%= locals.currUsername === user.username ? "flex" : "none" %>;">
-      <a id="edit-profile-btn" class="function-btn" href="/account/profile">
+    <div id="function-btn-container" class="section-container">
+      <a style="display: <%= locals.currUsername === user.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
         <p class="function-name">Edit</p>
         <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
       </a>
+      <%- include("../partials/forum/threeDotsMenu.ejs") %>
     </div>
+
 
     <!-- User profile header -->
     <div id="user-card-container" class="section-container">

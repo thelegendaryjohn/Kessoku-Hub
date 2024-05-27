@@ -1,0 +1,47 @@
+.three-dots-menu-container {
+	font-size: 2rem;
+	display: flex;
+	padding: 0.2rem;
+	width: fit-content;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.three-dots-svg {
+	position: relative;
+	justify-self: flex-end;
+	align-self: flex-start;
+}
+
+.three-dots-svg:hover {
+	fill: var(--accent-grey);
+}
+
+.three-dots-menu {
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	background: white;
+	box-shadow: -2px 3px 5px var(--accent-grey);
+	gap: 0.2rem;
+	width: 100%;
+	max-width: 10rem;
+	border-radius: 5px;
+	right: 5rem;
+	top: 10rem;
+}
+
+.three-dots-menu-button {
+	box-sizing: border-box;
+	width: 100%;
+	display: flex;
+	padding: 0.5rem;
+	background-color: none;
+	border-radius: 5px;
+}
+
+.three-dots-menu-button:hover {
+	background-color: var(--ryo-color);
+	color: var(--body-color);
+}
