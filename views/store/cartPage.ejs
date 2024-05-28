@@ -28,16 +28,16 @@
     <div id="item-list-container">
       <% let totalPrice = 0; %>
       <% for (let id in cart) { %>
-      <div class="item-container">
+      <div class="item-container" id="<%- id %>">
         <img class="item-image" src="/images/store-section/<%- items[id].imageName%>" alt="<%- items[id].description%>">
         <div class="item-name"> <%- items[id].name%> </div>
 
         <!-- item's right container -->
         <div class="item-right-container">
           <div class="item-price"><%- items[id].price * cart[id]%> $</div>
-          <a href="/store/remove/<%- id %>" class="item-minus-button btn">-</a>
+          <button class="item-minus-button btn">-</button>
           <div class="item-quantity"><%- cart[id]%></div>
-          <a href="/store/add/<%- id %>" class="item-plus-button btn">+</a>
+          <button class="item-plus-button btn">+</button>
         </div>
       </div>
       <% totalPrice += items[id].price * cart[id]; %>
@@ -70,5 +70,62 @@
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
+
+<!-- add the items array from the route/store.js -->
+<% if (items) { %>
+<script>
+  const items = <%- JSON.stringify(items) %>;
+  const cart = <%- JSON.stringify(cart) %>;
+</script>
+<% } %>
+
+<script>
+  // initialize
+  const itemPlusBtn = document.querySelectorAll(".item-plus-button");
+  const itemMinusBtn = document.querySelectorAll(".item-minus-button");
+  const itemQuantity = document.querySelectorAll(".item-quantity");
+
+  // Listening to the add to cart button
+  itemPlusBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const itemId = e.target.parentElement.parentElement.id;
+      itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) + 1;
+      fetch(`/store/add/${itemId}`, {
+          method: "POST",
+        })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Failed to add item to cart");
+          }
+        })
+    });
+  });
+
+  // Listening to the remove from cart button
+  itemMinusBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const itemId = e.target.parentElement.parentElement.id;
+      if (Number(itemQuantity[itemId].textContent) > 1) {
+        itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) - 1;
+      } else {
+        btn.parentElement.parentElement.remove();
+      }
+      fetch(`/store/remove/${itemId}`, {
+          method: "POST",
+        })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Failed to remove item from cart");
+          }
+        })
+    });
+  });
+</script>
 
 </html>
