@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { render } from "../lib/render.js";
+import { SupportForm } from "../../models/supportForm.js";
 //
 const router = Router();
 
@@ -16,6 +17,11 @@ router.post("/support", async (req, res) => {
 	}
 
 	// Save the message to the database
+	await SupportForm.create({
+		email: req.body.email,
+		name: req.body.name,
+		message: req.body.message,
+	});
 
 	res.redirect("/support");
 });
