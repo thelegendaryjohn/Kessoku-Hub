@@ -55,7 +55,7 @@
 	color: var(--ryo-color);
 }
 
-.size-select-container {
+/* .size-select-container {
 	cursor: pointer;
 	display: flex;
 	font-size: 1.2rem;
@@ -75,7 +75,7 @@
 .size-select.selected {
 	background-color: var(--ryo-color);
 	color: #fff;
-}
+} */
 
 .item-action-container {
 	display: flex;
