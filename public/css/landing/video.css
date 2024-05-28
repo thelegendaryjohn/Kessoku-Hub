@@ -26,6 +26,7 @@
 	overflow: clip;
 	border: 0px solid #000;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .overlay-video-length {
@@ -45,6 +46,7 @@
 	width: 100%;
 	font-size: 1.8rem;
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .episode-embed-bg {
