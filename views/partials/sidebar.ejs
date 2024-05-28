@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
     <a href="<%= locals.user ? "/account/profile" : "/account" %>">
-      <div id="profile-container">
+      <div id="profile-container" tabindex="0">
         <img src="/images/account-section/user-icon.svg" alt="Profile" id="profile-img">
         <h1 id="profile-name"><%= 
           locals.user ? user.username : "Guest"
@@ -16,15 +16,15 @@
       <a id="nav-store" class="btn nav-btn" href="/store">STORE</a>
       <!-- <a id="nav-create-account" class="btn nav-btn" href="#">CREATE ACCOUNT</a> -->
       <div class="divider"></div>
+      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='<%= locals.user ? "" : "display: none"%>'>ACCOUNT MENU</a>
       <a id="nav-login" class="btn nav-btn" href="<%= locals.user ? "/account/logout" : "/account" %>">
         <%= locals.user ? "LOG OUT" : "LOG IN / CREATE ACCOUNT"%>
       </a>
-      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='<%= locals.user ? "" : "display: none"%>'>ACCOUNT MENU</a>
     </div>
   </div>
 </nav>
 <!-- Sidebar button -->
-<svg id="menu-btn" class="btn ignoreSidebarToggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#C45AFF" stroke-width=".25" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+<svg id="menu-btn" class="btn ignoreSidebarToggle" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#C45AFF" stroke-width=".25" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
   <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" stroke="#C45AFF" id="menu-btn-path">
     <animate dur="0.2s" attributeName="d" values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze" begin="start.begin" />
     <animate dur="0.2s" attributeName="d" values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze" begin="reverse.begin" />
