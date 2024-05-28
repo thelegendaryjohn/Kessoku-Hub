@@ -7,11 +7,12 @@
 	align-items: center;
 }
 
-.three-dots-menu.hide {
-	display: none;
+.hide {
+	display: none !important;
 }
 
 .three-dots-svg {
+	cursor: pointer;
 	position: relative;
 	justify-self: flex-end;
 	align-self: flex-start;
@@ -37,6 +38,7 @@
 }
 
 .three-dots-menu-button {
+	cursor: pointer;
 	box-sizing: border-box;
 	width: 100%;
 	display: flex;

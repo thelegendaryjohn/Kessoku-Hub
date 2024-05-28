@@ -63,6 +63,9 @@ router.get("/forum/thread/:id", async (req, res) => {
 		post: post,
 		comments: comments,
 		linkedNav: true,
+		isPost: true,
+		currUser: req.session.user,
+		isCurrUserAdmin: req.session.user?.role === roles.admin,
 		isGuest: !req.session.user,
 		isVerified: req.session.user
 			? req.session.user.role !== roles.unverified

@@ -11,7 +11,7 @@
         <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
         <h1 id="profile-name">
           <% if (locals.profileView) { %>
-          <%= currUser ? currUsername : "Guest" %>
+          <%= currUser ? currUser?.username : "Guest" %>
           <% } else { %>
           <%= locals.user ? locals.user.username : "Guest" %>
           <% } %>

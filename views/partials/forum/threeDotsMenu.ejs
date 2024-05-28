@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/css/forum/threeDotsMenu.css">
 
 <!-- three dots  menu container -->
-<div class="three-dots-menu-container">
+<div class="three-dots-menu-container" role="button">
   <!-- three dots svg -->
   <svg class="three-dots-svg" xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="3rem" viewBox="0 0 16 16" fill="#000000" class="bi bi-three-dots-vertical">
     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
@@ -10,15 +10,32 @@
 
 <!-- three dots menu -->
 <div class="three-dots-menu hide">
-  <a class="block-user three-dots-menu-button">Block User</a>
-  <a class="share-user three-dots-menu-button">Share User</a>
+  <% if (locals.isProfile && locals.isCurrUserAdmin) { %>
+  <a class="action-1 three-dots-menu-button">Restrict User</a>
+  <a class="action-2 three-dots-menu-button">Edit User</a>
+  <% } %>
+
+  <% if (locals.isPost) { %>
+  <% if (locals.currUser?.username === post.author.username || locals.isCurrUserAdmin) { %>
+  <a class="action-1 three-dots-menu-button">Edit Post</a>
+  <a class="action-2 three-dots-menu-button">Delete Post</a>
+  <% } %>
+  <% if (locals.isCurrUserAdmin) { %>
+  <a class="action-3 three-dots-menu-button">Pin Post</a>
+  <% }} %>
 </div>
 
+
 <script>
-  const threeDotsSvg = document.querySelector(".three-dots-svg");
+  const threeDotsMenuButton = document.querySelector(".three-dots-menu-container");
   const threeDotsMenu = document.querySelector(".three-dots-menu");
 
-  threeDotsSvg.addEventListener("click", (e) => {
+  threeDotsMenuButton.addEventListener("click", (e) => {
     threeDotsMenu.classList.toggle("hide");
   });
+
+  // If three-dots-menu does not contain any children, hide the three-dots-menu-container
+  if (threeDotsMenu.children.length === 0) {
+    threeDotsMenuButton.classList.add("hide");
+  }
 </script>

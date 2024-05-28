@@ -24,9 +24,9 @@
   <main>
     <!-- Function buttons -->
     <% console.log(`Searched user: ${locals.user.username}`); %>
-    <% console.log(`Current session user: ${locals.currUsername}`); %>
+    <% console.log(`Current session user: ${locals.currUser?.username}`); %>
     <div id="function-btn-container" class="section-container">
-      <a style="display: <%= locals.currUsername === user.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
+      <a style="display: <%= locals.currUser?.username === user.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
         <p class="function-name">Edit</p>
         <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
       </a>
