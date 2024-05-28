@@ -34,7 +34,7 @@
 
         <!-- item's right container -->
         <div class="item-right-container">
-          <div class="item-price"><%- items[id].price * cart[id]%> $</div>
+          <div class="item-price"><span class="item-price-number"><%- items[id].price * cart[id]%></span> $</div>
           <button class="item-minus-button btn">-</button>
           <div class="item-quantity"><%- cart[id]%></div>
           <button class="item-plus-button btn">+</button>
@@ -46,7 +46,7 @@
 
     <!-- total price -->
     <div id="check-out-container">
-      <div id="total-price" class="item-price">Total Price: <%- totalPrice %> $</div>
+      <div id="total-price" class="item-price">Total Price: <span id="total-price-number"><%- totalPrice %></span> $</div>
       <a class="check-out-btn" href="/store/remove/all">Check out</a>
     </div>
 
@@ -84,6 +84,8 @@
   const itemPlusBtn = document.querySelectorAll(".item-plus-button");
   const itemMinusBtn = document.querySelectorAll(".item-minus-button");
   const itemQuantity = document.querySelectorAll(".item-quantity");
+  const itemPriceNumber = document.querySelectorAll(".item-price-number");
+  const totalPriceNumber = document.querySelector("#total-price-number")
 
   // Listening to the add to cart button
   itemPlusBtn.forEach((btn) => {
@@ -91,6 +93,9 @@
       e.preventDefault();
       const itemId = e.target.parentElement.parentElement.id;
       itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) + 1;
+      itemPriceNumber[itemId].textContent =
+        Number(itemPriceNumber[itemId].textContent) + items[itemId].price;
+      totalPriceNumber.textContent = Number(totalPriceNumber.textContent) + items[itemId].price;
       fetch(`/store/add/${itemId}`, {
           method: "POST",
         })
@@ -111,6 +116,9 @@
       const itemId = e.target.parentElement.parentElement.id;
       if (Number(itemQuantity[itemId].textContent) > 1) {
         itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) - 1;
+        itemPriceNumber[itemId].textContent =
+          Number(itemPriceNumber[itemId].textContent) - items[itemId].price;
+        totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
       } else {
         btn.parentElement.parentElement.remove();
       }
