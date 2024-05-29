@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { User } from "../../models/user.model";
+import { User } from "../../models/user.js";
 //
 const router = Router();
 
@@ -65,6 +65,62 @@ router.get("/user/:id/comments", (req, res) => {
 					return res.status(200).json(comments);
 				}
 			});
+		}
+	});
+});
+
+// Restrict a user by ID.
+router.post("/user/restrict", (req, res) => {
+	if (!req.body.id) {
+		return res.status(400).send("Missing URL parameter: ID");
+	}
+
+	User.findByIdAndUpdate(req.body.id, { isRestricted: true }, (err, user) => {
+		if (err) {
+			return res.status(500).json(err);
+		} else {
+			return res.status(200).json(user);
+		}
+	});
+});
+
+// Unrestrict a user by ID.
+router.post("/user/unrestrict", (req, res) => {
+	if (!req.body.id) {
+		return res.status(400).send("Missing URL parameter: ID");
+	}
+
+	User.findByIdAndUpdate(
+		req.body.id,
+		{ isRestricted: false },
+		(err, user) => {
+			if (err) {
+				return res.status(500).json(err);
+			} else {
+				return res.status(200).json(user);
+			}
+		}
+	);
+});
+
+// Ban a user by ID.
+router.put("/user/ban/:id", (req, res) => {
+	User.findByIdAndUpdate(req.body.id, { isBanned: true }, (err, user) => {
+		if (err) {
+			return res.status(500).json(err);
+		} else {
+			return res.status(200).json(user);
+		}
+	});
+});
+
+// Unban a user by ID.
+router.put("/user/unban/:id", (req, res) => {
+	User.findByIdAndUpdate(req.body.id, { isBanned: false }, (err, user) => {
+		if (err) {
+			return res.status(500).json(err);
+		} else {
+			return res.status(200).json(user);
 		}
 	});
 });

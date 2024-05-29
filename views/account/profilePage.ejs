@@ -23,10 +23,10 @@
   <!-- Welcome page -->
   <main>
     <!-- Function buttons -->
-    <% console.log(`Searched user: ${locals.user.username}`); %>
+    <% console.log(`Searched user: ${locals.targetedUser.username}`); %>
     <% console.log(`Current session user: ${locals.user?.username}`); %>
     <div id="function-btn-container" class="section-container">
-      <a style="display: <%= locals.user?.username === user.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
+      <a style="display: <%= locals.user?.username === locals.targetedUser.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
         <p class="function-name">Edit</p>
         <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
       </a>
@@ -40,11 +40,12 @@
       <div id="profile-container">
         <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
-        <h1 id="profile-name"><%= user.username %></h1>
+        <h1 id="profile-name"><%= targetedUser.username %></h1>
 
         <h3 id="unverified-badge" class="account-badge" style="display: <%= isNotVerified ? "block" : "none" %>">Unverified ✖</h3>
         <h3 id="verified-badge" class="account-badge" style="display: <%= isVerified ? "block" : "none" %>;">Verified ✔</h3>
         <h3 id="admin-badge" class="account-badge" style="display: <%= isAdmin ? "block" : "none" %>">Admin ⚒</h3>
+        <h3 id="unverified-badge" class="account-badge" style="display: <%= locals.targetedUser.isRestricted ? "block" : "none" %>">Restricted</h3>
       </div>
 
       <!-- User stats -->

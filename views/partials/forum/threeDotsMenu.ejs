@@ -11,17 +11,17 @@
 <!-- three dots menu -->
 <div class="three-dots-menu hide">
   <% if (locals.isProfile && locals.isCurrUserAdmin) { %>
-  <a class="action-1 three-dots-menu-button">Restrict User</a>
-  <a class="action-2 three-dots-menu-button">Edit User</a>
+  <button class="action-1 three-dots-menu-button" id="adminRestrictUser">Restrict User</button>
+  <button class="action-1 three-dots-menu-button" id="adminBanUser">Ban User</button>
   <% } %>
 
   <% if (locals.isPost) { %>
-  <% if (locals.currUser?.username === post.author.username || locals.isCurrUserAdmin) { %>
-  <a class="action-1 three-dots-menu-button">Edit Post</a>
-  <a class="action-2 three-dots-menu-button">Delete Post</a>
-  <% } %>
-  <% if (locals.isCurrUserAdmin) { %>
-  <a class="action-3 three-dots-menu-button">Pin Post</a>
+  <% if (locals.user?.username === post.author.username || locals.isCurrUserAdmin) { %>
+  <button class="action-2 three-dots-menu-button" id="authorDeletePost">Delete Post</button>
+  <% } else if (locals.user?.username === post.author.username) {%>
+  <button class="action-1 three-dots-menu-button" id="authorEditPost">Edit Post</button>
+  <% } else if (locals.isCurrUserAdmin) { %>
+  <button class="action-3 three-dots-menu-button">Pin Post</button>
   <% }} %>
 </div>
 
@@ -38,4 +38,77 @@
   if (threeDotsMenu.children.length === 0) {
     threeDotsMenuButton.classList.add("hide");
   }
+
+  // Hide the three-dots-menu when clicking outside of it
+  document.addEventListener("click", (e) => {
+    if (!threeDotsMenu.contains(e.target) && !threeDotsMenuButton.contains(e.target)) {
+      threeDotsMenu.classList.add("hide");
+    }
+  });
+
+  // Implement the three-dots-menu actions
+  function performAction(actionName) {
+    let url = "";
+    switch (actionName) {
+      case "restrict": {
+        url = "/user/restrict";
+        break;
+      }
+      case "ban": {
+        url = "/user/ban";
+        break;
+      }
+      case "deletePost": {
+        url = "/thread/post/delete";
+        break;
+      }
+      case "editPost": {
+        url = "/thread/post/edit";
+        break;
+      }
+      case "pinPost": {
+        url = "/thread/post/pin";
+        break;
+      }
+    }
+    url = url + "<%= locals.isPost ? `/${post._id}` : `/${locals.targetedUser._id}` %>";
+    fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  document.querySelector("#adminRestrictUser").addEventListener("click", () => {
+    performAction("restrict");
+  });
+
+  // Ban user
+  document.querySelector("#adminBanUser").addEventListener("click", () => {
+    performAction("ban");
+  });
+
+  // Delete post
+  document.querySelector("#authorDeletePost").addEventListener("click", () => {
+    performAction("deletePost");
+  });
+
+  // Edit post
+  document.querySelector("#authorEditPost").addEventListener("click", () => {
+    performAction("editPost");
+  });
+
+  // Pin post
+  document.querySelector("#pinPost").addEventListener("click", () => {
+    performAction("pinPost");
+  });
 </script>
