@@ -29,28 +29,32 @@
     <section id="video-section">
       <div class="section-container">
         <h2 class="section-header text-shadow">Episode Previews</h2>
-        <% videos.forEach((video, index) => { %>
-        <% if ( video.videoType === "previews" ) { %>
-        <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-          episodeName: video.name,
-          episodeID: video.id,
-          episodeLength: video.length,
-        })%>
-        <% } %>
-        <% }) %>
+        <div class="video-container">
+          <% videos.forEach((video, index) => { %>
+          <% if ( video.videoType === "previews" ) { %>
+          <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+            episodeName: video.name,
+            episodeID: video.id,
+            episodeLength: video.length,
+          })%>
+          <% } %>
+          <% }) %>
+        </div>
       </div>
 
       <div class="section-container">
         <h2 class="section-header text-shadow">Music Videos</h2>
-        <% videos.forEach((video, index) => { %>
-        <% if ( video.videoType === "music" ) { %>
-        <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
-          episodeName: video.name,
-          episodeID: video.id,
-          episodeLength: video.length,
-        })%>
-        <% } %>
-        <% }) %>
+        <div class="video-container">
+          <% videos.forEach((video, index) => { %>
+          <% if ( video.videoType === "music" ) { %>
+          <%- include("../partials/landing/video-section/videoEpisode.ejs", { 
+            episodeName: video.name,
+            episodeID: video.id,
+            episodeLength: video.length,
+          })%>
+          <% } %>
+          <% }) %>
+        </div>
       </div>
     </section>
     <script>

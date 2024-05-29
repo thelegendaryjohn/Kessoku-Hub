@@ -22,6 +22,7 @@
 .episode {
 	display: flex;
 	gap: 1rem;
+	box-sizing: border-box;
 }
 
 .episode-cover-container {
@@ -120,7 +121,7 @@
 }
 
 /* Specific Media Queries */
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (min-width: 1400px){
 	.episode-embed-container {
 		height: calc(70vh + 10vh) !important;
 		width: calc(70vh * 16 / 9) !important;
@@ -132,5 +133,24 @@
 		height: 70vh !important;
 		width: calc(70vh * 16 / 9) !important;
 		max-width: 80vw !important;
+	}
+
+	.video-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: center;
+	}
+
+	.section-container {
+		max-width: 100%; 
+	}
+	
+	.video-container {
+		gap: 2rem;
+	}
+
+	.episode {
+		flex: 1 1 calc(25% - 2rem); /* 4 videos per row */
 	}
 }
