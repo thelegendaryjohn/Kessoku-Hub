@@ -1,20 +1,50 @@
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	padding: 4rem 2rem;
-    gap: 1rem;
+	gap: 1rem;
 }
 
 .section-divider {
 	width: 100%;
-    margin: 1rem 0;
+	margin: 1rem 0;
 	box-sizing: border-box;
 	border: 1px solid var(--accent-lightgrey);
 }
 
 .section-container {
-    max-width: 50rem;
+	width: 100%;
+	max-width: 50rem;
+}
+
+#function-btn-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	width: 100%;
+	gap: 1rem;
+}
+
+.function-btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	border-radius: 0.5rem;
+	text-decoration: none;
+	font-size: 1.5rem;
+}
+
+.function-img {
+	width: 2rem;
+}
+
+#edit-profile-btn {
+	background-color: var(--accent-purple);
+	color: white;
 }
 
 #user-card-container {
@@ -22,7 +52,6 @@ main {
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-    width: 100%;
 	gap: 1rem;
 }
 
@@ -46,6 +75,24 @@ main {
 	padding-left: 0;
 }
 
+#user-card-container .account-badge {
+	color: var(--body-color);
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.5rem;
+}
+
+#user-card-container #unverified-badge {
+	background-color: var(--accent-grey);
+}
+
+#user-card-container #verified-badge {
+	background-color: var(--accent-purple);
+}
+
+#user-card-container #admin-badge {
+	background-color: var(--ikuyo-color);
+}
+
 #stats-container {
 	display: flex;
 	flex-direction: column;
@@ -63,21 +110,21 @@ main {
 }
 
 #user-detail-container {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .detail-container {
-    gap: 0.5rem;
+	gap: 0.5rem;
 }
 
 .detail-header {
-    margin-left: 1rem;
+	margin-left: 1rem;
 	font-size: 2.5rem;
-    font-weight: bold;
+	font-weight: bold;
 	color: var(--accent-grey);
 }
 
 .detail-text {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }

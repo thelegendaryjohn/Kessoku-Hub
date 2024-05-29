@@ -1,30 +1,60 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
-    <a href="<%= locals.user ? "/account/profile" : "/account" %>">
+    <a href="
+      <% if (locals.profileView) { %>
+        <%= currUser ? `/user/${user.username}` : '/account' %>
+      <% } else { %>
+        <%= locals.user ? `/user/${locals.user.username}` : '/account' %>
+      <% } %>
+    ">
       <div id="profile-container">
         <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
-        <h1 id="profile-name"><%= 
-          locals.user ? user.username : "Guest"
-          %></h1>
+        <h1 id="profile-name">
+          <% if (locals.profileView) { %>
+          <%= currUser ? currUsername : "Guest" %>
+          <% } else { %>
+          <%= locals.user ? locals.user.username : "Guest" %>
+          <% } %>
+        </h1>
       </div>
     </a>
     <div id="nav-buttons">
-      <a id="nav-top" class="btn nav-btn" href="/">TOP</a>
+      <a id="nav-top" class="btn nav-btn" href="/">HOME</a>
       <a id="nav-forum" class="btn nav-btn" href="/forum">FORUM</a>
       <a id="nav-videos" class="btn nav-btn" href="/videos">VIDEOS</a>
       <a id="nav-music" class="btn nav-btn" href="/music">MUSIC</a>
       <a id="nav-store" class="btn nav-btn" href="/store">STORE</a>
       <!-- <a id="nav-create-account" class="btn nav-btn" href="#">CREATE ACCOUNT</a> -->
       <div class="divider"></div>
-      <a id="nav-login" class="btn nav-btn" href="<%= locals.user ? "/account/logout" : "/account" %>">
-        <%= locals.user ? "LOG OUT" : "LOG IN / CREATE ACCOUNT"%>
+      <a id="nav-login" class="btn nav-btn" href="
+        <% if (locals.profileView) { %>
+          <%= currUser ? '/account/logout' : '/account' %>
+        <% } else { %>
+          <%= locals.user ? '/account/logout' : '/account' %>
+        <% } %>">
+
+        <% if (locals.profileView) { %>
+        <%= currUser ? 'LOG OUT' : 'LOG IN / CREATE ACCOUNT' %>
+        <% } else { %>
+        <%= locals.user ? 'LOG OUT' : 'LOG IN / CREATE ACCOUNT' %>
+        <% } %>
       </a>
-      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='<%= locals.user ? "" : "display: none"%>'>ACCOUNT MENU</a>
+
+      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='
+        <% if (locals.profileView) { %>
+          <%= currUser ? "" : "display: none" %>
+        <% } else { %>
+          <%= locals.user ? "" : "display: none" %>
+        <% } %>'>
+
+        ACCOUNT MENU
+      </a>
+
     </div>
   </div>
 </nav>
 <!-- Sidebar button -->
-<svg id="menu-btn" class="btn ignoreSidebarToggle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#C45AFF" stroke-width=".25" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+<svg id="menu-btn" class="btn ignoreSidebarToggle" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#C45AFF" stroke-width=".25" fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
   <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" stroke="#C45AFF" id="menu-btn-path">
     <animate dur="0.2s" attributeName="d" values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze" begin="start.begin" />
     <animate dur="0.2s" attributeName="d" values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze" begin="reverse.begin" />

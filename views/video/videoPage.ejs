@@ -16,6 +16,10 @@
 
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "VIDEOS", headerColor: "var(--ikuyo-color)" }) %>
+
+  <!-- Cookies consent banner -->
+  <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
+
   <main>
     <!-- Video section -->
     <section id="video-section">
@@ -53,6 +57,7 @@
         })
       })
     </script>
+
   </main>
 
   <!-- Footer partial -->

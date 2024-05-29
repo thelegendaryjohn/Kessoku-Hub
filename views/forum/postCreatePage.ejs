@@ -19,7 +19,11 @@
   <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
   
   <!-- Unverified email popup partial -->
-  <%- include("../partials/popup/unverifiedEmailPopup.ejs", { isVisible: true }) %>
+  <% console.log(isVerified); %>
+  <%- include("../partials/popup/unverifiedEmailPopup.ejs", { isVisible: !isVerified }) %>
+
+  <!-- Cookies consent banner -->
+  <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
 
   <!-- Main content -->
   <main>

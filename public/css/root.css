@@ -186,7 +186,7 @@ footer p {
 }
 
 #nav-container {
-	z-index: 8;
+	z-index: 6;
 	position: sticky;
 	top: 0;
 	display: flex;

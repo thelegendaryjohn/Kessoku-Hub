@@ -12,13 +12,26 @@
 
 <body>
   <!-- Sidebar partial -->
-  <%- include("../partials/sidebar.ejs") %>
+  <%- include("../partials/sidebar.ejs", { profileView: true }) %>
 
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "PROFILE" }) %>
 
+  <!-- Cookies consent banner -->
+  <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
+
   <!-- Welcome page -->
   <main>
+    <!-- Function buttons -->
+    <% console.log(`Searched user: ${locals.user.username}`); %>
+    <% console.log(`Current session user: ${locals.currUsername}`); %>
+    <div id="function-btn-container" class="section-container" style="display: <%= locals.currUsername === user.username ? "flex" : "none" %>;">
+      <a id="edit-profile-btn" class="function-btn" href="/account/profile">
+        <p class="function-name">Edit</p>
+        <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
+      </a>
+    </div>
+
     <!-- User profile header -->
     <div id="user-card-container" class="section-container">
       <!-- User profile -->
@@ -26,6 +39,10 @@
         <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
         <h1 id="profile-name"><%= user.username %></h1>
+
+        <h3 id="unverified-badge" class="account-badge" style="display: <%= isNotVerified ? "block" : "none" %>">Unverified ✖</h3>
+        <h3 id="verified-badge" class="account-badge" style="display: <%= isVerified ? "block" : "none" %>;">Verified ✔</h2>
+        <h3 id="admin-badge" class="account-badge" style="display: <%= isAdmin ? "block" : "none" %>">Admin ⚒</h3>
       </div>
 
       <!-- User stats -->

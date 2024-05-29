@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { render } from "../../lib/render.js";
-import { User } from "../../models/user.js";
+import { User, roles } from "../../models/user.js";
 import { Post } from "../../models/post.js";
 import { Comment } from "../../models/comment.js";
 //
@@ -17,6 +17,12 @@ router.get("/user/:username", async (req, res) => {
 			user: user,
 			postCount: postCount,
 			commentCount: commentCount,
+			currUser: req.session.user,
+			currUsername: req.session.user?.username,
+			isNotVerified: user.role === roles.unverified && user.role !== roles.admin,
+			isVerified:
+				user.role === roles.user && user.role !== roles.admin,
+			isAdmin: user.role === roles.admin,
 		});
 	}
 });

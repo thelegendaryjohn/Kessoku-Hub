@@ -69,7 +69,7 @@ describe("POST /account/register sanitization", () => {
 	it("should fail if the username is of invalid regex", (done) => {
 		request(app)
 			.post("/account/register")
-			.send({ username: "1test", password: "testpassword1" })
+			.send({ username: "1t", password: "testpassword1" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
 			.expect(400)
@@ -81,7 +81,7 @@ describe("POST /account/register sanitization", () => {
 				assert(res.body[0].path[0] === "username");
 				assert(
 					res.body[0].message ===
-						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{0,31}$"`
+						'does not match pattern "/^[A-Za-z\\\\d]{3,32}$/"'
 				);
 				done();
 			});
@@ -119,7 +119,7 @@ describe("POST /account/register sanitization", () => {
 				assert(res.body[0].path[0] === "password");
 				assert(
 					res.body[0].message ===
-						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{5,31}$"`
+						'does not match pattern "/^[A-Za-z\\\\d]{6,32}$/"'
 				);
 				done();
 			});
@@ -128,7 +128,7 @@ describe("POST /account/register sanitization", () => {
 	it("should fail with a combination of errors", (done) => {
 		request(app)
 			.post("/account/register")
-			.send({ username: "1test", password: "test" })
+			.send({ username: "1t", password: "test" })
 			.set("Accept", "application/json")
 			.expect("Content-Type", /json/)
 			.expect(400)
@@ -139,12 +139,12 @@ describe("POST /account/register sanitization", () => {
 				assert(res.body[0].path[0] == "username");
 				assert(
 					res.body[0].message ===
-						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{0,31}$"`
+						'does not match pattern "/^[A-Za-z\\\\d]{3,32}$/"'
 				);
 				assert(res.body[1].path[0] == "password");
 				assert(
 					res.body[1].message ===
-						`does not match pattern "^[A-Za-z][A-Za-z0-9_]{5,31}$"`
+						'does not match pattern "/^[A-Za-z\\\\d]{6,32}$/"'
 				);
 
 				done();

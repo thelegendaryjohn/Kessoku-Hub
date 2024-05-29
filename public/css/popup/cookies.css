@@ -1,25 +1,32 @@
 .cookies-popup {
-	z-index: 20;
+	/* position settings */
+	z-index: 8;
 	position: fixed;
-	bottom: 5rem;
+	bottom: 0;
+	/* display flex settings */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	align-self: center;
 	gap: 1.5rem;
+	/* size settings */
 	padding: 1.5rem 2.5rem;
-	width: 85%;
-	height: fit-content;
-	background-color: rgb(240, 240, 240);
-	border-bottom: 2px solid var(--accent-purple);
-	border-radius: 0.5rem;
+	width: 100%;
+	/* color settings */
+	background-color: var(--body-color);
+	border-top: 1px solid var(--hitori-color);
 	box-sizing: border-box;
+	/* text align settings */
+	text-align: left;
+}
+
+/* text settings */
+.cookies-popup-header {
+	font-size: 2rem;
 }
 
 .cookies-popup-text {
 	font-size: 1.5rem;
-	text-align: center;
 }
 
 .cookies-popup-text a {
@@ -27,11 +34,12 @@
 	font-style: italic;
 }
 
-#cookies-popup-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
+/* buttons settings */
+#cookies-popup-buttons-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 100%;
 }
 
 .cookies-popup-btn {
@@ -39,20 +47,57 @@
 	border: none;
 	padding: 0.5rem;
 	width: 100%;
-	font-size: 1.5rem;
+	font-size: 1.7rem;
 	border-radius: 0.5rem;
 }
 
 .cookies-popup-agree {
-	background-color: var(--accent-purple);
+	background-color: var(--hitori-color);
 	color: var(--body-color);
 }
 
 .cookies-popup-disagree {
-    background-color: var(--ikuyo-color);
-    color: var(--body-color);
+	background-color: var(--body-color);
+	border: 1px solid var(--hitori-color);
+	color: var(--hitori-color);
+}
+
+.cookies-popup-preference {
+	color: var(--black-color);
+	background-color: var(--body-color);
+	text-decoration: underline;
 }
 
 .cookies-popup-btn:hover {
 	opacity: 0.7;
+}
+
+/* desktop/landscape view settings */
+@media only screen and (min-width: 763px) {
+	.cookies-popup {
+		bottom: 2%;
+		right: 2%;
+		max-width: 45rem;
+		border-top: none;
+		border-bottom: 2px solid var(--hitori-color);
+		border-radius: 0.5rem;
+		padding: 1rem 1.5rem;
+	}
+	/* text settings */
+	.cookies-popup-header {
+		font-size: 1.8rem;
+	}
+	.cookies-popup-text {
+		font-size: 1rem;
+	}
+	/* buttons settings */
+	#cookies-popup-buttons-container {
+		flex-direction: row;
+	}
+	.cookies-popup-btn {
+		font-size: 1.2rem;
+	}
+	.cookies-popup-preference {
+		font-size: 1.2rem;
+	}
 }
