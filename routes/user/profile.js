@@ -14,11 +14,10 @@ router.get("/user/:username", async (req, res) => {
 		const postCount = await Post.countDocuments({ author: user._id });
 		const commentCount = await Comment.countDocuments({ author: user._id });
 		render(req, res, "account/profilePage", {
-			user: user,
+			targetedUser: user,
 			postCount: postCount,
 			commentCount: commentCount,
 			isProfile: true,
-			currUser: req.session.user,
 			isCurrUserAdmin: req.session.user?.role === roles.admin,
 			isNotVerified:
 				user.role === roles.unverified && user.role !== roles.admin,
