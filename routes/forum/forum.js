@@ -14,7 +14,7 @@ router.get("/forum", async (req, res) => {
 	let posts = {};
 	for (let topic of topics) {
 		posts[topic._id] = await Post.find({ topicId: topic._id })
-			.sort({ createdAt: -1 })
+			.sort({ pinned: -1, createdAt: -1 })
 			.limit(3)
 			.populate("author");
 	}
@@ -38,12 +38,13 @@ router.get("/forum/topic/:name", async (req, res) => {
 		return res.status(404).json("Topic not found.");
 	}
 	//
-	const posts = await Post.find({ topicId: topic._id }).populate("author");
+	const posts = await Post.find({ topicId: topic._id })
+		.populate("author")
+		.sort({ pinned: -1, createdAt: -1 });
 
 	render(req, res, "forum/topicPage", {
 		topic: topic,
 		posts: posts,
-		linkedNav: true,
 	});
 });
 
@@ -62,9 +63,6 @@ router.get("/forum/thread/:id", async (req, res) => {
 		topic: post.topicId,
 		post: post,
 		comments: comments,
-		linkedNav: true,
-		isPost: true,
-		currUser: req.session.user,
 		isCurrUserAdmin: req.session.user?.role === roles.admin,
 		isGuest: !req.session.user,
 		isVerified: req.session.user
@@ -82,7 +80,6 @@ router.get("/forum/post/create", async (req, res) => {
 	const topics = await Topic.find({});
 	render(req, res, "forum/postCreatePage", {
 		topics: topics,
-		linkedNav: true,
 		isVerified: req.session.user.role !== roles.unverified,
 	});
 });
