@@ -1,34 +1,43 @@
 <section id="music" class="box-shadow">
-  <a class="header-anchor" href="/music"><h2 id="music-header" class="section-header">MUSIC</h2></a>
+  <a class="header-anchor" href="/music">
+    <h2 id="music-header" class="section-header">MUSIC</h2>
+  </a>
   <div id="album-container" class="section-container">
     <%- include("albumHeader.ejs") %>
 
     <div id="album-song-list">
       <%- include("albumSong.ejs", { 
-        index: 1,
-        name: "Seishun Complex",
-        length: "3:23"
+          index: 1,
+          name: "Seishun Complex",
+          length: "3:23",
+          url: "https://p.scdn.co/mp3-preview/c486afe8755680be0374427c9c758bd0a33ce975"
       }) %>
 
       <%- include("albumSong.ejs", {
-        index: 2,
-        name: "Hitoribocchi Tokyo",
-        length: "3:52"
+          index: 2,
+          name: "Hitoribocchi Tokyo",
+          length: "3:52",
+          url: "https://p.scdn.co/mp3-preview/226a9d75995cd0a6511b4f446abd797c0c87d526"
       }) %>
 
       <%- include("albumSong.ejs", {
-        index: 3,
-        name: "Distortion!!",
-        length: "3:23"
+          index: 3,
+          name: "Distortion!!",
+          length: "3:23",
+          url: "https://p.scdn.co/mp3-preview/6dcfba8e5b36eb44cea7e8596b4e07127a9be1f5"
       }) %>
 
       <%- include("albumSong.ejs", {
-        index: 4,
-        name: "Secret Base",
-        length: "3:52"
+          index: 4,
+          name: "Secret Base",
+          length: "3:52",
+          url: "https://p.scdn.co/mp3-preview/06fe47abb8ca62ac93c1f880fbbb8f59112c2bcc"
       }) %>
     </div>
+
+    <%- include("../../music/audioWidget.ejs") %>
   </div>
+
 
   <script src="/js/landing/music-section/songSelection.js"></script>
 

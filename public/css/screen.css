@@ -19,8 +19,20 @@
 	:root {
 		font-size: var(--small-font-size);
 	}
+	
+	.audio-widget {
+		flex-direction: row !important;
+	}
+
+	.audio-widget #volume-slider {
+		display: none !important;
+	}
+
+	.audio-widget #volume-control-container {
+		width: fit-content;
+	}
 }
- 
+
 /* @media screen and (orientation: portrait) and (max-width: 450px) {
 	:root {
 		font-size: var(--xsmall-font-size);
