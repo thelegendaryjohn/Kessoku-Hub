@@ -1,11 +1,21 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
-    <a href="<%= locals.user ? "/account/profile" : "/account" %>">
-      <div id="profile-container" tabindex="0">
-        <img src="/images/account-section/user-icon.svg" alt="Profile" id="profile-img">
-        <h1 id="profile-name"><%= 
-          locals.user ? user.username : "Guest"
-          %></h1>
+    <a href="
+      <% if (locals.profileView) { %>
+        <%= currUser ? `/user/${user.username}` : '/account' %>
+      <% } else { %>
+        <%= locals.user ? `/user/${locals.user.username}` : '/account' %>
+      <% } %>
+    ">
+      <div id="profile-container">
+        <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
+        <h1 id="profile-name">
+          <% if (locals.profileView) { %>
+          <%= currUser ? currUsername : "Guest" %>
+          <% } else { %>
+          <%= locals.user ? locals.user.username : "Guest" %>
+          <% } %>
+        </h1>
       </div>
     </a>
     <div id="nav-buttons">
@@ -16,10 +26,30 @@
       <a id="nav-store" class="btn nav-btn" href="/store">STORE</a>
       <!-- <a id="nav-create-account" class="btn nav-btn" href="#">CREATE ACCOUNT</a> -->
       <div class="divider"></div>
-      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='<%= locals.user ? "" : "display: none"%>'>ACCOUNT MENU</a>
-      <a id="nav-login" class="btn nav-btn" href="<%= locals.user ? "/account/logout" : "/account" %>">
-        <%= locals.user ? "LOG OUT" : "LOG IN / CREATE ACCOUNT"%>
+      <a id="nav-login" class="btn nav-btn" href="
+        <% if (locals.profileView) { %>
+          <%= currUser ? '/account/logout' : '/account' %>
+        <% } else { %>
+          <%= locals.user ? '/account/logout' : '/account' %>
+        <% } %>">
+
+        <% if (locals.profileView) { %>
+        <%= currUser ? 'LOG OUT' : 'LOG IN / CREATE ACCOUNT' %>
+        <% } else { %>
+        <%= locals.user ? 'LOG OUT' : 'LOG IN / CREATE ACCOUNT' %>
+        <% } %>
       </a>
+
+      <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='
+        <% if (locals.profileView) { %>
+          <%= currUser ? "" : "display: none" %>
+        <% } else { %>
+          <%= locals.user ? "" : "display: none" %>
+        <% } %>'>
+
+        ACCOUNT MENU
+      </a>
+
     </div>
   </div>
 </nav>
