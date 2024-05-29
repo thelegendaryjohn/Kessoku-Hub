@@ -1,7 +1,7 @@
 <div class="episode <%= (!!locals.isFeatured) ? 'featured' : 'normal' %>">
   <div class="episode-cover-container box-shadow">
     <img src="https://i.ytimg.com/vi_webp/<%- locals.episodeID %>/maxresdefault.webp" alt="Episode cover art" class="episode-cover">
-    <div class="overlay-video-length">2:03</div>
+    <div class="overlay-video-length"><%= locals.episodeLength %></div>
   </div>
 
   <div class="episode-name">
