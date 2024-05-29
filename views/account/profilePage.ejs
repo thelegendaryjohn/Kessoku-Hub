@@ -24,9 +24,9 @@
   <main>
     <!-- Function buttons -->
     <% console.log(`Searched user: ${locals.user.username}`); %>
-    <% console.log(`Current session user: ${locals.currUser?.username}`); %>
+    <% console.log(`Current session user: ${locals.user?.username}`); %>
     <div id="function-btn-container" class="section-container">
-      <a style="display: <%= locals.currUser?.username === user.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
+      <a style="display: <%= locals.user?.username === user.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
         <p class="function-name">Edit</p>
         <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
       </a>
@@ -52,7 +52,7 @@
         <!-- Join date -->
         <div id="join-date-container">
           <p id="join-date-header" class="stats-header">Joined </p>
-          <p id="join-date-text" class="stats-text"><%- include("../partials/forum/forumDate.ejs", {obj: user}) %></p>
+          <p id="join-date-text" class="stats-text"><%- include("../partials/forum/forumDate.ejs", {obj: targetedUser}) %></p>
         </div>
 
         <!-- Post count -->
@@ -76,7 +76,7 @@
       <!-- Bio -->
       <div id="bio-container" class="detail-container">
         <p id="bio-header" class="detail-header">Bio</p>
-        <p id="bio-text" class="detail-text font-poppins"><%= user.bio %></p>
+        <p id="bio-text" class="detail-text font-poppins"><%= targetedUser.bio %></p>
       </div>
 
     </div>
