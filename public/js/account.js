@@ -1,6 +1,12 @@
 const signup = document.querySelector("#signup-section");
 const login = document.querySelector("#login-section");
 
+// Focus on the username login input on DOM load
+document.addEventListener("DOMContentLoaded", () => {
+	document.querySelector("#username-login-input").focus();
+})
+
+
 // Hide the Create Account section first
 signup.style.display = "none";
 
