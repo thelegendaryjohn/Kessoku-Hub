@@ -1,4 +1,47 @@
-<link rel="stylesheet" href="css/navBarDesktop.css">
+<!-- <link rel="stylesheet" href="css/navBarDesktop.css"> -->
+<style>
+  #desktop-nav-container a {
+    text-decoration: none;
+  }
+
+  #desktop-user-profile-container {
+    position: relative;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  .user-profile-menu-container {
+    display: flex;
+    font-size: 1.5rem;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--body-color);
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 10rem;
+    gap: 0.2rem;
+    top: 10vh;
+    right: 0;
+  }
+
+  .user-profile-menu-btn {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--black-color);
+  }
+
+  .user-profile-menu-btn:hover {
+    transition: 0.12s;
+    background-color: var(--ryo-color);
+    color: var(--body-color);
+  }
+</style>
 
 <div id="desktop-nav-container" class="box-shadow">
   <a href="/">
@@ -12,23 +55,23 @@
     <a id="desktop-nav-store" class="desktop-nav-btn btn text-shadow" href="/store">STORE</a>
   </div>
 
-  <% if (!user) { %>
+  <% if (!locals.user) { %>
   <a id="desktop-user-profile-link" href="/account">
     <% } %>
     <div id="desktop-user-profile-container">
-      <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+      <h1 id="profile-name"><%= locals.user ? user.username : "Guest" %></h1>
       <img role="button" id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
       <!-- User profile dropdown menu -->
-      <% if (user) { %>
+      <% if (locals.user) { %>
       <div class="user-profile-menu-container hide">
-        <a class="action-1 user-profile-menu-btn" href="/user/<%= user.username %>">View Profile</a>
+        <a class="action-1 user-profile-menu-btn" href="/user/<%= locals.user.username %>">View Profile</a>
         <a class="action-2 user-profile-menu-btn" href="/account/menu">Account Menu</a>
         <a class="user-profile-menu-btn" href="/account/logout">Logout</a>
       </div>
       <% } %>
     </div>
-    <% if (!user) { %>
+    <% if (!locals.user) { %>
   </a>
   <% } %>
 </div>
