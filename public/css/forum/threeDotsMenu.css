@@ -43,7 +43,8 @@
 	width: 100%;
 	display: flex;
 	padding: 0.5rem;
-	background-color: none;
+	background: none;
+	border: none;
 	border-radius: 5px;
 }
 
