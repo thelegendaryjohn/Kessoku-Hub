@@ -16,7 +16,6 @@ const SALT_WORK_FACTOR = 10;
 
 // Role enum
 export const roles = {
-	muted: -1,
 	unverified: 0,
 	user: 1,
 	admin: 2,
@@ -39,6 +38,9 @@ const userSchema = new Schema({
 	//
 	bio: { type: String, default: "" },
 	avatar: { type: String, default: "" },
+	//
+	isRestricted: { type: Boolean, default: false },
+	isBanned: { type: Boolean, default: false },
 	//
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
