@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Resend } from "resend";
+import { Post } from "./post.js";
+import { Comment } from "./comment.js";
 //
 const env = process.env.NODE_ENV;
 const Schema = mongoose.Schema;
@@ -90,6 +92,24 @@ userSchema.methods.comparePassword = function (candidatePassword, cb) {
 		if (err) return cb(err);
 		cb(null, isMatch);
 	});
+};
+
+// Method to get a user's posts with pagination
+userSchema.methods.getPosts = function (page, limit, cb) {
+	Post.find({ author: this._id })
+		.skip((page - 1) * limit)
+		.limit(limit)
+		.sort({ createdAt: -1 })
+		.exec(cb);
+};
+
+// Method to get a user's comments with pagination
+userSchema.methods.getComments = function (page, limit, cb) {
+	Comment.find({ author: this._id })
+		.skip((page - 1) * limit)
+		.limit(limit)
+		.sort({ createdAt: -1 })
+		.exec(cb);
 };
 
 // Export the model
