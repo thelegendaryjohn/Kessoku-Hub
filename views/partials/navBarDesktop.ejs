@@ -1,14 +1,50 @@
 <link rel="stylesheet" href="css/navBarDesktop.css">
 
-<div id="desktop-nav-container">
+<div id="desktop-nav-container" class="box-shadow">
   <a href="/">
-    <img class="img" id="desktop-nav-logo" src="/images/top-section/band-logo.svg" alt="Home">
+    <img id="desktop-nav-logo" class="img" src="/images/top-section/band-logo.svg" alt="Home">
   </a>
   <div id="desktop-nav-btn-container">
-    <a class="desktop-nav-btn btn text-shadow" href="/">HOME</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/forum">FORUM</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/videos">VIDEOS</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/music">MUSIC</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/store">STORE</a>
+    <a id="desktop-nav-home" class="desktop-nav-btn btn text-shadow" href="/">HOME</a>
+    <a id="desktop-nav-forum" class="desktop-nav-btn btn text-shadow" href="/forum">FORUM</a>
+    <a id="desktop-nav-videos" class="desktop-nav-btn btn text-shadow" href="/videos">VIDEOS</a>
+    <a id="desktop-nav-music" class="desktop-nav-btn btn text-shadow" href="/music">MUSIC</a>
+    <a id="desktop-nav-store" class="desktop-nav-btn btn text-shadow" href="/store">STORE</a>
   </div>
+
+  <% if (!user) { %>
+  <a id="desktop-user-profile-link" href="/account">
+    <% } %>
+    <div id="desktop-user-profile-container">
+      <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
+      <img role="button" id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+      <!-- User profile dropdown menu -->
+      <% if (user) { %>
+      <div class="user-profile-menu-container hide">
+        <a class="action-1 user-profile-menu-btn" href="/user/<%= user.username %>">View Profile</a>
+        <a class="action-2 user-profile-menu-btn" href="/account/menu">Account Menu</a>
+        <a class="user-profile-menu-btn" href="/account/logout">Logout</a>
+      </div>
+      <% } %>
+    </div>
+    <% if (!user) { %>
+  </a>
+  <% } %>
 </div>
+
+
+<% if (locals.selected) { %>
+<script>
+  document.querySelector("#desktop-nav-<%= (locals.selected).toLowerCase() %>").classList.add("selected");
+</script>
+<% } %>
+
+<script>
+  const profileMenu = document.querySelector(".user-profile-menu-container");
+  const profileContainer = document.querySelector("#desktop-user-profile-container");
+
+  profileContainer.addEventListener("click", () => {
+    profileMenu.classList.toggle("hide");
+  });
+</script>
