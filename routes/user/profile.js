@@ -20,9 +20,9 @@ router.get("/user/:username", async (req, res) => {
 			isProfile: true,
 			currUser: req.session.user,
 			isCurrUserAdmin: req.session.user?.role === roles.admin,
-			isNotVerified: user.role === roles.unverified && user.role !== roles.admin,
-			isVerified:
-				user.role === roles.user && user.role !== roles.admin,
+			isNotVerified:
+				user.role === roles.unverified && user.role !== roles.admin,
+			isVerified: user.role === roles.user && user.role !== roles.admin,
 			isAdmin: user.role === roles.admin,
 		});
 	}
