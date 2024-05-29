@@ -96,4 +96,82 @@ router.get("/thread/comment/:id", (req, res) => {
 		});
 });
 
+// Deleting a comment by ID
+router.delete("/thread/comment/:id", (req, res) => {
+	// Validate the input
+	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	// Validate the input
+	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	// Check whether the user is logged in
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	}
+
+	Comment.findById(req.params.id, (err, comment) => {
+		if (err) {
+			return res.status(500).json(err);
+		} else {
+			if (
+				comment.author.toString() !== req.session.user._id ||
+				req.session.user.role < 2
+			) {
+				return res.status(401).json("Unauthorized.");
+			}
+
+			comment
+				.remove()
+				.then(() => {
+					return res.status(200).json("Comment deleted.");
+				})
+				.catch((err) => {
+					return res.status(500).json(err);
+				});
+		}
+	});
+});
+
+// Updating a comment by ID
+router.put("/thread/comment/:id", (req, res) => {
+	// Validate the input
+	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	// Validate the input
+	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	// Check whether the user is logged in
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	}
+
+	Comment.findById(req.params.id, (err, comment) => {
+		if (err) {
+			return res.status(500).json(err);
+		} else {
+			if (comment.author.toString() !== req.session.user._id) {
+				return res.status(401).json("Unauthorized.");
+			}
+
+			comment.content = req.body.content;
+			comment
+				.save()
+				.then((comment) => {
+					return res.status(200).json(comment);
+				})
+				.catch((err) => {
+					return res.status(500).json(err);
+				});
+		}
+	});
+});
+
 export default router;
