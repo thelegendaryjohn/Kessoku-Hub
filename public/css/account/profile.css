@@ -94,6 +94,10 @@ main {
 	background-color: var(--ikuyo-color);
 }
 
+.bad-badge {
+	background-color: var(red);
+}
+
 #stats-container {
 	display: flex;
 	flex-direction: column;
