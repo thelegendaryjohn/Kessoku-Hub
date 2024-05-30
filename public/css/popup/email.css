@@ -9,7 +9,7 @@
     padding: 1.5rem 3rem;
 	width: 100%;
 	height: fit-content;
-	background-color: rgb(240, 240, 240);
+	background-color: rgb(255, 232, 232);
     border-bottom: 1px solid var(--hitori-color);
     box-sizing: border-box;
 }
@@ -32,10 +32,7 @@
     right: 1rem;
     height: 2rem;
     width: 2rem;
-    /* align-self: end; */
-    background-color: var(--ikuyo-color);
     border-radius: 0.5rem;
-    color: var(--body-color);
 }
 
 .email-popup-ok {
