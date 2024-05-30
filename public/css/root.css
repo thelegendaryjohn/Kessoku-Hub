@@ -62,7 +62,7 @@ footer {
 }
 
 footer * {
-	color: #000;
+	color: var(--black-color);
 	font-size: 1.1rem;
 	/* text-decoration: none; */
 }
@@ -246,7 +246,7 @@ footer p {
 	font-weight: 200;
 	margin: 3rem;
 	text-decoration: none;
-	color: #000;
+	color: var(--black-color);
 	/* box-sizing: content-box; */
 }
 

@@ -141,6 +141,7 @@ a {
 	justify-content: space-between;
 	width: 100%;
 	margin: 0 0.5rem;
+	color: var(--body-color);
 }
 
 .post-title,
@@ -152,6 +153,7 @@ a {
 	line-clamp: 2;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+	color: var(--black-color);
 }
 
 .post-link-arrow {
