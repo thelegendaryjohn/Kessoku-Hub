@@ -10,7 +10,7 @@
 	background-color: var(--body-color);
 	border: 1px solid var(--accent-purple);
 	border-radius: 6px;
-	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0.4rem 0.4rem 0.2 var(--black-color);
 }
 
 #sidebar-container {
@@ -27,7 +27,7 @@
 #profile-img {
 	background-color: #ddd;
 	border-radius: 100%;
-	border: 2px solid #fff;
+	border: 1px solid var(--body-color);
 }
 
 #profile-name {
