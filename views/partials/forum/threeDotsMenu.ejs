@@ -51,8 +51,7 @@
 
   // Implement the three-dots-menu actions
   function performAction(actionName) {
-    let targetedUser = <%= locals.targetedUser %>;
-    console.log(targetedUser);
+    let targetedUser = `<%-JSON.stringify( locals.targetedUser )%>`
     let url = "";
     switch (actionName) {
       case "restrict": {

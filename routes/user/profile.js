@@ -13,8 +13,12 @@ router.get("/user/:username", async (req, res) => {
 	} else {
 		const postCount = await Post.countDocuments({ author: user._id });
 		const commentCount = await Comment.countDocuments({ author: user._id });
+		let targetedUser = user.toObject();
+		// Remove sensitive information
+		delete targetedUser.password;
+		delete targetedUser.email;
 		render(req, res, "account/profilePage", {
-			targetedUser: user,
+			targetedUser: targetedUser,
 			postCount: postCount,
 			commentCount: commentCount,
 			isCurrUserAdmin: req.session.user?.role === roles.admin,
