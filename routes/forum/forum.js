@@ -10,16 +10,16 @@ import { getComment } from "../thread/comment.js";
 const router = Router();
 
 // Middleware to prevent banned users from accessing the forum
-router.use((req, res, next) => {
+function checkBanned(req, res, next) {
 	if (req.session.user?.isBanned) {
 		return render(req, res, "account/accountSuccess", {
 			message: `You are banned from the forum.`,
 		});
 	}
 	next();
-});
+}
 
-router.get("/forum", async (req, res) => {
+router.get("/forum", checkBanned, async (req, res) => {
 	const topics = await Topic.find({});
 	let posts = {};
 	for (let topic of topics) {
@@ -38,7 +38,7 @@ router.get("/forum/welcome", (req, res) => {
 	render(req, res, "forum/forumWelcome");
 });
 
-router.get("/forum/topic/:name", async (req, res) => {
+router.get("/forum/topic/:name", checkBanned, async (req, res) => {
 	if (!req.params.name) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -58,7 +58,7 @@ router.get("/forum/topic/:name", async (req, res) => {
 	});
 });
 
-router.get("/forum/thread/:id", async (req, res) => {
+router.get("/forum/thread/:id", checkBanned, async (req, res) => {
 	// Validate post id
 	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
 		return res.status(401).json("Invalid input.");
@@ -81,7 +81,7 @@ router.get("/forum/thread/:id", async (req, res) => {
 	});
 });
 
-router.get("/forum/post/create", async (req, res) => {
+router.get("/forum/post/create", checkBanned, async (req, res) => {
 	// Redirect user to welcome page if not logged in
 	if (!req.session.user) {
 		return res.redirect("/forum/welcome");
@@ -94,7 +94,7 @@ router.get("/forum/post/create", async (req, res) => {
 	});
 });
 
-router.get("/forum/inbox", (req, res) => {
+router.get("/forum/inbox", checkBanned, (req, res) => {
 	if (!req.session.user) {
 		return res.redirect("/forum/welcome");
 	}
