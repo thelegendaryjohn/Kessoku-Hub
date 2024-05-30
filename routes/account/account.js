@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { render } from "../../lib/render.js";
-import logout from "./logout.js";
 //
 const router = Router();
 
