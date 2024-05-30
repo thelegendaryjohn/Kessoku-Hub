@@ -85,8 +85,13 @@ document
 		});
 
 		if (response.status === 200) {
+			let params = new URL(document.location.toString()).searchParams;
 			window.location.href =
-				"/account/success?username=" + formData.get("username");
+				"/account/success?username=" +
+				formData.get("username") +
+				+params.get("redirect")
+					? params.get("redirect")
+					: ``;
 		} else {
 			let error = await response.json();
 			clearErrorHighlight();
@@ -139,8 +144,13 @@ document
 			});
 
 			if (response.status === 200) {
+				let params = new URL(document.location.toString()).searchParams;
 				window.location.href =
-					"/account/success?username=" + formData.get("username");
+					"/account/success?username=" +
+					formData.get("username") +
+					params.get("redirect")
+						? params.get("redirect")
+						: ``;
 			} else {
 				clearErrorHighlight();
 				errorAlert(
