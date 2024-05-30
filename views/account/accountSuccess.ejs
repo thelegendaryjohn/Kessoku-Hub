@@ -30,9 +30,9 @@
     </div>
   </main>
   <script>
-    <% if (locals.isLogout) { %>
+    <% if (locals.redirect) { %>
     setTimeout(() => {
-      window.history.back();
+      window.location.href = "<%= locals.redirect %>";
     }, 1000);
     <% } else { %>
     setTimeout(() => {
