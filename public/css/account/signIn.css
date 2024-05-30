@@ -186,6 +186,10 @@ label:not(.checkbox-container) {
 	filter: brightness(90%);
 }
 
+#side-image {
+	width: 200%;
+}
+
 /* Anims */
 #coverup-box {
 	position: absolute;
