@@ -50,15 +50,15 @@
 
   // Implement the three-dots-menu actions
   function performAction(actionName) {
-    let targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
     let url = "";
     switch (actionName) {
       case "restrict": {
+        const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
         url = targetedUser.isRestricted ? '/user/unrestrict' : '/user/restrict';
         break;
       }
       case "ban": {
-
+        const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
         url = targetedUser.isBanned ? '/user/unban' : '/user/ban';
         break;
       }
@@ -85,7 +85,7 @@
       })
       .then((res) => {
         if (res.status === 200) {
-          window.location.reload();
+          location.replace(document.referrer);
         }
       })
       .catch((err) => {
