@@ -6,7 +6,7 @@ label {
 	/* z-index: 1; */
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(1.8rem);
-	background-color: white;
+	background-color: var(--body-color);
 	width: fit-content;
 	padding: 0 0.5rem;
 }
@@ -38,7 +38,8 @@ label {
 	width: 100%;
 	box-sizing: border-box;
 	outline: none;
-	background: none;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 .longtext-input-field {

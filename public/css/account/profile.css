@@ -45,7 +45,7 @@ main {
 
 #edit-profile-btn {
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 }
 
 #user-card-container {

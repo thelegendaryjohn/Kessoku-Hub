@@ -32,3 +32,29 @@
     document.querySelector("#footer-arrow").addEventListener("click", scrollToTop);
   </script>
 </footer>
+
+<!-- theme toggle script  -->
+<script>
+  var root = document.documentElement;
+  const sliders = document.querySelectorAll(".slider");
+  let initializeTheme = localStorage.getItem("colorTheme");
+
+  if (initializeTheme == "dark") {
+    document.getElementById("colorCheckBoxDesktop").checked = true;
+    document.getElementById("colorCheckBoxMobile").checked = true;
+  }
+  sliders.forEach((slider) => {
+    slider.addEventListener("click", (e) => {
+      let currentTheme = localStorage.getItem("colorTheme");
+      if (currentTheme == "dark") {
+        localStorage.setItem("colorTheme", "light");
+        root.style.setProperty('--body-color', '#ffffff');
+        root.style.setProperty('--black-color', '#1E2124');
+      } else {
+        localStorage.setItem("colorTheme", "dark");
+        root.style.setProperty('--body-color', '#1E2124');
+        root.style.setProperty('--black-color', '#ffffff');
+      }
+    });
+  })
+</script>
