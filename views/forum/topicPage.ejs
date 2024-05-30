@@ -52,7 +52,10 @@
           <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
             <div class="post-container">
               <!-- Post link text -->
-              <h3 class="post-title"><%= post.title %></h3>
+              <div class="post-title-container">
+                <h3 class="post-title"><%= post.title %></h3>
+                <img class="pinned-icon" style="display: <%= post.pinned ? 'block' : 'none' %>;" src="/images/forum-section/pin-icon.svg" alt="Pinned post">
+              </div>
               <p class="post-text font-poppins"><%= post.content %></p>
 
             </div>
