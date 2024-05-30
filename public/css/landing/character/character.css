@@ -122,3 +122,45 @@
 #char-desc {
 	font-size: 1.3rem;
 }
+
+/* desktop view settings */
+@media only screen and (min-width: 762px) {
+	/* text size settings */
+	#char-header {
+		font-size: 5rem;
+		padding: 0 0 0 0;
+	}
+
+	#char-btn-list {
+		font-size: 2rem;
+	}
+	#char-name {
+		font-size: 3rem;
+	}
+	#char-va,
+	#char-role {
+		font-size: 2rem;
+	}
+	#char-desc {
+		font-size: 1.5rem;
+	}
+	#band-ribbon-text {
+		font-size: 5rem;
+	}
+	#char-name-ribbon {
+		font-size: 7rem;
+		text-shadow: 0.4rem 0 0.1rem rgba(0, 0, 0, 0.04);
+		-webkit-text-stroke: 0.2rem var(--accent-grey);
+	}
+	/* images settings */
+	#char-img,
+	#char-img-layer {
+		height: 90vh;
+		width: auto;
+	}
+
+	.char-heads {
+		height: 30rem;
+		width: auto;
+	}
+}
