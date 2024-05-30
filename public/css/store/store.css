@@ -80,7 +80,7 @@ main {
 }
 .item-add-to-cart > a {
 	text-decoration: none;
-	color: white;
+	color: var(--body-color);
 }
 /* cart page button settings */
 #cart-button-container {

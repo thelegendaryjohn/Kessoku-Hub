@@ -10,7 +10,7 @@ label {
 	/* z-index: 1; */
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(0.9rem);
-	background-color: white;
+	background-color: var(--body-color);
 	width: fit-content;
 	padding: 0 0.5rem;
 }

@@ -39,7 +39,7 @@
 	position: absolute;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 5px;
-	color: white;
+	color: var(--body-color);
 	padding: 0 1rem 0 1rem;
 	bottom: 1rem;
 	right: 1rem;
