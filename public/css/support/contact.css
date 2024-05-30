@@ -70,6 +70,8 @@ label {
 	outline: none;
 	border: 2px solid var(--accent-lightgrey);
 	border-radius: 10px;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 .longtext-input-field {
