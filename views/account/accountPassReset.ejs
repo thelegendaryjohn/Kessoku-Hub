@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("../partials/htmlHead.ejs") %>
+  <link rel="stylesheet" href="/css/account/passReset.css">
+
+  <title>Kessoku Hub | Reset Password</title>
+</head>
+
+<body>
+  <!-- Desktop nav bar partial -->
+  <%- include("../partials/navBarDesktop.ejs") %>
+
+  <!-- Sidebar partial -->
+  <%- include("../partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("../partials/navBar.ejs", { headerTitle: "ACCOUNT" }) %>
+
+  <!-- Cookies consent banner -->
+  <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
+
+  <!-- Main content -->
+  <main>
+
+    <div id="content-section">
+      <!-- Log in section -->
+      <section class="account-section">
+        <!-- Log in header -->
+        <div class="section-header-container">
+          <h1 class="section-header">Reset Password</h1>
+        </div>
+
+        <!-- Log in form -->
+        <form id="forgot-pass-form" class="account-form" target="_self" method="post">
+          <label id="password-label" class="signup-label" for="password">New Password</label>
+          <div class="input-box">
+            <input id="password-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+            <div class="input-function pass-visibility">
+              <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+            </div>
+          </div>
+          <span id="password-alert" class="alert">[Placeholder]</span>
+
+          <label id="confirm-signup-label" class="form-label" for="confirm-password">Confirm New Password</label>
+          <div class="input-box">
+            <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" required>
+            <div class="input-function pass-visibility">
+              <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
+            </div>
+          </div>
+          <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
+
+          <input class="submit-btn" type="submit" value="Save Changes">
+        </form>
+      </section>
+    </div>
+
+    <!-- Side image for desktop layout -->
+    <div id="side-image-container">
+      <img id="side-image" src="/images/general-images/desktop-side-image-3.webp" alt="Side image">
+    </div>
+
+  </main>
+
+  <script src="/js/showHidePass.js"></script>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs") %>
+</body>
+
+</html>
