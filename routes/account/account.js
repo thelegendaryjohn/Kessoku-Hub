@@ -1,7 +1,6 @@
 const env = process.env.NODE_ENV;
 import { Router } from "express";
 import { render } from "../../lib/render.js";
-import logout from "./logout.js";
 //
 const router = Router();
 
@@ -49,6 +48,7 @@ router.get("/account/logout", (req, res) => {
 		}
 		render(req, res, "account/accountSuccess", {
 			message: `Logging you out`,
+			redirect: "/",
 		});
 	});
 });
