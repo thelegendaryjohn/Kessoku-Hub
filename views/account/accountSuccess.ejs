@@ -30,9 +30,15 @@
     </div>
   </main>
   <script>
+    <% if (locals.isLogout) { %>
     setTimeout(() => {
-      window.location.href = "/";
+      window.history.back();
     }, 1000);
+    <% } else { %>
+    setTimeout(() => {
+      window.history.go(-2);
+    }, 1000);
+    <% } %>
   </script>
 </body>
 
