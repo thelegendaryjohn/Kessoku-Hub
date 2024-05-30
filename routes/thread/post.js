@@ -21,16 +21,21 @@ export const getPost = (id) => {
 		.populate("topicId");
 };
 
+// Middleware to prevent restricted or banned users from posting
+function checkUser(req, res, next) {
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	} else if (req.session.user.isRestricted || req.session.user.isBanned) {
+		return res.status(401).json("Unauthorized.");
+	}
+	next();
+}
+
 // Creating a new post
-router.post("/thread/post", async (req, res) => {
+router.post("/thread/post", checkUser, async (req, res) => {
 	let result = v.validate(req.body, schema);
 	if (!result.valid) {
 		return res.status(401).json("Invalid input.");
-	}
-
-	// Check whether the user is logged in
-	if (!req.session.user) {
-		return res.status(401).json("Unauthorized.");
 	}
 
 	// Check whether the topic exists
