@@ -43,7 +43,7 @@
 	width: 100%;
 	z-index: -1;
 	background-color: var(--hitori-color);
-	color: #fff;
+	color: var(--body-color);
 	top: 14%;
 	text-align: center;
 	font-size: 66.7%;

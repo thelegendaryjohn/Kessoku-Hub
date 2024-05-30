@@ -13,15 +13,18 @@ router.get("/user/:username", async (req, res) => {
 	} else {
 		const postCount = await Post.countDocuments({ author: user._id });
 		const commentCount = await Comment.countDocuments({ author: user._id });
+		let targetedUser = user.toObject();
+		// Remove sensitive information
+		delete targetedUser.password;
+		delete targetedUser.email;
 		render(req, res, "account/profilePage", {
-			user: user,
+			targetedUser: targetedUser,
 			postCount: postCount,
 			commentCount: commentCount,
-			currUser: req.session.user,
-			currUsername: req.session.user?.username,
-			isNotVerified: user.role === roles.unverified && user.role !== roles.admin,
-			isVerified:
-				user.role === roles.user && user.role !== roles.admin,
+			isCurrUserAdmin: req.session.user?.role === roles.admin,
+			isNotVerified:
+				user.role === roles.unverified && user.role !== roles.admin,
+			isVerified: user.role === roles.user && user.role !== roles.admin,
 			isAdmin: user.role === roles.admin,
 		});
 	}

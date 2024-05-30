@@ -28,16 +28,16 @@
 
 @keyframes adjustColor {
 	from {
-		background-color: #000;
+		background-color: var(--black-color);
 	}
 	to {
-		background-color: #fff;
+		background-color: var(--body-color);
 	}
 }
 
 /* Apply animations on page load*/
 .adjustColor {
-	background-color: #000;
+	background-color: var(--black-color);
 	animation: adjustColor 0.5s linear 1.25s forwards;
 }
 

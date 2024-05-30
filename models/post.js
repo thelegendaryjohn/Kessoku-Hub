@@ -23,6 +23,8 @@ const postSchema = new Schema({
 	likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
 	commentCount: { type: Number, default: 0 },
 	//
+	pinned: { type: Boolean, default: false },
+	//
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
 });

@@ -8,10 +8,14 @@
   <title>Kessoku Hub | Forum</title>
   <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
-  <link rel="stylesheet" href="/css/forum/forum.css">
 </head>
 
 <body>
+  <!-- Desktop nav bar partial -->
+  <%- include("../partials/navBarDesktop.ejs", {
+    selected: "FORUM",
+  }) %>
+
   <!-- Sidebar -->
   <%- include("../partials/sidebar.ejs") %>
 

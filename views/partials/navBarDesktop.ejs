@@ -1,14 +1,98 @@
-<link rel="stylesheet" href="css/navBarDesktop.css">
+<!-- <link rel="stylesheet" href="css/navBarDesktop.css"> -->
+<style>
+  #desktop-nav-container a {
+    text-decoration: none;
+  }
 
-<div id="desktop-nav-container">
+  #desktop-user-profile-container {
+    position: relative;
+  }
+
+  .hide {
+    display: none !important;
+  }
+
+  .user-profile-menu-container {
+    display: flex;
+    font-size: 1.5rem;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--body-color);
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 10rem;
+    gap: 0.2rem;
+    top: 10vh;
+    right: 0;
+  }
+
+  .user-profile-menu-btn {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--black-color);
+  }
+
+  .user-profile-menu-btn:hover {
+    transition: 0.12s;
+    background-color: var(--ryo-color);
+    color: var(--body-color);
+  }
+</style>
+
+<div id="desktop-nav-container" class="box-shadow">
   <a href="/">
-    <img class="img" id="desktop-nav-logo" src="/images/top-section/band-logo.svg" alt="Home">
+    <img id="desktop-nav-logo" class="img" src="/images/top-section/band-logo.svg" alt="Home">
   </a>
   <div id="desktop-nav-btn-container">
-    <a class="desktop-nav-btn btn text-shadow" href="/">HOME</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/forum">FORUM</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/videos">VIDEOS</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/music">MUSIC</a>
-    <a class="desktop-nav-btn btn text-shadow" href="/store">STORE</a>
+    <a id="desktop-nav-home" class="desktop-nav-btn btn text-shadow" href="/">HOME</a>
+    <a id="desktop-nav-forum" class="desktop-nav-btn btn text-shadow" href="/forum">FORUM</a>
+    <a id="desktop-nav-videos" class="desktop-nav-btn btn text-shadow" href="/videos">VIDEOS</a>
+    <a id="desktop-nav-music" class="desktop-nav-btn btn text-shadow" href="/music">MUSIC</a>
+    <a id="desktop-nav-store" class="desktop-nav-btn btn text-shadow" href="/store">STORE</a>
   </div>
+
+  <% if (!locals.user) { %>
+  <a id="desktop-user-profile-link" href="/account">
+    <% } %>
+    <div id="desktop-user-profile-container">
+      <h1 id="profile-name"><%= locals.user ? user.username : "Guest" %></h1>
+      <img role="button" id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+
+      <!-- User profile dropdown menu -->
+      <% if (locals.user) { %>
+      <div class="user-profile-menu-container hide">
+        <a class="action-1 user-profile-menu-btn" href="/user/<%= locals.user.username %>">View Profile</a>
+        <a class="action-2 user-profile-menu-btn" href="/account/menu">Account Menu</a>
+        <a class="user-profile-menu-btn" href="/account/logout">Logout</a>
+      </div>
+      <% } %>
+    </div>
+    <% if (!locals.user) { %>
+  </a>
+  <% } %>
+  <!-- theme toggle slider -->
+  <label class="switch">
+    <input id="colorCheckBoxDesktop" type="checkbox">
+    <span class="slider round"></span>
+  </label>
 </div>
+
+
+<% if (locals.selected) { %>
+<script>
+  document.querySelector("#desktop-nav-<%= (locals.selected).toLowerCase() %>").classList.add("selected");
+</script>
+<% } %>
+
+<script>
+  const profileMenu = document.querySelector(".user-profile-menu-container");
+  const profileContainer = document.querySelector("#desktop-user-profile-container");
+
+  profileContainer.addEventListener("click", () => {
+    profileMenu.classList.toggle("hide");
+  });
+</script>
