@@ -9,6 +9,16 @@ import { getComment } from "../thread/comment.js";
 //
 const router = Router();
 
+// Middleware to prevent banned users from accessing the forum
+router.use((req, res, next) => {
+	if (req.session.user?.isBanned) {
+		return render(req, res, "account/accountSuccess", {
+			message: `You are banned from the forum.`,
+		});
+	}
+	next();
+});
+
 router.get("/forum", async (req, res) => {
 	const topics = await Topic.find({});
 	let posts = {};
