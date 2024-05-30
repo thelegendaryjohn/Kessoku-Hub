@@ -54,9 +54,13 @@ input::placeholder {
 }
 
 #post-create-btn-container > .form-btn {
-	width: 40%;
+	padding: 0.5rem 1rem;
 	font-size: 2rem;
 	cursor: pointer;
+}
+
+#post-create-attachments {
+	width: 70%;
 }
 
 #post-create-restricted {
