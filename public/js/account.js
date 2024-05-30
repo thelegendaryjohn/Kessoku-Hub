@@ -4,8 +4,7 @@ const login = document.querySelector("#login-section");
 // Focus on the username login input on DOM load
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("#username-login-input").focus();
-})
-
+});
 
 // Hide the Create Account section first
 signup.style.display = "none";
@@ -91,6 +90,7 @@ document
 	.querySelector("#signup-form")
 	.addEventListener("submit", async (event) => {
 		event.preventDefault();
+
 		// Create a formdata object
 		let formData = new FormData(event.target);
 		// Verify whether confirm password matches password
