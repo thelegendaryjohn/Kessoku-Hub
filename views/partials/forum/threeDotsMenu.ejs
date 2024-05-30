@@ -51,6 +51,7 @@
   // Implement the three-dots-menu actions
   function performAction(actionName) {
     let url = "";
+    let method = "PUT";
     switch (actionName) {
       case "restrict": {
         const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
@@ -63,11 +64,12 @@
         break;
       }
       case "deletePost": {
-        url = "/thread/post/delete";
+        method = "DELETE";
+        url = "/thread/post";
         break;
       }
       case "editPost": {
-        url = "/thread/post/edit";
+        url = "/thread/post";
         break;
       }
       case "pinPost": {
@@ -78,7 +80,7 @@
     }
     url = url + "<%= locals.isPost ? `/${post._id}` : `/${locals.targetedUser._id}` %>";
     fetch(url, {
-        method: "PUT",
+        method: method,
         headers: {
           "Content-Type": "application/json"
         }
