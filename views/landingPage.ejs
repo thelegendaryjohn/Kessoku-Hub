@@ -15,6 +15,11 @@
 </head>
 
 <body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
+  <!-- Desktop nav bar partial -->
+  <%- include("partials/navBarDesktop.ejs", {
+    selected: "HOME"
+  }) %>
+
   <!-- Sidebar -->
   <%- include("partials/sidebar.ejs") %>
 
@@ -43,7 +48,7 @@
       <%- include("partials/landing/forum-section/forumContainer.ejs") %>
 
       <!-- Music -->
-      <%- include("partials/landing/music-section/albumContainer.ejs") %>
+      <%- include("partials/landing/music-section/albumContainer.ejs", { isLanding: true }) %>
 
       <!-- Series -->
       <%- include("partials/landing/video-section/videoContainer.ejs") %>

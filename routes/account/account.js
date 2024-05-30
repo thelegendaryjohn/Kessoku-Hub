@@ -1,3 +1,4 @@
+const env = process.env.NODE_ENV;
 import { Router } from "express";
 import { render } from "../../lib/render.js";
 import logout from "./logout.js";
@@ -15,7 +16,7 @@ router.get("/account/success", (req, res) => {
 });
 
 router.get("/account/menu", (req, res) => {
-	if (!req.session.user) {
+	if (!req.session.user && env != "test" && env != "dev") {
 		return res.redirect("/account");
 	}
 

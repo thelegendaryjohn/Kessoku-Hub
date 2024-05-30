@@ -4,10 +4,46 @@
 	:root {
 		font-size: var(--medium-font-size);
 	}
+
+	/* Nav bar and sidebar */
+	#sidebar,
+	#menu-btn,
+	#nav-container {
+		display: none !important;
+	}
+
+	#desktop-nav-container {
+		display: flex !important;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	/* Footer */
+	#footer-container {
+		height: 3.5rem;
+	}
+
+	#footer-content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-self: flex-start;
+		gap: 2rem;
+		margin-left: 3rem;
+		flex-direction: row;
+	}
+
+	#footer-arrow-container {
+		width: 3rem;
+	}
+
+	#footer-copyright {
+		margin-top: 0;
+	}
 }
 
 /* Tablet (>=768px && <=1400px, landscape): 1024x1366 */
-@media (orientation: landscape) and (min-width: 768px) and (max-width: 1400px) {
+@media (orientation: landscape) and (max-width: 1400px) {
 	/* Your CSS styles for Tablet */
 	:root {
 		font-size: var(--medium-font-size);
@@ -19,8 +55,20 @@
 	:root {
 		font-size: var(--small-font-size);
 	}
+
+	.audio-widget {
+		flex-direction: row !important;
+	}
+
+	.audio-widget #volume-slider {
+		display: none !important;
+	}
+
+	.audio-widget #volume-control-container {
+		width: fit-content;
+	}
 }
- 
+
 /* @media screen and (orientation: portrait) and (max-width: 450px) {
 	:root {
 		font-size: var(--xsmall-font-size);

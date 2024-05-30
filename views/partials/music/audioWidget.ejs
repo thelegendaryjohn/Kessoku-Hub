@@ -1,0 +1,16 @@
+<!-- Audio widget -->
+<div class="audio-widget box-shadow-reverse">
+  <div id="playback-seeker-container">
+    <audio id="audio" src=""></audio>
+    <button class="play"><img id="play-pause" src="/images/music-section/play-button.svg" width="20px" /></button>
+    <div class="progress-container">
+      <div id="progress" class="progress"></div>
+    </div>
+    <span id="current-time">0:00</span><span id="duration-divider">/</span><span id="duration">0:00</span>
+  </div>
+
+  <div id="volume-control-container">
+    <img id="volume-icon" src="/images/music-section/volume-max-icon.svg" alt="Volume">
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+  </div>
+</div>
