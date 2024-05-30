@@ -27,11 +27,11 @@
 #profile-img {
 	background-color: #ddd;
 	border-radius: 100%;
-	border: 1px solid var(--body-color);
+	border: 1px solid black;
 }
 
 #profile-name {
-	color: var(--black-color);
+	color: black;
 	align-self: center;
 	font-size: 2rem;
 	padding-left: 1.4rem;
@@ -57,7 +57,7 @@
 	text-decoration: none;
 	font-size: 2.2rem;
 	font-weight: bold;
-	color: var(--black-color);
+	color: black;
 	display: block;
 	text-wrap: nowrap;
 }
