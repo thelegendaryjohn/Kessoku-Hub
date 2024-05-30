@@ -43,9 +43,9 @@
         <!-- item's right container -->
         <div class="item-right-container">
           <div class="item-price"><span class="item-price-number"><%- items[id].price * cart[id]%></span> $</div>
-          <button class="item-minus-button btn">-</button>
+          <button class="item-minus-button qty-btn">-</button>
           <div class="item-quantity"><%- cart[id]%></div>
-          <button class="item-plus-button btn">+</button>
+          <button class="item-plus-button qty-btn">+</button>
         </div>
       </div>
       <% totalPrice += items[id].price * cart[id]; %>
