@@ -11,17 +11,19 @@
 <!-- three dots menu -->
 <div class="three-dots-menu hide">
   <% if (locals.isProfile && locals.isCurrUserAdmin) { %>
-  <button class="action-1 three-dots-menu-button" id="adminRestrictUser">Restrict User</button>
-  <button class="action-1 three-dots-menu-button" id="adminBanUser">Ban User</button>
+  <button class="action-1 three-dots-menu-button" id="adminRestrictUser"><%= locals.targetedUser.isRestricted ? "Unrestrict User" : "Restrict User"  %></button>
+  <button class="action-1 three-dots-menu-button" id="adminBanUser"><%= locals.targetedUser.isRestricted ? "Unban User" : "Ban User"  %></button>
   <% } %>
 
   <% if (locals.isPost) { %>
   <% if (locals.user?.username === post.author.username || locals.isCurrUserAdmin) { %>
   <button class="action-2 three-dots-menu-button" id="authorDeletePost">Delete Post</button>
-  <% } else if (locals.user?.username === post.author.username) {%>
+  <% } %>
+  <% if (locals.user?.username === post.author.username) {%>
   <button class="action-1 three-dots-menu-button" id="authorEditPost">Edit Post</button>
-  <% } else if (locals.isCurrUserAdmin) { %>
-  <button class="action-3 three-dots-menu-button">Pin Post</button>
+  <% } %>
+  <% if (locals.isCurrUserAdmin) { %>
+  <button class="action-3 three-dots-menu-button" id="adminPinPost">Pin Post</button>
   <% }} %>
 </div>
 
@@ -88,27 +90,35 @@
       });
   }
 
-  document.querySelector("#adminRestrictUser").addEventListener("click", () => {
+  function addEventListenerIfExists(selector, event, handler) {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.addEventListener(event, handler);
+    }
+  }
+
+  // Restrict user
+  addEventListenerIfExists("#adminRestrictUser", "click", () => {
     performAction("restrict");
   });
 
   // Ban user
-  document.querySelector("#adminBanUser").addEventListener("click", () => {
+  addEventListenerIfExists("#adminBanUser", "click", () => {
     performAction("ban");
   });
 
   // Delete post
-  document.querySelector("#authorDeletePost").addEventListener("click", () => {
+  addEventListenerIfExists("#authorDeletePost", "click", () => {
     performAction("deletePost");
   });
 
   // Edit post
-  document.querySelector("#authorEditPost").addEventListener("click", () => {
+  addEventListenerIfExists("#authorEditPost", "click", () => {
     performAction("editPost");
   });
 
   // Pin post
-  document.querySelector("#pinPost").addEventListener("click", () => {
+  addEventListenerIfExists("#adminPinPost", "click", () => {
     performAction("pinPost");
   });
 </script>
