@@ -45,12 +45,12 @@ textarea {
 	font-size: 1.2rem;
 }
 
-label {
+label:not(.switch) {
 	user-select: none;
 	z-index: 1;
 }
 
-label:not(.checkbox-container) {
+label:not(.checkbox-container, .switch) {
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(0.8rem);
 	background-color: var(--body-color);
