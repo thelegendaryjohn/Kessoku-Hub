@@ -90,25 +90,24 @@
   // Listening to the add to cart button
   addToCartBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-    console.log(e.target.parentElement.parentElement.id);
-    e.preventDefault();
-    const itemId = e.target.parentElement.parentElement.id;
-    fetch(`/store/add/${itemId}`, {
-        method: "POST",
-      })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Failed to add item to cart");
-        }
-      })
-      .then((data) => {
-        cartItemsCount.textContent = data;
-        if (data > 0) {
-          cartItemsCount.style.display = "flex";
-        }
-      })
+      e.preventDefault();
+      const itemId = e.target.parentElement.parentElement.id;
+      fetch(`/store/add/${itemId}`, {
+          method: "POST",
+        })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Failed to add item to cart");
+          }
+        })
+        .then((data) => {
+          cartItemsCount.textContent = data;
+          if (data > 0) {
+            cartItemsCount.style.display = "flex";
+          }
+        })
     });
   });
 </script>
