@@ -70,59 +70,59 @@ router.get("/user/:id/comments", (req, res) => {
 });
 
 // Restrict a user by ID.
-router.post("/user/restrict", (req, res) => {
-	if (!req.body.id) {
-		return res.status(400).send("Missing URL parameter: ID");
+router.put("/user/restrict/:id", async (req, res) => {
+	try {
+		const user = await User.findByIdAndUpdate(
+			req.params.id,
+			{ isRestricted: true },
+			{ new: true } // This option returns the updated document
+		);
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(500).json(err);
 	}
-
-	User.findByIdAndUpdate(req.body.id, { isRestricted: true }, (err, user) => {
-		if (err) {
-			return res.status(500).json(err);
-		} else {
-			return res.status(200).json(user);
-		}
-	});
 });
 
 // Unrestrict a user by ID.
-router.post("/user/unrestrict", (req, res) => {
-	if (!req.body.id) {
-		return res.status(400).send("Missing URL parameter: ID");
+router.put("/user/unrestrict/:id", async (req, res) => {
+	try {
+		const user = await User.findByIdAndUpdate(
+			req.params.id,
+			{ isRestricted: false },
+			{ new: true } // This option returns the updated document
+		);
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(500).json(err);
 	}
-
-	User.findByIdAndUpdate(
-		req.body.id,
-		{ isRestricted: false },
-		(err, user) => {
-			if (err) {
-				return res.status(500).json(err);
-			} else {
-				return res.status(200).json(user);
-			}
-		}
-	);
 });
 
 // Ban a user by ID.
-router.put("/user/ban/:id", (req, res) => {
-	User.findByIdAndUpdate(req.body.id, { isBanned: true }, (err, user) => {
-		if (err) {
-			return res.status(500).json(err);
-		} else {
-			return res.status(200).json(user);
-		}
-	});
+router.put("/user/ban/:id", async (req, res) => {
+	try {
+		const user = await User.findByIdAndUpdate(
+			req.params.id,
+			{ isBanned: true },
+			{ new: true } // This option returns the updated document
+		);
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(500).json(err);
+	}
 });
 
 // Unban a user by ID.
-router.put("/user/unban/:id", (req, res) => {
-	User.findByIdAndUpdate(req.body.id, { isBanned: false }, (err, user) => {
-		if (err) {
-			return res.status(500).json(err);
-		} else {
-			return res.status(200).json(user);
-		}
-	});
+router.put("/user/unban/:id", async (req, res) => {
+	try {
+		const user = await User.findByIdAndUpdate(
+			req.params.id,
+			{ isBanned: false },
+			{ new: true } // This option returns the updated document
+		);
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(500).json(err);
+	}
 });
 
 export default router;
