@@ -26,17 +26,17 @@
       <a id="nav-store" class="btn nav-btn" href="/store">STORE</a>
       <!-- <a id="nav-create-account" class="btn nav-btn" href="#">CREATE ACCOUNT</a> -->
       <div class="divider"></div>
-      <a id="nav-login" class="btn nav-btn" href="
-          <%= locals.user ? '/account/logout' : '/account' %>
-        ">
-        <%= locals.user ? 'LOG OUT' : 'LOG IN / CREATE ACCOUNT' %>
-      </a>
-
       <a id="nav-menu" class="btn nav-btn" href="/account/menu" style='
           <%= locals.user ? "" : "display: none" %>
         '>
 
         ACCOUNT MENU
+      </a>
+
+      <a id="nav-login" class="btn nav-btn" href="
+          <%= locals.user ? '/account/logout' : '/account' %>
+        ">
+        <%= locals.user ? 'LOG OUT' : 'LOG IN / CREATE ACCOUNT' %>
       </a>
 
     </div>
