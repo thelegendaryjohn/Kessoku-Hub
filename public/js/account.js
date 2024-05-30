@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+
 const signup = document.querySelector("#signup-section");
 const login = document.querySelector("#login-section");
 
@@ -33,7 +34,6 @@ document.querySelector("#signup").addEventListener("click", toggleSections);
 
 document.querySelector("#login").addEventListener("click", toggleSections);
 
-//
 async function loginRequest(body) {
 	return fetch("/account/login", {
 		method: "POST",
@@ -66,122 +66,111 @@ document
 	.querySelector("#login-form")
 	.addEventListener("submit", async (event) => {
 		event.preventDefault();
-		grecaptcha.ready(function () {
-			grecaptcha
-				.execute("6Le8rewpAAAAAB2DSRa4vjlMfAjfEBvduKk18DuB", {
-					action: "submit",
-				})
-				.then(async function (token) {
-					// Create a formdata object
-					let formData = new FormData(event.target);
-					let response = await loginRequest({
-						username: formData.get("username"),
-						password: formData.get("password"),
-						remember:
-							formData.get("remember") === "on" ? true : false,
-						token: token,
-					});
-
-					if (response.status === 200) {
-						window.location.href =
-							"/account/success?username=" +
-							formData.get("username");
-					} else {
-						let error = await response.json();
-						clearErrorHighlight();
-						errorAlert(
-							document.querySelector("#error-login-alert"),
-							error
-						);
-					}
-				});
+		const token = grecaptcha.getResponse(loginWidgetId);
+		console.log(token);
+		if (!token && env !== "dev") {
+			errorAlert(
+				document.querySelector("#error-login-alert"),
+				"Please complete the reCAPTCHA."
+			);
+			return;
+		}
+		// Create a formdata object
+		let formData = new FormData(event.target);
+		let response = await loginRequest({
+			username: formData.get("username"),
+			password: formData.get("password"),
+			remember: formData.get("remember") === "on" ? true : false,
+			token: token,
 		});
-	});
 
+		if (response.status === 200) {
+			window.location.href =
+				"/account/success?username=" + formData.get("username");
+		} else {
+			let error = await response.json();
+			clearErrorHighlight();
+			errorAlert(document.querySelector("#error-login-alert"), error);
+		}
+	});
 // Register form
 document
 	.querySelector("#signup-form")
 	.addEventListener("submit", async (event) => {
 		event.preventDefault();
-		grecaptcha.ready(function () {
-			grecaptcha
-				.execute("6Le8rewpAAAAAB2DSRa4vjlMfAjfEBvduKk18DuB", {
-					action: "submit",
-				})
-				.then(async function (token) {
-					// Create a formdata object
-					let formData = new FormData(event.target);
-					// Verify whether confirm password matches password
-					if (
-						formData.get("password") !==
-						formData.get("confirm-password")
-					) {
-						clearErrorHighlight();
-						errorAlert(
-							document.querySelector("#error-signup-alert"),
-							"Passwords do not match."
-						);
-						return false;
-					}
-					// Send the request
-					let response = await fetch("/account/register", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({
-							username: formData.get("username"),
-							password: formData.get("password"),
-							token: token,
-						}),
-					});
-
-					if (response.status === 201) {
-						// If account was successfully created, additionally log the user in
-						let response = await loginRequest({
-							username: formData.get("username"),
-							password: formData.get("password"),
-							remember: true,
-						});
-
-						if (response.status === 200) {
-							window.location.href =
-								"/account/success?username=" +
-								formData.get("username");
-						} else {
-							clearErrorHighlight();
-							errorAlert(
-								document.querySelector("#error-login-alert"),
-								"Invalid username/password."
-							);
-						}
-					} else {
-						let error = await response.json();
-						// Handle individual errors
-						if (response.status === 400) {
-							clearErrorHighlight();
-							error.forEach((e) => {
-								errorAlert(
-									document.querySelector(
-										`#${e.path[0]}-signup-alert`
-									),
-									"Invalid " + e.path[0] + "."
-								);
-								document
-									.querySelector(`#${e.path[0]}-signup-input`)
-									.classList.add("error-highlight");
-								document
-									.querySelector(`#${e.path[0]}-signup-label`)
-									.classList.add("error-label");
-							});
-						} else {
-							clearErrorHighlight();
-							errorAlert(
-								document.querySelector("#error-signup-alert"),
-								error
-							);
-						}
-					}
-				});
+		const token = grecaptcha.getResponse(signupWidgetId);
+		if (!token && env !== "dev") {
+			errorAlert(
+				document.querySelector("#error-signup-alert"),
+				"Please complete the reCAPTCHA."
+			);
+			return;
+		}
+		// Create a formdata object
+		let formData = new FormData(event.target);
+		// Verify whether confirm password matches password
+		if (formData.get("password") !== formData.get("confirm-password")) {
+			clearErrorHighlight();
+			errorAlert(
+				document.querySelector("#error-signup-alert"),
+				"Passwords do not match."
+			);
+			return false;
+		}
+		// Send the request
+		let response = await fetch("/account/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: formData.get("username"),
+				password: formData.get("password"),
+				token: token,
+			}),
 		});
+
+		if (response.status === 201) {
+			// If account was successfully created, additionally log the user in
+			let response = await loginRequest({
+				username: formData.get("username"),
+				password: formData.get("password"),
+				remember: true,
+			});
+
+			if (response.status === 200) {
+				window.location.href =
+					"/account/success?username=" + formData.get("username");
+			} else {
+				clearErrorHighlight();
+				errorAlert(
+					document.querySelector("#error-login-alert"),
+					"Invalid username/password."
+				);
+			}
+		} else {
+			let error = await response.json();
+			// Handle individual errors
+			if (response.status === 400) {
+				clearErrorHighlight();
+				error.forEach((e) => {
+					errorAlert(
+						document.querySelector(`#${e.path[0]}-signup-alert`),
+						"Invalid " + e.path[0] + "."
+					);
+					document
+						.querySelector(`#${e.path[0]}-signup-input`)
+						.classList.add("error-highlight");
+					document
+						.querySelector(`#${e.path[0]}-signup-label`)
+						.classList.add("error-label");
+				});
+			} else {
+				clearErrorHighlight();
+				errorAlert(
+					document.querySelector("#error-signup-alert"),
+					error
+				);
+			}
+		}
 	});
