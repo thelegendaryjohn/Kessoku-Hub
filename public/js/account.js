@@ -68,7 +68,9 @@ document
 		event.preventDefault();
 		grecaptcha.ready(function () {
 			grecaptcha
-				.execute("reCAPTCHA_site_key", { action: "submit" })
+				.execute("6Le8rewpAAAAAB2DSRa4vjlMfAjfEBvduKk18DuB", {
+					action: "submit",
+				})
 				.then(async function (token) {
 					// Create a formdata object
 					let formData = new FormData(event.target);
@@ -85,10 +87,11 @@ document
 							"/account/success?username=" +
 							formData.get("username");
 					} else {
+						let error = await response.json();
 						clearErrorHighlight();
 						errorAlert(
 							document.querySelector("#error-login-alert"),
-							"Invalid username/password."
+							error
 						);
 					}
 				});
@@ -102,7 +105,9 @@ document
 		event.preventDefault();
 		grecaptcha.ready(function () {
 			grecaptcha
-				.execute("reCAPTCHA_site_key", { action: "submit" })
+				.execute("6Le8rewpAAAAAB2DSRa4vjlMfAjfEBvduKk18DuB", {
+					action: "submit",
+				})
 				.then(async function (token) {
 					// Create a formdata object
 					let formData = new FormData(event.target);
