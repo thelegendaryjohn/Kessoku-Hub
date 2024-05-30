@@ -51,7 +51,7 @@
 
   // Implement the three-dots-menu actions
   function performAction(actionName) {
-    let targetedUser = `<%-JSON.stringify( locals.targetedUser )%>`
+    let targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
     let url = "";
     switch (actionName) {
       case "restrict": {
@@ -72,7 +72,8 @@
         break;
       }
       case "pinPost": {
-        url = "<%= locals.pinned ? '/thread/post/unpin' : '/thread/post/pin' %>";
+        const post = JSON.parse(`<%-JSON.stringify( locals.post )%>`);
+        url = "<%= post.pinned ? '/thread/post/unpin' : '/thread/post/pin' %>";
         break;
       }
     }
@@ -85,7 +86,7 @@
       })
       .then((res) => {
         if (res.status === 200) {
-          window.location.reload();
+          //window.location.reload();
         }
       })
       .catch((err) => {
