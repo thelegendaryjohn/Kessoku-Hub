@@ -6,10 +6,9 @@ const supportFormSchema = new Schema({
 	email: {
 		type: String,
 		required: true,
-		unique: true,
 		index: true,
 	},
-	name: { type: String },
+	subject: { type: String, required: true },
 	message: { type: String, required: true },
 });
 
