@@ -37,7 +37,8 @@
 
 .overlay-video-length {
 	position: absolute;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: var(--black-color);
+	opacity: 50%;
 	border-radius: 5px;
 	color: var(--body-color);
 	padding: 0 1rem 0 1rem;
