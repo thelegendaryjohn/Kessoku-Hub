@@ -1,20 +1,23 @@
 <footer>
-  <div id="footer-arrow-container">
-    <!-- <img src="/images/footer-section/theatre-logo-nrw.svg" alt="Bocchi The Rock footer banner" id="footer-icon-img"> -->
-    <img src="/images/button/ico-arw.svg" alt="Back to top" id="footer-arrow">
-  </div>
-  <div id="footer-content">
-    <div id="footer-social">
-      <a href="#"><img src="/images/footer-section/social-media/facebook-icon.svg" alt="Facebook"></a>
-      <a href="#"><img src="/images/footer-section/social-media/instagram-icon.svg" alt="Instagram"></a>
-      <a href="#"><img src="/images/footer-section/social-media/X-icon.svg" alt="Twitter"></a>
+  <div id="footer-container">
+    <div id="footer-arrow-container">
+      <!-- <img src="/images/footer-section/theatre-logo-nrw.svg" alt="Bocchi The Rock footer banner" id="footer-icon-img"> -->
+      <img src="/images/button/ico-arw.svg" alt="Back to top" id="footer-arrow">
     </div>
-    <div id="footer-help-link">
-      <a href="/contact-us">Support</a>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#">About site</a>
+
+    <div id="footer-content">
+      <div id="footer-social">
+        <a href="#"><img src="/images/footer-section/social-media/facebook-icon.svg" alt="Facebook"></a>
+        <a href="#"><img src="/images/footer-section/social-media/instagram-icon.svg" alt="Instagram"></a>
+        <a href="#"><img src="/images/footer-section/social-media/X-icon.svg" alt="Twitter"></a>
+      </div>
+      <div id="footer-help-link">
+        <a href="/contact-us">Support</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="#">About site</a>
+      </div>
+      <p id="footer-copyright">All rights reserved © 2022 CloverWorks Studios & Aniplex</p>
     </div>
-    <p>All rights reserved © 2022 CloverWorks Studios & Aniplex</p>
   </div>
 
   <script>
@@ -29,3 +32,29 @@
     document.querySelector("#footer-arrow").addEventListener("click", scrollToTop);
   </script>
 </footer>
+
+<!-- theme toggle script  -->
+<script>
+  var root = document.documentElement;
+  const sliders = document.querySelectorAll(".slider");
+  let initializeTheme = localStorage.getItem("colorTheme");
+
+  if (initializeTheme == "dark") {
+    document.getElementById("colorCheckBoxDesktop").checked = true;
+    document.getElementById("colorCheckBoxMobile").checked = true;
+  }
+  sliders.forEach((slider) => {
+    slider.addEventListener("click", (e) => {
+      let currentTheme = localStorage.getItem("colorTheme");
+      if (currentTheme == "dark") {
+        localStorage.setItem("colorTheme", "light");
+        root.style.setProperty('--body-color', '#ffffff');
+        root.style.setProperty('--black-color', '#1E2124');
+      } else {
+        localStorage.setItem("colorTheme", "dark");
+        root.style.setProperty('--body-color', '#1E2124');
+        root.style.setProperty('--black-color', '#ffffff');
+      }
+    });
+  })
+</script>

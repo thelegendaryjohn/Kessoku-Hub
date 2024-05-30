@@ -62,7 +62,7 @@
 	padding: 12px;
 	margin: 0 25px 30px 25px;
 	border-radius: 8px;
-	background-color: #fff;
+	background-color: var(--body-color);
 }
 
 #other-sections > section {
@@ -95,7 +95,7 @@
 	margin: 1rem;
 	font-size: 1.4rem;
 	font-style: italic;
-	color: #000;
+	color: var(--black-color);
 }
 
 /* Specific Media Queries */

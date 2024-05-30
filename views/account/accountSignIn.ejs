@@ -3,14 +3,44 @@
 
 <head>
   <!-- Head partial -->
+  <script>
+    //
+    let loginWidgetId, signupWidgetId;
+    window.onloadCallback = function() {
+      loginWidgetId = grecaptcha.render("recaptcha-login", {
+        sitekey: "6LeHBu0pAAAAAIBwGBNQLaiob3WUeRXhUdqlTgzt",
+      });
+      signupWidgetId = grecaptcha.render("recaptcha-signup", {
+        sitekey: "6LeHBu0pAAAAAIBwGBNQLaiob3WUeRXhUdqlTgzt",
+      });
+    };
+  </script>
+  <!-- Captcha -->
+  <script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback"></script>
   <%- include("../partials/htmlHead.ejs") %>
   <link rel="stylesheet" href="/css/account/signIn.css">
   <link rel="stylesheet" href="/css/account/checkbox.css">
+  <style>
+    .text-xs-center {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+    }
+
+    .text-xs-center.div {
+      margin: 0 auto;
+      width: 304px;
+    }
+  </style>
 
   <title>Kessoku Hub | Account</title>
 </head>
 
 <body>
+  <!-- Desktop nav bar partial -->
+  <%- include("../partials/navBarDesktop.ejs") %>
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -59,6 +89,7 @@
         <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
 
         <span id="error-signup-alert" class="alert">[Placeholder]</span>
+        <div id="recaptcha-signup" class="text-xs-center"></div>
         <input class="submit-btn" type="submit" value="Sign Up">
       </form>
 
@@ -104,7 +135,7 @@
 
           <a id="forgot-pass" class="font-poppins" href="#">Forgot Password?</a>
         </div>
-
+        <div id="recaptcha-login" class="text-xs-center"></div>
         <input class="submit-btn" type="submit" value="Log in">
       </form>
 
@@ -114,10 +145,12 @@
     </section>
 
   </main>
-
+  <script>
+    const env = "<%= env %>"
+  </script>
   <script src="/js/account.js"></script>
   <script src="/js/showHidePass.js"></script>
-  
+
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>

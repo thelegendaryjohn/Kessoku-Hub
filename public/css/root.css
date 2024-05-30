@@ -1,7 +1,7 @@
 /* Custom variables */
 :root {
 	--body-color: #ffffff;
-	--black-color: #000000;
+	--black-color: #1e2124;
 	--hitori-color: rgb(229, 20, 112);
 	--nijika-color: rgb(219, 126, 5);
 	--ryo-color: rgb(34, 84, 192);
@@ -10,6 +10,8 @@
 	--accent-yellow: rgb(255, 240, 0);
 	--accent-grey: rgb(149, 149, 149);
 	--accent-lightgrey: rgb(211, 211, 211);
+	--accent-lightergrey: rgb(245, 245, 245);
+	--accent-black: rgb(0, 0, 0);
 	/* --accent-rainbow: linear-gradient(
 		145deg,
 		rgb(16, 103, 216),
@@ -38,7 +40,7 @@ body {
 	flex-direction: column;
 	min-height: 100lvh;
 	background-color: var(--body-color);
-	color: #000;
+	color: var(--black-color);
 }
 
 main {
@@ -49,25 +51,35 @@ main {
 
 /* Footer Styling */
 footer {
-	bottom: 0;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
-	background-image: url("/images/footer-section/footer-bg.png");
-	background-color: #fff;
-	padding: 10px;
+	justify-content: center;
 	text-align: center;
+	width: 100%;
+	padding: 10px;
 	box-sizing: border-box;
+	align-items: center;
+	background-image: url("/images/footer-section/footer-bg.png");
+	background-color: var(--body-color);
 }
 
 footer * {
-	color: #000;
+	color: var(--black-color);
 	font-size: 1.1rem;
 	/* text-decoration: none; */
 }
 
 footer p {
 	margin-top: 10px;
+}
+
+#footer-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 6rem;
 }
 
 #footer-social {
@@ -87,9 +99,10 @@ footer p {
 }
 
 #footer-arrow-container {
+	cursor: pointer;
 	position: absolute;
 	right: 2rem;
-	transform: translateY(40%);
+	transform: translateY(5%);
 	width: 3.5rem;
 }
 
@@ -110,7 +123,7 @@ footer p {
 	padding: 0 1rem;
 	border-radius: 5px;
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 	font-size: 1.5rem;
 }
 
@@ -127,7 +140,7 @@ footer p {
 	padding: 0 1rem;
 	border-radius: 5px;
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 	font-size: 1.5rem;
 }
 
@@ -144,7 +157,7 @@ footer p {
 	padding: 0 1rem;
 	border-radius: 5px;
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 	font-size: 1.5rem;
 }
 
@@ -235,7 +248,7 @@ footer p {
 	font-weight: 200;
 	margin: 3rem;
 	text-decoration: none;
-	color: #000;
+	color: var(--black-color);
 	/* box-sizing: content-box; */
 }
 
@@ -269,4 +282,75 @@ footer p {
 .forum-action-btn-img {
 	cursor: pointer;
 	width: 2rem;
+}
+
+/* Desktop elements */
+#desktop-nav-container {
+	position: sticky;
+	z-index: 9;
+	top: 0;
+
+	/* display: flex; on enabled */
+	display: none;
+	flex-direction: row;
+	/* justify-content: space-between; */
+	align-items: center;
+	background-color: var(--body-color);
+	background-image: url("/images/footer-section/footer-bg.png");
+	padding: 0.5rem 3rem;
+	height: 5rem;
+	max-height: 8vh;
+	gap: 3rem;
+}
+
+#desktop-nav-logo {
+	width: 100%;
+	height: 100%;
+}
+
+a:has(#desktop-nav-logo) {
+	height: 100%;
+}
+
+#desktop-nav-btn-container {
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+}
+
+.desktop-nav-btn {
+	cursor: pointer;
+	color: var(--body-color);
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.desktop-nav-btn:hover {
+	opacity: 0.8;
+}
+
+.desktop-nav-btn.selected {
+	color: var(--accent-yellow);
+	text-decoration: underline !important;
+}
+
+#desktop-user-profile-container,
+#desktop-user-profile-link {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: auto;
+	gap: 1.5rem;
+	height: 100%;
+}
+
+#desktop-user-profile-container #profile-img {
+	height: 100%;
+	box-sizing: border-box;
+}
+
+#desktop-user-profile-container #profile-name {
+	font-size: 1.5rem;
+	padding-left: 0;
 }
