@@ -85,7 +85,7 @@
       })
       .then((res) => {
         if (res.status === 200) {
-          location.replace(document.referrer);
+          window.location.reload();
         }
       })
       .catch((err) => {

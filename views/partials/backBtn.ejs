@@ -4,6 +4,6 @@
 
 <script>
   document.querySelector("#back-btn").addEventListener("click", () => {
-    window.history.back();
+    location.replace(document.referrer);
   });
 </script>
