@@ -53,11 +53,12 @@
     let url = "";
     switch (actionName) {
       case "restrict": {
-        url = "/user/restrict";
+        url = "<%= locals.targetedUser.isRestricted ? '/user/unrestrict' : '/user/restrict' %>";
         break;
       }
       case "ban": {
-        url = "/user/ban";
+
+        url = "<%= locals.targetedUser.isBanned ? '/user/unban' : '/user/ban' %>";
         break;
       }
       case "deletePost": {
@@ -69,7 +70,7 @@
         break;
       }
       case "pinPost": {
-        url = "/thread/post/pin";
+        url = "<%= locals.post.isPinned ? '/thread/post/unpin' : '/thread/post/pin' %>";
         break;
       }
     }
