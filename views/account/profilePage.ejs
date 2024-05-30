@@ -23,14 +23,12 @@
   <!-- Welcome page -->
   <main>
     <!-- Function buttons -->
-    <% console.log(`Searched user: ${locals.targetedUser.username}`); %>
-    <% console.log(`Current session user: ${locals.user?.username}`); %>
     <div id="function-btn-container" class="section-container">
       <a style="display: <%= locals.user?.username === locals.targetedUser.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
         <p class="function-name">Edit</p>
         <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
       </a>
-      <%- include("../partials/forum/threeDotsMenu.ejs") %>
+      <%- include("../partials/forum/threeDotsMenu.ejs", { isProfile: true }) %>
     </div>
 
 
@@ -46,7 +44,7 @@
         <h3 id="verified-badge" class="account-badge" style="display: <%= isVerified ? "block" : "none" %>;">Verified ✔</h3>
         <h3 id="admin-badge" class="account-badge" style="display: <%= isAdmin ? "block" : "none" %>">Admin ⚒</h3>
         <h3 id="unverified-badge" class="account-badge bad-badge" style="display: <%= locals.targetedUser.isRestricted ? "block" : "none" %>">✖ Restricted</h3>
-        <h3 id="unverified-badge" class="account-badge bad-badge" style="display: <%= locals.targetedUser.isRestricted ? "block" : "none" %>">✖ Banned</h3>
+        <h3 id="unverified-badge" class="account-badge bad-badge" style="display: <%= locals.targetedUser.isBanned ? "block" : "none" %>">✖ Banned</h3>
       </div>
 
       <!-- User stats -->

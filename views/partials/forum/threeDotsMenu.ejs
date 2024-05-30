@@ -12,7 +12,7 @@
 <div class="three-dots-menu hide">
   <% if (locals.isProfile && locals.isCurrUserAdmin) { %>
   <button class="action-1 three-dots-menu-button" id="adminRestrictUser"><%= locals.targetedUser.isRestricted ? "Unrestrict User" : "Restrict User"  %></button>
-  <button class="action-1 three-dots-menu-button" id="adminBanUser"><%= locals.targetedUser.isRestricted ? "Unban User" : "Ban User"  %></button>
+  <button class="action-1 three-dots-menu-button" id="adminBanUser"><%= locals.targetedUser.isBanned ? "Unban User" : "Ban User"  %></button>
   <% } %>
 
   <% if (locals.isPost) { %>
@@ -32,14 +32,15 @@
   const threeDotsMenuButton = document.querySelector(".three-dots-menu-container");
   const threeDotsMenu = document.querySelector(".three-dots-menu");
 
+  // If three-dots-menu does not contain any children, hide the three-dots-menu-container
+  if (threeDotsMenu.children.length === 0) {
+    console.log(threeDotsMenu.children.length);
+    threeDotsMenuButton.classList.add("hide");
+  }
+
   threeDotsMenuButton.addEventListener("click", (e) => {
     threeDotsMenu.classList.toggle("hide");
   });
-
-  // If three-dots-menu does not contain any children, hide the three-dots-menu-container
-  if (threeDotsMenu.children.length === 0) {
-    threeDotsMenuButton.classList.add("hide");
-  }
 
   // Hide the three-dots-menu when clicking outside of it
   document.addEventListener("click", (e) => {
@@ -50,15 +51,17 @@
 
   // Implement the three-dots-menu actions
   function performAction(actionName) {
+    let targetedUser = <%= locals.targetedUser %>;
+    console.log(targetedUser);
     let url = "";
     switch (actionName) {
       case "restrict": {
-        url = "<%= locals.targetedUser.isRestricted ? '/user/unrestrict' : '/user/restrict' %>";
+        url = targetedUser.isRestricted ? '/user/unrestrict' : '/user/restrict';
         break;
       }
       case "ban": {
 
-        url = "<%= locals.targetedUser.isBanned ? '/user/unban' : '/user/ban' %>";
+        url = targetedUser.isBanned ? '/user/unban' : '/user/ban';
         break;
       }
       case "deletePost": {
@@ -70,7 +73,7 @@
         break;
       }
       case "pinPost": {
-        url = "<%= locals.post.isPinned ? '/thread/post/unpin' : '/thread/post/pin' %>";
+        url = "<%= locals.pinned ? '/thread/post/unpin' : '/thread/post/pin' %>";
         break;
       }
     }
