@@ -19,6 +19,7 @@ main {
 }
 
 #function-btn-container {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-end;
@@ -91,6 +92,10 @@ main {
 
 #user-card-container #admin-badge {
 	background-color: var(--ikuyo-color);
+}
+
+.bad-badge {
+	background-color: var(red);
 }
 
 #stats-container {

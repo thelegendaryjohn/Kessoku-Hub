@@ -1,0 +1,129 @@
+<link rel="stylesheet" href="/css/forum/threeDotsMenu.css">
+
+<!-- three dots  menu container -->
+<div class="three-dots-menu-container" role="button">
+  <!-- three dots svg -->
+  <svg class="three-dots-svg" xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="3rem" viewBox="0 0 16 16" fill="#000000" class="bi bi-three-dots-vertical">
+    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+  </svg>
+</div>
+
+<!-- three dots menu -->
+<div class="three-dots-menu hide">
+  <% if (locals.isProfile && locals.isCurrUserAdmin) { %>
+  <button class="action-1 three-dots-menu-button" id="adminRestrictUser"><%= locals.targetedUser.isRestricted ? "Unrestrict User" : "Restrict User"  %></button>
+  <button class="action-1 three-dots-menu-button" id="adminBanUser"><%= locals.targetedUser.isBanned ? "Unban User" : "Ban User"  %></button>
+  <% } %>
+
+  <% if (locals.isPost) { %>
+  <% if (locals.user?.username === post.author.username || locals.isCurrUserAdmin) { %>
+  <button class="action-2 three-dots-menu-button" id="authorDeletePost">Delete Post</button>
+  <% } %>
+  <% if (locals.user?.username === post.author.username) {%>
+  <button class="action-1 three-dots-menu-button" id="authorEditPost">Edit Post</button>
+  <% } %>
+  <% if (locals.isCurrUserAdmin) { %>
+  <button class="action-3 three-dots-menu-button" id="adminPinPost"><%= locals.post.pinned ? "Unpin Post" : "Pin Post" %></button>
+  <% }} %>
+</div>
+
+
+<script>
+  const threeDotsMenuButton = document.querySelector(".three-dots-menu-container");
+  const threeDotsMenu = document.querySelector(".three-dots-menu");
+
+  // If three-dots-menu does not contain any children, hide the three-dots-menu-container
+  if (threeDotsMenu.children.length === 0) {
+    threeDotsMenuButton.classList.add("hide");
+  }
+
+  threeDotsMenuButton.addEventListener("click", (e) => {
+    threeDotsMenu.classList.toggle("hide");
+  });
+
+  // Hide the three-dots-menu when clicking outside of it
+  document.addEventListener("click", (e) => {
+    if (!threeDotsMenu.contains(e.target) && !threeDotsMenuButton.contains(e.target)) {
+      threeDotsMenu.classList.add("hide");
+    }
+  });
+
+  // Implement the three-dots-menu actions
+  function performAction(actionName) {
+    let url = "";
+    let method = "PUT";
+    switch (actionName) {
+      case "restrict": {
+        const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
+        url = targetedUser.isRestricted ? '/user/unrestrict' : '/user/restrict';
+        break;
+      }
+      case "ban": {
+        const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
+        url = targetedUser.isBanned ? '/user/unban' : '/user/ban';
+        break;
+      }
+      case "deletePost": {
+        method = "DELETE";
+        url = "/thread/post";
+        break;
+      }
+      case "editPost": {
+        url = "/thread/post";
+        break;
+      }
+      case "pinPost": {
+        const post = JSON.parse(`<%-JSON.stringify( locals.post )%>`);
+        url = post.pinned ? '/thread/post/unpin' : '/thread/post/pin';
+        break;
+      }
+    }
+    url = url + "<%= locals.isPost ? `/${post._id}` : `/${locals.targetedUser._id}` %>";
+    fetch(url, {
+        method: method,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function addEventListenerIfExists(selector, event, handler) {
+    const element = document.querySelector(selector);
+    if (element) {
+      element.addEventListener(event, handler);
+    }
+  }
+
+  // Restrict user
+  addEventListenerIfExists("#adminRestrictUser", "click", () => {
+    performAction("restrict");
+  });
+
+  // Ban user
+  addEventListenerIfExists("#adminBanUser", "click", () => {
+    performAction("ban");
+  });
+
+  // Delete post
+  addEventListenerIfExists("#authorDeletePost", "click", () => {
+    performAction("deletePost");
+  });
+
+  // Edit post
+  addEventListenerIfExists("#authorEditPost", "click", () => {
+    performAction("editPost");
+  });
+
+  // Pin post
+  addEventListenerIfExists("#adminPinPost", "click", () => {
+    performAction("pinPost");
+  });
+</script>

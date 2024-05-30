@@ -21,6 +21,13 @@ main {
 	border-left: 0;
 }
 
+.topic-header {
+	position: relative;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
 .section-divider {
 	margin-top: 3rem;
 	width: 100%;

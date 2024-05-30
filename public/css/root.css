@@ -10,6 +10,8 @@
 	--accent-yellow: rgb(255, 240, 0);
 	--accent-grey: rgb(149, 149, 149);
 	--accent-lightgrey: rgb(211, 211, 211);
+	--accent-lightergrey: rgb(245, 245, 245);
+	--accent-black: rgb(0, 0, 0);
 	/* --accent-rainbow: linear-gradient(
 		145deg,
 		rgb(16, 103, 216),

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { render } from "../../lib/render.js";
-import session from "express-session";
 // TODO: This should import from the database instead
 let items = [
 	{
@@ -63,74 +62,78 @@ let items = [
 //
 const router = Router();
 
-// set up a session
-router.use(
-	session({
-		secret: "your-secret-key", // Replace with your own secret key
-		cookie: {
-			maxAge: 999999999, // Session duration in milliseconds (e.g., 1 minute)
-		},
-	})
-);
-
-//
-router.get("/store/views", (req, res) => {
-	if (req.session.views) {
-		req.session.views++; // Increment views count
-		res.setHeader("Content-Type", "text/html");
-		res.write(`<p>Views: ${req.session.views}</p>`);
-		res.end();
-	} else {
-		req.session.views = 1; // Initialize views count
-		res.send("Welcome! This is your first visit.");
-	}
-});
-
-// add store page view
 router.get("/store", (req, res) => {
 	render(req, res, "store/storePage", {
 		items: items,
+		cart: req.session.cart ? req.session.cart : {},
 	});
 });
 
 // add item to cart
-router.get("/store/add/:id", (req, res) => {
-	// Find the item with the specified id
-	const item = items.find((item) => item.id == req.params.id);
-
-	// Create a cookie to store selected items
-	let cartCookie = req.session.cart || "[]";
-	let cartItems = JSON.parse(decodeURIComponent(cartCookie));
-
-	// Check if the item is in the cart
-	const checkedItemIndex = cartItems.findIndex(
-		(item) => item.id == req.params.id
-	);
-
-	// If the item is not in the cart, add it with a quantity of 1
-	if (checkedItemIndex === -1) {
-		cartItems.push({ item: item, quantity: 1 });
-	} else {
-		// If the item is already in the cart, increment its quantity
-		cartItems[checkedItemIndex].quantity += 1;
+router.post("/store/add/:id", (req, res) => {
+	// Validate the id
+	if (!req.params.id) {
+		return res.status(400).json("Invalid item id");
 	}
 
-	// update the cooke string
-	const updatedCartString = JSON.stringify(cartItems);
+	// Create a cart if it doesn't exist
+	if (!req.session.cart) {
+		req.session.cart = {};
+	}
 
-	// set the cookie expire date
-	res.cookie("cart", updatedCartString, {
-		expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
-		path: "/",
-	});
-
-	res.redirect("/store");
+	// Check if the item is in the cart
+	if (Object.keys(req.session.cart).includes(req.params.id)) {
+		// Increment the quantity of the item
+		req.session.cart[req.params.id]++;
+	} else {
+		// Add the item to the cart
+		req.session.cart[req.params.id] = 1;
+	}
+	let total = 0;
+	for (const key in req.session.cart) {
+		total += req.session.cart[key];
+	}
+	return res.status(200).json(total);
 });
 
-// router.get("store/cart", (req, res) => {
-// 	render(req, res, "store/cartPage", {
-// 		items: items,
-// 	});
-// });
+// remove item from cart
+router.post("/store/remove/:id", (req, res) => {
+	// Validate the id
+	if (!req.params.id) {
+		return res.status(400).json("Invalid item id");
+	}
+
+	// Check if the item is in the cart
+	if (Object.keys(req.session.cart).includes(req.params.id)) {
+		// Decrement the quantity of the item
+		req.session.cart[req.params.id]--;
+		if (req.session.cart[req.params.id] <= 0) {
+			delete req.session.cart[req.params.id];
+		}
+	}
+
+	return res.status(200).json("Item removed from cart");
+});
+
+// remove all item from cart
+router.get("/store/remove/all", (req, res) => {
+	// empty the cart session
+	req.session.cart = {};
+	req.session.save((err) => {
+		if (err) {
+			console.error(err);
+			return res.status(500).json("Failed to save session");
+		}
+		res.redirect("/store");
+	});
+});
+
+router.get("/store/cart", (req, res) => {
+	console.log(req.session.cart);
+	render(req, res, "store/cartPage", {
+		items: items,
+		cart: req.session.cart,
+	});
+});
 
 export default router;

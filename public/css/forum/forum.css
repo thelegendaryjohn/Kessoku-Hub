@@ -193,3 +193,12 @@ a {
 .status-likes {
 	color: var(--hitori-color);
 }
+
+.post-title-container {
+	display: flex;
+    justify-content: space-between;
+}
+
+.pinned-icon {
+	width: 2rem;
+}

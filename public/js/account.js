@@ -1,11 +1,12 @@
+/* eslint-disable no-undef */
+
 const signup = document.querySelector("#signup-section");
 const login = document.querySelector("#login-section");
 
 // Focus on the username login input on DOM load
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelector("#username-login-input").focus();
-})
-
+});
 
 // Hide the Create Account section first
 signup.style.display = "none";
@@ -33,7 +34,6 @@ document.querySelector("#signup").addEventListener("click", toggleSections);
 
 document.querySelector("#login").addEventListener("click", toggleSections);
 
-//
 async function loginRequest(body) {
 	return fetch("/account/login", {
 		method: "POST",
@@ -66,31 +66,46 @@ document
 	.querySelector("#login-form")
 	.addEventListener("submit", async (event) => {
 		event.preventDefault();
+		const token = grecaptcha.getResponse(loginWidgetId);
+		console.log(token);
+		if (!token && env !== "dev") {
+			errorAlert(
+				document.querySelector("#error-login-alert"),
+				"Please complete the reCAPTCHA."
+			);
+			return;
+		}
 		// Create a formdata object
 		let formData = new FormData(event.target);
 		let response = await loginRequest({
 			username: formData.get("username"),
 			password: formData.get("password"),
 			remember: formData.get("remember") === "on" ? true : false,
+			token: token,
 		});
 
 		if (response.status === 200) {
 			window.location.href =
 				"/account/success?username=" + formData.get("username");
 		} else {
+			let error = await response.json();
 			clearErrorHighlight();
-			errorAlert(
-				document.querySelector("#error-login-alert"),
-				"Invalid username/password."
-			);
+			errorAlert(document.querySelector("#error-login-alert"), error);
 		}
 	});
-
 // Register form
 document
 	.querySelector("#signup-form")
 	.addEventListener("submit", async (event) => {
 		event.preventDefault();
+		const token = grecaptcha.getResponse(signupWidgetId);
+		if (!token && env !== "dev") {
+			errorAlert(
+				document.querySelector("#error-signup-alert"),
+				"Please complete the reCAPTCHA."
+			);
+			return;
+		}
 		// Create a formdata object
 		let formData = new FormData(event.target);
 		// Verify whether confirm password matches password
@@ -111,6 +126,7 @@ document
 			body: JSON.stringify({
 				username: formData.get("username"),
 				password: formData.get("password"),
+				token: token,
 			}),
 		});
 

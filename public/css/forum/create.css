@@ -61,6 +61,14 @@ input::placeholder {
 	cursor: pointer;
 }
 
+#post-create-restricted {
+	display: flex;
+	justify-content: center;
+	font-size: 1.4rem;
+	color: var(--ikuyo-color);
+	gap: 1rem;
+}
+
 #post-create-attachments {
 	background-color: var(--ryo-color);
 }

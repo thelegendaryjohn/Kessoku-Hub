@@ -12,6 +12,7 @@
 	background-color: var(--body-color);
 	border-bottom: 1px solid var(--hitori-color);
 	box-sizing: border-box;
+
 }
 
 .email-popup-text {
@@ -25,6 +26,7 @@
 }
 
 .email-popup-close {
+
 	position: absolute;
 	cursor: pointer;
 	border: none;
@@ -32,7 +34,6 @@
 	right: 1rem;
 	height: 2rem;
 	width: 2rem;
-	/* align-self: end; */
 	background-color: var(--ikuyo-color);
 	border-radius: 0.5rem;
 	color: var(--body-color);

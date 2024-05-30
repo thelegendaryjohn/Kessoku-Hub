@@ -33,9 +33,15 @@
     </div>
   </main>
   <script>
+    <% if (locals.redirect) { %>
     setTimeout(() => {
-      window.location.href = "/";
+      window.location.href = "<%= locals.redirect %>";
     }, 1000);
+    <% } else { %>
+    setTimeout(() => {
+      window.history.go(-2);
+    }, 1000);
+    <% } %>
   </script>
 </body>
 

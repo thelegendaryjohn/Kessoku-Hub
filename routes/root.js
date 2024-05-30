@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 		posts[topic._id] = await Post.find({ topicId: topic._id })
 			.sort({ createdAt: -1 })
 			.limit(2)
-			.populate("author");
+			.populate("author", "-__v -email -password");
 	}
 
 	render(req, res, "landingPage", {
