@@ -73,7 +73,7 @@
       }
       case "pinPost": {
         const post = JSON.parse(`<%-JSON.stringify( locals.post )%>`);
-        url = "<%= post.pinned ? '/thread/post/unpin' : '/thread/post/pin' %>";
+        url = post.pinned ? '/thread/post/unpin' : '/thread/post/pin';
         break;
       }
     }
