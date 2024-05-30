@@ -81,7 +81,7 @@
 
 .divider {
 	height: 1px;
-	background-color: var(--black-color);
+	background-color: black;
 	width: 100%;
 	margin: 0.5rem 0;
 }
