@@ -209,4 +209,42 @@ router.put("/thread/post/pin/:id", async (req, res) => {
 			return res.status(500).json(err);
 		});
 });
+
+// Unpinning a post by ID, only available to admins
+router.put("/thread/post/unpin/:id", async (req, res) => {
+	if (!req.params.id) {
+		return res.status(401).json("Invalid input.");
+	}
+	// Validate the input
+	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+		return res.status(401).json("Invalid input.");
+	}
+
+	// Check whether the user is logged in
+	if (!req.session.user || req.session.user.role < 2) {
+		return res.status(401).json("Unauthorized.");
+	}
+
+	getPost(req.params.id)
+		.then((post) => {
+			post.pinned = false;
+			post.save()
+				.then((post) => {
+					return res.status(200).json({
+						_id: post._id,
+						title: post.title,
+						content: post.content,
+						pinned: post.pinned,
+					});
+				})
+				.catch((err) => {
+					console.log(err);
+					return res.status(500).json(err);
+				});
+		})
+		.catch((err) => {
+			console.log(err);
+			return res.status(500).json(err);
+		});
+});
 export default router;
