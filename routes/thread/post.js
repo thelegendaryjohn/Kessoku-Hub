@@ -17,7 +17,7 @@ let schema = {
 // Functions
 export const getPost = (id) => {
 	return Post.findById(id)
-		.populate("author", "-_id -__v -email -password")
+		.populate("author", "-__v -email -password")
 		.populate("topicId");
 };
 
@@ -106,12 +106,13 @@ router.delete("/thread/post/:id", (req, res) => {
 	getPost(req.params.id)
 		.then((post) => {
 			if (
-				post.author.toString() !== req.session.user._id.toString() ||
+				post.author._id.toString() !==
+					req.session.user._id.toString() ||
 				req.session.user.role < 2
 			) {
 				return res.status(401).json("Unauthorized.");
 			}
-			post.remove()
+			Post.findByIdAndDelete(req.params.id)
 				.then(() => {
 					return res.status(200).json("Post deleted.");
 				})
@@ -148,7 +149,9 @@ router.put("/thread/post/:id", async (req, res) => {
 
 	getPost(req.params.id)
 		.then((post) => {
-			if (post.author.toString() !== req.session.user._id.toString()) {
+			if (
+				post.author._id.toString() !== req.session.user._id.toString()
+			) {
 				return res.status(401).json("Unauthorized.");
 			}
 			post.title = req.body.title;

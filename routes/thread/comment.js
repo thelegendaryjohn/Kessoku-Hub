@@ -21,7 +21,9 @@ export const getComment = (singleComment, id) => {
 	} else {
 		comment = Comment.find({ postId: id });
 	}
-	return comment.populate("author").sort({ createdAt: -1 });
+	return comment
+		.populate("author", "-__v -email -password")
+		.sort({ createdAt: -1 });
 };
 // Posting a comment
 router.post("/thread/comment", (req, res) => {

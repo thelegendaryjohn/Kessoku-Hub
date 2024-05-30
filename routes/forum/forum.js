@@ -26,7 +26,7 @@ router.get("/forum", checkBanned, async (req, res) => {
 		posts[topic._id] = await Post.find({ topicId: topic._id })
 			.sort({ pinned: -1, createdAt: -1 })
 			.limit(3)
-			.populate("author", "-_id -__v -email -password");
+			.populate("author", "-__v -email -password");
 	}
 	render(req, res, "forum/forumPage", {
 		topics: topics,
@@ -49,7 +49,7 @@ router.get("/forum/topic/:name", checkBanned, async (req, res) => {
 	}
 	//
 	const posts = await Post.find({ topicId: topic._id })
-		.populate("author", "-_id -__v -email -password")
+		.populate("author", "-__v -email -password")
 		.sort({ pinned: -1, createdAt: -1 });
 
 	render(req, res, "forum/topicPage", {
@@ -64,7 +64,14 @@ router.get("/forum/thread/:id", checkBanned, async (req, res) => {
 		return res.status(401).json("Invalid input.");
 	}
 
-	let post = getPost(req.params.id);
+	let post = await getPost(req.params.id);
+	if (!post) {
+		console.log("Post not found.");
+		return render(req, res, "account/accountSuccess", {
+			message: "Post not found.",
+			redirect: "/forum",
+		});
+	}
 	let comments = getComment(false, req.params.id);
 
 	[post, comments] = await Promise.all([post, comments]);

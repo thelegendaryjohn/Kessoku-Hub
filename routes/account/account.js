@@ -47,7 +47,7 @@ router.get("/account/logout", (req, res) => {
 		}
 		render(req, res, "account/accountSuccess", {
 			message: `Logging you out`,
-			isLogout: true,
+			redirect: "/",
 		});
 	});
 });
