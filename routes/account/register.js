@@ -30,7 +30,7 @@ const registerLimit = rateLimit({
 });
 
 function useRateLimit(req, res, next) {
-	if (NODE_ENV === "production") {
+	if (NODE_ENV === "prod") {
 		registerLimit(req, res, next);
 	} else {
 		next();
@@ -60,29 +60,26 @@ router.post("/account/register", useRateLimit, async (req, res) => {
 	}
 
 	try {
-		// Verify reCAPTCHA
-		const recaptchaResponse = await fetch(
-			`https://www.google.com/recaptcha/api/siteverify`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				body: new URLSearchParams({
-					secret: RECAPTCHA_SECRET_KEY,
-					response: req.body.token,
-				}),
+		if (NODE_ENV === "prod") {
+			// Verify reCAPTCHA
+			const recaptchaResponse = await fetch(
+				`https://www.google.com/recaptcha/api/siteverify`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: new URLSearchParams({
+						secret: RECAPTCHA_SECRET_KEY,
+						response: req.body.token,
+					}),
+				}
+			);
+			const recaptchaData = await recaptchaResponse.json();
+
+			if (!recaptchaData.success) {
+				return res.status(401).json("Invalid reCAPTCHA.");
 			}
-		);
-		const recaptchaData = await recaptchaResponse.json();
-
-		if (!recaptchaData.success) {
-			return res.status(401).json("Invalid reCAPTCHA.");
-		}
-
-		// Disallow the request if reCAPTCHA score is below 0.5
-		if (recaptchaData.score < 0.5) {
-			return res.status(401).json("Invalid reCAPTCHA score.");
 		}
 
 		const creds = result.instance;

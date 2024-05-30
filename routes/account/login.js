@@ -1,3 +1,5 @@
+const NODE_ENV = process.env.NODE_ENV || "dev";
+
 import { Router } from "express";
 import { User } from "../../models/user.js";
 import { Validator } from "jsonschema";
@@ -25,29 +27,26 @@ router.post("/account/login", async (req, res, next) => {
 	}
 
 	try {
-		// Verify reCAPTCHA
-		const recaptchaResponse = await fetch(
-			`https://www.google.com/recaptcha/api/siteverify`,
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				body: new URLSearchParams({
-					secret: RECAPTCHA_SECRET_KEY,
-					response: req.body.token,
-				}),
+		if (NODE_ENV === "prod") {
+			// Verify reCAPTCHA
+			const recaptchaResponse = await fetch(
+				`https://www.google.com/recaptcha/api/siteverify`,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: new URLSearchParams({
+						secret: RECAPTCHA_SECRET_KEY,
+						response: req.body.token,
+					}),
+				}
+			);
+			const recaptchaData = await recaptchaResponse.json();
+
+			if (!recaptchaData.success) {
+				return res.status(401).json("Invalid reCAPTCHA.");
 			}
-		);
-		const recaptchaData = await recaptchaResponse.json();
-
-		if (!recaptchaData.success) {
-			return res.status(401).json("Invalid reCAPTCHA.");
-		}
-
-		// Disallow the request if reCAPTCHA score is below 0.5
-		if (recaptchaData.score < 0.5) {
-			return res.status(401).json("Invalid reCAPTCHA score.");
 		}
 
 		// Check whether the user info matches the database
