@@ -26,7 +26,7 @@ router.get("/forum", checkBanned, async (req, res) => {
 		posts[topic._id] = await Post.find({ topicId: topic._id })
 			.sort({ pinned: -1, createdAt: -1 })
 			.limit(3)
-			.populate("author");
+			.populate("author", "-_id -__v -email -password");
 	}
 	render(req, res, "forum/forumPage", {
 		topics: topics,
@@ -49,7 +49,7 @@ router.get("/forum/topic/:name", checkBanned, async (req, res) => {
 	}
 	//
 	const posts = await Post.find({ topicId: topic._id })
-		.populate("author")
+		.populate("author", "-_id -__v -email -password")
 		.sort({ pinned: -1, createdAt: -1 });
 
 	render(req, res, "forum/topicPage", {

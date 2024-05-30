@@ -16,7 +16,9 @@ let schema = {
 };
 // Functions
 export const getPost = (id) => {
-	return Post.findById(id).populate("author").populate("topicId");
+	return Post.findById(id)
+		.populate("author", "-_id -__v -email -password")
+		.populate("topicId");
 };
 
 // Creating a new post
