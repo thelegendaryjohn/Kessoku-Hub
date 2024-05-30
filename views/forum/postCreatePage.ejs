@@ -54,9 +54,13 @@
 
         <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write the content..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
 
-        <div id="post-create-btn-container">
+        <div id="post-create-btn-container" style="display: <%= locals.user.isRestricted ? "none" : "flex" %>;">
           <button id="post-create-attachments" class="form-btn" onclick="event.preventDefault();">Add Files</button>
           <input id="post-create-submit" class="form-btn" type="submit" value="Post" onclick="event.preventDefault();">
+        </div>
+
+        <div id="post-create-restricted">
+          <p class="font-poppins" id="post-create-restricted-text">You are restricted from the forum</p>
         </div>
       </form>
 
