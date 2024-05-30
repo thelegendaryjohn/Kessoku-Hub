@@ -23,7 +23,7 @@
   <button class="action-1 three-dots-menu-button" id="authorEditPost">Edit Post</button>
   <% } %>
   <% if (locals.isCurrUserAdmin) { %>
-  <button class="action-3 three-dots-menu-button" id="adminPinPost">Pin Post</button>
+  <button class="action-3 three-dots-menu-button" id="adminPinPost"><%= locals.post.pinned ? "Unpin Post" : "Pin Post" %></button>
   <% }} %>
 </div>
 
@@ -34,7 +34,6 @@
 
   // If three-dots-menu does not contain any children, hide the three-dots-menu-container
   if (threeDotsMenu.children.length === 0) {
-    console.log(threeDotsMenu.children.length);
     threeDotsMenuButton.classList.add("hide");
   }
 
@@ -86,7 +85,7 @@
       })
       .then((res) => {
         if (res.status === 200) {
-          //window.location.reload();
+          window.location.reload();
         }
       })
       .catch((err) => {
