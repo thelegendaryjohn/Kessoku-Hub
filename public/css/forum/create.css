@@ -28,6 +28,8 @@ input::placeholder {
 #post-create-option-container .input-field {
 	border: 2px solid var(--accent-grey);
 	border-radius: 10px;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 #post-create-option-thread-select {

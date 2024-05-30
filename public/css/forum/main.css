@@ -38,7 +38,8 @@ label {
 	width: 100%;
 	box-sizing: border-box;
 	outline: none;
-	background: none;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 .longtext-input-field {
