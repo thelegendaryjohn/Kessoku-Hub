@@ -37,20 +37,40 @@
 <script>
   var root = document.documentElement;
   const sliders = document.querySelectorAll(".slider");
+  const sunSvg = document.querySelectorAll(".sun-svg");
+  const moonSvg = document.querySelectorAll(".moon-svg")
   let initializeTheme = localStorage.getItem("colorTheme");
 
   if (initializeTheme == "dark") {
     document.getElementById("colorCheckBoxDesktop").checked = true;
     document.getElementById("colorCheckBoxMobile").checked = true;
+    moonSvg.forEach(element => {
+      element.classList.remove("hide");
+    });
+    sunSvg.forEach(element => {
+      element.classList.add("hide");
+    });
   }
   sliders.forEach((slider) => {
     slider.addEventListener("click", (e) => {
       let currentTheme = localStorage.getItem("colorTheme");
       if (currentTheme == "dark") {
+        sunSvg.forEach(element => {
+          element.classList.remove("hide");
+        });
+        moonSvg.forEach(element => {
+          element.classList.add("hide");
+        });
         localStorage.setItem("colorTheme", "light");
         root.style.setProperty('--body-color', '#ffffff');
         root.style.setProperty('--black-color', '#1E2124');
       } else {
+        moonSvg.forEach(element => {
+          element.classList.remove("hide");
+        });
+        sunSvg.forEach(element => {
+          element.classList.add("hide");
+        });
         localStorage.setItem("colorTheme", "dark");
         root.style.setProperty('--body-color', '#1E2124');
         root.style.setProperty('--black-color', '#ffffff');
