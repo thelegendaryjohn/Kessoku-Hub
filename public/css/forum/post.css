@@ -52,10 +52,42 @@ main {
 
 #post-content {
 	font-size: 1.2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 #post-content img {
 	max-width: 100%;
+}
+.post-content-text {
+	font-size: 1.2rem;
+	resize: none;
+	padding: 0.2rem;
+	border: 1px transparent var(--accent-lightgrey);
+	border-radius: 5px;
+	background-color: var(--body-color);
+	color: var(--black-color);
+	width: 100%;
+	height: auto;
+}
+.post-edit-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	gap: 1rem;
+}
+.post-edit-btn {
+	background-color: var(--body-color);
+	color: var(--black-color);
+	padding: 0.2rem;
+	font-size: 1.2rem;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.post-edit-btn:hover {
+	background-color: var(--ryo-color);
+	color: var(--black-color);
 }
 
 #comment-section {

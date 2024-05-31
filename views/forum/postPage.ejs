@@ -36,11 +36,14 @@
         </div>
 
         <div id="post-content">
-          <p class="post-content-text font-poppins"><%= post.content %></p>
+          <textarea title="post content" placeholder="this post has no text" class="post-content-text font-poppins"><%= post.content %></textarea>
           <% if (post.attachment) { %>
           <img src="/<%= post.attachment %>" alt="Post image" class="post-content-image">
           <% } %>
-
+          <div class="post-edit-container hide">
+            <button class="edit-cancel-btn post-edit-btn">Cancel</button>
+            <button class="edit-submit-btn post-edit-btn">Done</button>
+          </div>
         </div>
       </div>
 
@@ -58,8 +61,34 @@
 
     <!-- Comment box partial -->
     <%- include("../partials/forum/commentBox.ejs") %>
+
+    <!-- Footer partial -->
+    <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
   </main>
 
 </body>
+<script>
+  document.querySelector(".post-content-text").disabled = true;
+  const postText = document.querySelector(".post-content-text");
+  const editContainer = document.querySelector(".post-edit-container");
+  const postEditBtn = document.querySelectorAll(".post-edit-btn");
+  const editBtn = document.getElementById("authorEditPost");
+
+  try {
+    editBtn.addEventListener("click", () => {
+      document.querySelector(".post-content-text").disabled = false;
+      editContainer.classList.remove("hide");
+    })
+  } catch (err) {
+    console.log("you have not login");
+  }
+
+  postEditBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelector(".post-content-text").disabled = true;
+      editContainer.classList.add("hide");
+    })
+  });
+</script>
 
 </html>
