@@ -167,7 +167,7 @@ label:not(.checkbox-container) {
 /* Content box for desktop */
 #content-section {
 	display: flex;
-	width: 100%;
+	width: 50%;
 	justify-content: center;
 }
 
@@ -180,14 +180,10 @@ label:not(.checkbox-container) {
 	align-items: center;
 	overflow: clip;
 	height: 100lvh;
-	width: 100%;
+	width: 50%;
 	/* max-width: 3541px;
 	max-height: 2398px; */
 	filter: brightness(90%);
-}
-
-#side-image {
-	width: 200%;
 }
 
 /* Anims */
