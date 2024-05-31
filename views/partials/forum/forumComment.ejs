@@ -17,6 +17,9 @@
       <div class="post-container">
         <!-- Post link text -->
         <p class="post-title"><%= comment.content %></p>
+        <% if (comment.attachment) { %>
+        <img src="/<%= comment.attachment %>" alt="Post image" class="post-image">
+        <% } %>
         <!-- topic post status -->
         <div class="topic-post-link-status">
           <!-- Likes -->

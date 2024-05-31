@@ -37,6 +37,10 @@
 
         <div id="post-content">
           <p class="post-content-text font-poppins"><%= post.content %></p>
+          <% if (post.attachment) { %>
+          <img src="/<%= post.attachment %>" alt="Post image" class="post-content-image">
+          <% } %>
+
         </div>
       </div>
 
