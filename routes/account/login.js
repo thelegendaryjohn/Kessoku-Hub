@@ -39,6 +39,8 @@ router.post("/account/login", async (req, res, next) => {
 			);
 			const recaptchaData = await recaptchaResponse.json();
 
+			console.log(recaptchaData);
+
 			if (!recaptchaData.success) {
 				return res.status(401).json("Invalid reCAPTCHA.");
 			}
