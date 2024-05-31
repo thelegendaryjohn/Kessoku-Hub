@@ -19,6 +19,8 @@ const commentSchema = new Schema({
 	updatedAt: { type: Date, default: Date.now },
 	viewCount: { type: Number, default: 0 },
 	likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+	//
+	isArchived: { type: Boolean, default: false },
 });
 
 // Export the model
