@@ -15,6 +15,7 @@ const commentSchema = new Schema({
 		index: true,
 	},
 	content: { type: String, required: true },
+	attachment: { type: String },
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
 	viewCount: { type: Number, default: 0 },
