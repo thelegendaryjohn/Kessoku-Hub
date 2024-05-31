@@ -6,7 +6,7 @@
 	position: fixed;
 	right: 0;
 	top: 0;
-	width: 30rem;
+	width: 25rem;
 	height: 100%;
 	padding-top: 6rem;
 	border-left: 1px solid var(--hitori-color);
@@ -16,19 +16,22 @@
 #topic-page-flex-box {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	width: 100%;
+	height: 100%;
 }
 
 #search-history-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	margin-top: 1rem;
 	margin-left: 1rem;
+	margin-bottom: 6rem;
 	gap: 1rem;
 	width: 95%;
-	height: 30rem;
+	height: 100%;
+	
 	overflow: scroll;
 }
 
