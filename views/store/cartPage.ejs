@@ -28,7 +28,7 @@
     <div id="item-list-container">
       <% let totalPrice = 0; %>
       <% for (let id in cart) { %>
-      <div class="item-container" id="<%- items[id].id %>">
+      <div class="item-container" id="<%- id %>">
         <img class="item-image" src="/images/store-section/<%- items[id].imageName%>" alt="<%- items[id].description%>">
         <div class="item-name"> <%- items[id].name%> </div>
 
@@ -83,18 +83,18 @@
   // initialize
   const itemPlusBtn = document.querySelectorAll(".item-plus-button");
   const itemMinusBtn = document.querySelectorAll(".item-minus-button");
-  const itemQuantity = document.querySelectorAll(".item-quantity");
-  const itemPriceNumber = document.querySelectorAll(".item-price-number");
   const totalPriceNumber = document.querySelector("#total-price-number")
 
   // Listening to the add to cart button
   itemPlusBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const itemId = e.target.parentElement.parentElement.id;
-      itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) + 1;
-      itemPriceNumber[itemId].textContent =
-        Number(itemPriceNumber[itemId].textContent) + items[itemId].price;
+      const itemId = e.target.parentElement.parentElement.id; // parent id 3,2,5
+      const curPlusBtn = e.target.parentElement.querySelector('.item-plus-button');
+      const curItemQty = e.target.parentElement.querySelector('.item-quantity');
+      const curItemPrice = e.target.parentElement.querySelector('.item-price .item-price-number');
+      curItemQty.textContent = Number(curItemQty.textContent) + 1;
+      curItemPrice.textContent = Number(curItemPrice.textContent) + items[itemId].price;
       totalPriceNumber.textContent = Number(totalPriceNumber.textContent) + items[itemId].price;
       fetch(`/store/add/${itemId}`, {
           method: "POST",
@@ -113,11 +113,14 @@
   itemMinusBtn.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const itemId = e.target.parentElement.parentElement.id;
-      if (Number(itemQuantity[itemId].textContent) > 1) {
-        itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) - 1;
-        itemPriceNumber[itemId].textContent =
-          Number(itemPriceNumber[itemId].textContent) - items[itemId].price;
+      const itemId = e.target.parentElement.parentElement.id; // parent id 3,2,5
+      const curMinusBtn = e.target.parentElement.querySelector('.item-minus-button');
+      const curItemQty = e.target.parentElement.querySelector('.item-quantity');
+      const curItemPrice = e.target.parentElement.querySelector('.item-price .item-price-number');
+      if (Number(curItemQty.textContent) > 1) {
+        curItemQty.textContent = Number(curItemQty.textContent) - 1;
+        curItemPrice.textContent =
+          Number(curItemPrice.textContent) - items[itemId].price;
         totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
       } else {
         totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
