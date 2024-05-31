@@ -1,3 +1,38 @@
 #nav-title {
 	font-size: 2rem;
 }
+
+#topic-page-fixed-box {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 30rem;
+	height: 100%;
+	padding-top: 6rem;
+	border-left: 1px solid var(--hitori-color);
+	background-color: var(--body-color);
+}
+
+#topic-page-flex-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+}
+
+#search-history-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 1rem;
+	margin-left: 1rem;
+	gap: 1rem;
+	width: 95%;
+	height: 30rem;
+	overflow: scroll;
+}
+
+.search-history {
+	font-family: "Poppins", sans-serif;
+	font-size: 1.25rem;
+}

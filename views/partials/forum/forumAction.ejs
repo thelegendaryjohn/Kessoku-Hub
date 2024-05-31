@@ -22,14 +22,18 @@
     </div>
   </a>
 
-  <!-- Inbox button -->
-  <a href="/forum/inbox">
-    <div class="forum-action-btn-container">
-      <img class="forum-action-btn-img" src="/images/forum-section/btn-inbox.svg" alt="Inbox">
-      <div class="forum-action-btn-text">Inbox</div>
-    </div>
-  </a>
+  <!-- Profile button -->
+  <% if (locals.user) { %>
+  <a href="/api/user/<%= locals.user.username %>">
+    <% } else { %>
+    <a href="/account">
+      <% } %>
+      <div class="forum-action-btn-container">
+        <img class="forum-action-btn-img" src="/images/forum-section/btn-profile.svg" alt="Profile">
+        <div class="forum-action-btn-text">Profile</div>
+      </div>
+    </a>
 
-  <script src="/js/forum/forumAction.js"></script>
+    <script src="/js/forum/forumAction.js"></script>
 
 </section>

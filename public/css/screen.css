@@ -38,10 +38,11 @@
 
 	/* Forum search bar */
 	.search-bar-container {
+		z-index: 5 !important;
 		max-width: 30rem;
 		border-bottom: 1px solid var(--accent-purple);
-		border-left: 1px solid var(--accent-purple);
-		border-right: 1px solid var(--accent-purple);
+		/* border-left: 1px solid var(--accent-purple); */
+		/* border-right: 1px solid var(--accent-purple); */
 		/* border-bottom-left-radius: 10px; */
 		/* border-bottom-right-radius: 10px; */
 	}
