@@ -21,11 +21,6 @@ let schema = {
 
 // Apply the user login route
 router.post("/account/login", async (req, res, next) => {
-	let result = v.validate(req.body, schema);
-	if (!result.valid) {
-		return res.status(401).json("Invalid input.");
-	}
-
 	try {
 		if (NODE_ENV === "prod") {
 			// Verify reCAPTCHA
