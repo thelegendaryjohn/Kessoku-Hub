@@ -89,7 +89,7 @@ textarea {
 }
 
 #bio-input:not(:focus) {
-	background: -webkit-linear-gradient(top, #000000 30%, var(--body-color));
+	background: -webkit-linear-gradient(top, var(--black-color) 30%, var(--body-color));
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
