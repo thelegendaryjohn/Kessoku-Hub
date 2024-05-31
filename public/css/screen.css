@@ -1,10 +1,11 @@
-/* Desktop (>=1400px, landscape): 1920×1080 */
-@media (orientation: landscape) and (min-width: 1400px) {
-	/* Your CSS styles for Desktop */
+/* TV (>=1440px, landscape): 2560x1440 */
+/* @media (orientation: landscape) and (min-width: 2500px) {
 	:root {
-		font-size: var(--medium-font-size);
+		font-size: var(--large-font-size);
 	}
+} */
 
+@media (orientation: landscape) and (min-width: 1400px) {
 	/* Nav bar and sidebar */
 	#sidebar,
 	#menu-btn,
@@ -13,6 +14,11 @@
 	}
 
 	#desktop-nav-container {
+		display: flex !important;
+	}
+
+	/* Signup and Login */
+	#side-image-container {
 		display: flex !important;
 	}
 
@@ -84,7 +90,7 @@
 @media screen and (orientation: landscape) {
 	/* Footer */
 	#footer-container {
-		height: 3.5rem;
+		height: 3.5rem !important;
 	}
 
 	#footer-content {
@@ -98,7 +104,7 @@
 	}
 
 	#footer-arrow-container {
-		width: 3rem;
+		width: 3rem !important;
 	}
 
 	#footer-copyright {
@@ -106,18 +112,17 @@
 	}
 }
 
-/* Tablet (>=768px && <=1400px, landscape): 1024x1366 */
+/* Desktop (>=1400px, landscape): 1920×1080 */
 @media (orientation: landscape) and (max-width: 1400px) {
-	/* Your CSS styles for Tablet */
 	:root {
-		font-size: var(--medium-font-size);
+		font-size: var(--medium-font-size) !important;
 	}
 }
 
 /* Mobile (<=768px, portrait): 390×844 */
 @media (orientation: portrait) and (max-width: 768px) {
 	:root {
-		font-size: var(--small-font-size);
+		font-size: var(--small-font-size) !important;
 	}
 
 	.audio-widget {
@@ -133,11 +138,6 @@
 	}
 }
 
-/* @media screen and (orientation: portrait) and (max-width: 450px) {
-	:root {
-		font-size: var(--xsmall-font-size);
-	}
-} */
 
 @media screen and (orientation: portrait) and (max-width: 350px) {
 	:root {

@@ -5,7 +5,7 @@ main {
 	/* justify-content: space-evenly; */
 	align-items: center;
 	width: 100%;
-	overflow-x: hidden;
+	/* overflow-x: hidden; */
 }
 
 .account-section,
@@ -25,7 +25,7 @@ main {
 	font-family: "Poppins", sans-serif;
 }
 
-#signup-header {
+.section-header {
 	padding: 1rem 0;
 	color: var(--accent-purple);
 	font-size: 2.5rem;
@@ -36,6 +36,7 @@ main {
 	margin: 0.25rem 0rem;
 	color: red;
 }
+
 .alert.success {
 	color: limegreen;
 }
@@ -45,15 +46,15 @@ textarea {
 	font-size: 1.2rem;
 }
 
-label:not(.switch) {
+label {
 	user-select: none;
 	z-index: 1;
 }
 
-label:not(.checkbox-container, .switch):not(#change-profile-img) {
+label:not(.checkbox-container) {
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(0.8rem);
-	background-color: var(--body-color);
+	background-color: white;
 	width: fit-content;
 	padding: 0 0.5rem;
 }
@@ -72,8 +73,6 @@ label:not(.checkbox-container, .switch):not(#change-profile-img) {
 	padding: 1.5rem;
 	border-style: none;
 	outline: none;
-	background-color: var(--body-color);
-	color: var(--black-color);
 }
 
 .input-box:focus-within {
@@ -88,30 +87,9 @@ label:not(.checkbox-container, .switch):not(#change-profile-img) {
 	cursor: pointer;
 }
 
-.pass-visibility-img {
-	width: 2rem;
-}
-
-.pass-visibility-img:hover {
-	opacity: 0.7;
-}
-
 .input-field::-ms-reveal,
 .input-field::-ms-clear {
 	display: none;
-}
-
-#login-hr-div {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 1rem;
-}
-
-#forgot-pass {
-	font-size: 1.25rem;
-	color: var(--accent-purple);
-	padding-right: 1rem;
 }
 
 .submit-btn {
@@ -120,6 +98,7 @@ label:not(.checkbox-container, .switch):not(#change-profile-img) {
 	font-family: "Oswald", sans-serif;
 	font-size: 1.75rem;
 	font-weight: bold;
+	margin-top: 4rem;
 	padding: 0.75rem;
 	width: 100%;
 	max-width: 30rem;
@@ -187,6 +166,7 @@ label:not(.checkbox-container, .switch):not(#change-profile-img) {
 	max-height: 2398px; */
 	filter: brightness(90%);
 }
+
 
 /* Anims */
 #coverup-box {
