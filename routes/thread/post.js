@@ -148,11 +148,6 @@ router.put("/thread/post/:id", async (req, res) => {
 		return res.status(401).json("Invalid input.");
 	}
 
-	let result = v.validate(req.body, schema);
-	if (!result.valid) {
-		return res.status(401).json("Invalid input.");
-	}
-
 	// Check whether the user is logged in
 	if (!req.session.user) {
 		return res.status(401).json("Unauthorized.");
