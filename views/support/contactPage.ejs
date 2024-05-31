@@ -21,33 +21,40 @@
 
   <!-- Main content -->
   <main>
-    <section id="content-section-container">
-      <!-- Contact header -->
-      <div id="contact-header">
-        <h1 id="contact-title">Contact Us</h1>
+    <div id="content-section">
+      <section id="contact-section-container">
+        <!-- Contact header -->
+        <div id="contact-header">
+          <h1 id="contact-title">Contact Us</h1>
 
-        <!-- Contact description -->
-        <p id="contact-desc" class="font-poppins">
-          We greatly appreciate your feedback and inquiries, as they are essential to our continuous improvement and service. Kindly take a few moments to fill out the form below with your details and message, allowing us to address your needs effectively. Your effort in reaching out to us is highly valued, and we look forward to hearing from you.
-        </p>
-      </div>
+          <!-- Contact description -->
+          <p id="contact-desc" class="font-poppins">
+            We greatly appreciate your feedback and inquiries, as they are essential to our continuous improvement and service. Kindly take a few moments to fill out the form below with your details and message, allowing us to address your needs effectively. Your effort in reaching out to us is highly valued, and we look forward to hearing from you.
+          </p>
+        </div>
 
-      <div class="section-divider"></div>
+        <!-- <div class="section-divider"></div> -->
 
-      <!-- Contact form -->
-      <form id="contact-form">
-        <label for="contact-email-input" class="font-poppins">Email</label>
-        <input type="email" id="contact-email-input" class="input-field font-poppins" placeholder="Email" required>
+        <!-- Contact form -->
+        <form id="contact-form">
+          <label for="contact-email-input" class="font-poppins">Email</label>
+          <input type="email" id="contact-email-input" class="input-field font-poppins" placeholder="Email" required>
 
-        <label for="contact-subject-input" class="font-poppins">Subject</label>
-        <input type="text" id="contact-subject-input" class="input-field font-poppins" placeholder="Subject" required>
+          <label for="contact-subject-input" class="font-poppins">Subject</label>
+          <input type="text" id="contact-subject-input" class="input-field font-poppins" placeholder="Subject" required>
 
-        <textarea id="contact-message-input" class="input-field longtext-input-field font-poppins" placeholder="Your Message..." type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+          <textarea id="contact-message-input" class="input-field longtext-input-field font-poppins" placeholder="Your Message..." type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
 
-        <input id="contact-submit" class="form-btn" type="submit" value="Send">
-      </form>
+          <input id="contact-submit" class="form-btn" onclick="event.preventDefault();" type="submit" value="Send">
+        </form>
+      </section>
+    </div>
 
-    </section>
+    <!-- Side image for desktop layout -->
+    <div id="side-image-container">
+      <img id="side-image" src="/images/general-images/desktop-side-image-4.webp" alt="Side image">
+    </div>
+
   </main>
 
   <script>
