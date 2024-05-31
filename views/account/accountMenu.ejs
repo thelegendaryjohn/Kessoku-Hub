@@ -64,20 +64,6 @@
           </div>
         </a>
 
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/language-icon.svg" alt="Language">
-            <p class="function-name">Language</p>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/theme-icon.svg" alt="Theme & Accent">
-            <p class="function-name">Theme & Accent</p>
-          </div>
-        </a>
-
       </section>
 
       <!-- "Security" section -->
@@ -123,6 +109,21 @@
 
     </div>
   </main>
+
+  <script>
+    // Deactivate account confirmation
+    const deactivateBtn = document.querySelector("#deactivate-btn");
+    let confirmDeactivate = false;
+    deactivateBtn.addEventListener("click", () => {
+      if (confirmDeactivate) {
+        window.location.href = "/user/archive/" + "<%= locals.user._id %>";
+      } else {
+        deactivateBtn.textContent = "Are you sure? Click again to confirm.";
+        deactivateBtn.style.color = "red";
+        confirmDeactivate = true;
+      }
+    });
+  </script>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
