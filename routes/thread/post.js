@@ -116,7 +116,14 @@ router.delete("/thread/post/:id", (req, res) => {
 			Post.findById(req.params.id)
 				.then((post) => {
 					post.isArchived = true;
-					return res.status(200).json("Post deleted.");
+					post.save()
+						.then(() => {
+							return res.status(200).json("Post deleted.");
+						})
+						.catch((err) => {
+							console.log(err);
+							return res.status(500).json(err);
+						});
 				})
 				.catch((err) => {
 					console.log(err);
