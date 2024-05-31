@@ -60,6 +60,11 @@ router.post("/account/login", async (req, res, next) => {
 			if (err) {
 				throw err;
 			}
+			// Prevent archived users from logging in
+			if (user.isArchived) {
+				return res.status(401).json("Your account is archived.");
+			}
+
 			if (isMatch) {
 				// Saves the user info into the session
 				req.session.regenerate((err) => {

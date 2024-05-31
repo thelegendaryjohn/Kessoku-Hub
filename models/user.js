@@ -37,13 +37,16 @@ const userSchema = new Schema({
 	},
 	//
 	bio: { type: String, default: "" },
-	avatar: { type: String, default: "" },
+	avatar: { type: String, default: "/images/account-section/user-icon.svg" },
+	birthday: { type: Date },
 	//
 	isRestricted: { type: Boolean, default: false },
 	isBanned: { type: Boolean, default: false },
 	//
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
+	//
+	isArchived: { type: Boolean, default: false },
 });
 
 // Hash password before saving

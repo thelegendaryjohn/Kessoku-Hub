@@ -9,10 +9,16 @@ main {
 	cursor: pointer;
 }
 
-#user-profile-container #profile-img {
-	width: 100%;
+#user-profile-container {
+	width: 15rem;
+	height: 15rem;
+}
+#avatar-picture {
+	width: auto;
+	height: 100%;
 	max-width: 15rem;
 	border: none;
+	object-fit: cover;
 }
 
 #change-profile-img-container {
@@ -28,6 +34,12 @@ main {
 	background-color: var(--accent-grey);
 	opacity: 30%;
 	color: var(--accent-lightgrey);
+}
+
+#change-profile-img {
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
 }
 
 #user-profile-container:hover > #change-profile-img-container {

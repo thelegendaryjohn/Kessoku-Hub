@@ -39,6 +39,9 @@
 
   <!-- Main content -->
   <main>
+    <!-- Forum search bar partial -->
+    <%- include("../partials/forum/forumSearchBar.ejs") %>
+
     <!-- Post section -->
     <section id="content-section-container">
       <div class="posts">
@@ -48,7 +51,7 @@
           <div class="topic-header">
             <a href="/user/<%= post.author.username %>">
               <div class="topic-header-date-title">
-                <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
+                <img src='<%= post.author.avatar != "" ? `/${post.author.avatar}` : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
                 <h3 class="topic-author"><%= post.author.username %></h3>
                 <h4 class="topic-date"><%- include("../partials/forum/forumDate.ejs", {obj: post}) %></h4>
               </div>

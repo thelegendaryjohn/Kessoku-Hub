@@ -18,6 +18,7 @@ const postSchema = new Schema({
 	//
 	title: { type: String, required: true, minLength: 5, maxLength: 64 },
 	content: { type: String, required: true },
+	attachment: { type: String },
 	//
 	viewCount: { type: Number, default: 0 },
 	likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
@@ -27,6 +28,8 @@ const postSchema = new Schema({
 	//
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
+	//
+	isArchived: { type: Boolean, default: false },
 });
 
 // Export the model

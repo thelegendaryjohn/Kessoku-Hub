@@ -8,6 +8,10 @@
     position: relative;
   }
 
+  #desktop-user-profile-container #profile-img {
+    width: 5em;
+  }
+
   .hide {
     display: none !important;
   }
@@ -153,7 +157,7 @@
     <% } %>
     <div id="desktop-user-profile-container">
       <h1 id="profile-name"><%= locals.user ? user.username : "Guest" %></h1>
-      <img role="button" id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+      <img role="button" id="profile-img" src="<%= locals.user ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="Profile image">
 
       <!-- User profile dropdown menu -->
       <% if (locals.user) { %>

@@ -1,14 +1,14 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
     <a href="
-      <% if (locals.profileView) { %>
-        <%= user ? `/user/${user.username}` : '/account' %>
-      <% } else { %>
-        <%= locals.user ? `/user/${locals.user.username}` : '/account' %>
-      <% } %>
+        <%= locals.user ? `/user/${locals.user.username}` : '/account?redirect=/' %>
     ">
       <div id="profile-container">
+        <% if (locals.user) { %>
+        <img src="<%= locals.user.avatar !== "" ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="User profile icon" id="profile-img">
+        <% } else { %>
         <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
+        <% } %>
         <h1 id="profile-name">
           <% if (locals.profileView) { %>
           <%= user ? user?.username : "Guest" %>

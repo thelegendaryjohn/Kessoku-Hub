@@ -13,7 +13,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs", { profileView: true }) %>
 
@@ -39,7 +39,7 @@
     <div id="user-card-container" class="section-container">
       <!-- User profile -->
       <div id="profile-container">
-        <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+        <img id="profile-img" src="<%= locals.targetedUser.avatar !="" ? `/${targetedUser.avatar}` : `/images/account-section/user-icon.svg` %>" alt="Profile image">
 
         <h1 id="profile-name"><%= targetedUser.username %></h1>
 
@@ -83,7 +83,6 @@
       </div>
 
     </div>
-
   </main>
 
   <!-- Footer partial -->

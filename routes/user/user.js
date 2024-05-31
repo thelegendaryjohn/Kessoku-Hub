@@ -1,7 +1,18 @@
 import { Router } from "express";
 import { User } from "../../models/user.js";
+import { app } from "../../lib/app.js";
+import { render } from "../../lib/render.js";
 //
 const router = Router();
+
+// Middleware to update the user's info from the database in the session
+app.use(async (req, res, next) => {
+	if (req.session.user) {
+		console.log("Updating user info in the session");
+		req.session.user = await User.findById(req.session.user._id);
+	}
+	next();
+});
 
 // Getting a user by ID. This route is only meant for API usage.
 router.get("/user/:id", (req, res) => {
@@ -125,4 +136,37 @@ router.put("/user/unban/:id", async (req, res) => {
 	}
 });
 
+// Archive a user by ID.
+router.post("/user/archive/:id", async (req, res) => {
+	if (!req.params.id) {
+		return res.status(400).send("Missing URL parameter: ID");
+	}
+	if (!req.session.user) {
+		return res.status(401).send("Unauthorized.");
+	}
+	if (req.session.user._id != req.params.id) {
+		return res.status(401).send("Unauthorized.");
+	}
+	try {
+		await User.findByIdAndUpdate(
+			req.params.id,
+			{ isArchived: true },
+			{ new: true } // This option returns the updated document
+		);
+		req.session.destroy((err) => {
+			if (err) {
+				console.error(err);
+				return res.status(500).json("Error logging out.");
+			}
+
+			return render(req, res, "account/accountSuccess", {
+				message: `Your account has been archived. Logging you out.`,
+				redirect: "/",
+			});
+		});
+	} catch (err) {
+		console.error(err);
+		return res.status(500).json(err);
+	}
+});
 export default router;

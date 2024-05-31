@@ -299,7 +299,7 @@ footer p {
 	background-image: url("/images/footer-section/footer-bg.png");
 	padding: 0.5rem 3rem;
 	height: 5rem;
-	max-height: 8vh;
+	/* max-height: 8vh; */
 	gap: 3rem;
 }
 

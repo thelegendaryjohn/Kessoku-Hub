@@ -50,7 +50,7 @@ label:not(.switch) {
 	z-index: 1;
 }
 
-label:not(.checkbox-container, .switch) {
+label:not(.checkbox-container, .switch):not(#change-profile-img) {
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(0.8rem);
 	background-color: var(--body-color);

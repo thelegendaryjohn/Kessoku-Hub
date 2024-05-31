@@ -1,0 +1,52 @@
+.filter-option.selected {
+	color: var(--hitori-color);
+	text-decoration: underline;
+}
+
+.search-bar-container {
+	z-index: 7;
+	position: sticky;
+	top: 6rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	align-self: center;
+	gap: 0.5rem;
+	padding: 0.5rem 2rem 1rem 2rem;
+	width: 100%;
+	height: fit-content;
+	background-color: var(--body-color);
+	border-bottom: 1px solid var(--hitori-color);
+	box-sizing: border-box;
+}
+
+.search-bar {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 3rem;
+	gap: 1rem;
+}
+
+.search-input {
+	font-size: 1.2rem;
+	padding: 0.5rem 1rem;
+	width: 100%;
+	border: 1px solid var(--hitori-color);
+	border-radius: 10px;
+	outline: none;
+}
+
+.search-button {
+	cursor: pointer;
+	width: 3rem;
+}
+
+.filter-option-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
+	font-size: 1.3rem;
+}

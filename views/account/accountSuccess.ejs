@@ -12,7 +12,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -21,7 +21,7 @@
 
   <main id="success-container">
     <section id="success-section">
-      <h1 id="success-title"><%- message %></h1>
+      <h1 id="success-title"><%- locals.message ? locals.message : "" %></h1>
       <div id="success-desc" class="loading-text-container">
         <span class="loading-text"></span>
       </div>
@@ -39,7 +39,12 @@
     }, 1000);
     <% } else { %>
     setTimeout(() => {
-      window.history.go(-2);
+      let params = new URL(document.location.toString()).searchParams;
+      if (params.get("redirect")) {
+        window.location.href = params.get("redirect");
+      } else {
+        window.history.go(-2);
+      }
     }, 1000);
     <% } %>
   </script>
