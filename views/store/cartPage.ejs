@@ -36,16 +36,16 @@
     <div id="item-list-container">
       <% let totalPrice = 0; %>
       <% for (let id in cart) { %>
-      <div class="item-container" id="<%- id %>">
+      <div class="item-container" id="<%- items[id].id %>">
         <img class="item-image" src="/images/store-section/<%- items[id].imageName%>" alt="<%- items[id].description%>">
         <div class="item-name"> <%- items[id].name%> </div>
 
         <!-- item's right container -->
         <div class="item-right-container">
           <div class="item-price"><span class="item-price-number"><%- items[id].price * cart[id]%></span> $</div>
-          <button class="item-minus-button btn">-</button>
+          <button class="item-minus-button qty-btn">-</button>
           <div class="item-quantity"><%- cart[id]%></div>
-          <button class="item-plus-button btn">+</button>
+          <button class="item-plus-button qty-btn">+</button>
         </div>
       </div>
       <% totalPrice += items[id].price * cart[id]; %>
@@ -128,6 +128,7 @@
           Number(itemPriceNumber[itemId].textContent) - items[itemId].price;
         totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
       } else {
+        totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
         btn.parentElement.parentElement.remove();
       }
       fetch(`/store/remove/${itemId}`, {

@@ -39,8 +39,7 @@
     <div id="user-card-container" class="section-container">
       <!-- User profile -->
       <div id="profile-container">
-        <% if (!locals.targetedUser.isArchived) { %>
-        <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+        <img id="profile-img" src="<%= locals.targetedUser ? `/${targetedUser.avatar}` : `/images/account-section/user-icon.svg` %>" alt="Profile image">
 
         <h1 id="profile-name"><%= targetedUser.username %></h1>
 

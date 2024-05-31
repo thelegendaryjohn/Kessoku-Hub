@@ -45,7 +45,7 @@ main {
 
 #edit-profile-btn {
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 }
 
 #user-card-container {
@@ -63,12 +63,20 @@ main {
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	width: fit-content;
 	gap: 1rem;
 }
 
 #user-card-container #profile-img {
-	width: 30vw;
+	width: 15rem;
+	height: 15rem;
+}
+
+#profile-img {
+	height: 100%;
 	max-width: 15rem;
+	border: none;
+	object-fit: cover;
 }
 
 #user-card-container #profile-name {

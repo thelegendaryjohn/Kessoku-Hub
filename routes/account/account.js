@@ -1,6 +1,8 @@
 const env = process.env.NODE_ENV;
 import { Router } from "express";
 import { render } from "../../lib/render.js";
+import { User } from "../../models/user.js";
+import upload from "../../lib/multer.js";
 //
 const router = Router();
 
@@ -34,6 +36,27 @@ router.get("/account/menu", checkArchived, (req, res) => {
 
 router.get("/account/profile", checkArchived, (req, res) => {
 	render(req, res, "account/accountEdit");
+});
+
+router.post("/account/profile", upload.single("avatar"), (req, res) => {
+	if (!req.session.user) {
+		return res.status(401).json("Unauthorized.");
+	}
+
+	User.findByIdAndUpdate(req.session.user._id, {
+		avatar: req.file ? req.file.path : "",
+		birthday: req.body.birthday ? new Date(req.body.birthday) : null,
+		bio: req.body.bio,
+	})
+		.then(() => {
+			res.status(200).redirect("/account/profile");
+		})
+		.catch((error) => {
+			console.error(error);
+			res.status(500).json({
+				error: "An error occurred while updating the profile.",
+			});
+		});
 });
 
 router.get("/account/settings", checkArchived, (req, res) => {

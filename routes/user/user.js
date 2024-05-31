@@ -1,7 +1,17 @@
 import { Router } from "express";
 import { User } from "../../models/user.js";
+import { app } from "../../lib/app.js";
 //
 const router = Router();
+
+// Middleware to update the user's info from the database in the session
+app.use(async (req, res, next) => {
+	if (req.session.user) {
+		console.log("Updating user info in the session");
+		req.session.user = await User.findById(req.session.user._id);
+	}
+	next();
+});
 
 // Getting a user by ID. This route is only meant for API usage.
 router.get("/user/:id", (req, res) => {

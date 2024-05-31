@@ -39,6 +39,9 @@
 
   <!-- Main content -->
   <main>
+    <!-- Forum search bar partial -->
+    <%- include("../partials/forum/forumSearchBar.ejs") %>
+
     <!-- Post section -->
     <section id="content-section-container">
       <div class="posts">
@@ -75,6 +78,9 @@
 
   <!-- Forum action partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
 </body>
 
 </html>
