@@ -67,6 +67,14 @@ router.get("/account/settings", checkArchived, (req, res) => {
 	return render(req, res, "account/accountSettings");
 });
 
+router.get("/account/forgot-password", (req, res) => {
+	render(req, res, "account/accountPassForgot");
+});
+
+router.get("/account/reset-password", (req, res) => {
+	render(req, res, "account/accountPassReset");
+});
+
 router.get("/account/logout", (req, res) => {
 	// See if the user is logged in and the request is valid
 	if (!req.session.user) {

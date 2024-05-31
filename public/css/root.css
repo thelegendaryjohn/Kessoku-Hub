@@ -22,7 +22,7 @@
 	--xxsmall-font-size: 8px;
 	--xsmall-font-size: 10px;
 	--small-font-size: 12px;
-	--medium-font-size: 16px;
+	--medium-font-size: 14px;
 	--large-font-size: 24px;
 	--xlarge-font-size: 32px;
 }
@@ -287,7 +287,7 @@ footer p {
 /* Desktop elements */
 #desktop-nav-container {
 	position: sticky;
-	z-index: 9;
+	z-index: 6;
 	top: 0;
 
 	/* display: flex; on enabled */

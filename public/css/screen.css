@@ -1,10 +1,11 @@
-/* Desktop (>=1400px, landscape): 1920×1080 */
-@media (orientation: landscape) and (min-width: 1400px) {
-	/* Your CSS styles for Desktop */
+/* TV (>=1440px, landscape): 2560x1440 */
+/* @media (orientation: landscape) and (min-width: 2500px) {
 	:root {
-		font-size: var(--medium-font-size);
+		font-size: var(--large-font-size);
 	}
+} */
 
+@media (orientation: landscape) and (min-width: 1400px) {
 	/* Nav bar and sidebar */
 	#sidebar,
 	#menu-btn,
@@ -13,6 +14,11 @@
 	}
 
 	#desktop-nav-container {
+		display: flex !important;
+	}
+
+	/* Signup and Login */
+	#side-image-container {
 		display: flex !important;
 	}
 
@@ -28,19 +34,63 @@
 
 	/* Forum search bar */
 	.search-bar-container {
-		max-width: 50rem;
+		max-width: 30rem;
 		border-bottom: 1px solid var(--accent-purple);
 		border-left: 1px solid var(--accent-purple);
 		border-right: 1px solid var(--accent-purple);
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
+		/* border-bottom-left-radius: 10px; */
+		/* border-bottom-right-radius: 10px; */
+	}
+
+	.search-bar {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		height: 3rem;
+		gap: 1rem;
+	}
+
+	.search-input {
+		font-size: 1.2rem;
+		padding: 0.5rem 1rem;
+		width: 100%;
+		border: 1px solid var(--hitori-color);
+		border-radius: 10px;
+		outline: none;
+	}
+
+	.search-button {
+		cursor: pointer;
+		width: 3rem;
+	}
+
+	.filter-option-container {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		width: 100%;
+		font-size: 1.3rem;
+	}
+
+	/* Forum nav bar/action bar */
+	#forum-action-container {
+		display: none !important;
+	}
+
+	#forum-sidebar-container {
+		display: flex !important;
+	}
+
+	#forum-horizontal-section {
+		display: flex;
+		height: 100%;
 	}
 }
 
 @media screen and (orientation: landscape) {
 	/* Footer */
 	#footer-container {
-		height: 3.5rem;
+		height: 3.5rem !important;
 	}
 
 	#footer-content {
@@ -54,7 +104,7 @@
 	}
 
 	#footer-arrow-container {
-		width: 3rem;
+		width: 3rem !important;
 	}
 
 	#footer-copyright {
@@ -62,18 +112,17 @@
 	}
 }
 
-/* Tablet (>=768px && <=1400px, landscape): 1024x1366 */
+/* Desktop (>=1400px, landscape): 1920×1080 */
 @media (orientation: landscape) and (max-width: 1400px) {
-	/* Your CSS styles for Tablet */
 	:root {
-		font-size: var(--medium-font-size);
+		font-size: var(--medium-font-size) !important;
 	}
 }
 
 /* Mobile (<=768px, portrait): 390×844 */
 @media (orientation: portrait) and (max-width: 768px) {
 	:root {
-		font-size: var(--small-font-size);
+		font-size: var(--small-font-size) !important;
 	}
 
 	.audio-widget {
@@ -89,11 +138,6 @@
 	}
 }
 
-/* @media screen and (orientation: portrait) and (max-width: 450px) {
-	:root {
-		font-size: var(--xsmall-font-size);
-	}
-} */
 
 @media screen and (orientation: portrait) and (max-width: 350px) {
 	:root {

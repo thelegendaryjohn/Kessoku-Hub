@@ -82,8 +82,16 @@ label:not(.switch):not(.comment-button) {
 .post-title-container {
 	display: flex;
 	justify-content: space-between;
+	justify-content: space-between;
 }
 
 .pinned-icon {
 	width: 2rem;
+}
+
+/* Media Queries */
+@media (orientation: landscape) and (min-width: 1400px) {
+	#content-section-container {
+		/* padding-right: 15rem; */
+	}
 }
