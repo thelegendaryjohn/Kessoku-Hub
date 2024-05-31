@@ -3,10 +3,12 @@
   <div class="topic-header">
     <a href="<%= `/user/${comment.author.username}` %>">
       <div class="topic-header-date-title">
+        <img src='<%= comment.author.avatar != "" ? `/${comment.author.avatar}` : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
         <h3 class="topic-author"><%= comment.author.username %></h3>
         <h4 class="topic-date"><%- include("./forumDate.ejs", {obj: comment}) %></h4>
       </div>
     </a>
+    <%- include("threeDotsMenuComment.ejs", {isComment: true}) %>
   </div>
 
   <!-- Comment content -->

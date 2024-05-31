@@ -1,0 +1,21 @@
+<div class="comment-three-dots-menu" data-comment-id="<%= locals.comment._id %>">
+  <!-- three dots  menu container -->
+  <div class="three-dots-menu-container" role="button">
+    <!-- three dots svg -->
+    <svg class="three-dots-svg" xmlns="http://www.w3.org/2000/svg" width="2.5rem" height="3rem" viewBox="0 0 16 16" fill="#000000" class="bi bi-three-dots-vertical">
+      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+    </svg>
+  </div>
+
+  <!-- three dots menu -->
+  <div class="three-dots-menu hide">
+
+    <% if (locals.user?.username === comment.author.username || locals.isCurrUserAdmin) { %>
+    <button class="action-2 three-dots-menu-button" id="deleteComment">Delete</button>
+    <% } %>
+    <% if (locals.user?.username === comment.author.username) {%>
+    <button class="action-1 three-dots-menu-button" id="editComment">Edit</button>
+    <% } %>
+
+  </div>
+</div>
