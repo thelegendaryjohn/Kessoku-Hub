@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { render } from "../../lib/render.js";
 // TODO: This should import from the database instead
-let items = [
+const items = [
 	{
 		id: 0, // Should be a unique identifier, randomly generated. Take _id from the database
 		imageName: "bocchi-sweater.png",
