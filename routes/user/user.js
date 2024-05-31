@@ -125,4 +125,23 @@ router.put("/user/unban/:id", async (req, res) => {
 	}
 });
 
+// Archive a user by ID.
+router.put("/user/archive/:id", async (req, res) => {
+	if (!req.params.id) {
+		return res.status(400).send("Missing URL parameter: ID");
+	}
+	if (req.session.user._id != req.params.id) {
+		return res.status(401).send("Unauthorized.");
+	}
+	try {
+		const user = await User.findByIdAndUpdate(
+			req.params.id,
+			{ isArchived: true },
+			{ new: true } // This option returns the updated document
+		);
+		return res.status(200).json(user);
+	} catch (err) {
+		return res.status(500).json(err);
+	}
+});
 export default router;

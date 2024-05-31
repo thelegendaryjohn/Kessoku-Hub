@@ -13,7 +13,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs", { profileView: true }) %>
 
@@ -39,6 +39,7 @@
     <div id="user-card-container" class="section-container">
       <!-- User profile -->
       <div id="profile-container">
+        <% if (!locals.targetedUser.isArchived) { %>
         <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
 
         <h1 id="profile-name"><%= targetedUser.username %></h1>
@@ -83,7 +84,9 @@
       </div>
 
     </div>
-
+    <% } else { %>
+    <h1 id="profile-name">User not found</h1>
+    <% } %>
   </main>
 
   <!-- Footer partial -->

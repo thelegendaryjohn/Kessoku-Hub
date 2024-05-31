@@ -7,16 +7,16 @@ import { Comment } from "../../models/comment.js";
 const router = Router();
 
 router.get("/user/:username", async (req, res) => {
-	const user = await User.findOne({ username: req.params.username });
+	const user = await User.findOne({
+		username: req.params.username,
+		isArchived: { $ne: true },
+	});
 	if (!user) {
 		return res.status(404).json("User not found.");
 	} else {
 		const postCount = await Post.countDocuments({ author: user._id });
 		const commentCount = await Comment.countDocuments({ author: user._id });
 		let targetedUser = user.toObject();
-		// Remove sensitive information
-		delete targetedUser.password;
-		delete targetedUser.email;
 		render(req, res, "account/profilePage", {
 			targetedUser: targetedUser,
 			postCount: postCount,

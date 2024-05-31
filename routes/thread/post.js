@@ -16,7 +16,7 @@ let schema = {
 };
 // Functions
 export const getPost = (id) => {
-	return Post.findById(id)
+	return Post.findOne({ _id: id, isArchived: { $ne: true } })
 		.populate("author", "-__v -email -password")
 		.populate("topicId");
 };
@@ -112,8 +112,9 @@ router.delete("/thread/post/:id", (req, res) => {
 			) {
 				return res.status(401).json("Unauthorized.");
 			}
-			Post.findByIdAndDelete(req.params.id)
-				.then(() => {
+			Post.findById(req.params.id)
+				.then((post) => {
+					post.isArchived = true;
 					return res.status(200).json("Post deleted.");
 				})
 				.catch((err) => {

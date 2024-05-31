@@ -23,7 +23,10 @@ router.get("/forum", checkBanned, async (req, res) => {
 	const topics = await Topic.find({});
 	let posts = {};
 	for (let topic of topics) {
-		posts[topic._id] = await Post.find({ topicId: topic._id })
+		posts[topic._id] = await Post.find({
+			topicId: topic._id,
+			isArchived: { $ne: true },
+		})
 			.sort({ pinned: -1, createdAt: -1 })
 			.limit(3)
 			.populate("author", "-__v -email -password");
@@ -48,7 +51,10 @@ router.get("/forum/topic/:name", checkBanned, async (req, res) => {
 		return res.status(404).json("Topic not found.");
 	}
 	//
-	const posts = await Post.find({ topicId: topic._id })
+	const posts = await Post.find({
+		topicId: topic._id,
+		isArchived: { $ne: true },
+	})
 		.populate("author", "-__v -email -password")
 		.sort({ pinned: -1, createdAt: -1 });
 

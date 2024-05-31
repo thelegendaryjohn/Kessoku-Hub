@@ -17,9 +17,9 @@ let schema = {
 export const getComment = (singleComment, id) => {
 	let comment;
 	if (singleComment) {
-		comment = Comment.findById(id);
+		comment = Comment.findOne({ _id: id, isArchived: { $ne: true } });
 	} else {
-		comment = Comment.find({ postId: id });
+		comment = Comment.findOne({ postId: id, isArchived: { $ne: true } });
 	}
 	return comment
 		.populate("author", "-__v -email -password")
@@ -126,8 +126,9 @@ router.delete("/thread/comment/:id", (req, res) => {
 				return res.status(401).json("Unauthorized.");
 			}
 
+			comment.isArchived = true;
 			comment
-				.remove()
+				.save()
 				.then(() => {
 					return res.status(200).json("Comment deleted.");
 				})

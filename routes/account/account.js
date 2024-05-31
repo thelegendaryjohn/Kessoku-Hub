@@ -4,6 +4,16 @@ import { render } from "../../lib/render.js";
 //
 const router = Router();
 
+// Middleware function to prevent archived users from accessing the account
+function checkArchived(req, res, next) {
+	if (req.session.user?.isArchived) {
+		return render(req, res, "account/accountSuccess", {
+			message: `Your account is archived.`,
+		});
+	}
+	next();
+}
+
 router.get("/account", (req, res) => {
 	render(req, res, "account/accountSignIn");
 });
@@ -14,7 +24,7 @@ router.get("/account/success", (req, res) => {
 	});
 });
 
-router.get("/account/menu", (req, res) => {
+router.get("/account/menu", checkArchived, (req, res) => {
 	if (!req.session.user && env != "test" && env != "dev") {
 		return res.redirect("/account");
 	}
@@ -22,11 +32,11 @@ router.get("/account/menu", (req, res) => {
 	render(req, res, "account/accountMenu");
 });
 
-router.get("/account/profile", (req, res) => {
+router.get("/account/profile", checkArchived, (req, res) => {
 	render(req, res, "account/accountEdit");
 });
 
-router.get("/account/settings", (req, res) => {
+router.get("/account/settings", checkArchived, (req, res) => {
 	if (!req.session.user) {
 		return res.redirect("/account");
 	}
