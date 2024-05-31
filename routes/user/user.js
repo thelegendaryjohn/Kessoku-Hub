@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
+import { render } from "../../lib/render.js";
 //
 const router = Router();
 
@@ -136,7 +137,7 @@ router.put("/user/unban/:id", async (req, res) => {
 });
 
 // Archive a user by ID.
-router.put("/user/archive/:id", async (req, res) => {
+router.post("/user/archive/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -158,11 +159,13 @@ router.put("/user/archive/:id", async (req, res) => {
 				return res.status(500).json("Error logging out.");
 			}
 
-			return res.status(200).redirect("account/accountSuccess", {
-				message: "Your account has been deactivated.",
+			return render(req, res, "account/accountSuccess", {
+				message: `Your account has been archived. Logging you out.`,
+				redirect: "/",
 			});
 		});
 	} catch (err) {
+		console.error(err);
 		return res.status(500).json(err);
 	}
 });
