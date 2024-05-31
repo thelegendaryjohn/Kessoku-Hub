@@ -68,6 +68,7 @@ main {
 .qty-btn {
 	font-size: 1.8rem;
 	color: var(--ryo-color);
+	background-color: var(--body-color);
 	text-decoration: none;
 	border: 1px solid var(--ryo-color);
 	border-radius: 7px;
