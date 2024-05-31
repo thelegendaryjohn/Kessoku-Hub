@@ -22,7 +22,7 @@ export const getComment = (singleComment, id) => {
 	if (singleComment) {
 		comment = Comment.findOne({ _id: id, isArchived: { $ne: true } });
 	} else {
-		comment = Comment.findOne({ postId: id, isArchived: { $ne: true } });
+		comment = Comment.find({ postId: id, isArchived: { $ne: true } });
 	}
 	return comment
 		.populate("author", "-__v -email -password")
@@ -114,27 +114,22 @@ router.delete("/thread/comment/:id", (req, res) => {
 		return res.status(401).json("Unauthorized.");
 	}
 
-	Comment.findById(req.params.id, (err, comment) => {
-		if (err) {
-			return res.status(500).json(err);
-		} else {
-			if (
-				comment.author.toString() !== req.session.user._id ||
-				req.session.user.role < 2
-			) {
-				return res.status(401).json("Unauthorized.");
-			}
-
-			comment.isArchived = true;
-			comment
-				.save()
-				.then(() => {
-					return res.status(200).json("Comment deleted.");
-				})
-				.catch((err) => {
-					return res.status(500).json(err);
-				});
+	Comment.findById(req.params.id).then((comment) => {
+		if (
+			req.session.user.role < 2 &&
+			comment.author.toString() !== req.session.user._id
+		) {
+			return res.status(401).json("Unauthorized.");
 		}
+		comment.isArchived = true;
+		comment
+			.save()
+			.then(() => {
+				return res.status(200).json("Comment deleted.");
+			})
+			.catch((err) => {
+				return res.status(500).json(err);
+			});
 	});
 });
 

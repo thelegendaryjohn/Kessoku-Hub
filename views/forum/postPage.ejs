@@ -64,6 +64,74 @@
 
     <!-- Footer partial -->
     <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
+    <!-- Comment three dot menu script -->
+    <script>
+      document.querySelectorAll(".comment-three-dots-menu").forEach((container) => {
+        const threeDotsMenuButton = container.querySelector(".three-dots-menu-container");
+        const threeDotsMenu = container.querySelector(".three-dots-menu");
+        let commentId = container.getAttribute("data-comment-id");
+
+        // If three-dots-menu does not contain any children, hide the three-dots-menu-container
+        if (threeDotsMenu.children.length === 0) {
+          threeDotsMenuButton.classList.add("hide");
+        }
+
+        threeDotsMenuButton.addEventListener("click", (e) => {
+          threeDotsMenu.classList.toggle("hide");
+        });
+
+        // Implement the three-dots-menu actions
+        function performAction(actionName) {
+          let url = "";
+          let method = "PUT";
+          switch (actionName) {
+            case "delete": {
+              method = "DELETE";
+              url = "/thread/comment";
+              url += `/${commentId}`;
+              break;
+            }
+            case "edit": {
+              method = "PUT";
+              url = "/thread/comment";
+              url += `/${commentId}`;
+              break;
+            }
+          }
+
+          fetch(url, {
+              method: method,
+              headers: {
+                "Content-Type": "application/json"
+              }
+            })
+            .then((res) => {
+              if (res.status === 200) {
+                window.location.reload();
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function addEventListenerIfExists(selector, event, handler) {
+          const element = container.querySelector(selector);
+          if (element) {
+            element.addEventListener(event, handler);
+          }
+        }
+        // Delete post
+        addEventListenerIfExists("#deleteComment", "click", () => {
+          performAction("delete");
+        });
+
+        // Edit post
+        addEventListenerIfExists("#editComment", "click", () => {
+          performAction("edit");
+        });
+      })
+    </script>
   </main>
 
 </body>
