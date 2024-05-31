@@ -34,14 +34,14 @@
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: topic.name, headerColor: "var(--accent-purple)", linkedNav: true }) %>
 
-  <!-- Forum search bar partial -->
-  <%- include("../partials/forum/forumSearchBar.ejs") %>
-
   <!-- Cookies consent banner -->
   <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
 
   <!-- Main content -->
   <main>
+    <!-- Forum search bar partial -->
+    <%- include("../partials/forum/forumSearchBar.ejs") %>
+
     <!-- Post section -->
     <section id="content-section-container">
       <div class="posts">
