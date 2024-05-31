@@ -4,7 +4,7 @@
 <head>
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
-  <link rel="stylesheet" href="css/store/store.css" />
+  <link rel="stylesheet" href="/css/store/store.css" />
 
   <title>Kessoku Hub | Store</title>
 </head>
@@ -31,18 +31,18 @@
       <!-- Dynamically generate the item container -->
       <% items.forEach(item => { %>
       <div class="item-container" id="<%- item.id%>">
-        <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="<%- item.description%>" />
+        <img class="item-image" src="/images/store-section/<%- item.imageName%>" alt="<%- item.description%>" />
         <div class="item-name"><%- item.name%></div>
         <div class="item-description"><%- item.description%></div>
         <div class="item-price"><%- item.price%>$</div>
-        <div class="item-add-to-cart">
-          <a href="/store/add/<%= item.id %>" type="button">Add to cart</a>
-        </div>
+        <button class="item-add-to-cart">
+          <span class="add-to-cart">Add to cart</span>
+        </button>
       </div>
       <% }) %>
     </div>
     <!-- Cart page button container -->
-    <a href="/cart">
+    <a href="/store/cart">
       <div id="cart-button-container">
         <svg fill="#2254c0" class="cart-svg" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.1 483.1" xml:space="preserve">
           <g>
@@ -53,6 +53,7 @@
             c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z" />
           </g>
         </svg>
+        <span class="cart-items-count"></span>
       </div>
     </a>
   </main>
@@ -64,12 +65,27 @@
 <% if (items) { %>
 <script>
   const items = <%- JSON.stringify(items) %>;
+  const cart = <%- JSON.stringify(cart) %>;
 </script>
 <% } %>
 <script type="module">
+  // Initially hide the cart items count
+  const cartItemsCount = document.querySelector(".cart-items-count");
+  cartItemsCount.style.display = "none";
+  let total = 0;
+  for (let item in cart) {
+    if (item > 0) {
+      total += cart[item];
+    }
+  }
+  if (total > 0) {
+    cartItemsCount.textContent = total;
+    cartItemsCount.style.display = "flex";
+  }
   //initialize
   const cartSvg = document.querySelector(".cart-svg");
   const cartBtn = document.querySelector("#cart-button-container");
+  const addToCartBtn = document.querySelectorAll(".add-to-cart");
 
   //change svg color when hover
   cartBtn.addEventListener("mouseover", () => {
@@ -77,6 +93,30 @@
   });
   cartBtn.addEventListener("mouseout", () => {
     cartSvg.setAttribute("fill", "#2254c0");
+  });
+
+  // Listening to the add to cart button
+  addToCartBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const itemId = e.target.parentElement.parentElement.id;
+      fetch(`/store/add/${itemId}`, {
+          method: "POST",
+        })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Failed to add item to cart");
+          }
+        })
+        .then((data) => {
+          cartItemsCount.textContent = data;
+          if (data > 0) {
+            cartItemsCount.style.display = "flex";
+          }
+        })
+    });
   });
 </script>
 

@@ -28,6 +28,8 @@ input::placeholder {
 #post-create-option-container .input-field {
 	border: 2px solid var(--accent-grey);
 	border-radius: 10px;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 #post-create-option-thread-select {
@@ -54,9 +56,21 @@ input::placeholder {
 }
 
 #post-create-btn-container > .form-btn {
-	width: 40%;
+	padding: 0.5rem 1rem;
 	font-size: 2rem;
 	cursor: pointer;
+}
+
+#post-create-attachments {
+	width: 70%;
+}
+
+#post-create-restricted {
+	display: flex;
+	justify-content: center;
+	font-size: 1.4rem;
+	color: var(--ikuyo-color);
+	gap: 1rem;
 }
 
 #post-create-attachments {

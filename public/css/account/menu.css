@@ -14,7 +14,7 @@ a {
 }
 
 #user-profile-container #profile-img {
-	width: 8rem;
+	width: 12rem;
 }
 
 #user-profile-container #profile-name {
@@ -62,7 +62,8 @@ a {
 }
 
 .function-btn:hover {
-	background-color: rgb(227, 227, 227);
+	background-color: var(--black-color);
+	color: var(--body-color);
 }
 
 .function-btn:not(:hover) {
@@ -76,7 +77,7 @@ a {
 .function-btn .function-name {
 	font-size: 2rem;
 	width: 100%;
-	color: var(--black-color);
+	color: var(--accent-purple);
 	font-weight: bold;
 }
 

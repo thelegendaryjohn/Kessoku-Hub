@@ -9,14 +9,27 @@ import { getComment } from "../thread/comment.js";
 //
 const router = Router();
 
-router.get("/forum", async (req, res) => {
+// Middleware to prevent banned users from accessing the forum
+function checkBanned(req, res, next) {
+	if (req.session.user?.isBanned) {
+		return render(req, res, "account/accountSuccess", {
+			message: `You are banned from the forum.`,
+		});
+	}
+	next();
+}
+
+router.get("/forum", checkBanned, async (req, res) => {
 	const topics = await Topic.find({});
 	let posts = {};
 	for (let topic of topics) {
-		posts[topic._id] = await Post.find({ topicId: topic._id })
-			.sort({ createdAt: -1 })
+		posts[topic._id] = await Post.find({
+			topicId: topic._id,
+			isArchived: { $ne: true },
+		})
+			.sort({ pinned: -1, createdAt: -1 })
 			.limit(3)
-			.populate("author");
+			.populate("author", "-__v -email -password");
 	}
 	render(req, res, "forum/forumPage", {
 		topics: topics,
@@ -28,7 +41,7 @@ router.get("/forum/welcome", (req, res) => {
 	render(req, res, "forum/forumWelcome");
 });
 
-router.get("/forum/topic/:name", async (req, res) => {
+router.get("/forum/topic/:name", checkBanned, async (req, res) => {
 	if (!req.params.name) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -38,31 +51,47 @@ router.get("/forum/topic/:name", async (req, res) => {
 		return res.status(404).json("Topic not found.");
 	}
 	//
-	const posts = await Post.find({ topicId: topic._id }).populate("author");
+	const posts = await Post.find({
+		topicId: topic._id,
+		isArchived: { $ne: true },
+	})
+		.populate("author", "-__v -email -password")
+		.sort({ pinned: -1, createdAt: -1 });
 
 	render(req, res, "forum/topicPage", {
 		topic: topic,
 		posts: posts,
-		linkedNav: true,
 	});
 });
 
-router.get("/forum/thread/:id", async (req, res) => {
+router.get("/forum/thread/:id", checkBanned, async (req, res) => {
 	// Validate post id
 	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
 		return res.status(401).json("Invalid input.");
 	}
 
-	let post = getPost(req.params.id);
+	let post = await getPost(req.params.id);
+	if (!post) {
+		console.log("Post not found.");
+		return render(req, res, "account/accountSuccess", {
+			message: "Post not found.",
+			redirect: "/forum",
+		});
+	}
 	let comments = getComment(false, req.params.id);
 
 	[post, comments] = await Promise.all([post, comments]);
+
+	// If comment is just a single object, convert it to an array
+	if (!Array.isArray(comments)) {
+		comments = [comments];
+	}
 
 	render(req, res, "forum/postPage", {
 		topic: post.topicId,
 		post: post,
 		comments: comments,
-		linkedNav: true,
+		isCurrUserAdmin: req.session.user?.role === roles.admin,
 		isGuest: !req.session.user,
 		isVerified: req.session.user
 			? req.session.user.role !== roles.unverified
@@ -70,7 +99,7 @@ router.get("/forum/thread/:id", async (req, res) => {
 	});
 });
 
-router.get("/forum/post/create", async (req, res) => {
+router.get("/forum/post/create", checkBanned, async (req, res) => {
 	// Redirect user to welcome page if not logged in
 	if (!req.session.user) {
 		return res.redirect("/forum/welcome");
@@ -79,12 +108,11 @@ router.get("/forum/post/create", async (req, res) => {
 	const topics = await Topic.find({});
 	render(req, res, "forum/postCreatePage", {
 		topics: topics,
-		linkedNav: true,
 		isVerified: req.session.user.role !== roles.unverified,
 	});
 });
 
-router.get("/forum/inbox", (req, res) => {
+router.get("/forum/inbox", checkBanned, (req, res) => {
 	if (!req.session.user) {
 		return res.redirect("/forum/welcome");
 	}

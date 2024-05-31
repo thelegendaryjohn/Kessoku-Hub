@@ -39,6 +39,12 @@
 
   <!-- Main content -->
   <main>
+    <!-- Desktop forum sidebar -->
+    <%- include("../partials/forum/forumSidebarDesktop.ejs") %>
+
+    <!-- Forum search bar partial -->
+    <%- include("../partials/forum/forumSearchBar.ejs") %>
+
     <!-- Post section -->
     <section id="content-section-container">
       <div class="posts">
@@ -48,7 +54,7 @@
           <div class="topic-header">
             <a href="/user/<%= post.author.username %>">
               <div class="topic-header-date-title">
-                <img src='<%= post.author.avatar != "" ? post.author.avatar : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
+                <img src='<%= post.author.avatar != "" ? `/${post.author.avatar}` : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
                 <h3 class="topic-author"><%= post.author.username %></h3>
                 <h4 class="topic-date"><%- include("../partials/forum/forumDate.ejs", {obj: post}) %></h4>
               </div>
@@ -57,7 +63,10 @@
           <a class="post-link-container" href=<%= `/forum/thread/${post._id}` %>>
             <div class="post-container">
               <!-- Post link text -->
-              <h3 class="post-title"><%= post.title %></h3>
+              <div class="post-title-container">
+                <h3 class="post-title"><%= post.title %></h3>
+                <img class="pinned-icon" style="display: <%= post.pinned ? 'block' : 'none' %>;" src="/images/forum-section/pin-icon.svg" alt="Pinned post">
+              </div>
               <p class="post-text font-poppins"><%= post.content %></p>
 
             </div>
@@ -72,6 +81,9 @@
 
   <!-- Forum action partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
 </body>
 
 </html>

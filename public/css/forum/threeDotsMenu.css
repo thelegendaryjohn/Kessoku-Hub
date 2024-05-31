@@ -1,0 +1,55 @@
+.three-dots-menu-container {
+	font-size: 2rem;
+	display: flex;
+	padding: 0.2rem;
+	width: fit-content;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.hide {
+	display: none !important;
+}
+
+.three-dots-svg {
+	cursor: pointer;
+	position: relative;
+	justify-self: flex-end;
+	align-self: flex-start;
+	fill: var(--black-color);
+}
+
+.three-dots-svg:hover {
+	fill: var(--accent-grey);
+}
+
+.three-dots-menu {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	background: white;
+	box-shadow: -2px 3px 5px var(--accent-grey);
+	gap: 0.2rem;
+	width: 100%;
+	max-width: 10rem;
+	border-radius: 5px;
+	right: 3rem;
+	top: 0;
+}
+
+.three-dots-menu-button {
+	cursor: pointer;
+	box-sizing: border-box;
+	font-size: 1.5rem;
+	width: 100%;
+	display: flex;
+	padding: 0.5rem;
+	background: none;
+	border: none;
+	border-radius: 5px;
+}
+
+.three-dots-menu-button:hover {
+	background-color: var(--ryo-color);
+	color: var(--body-color);
+}

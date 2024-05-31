@@ -6,11 +6,11 @@ main {
 	width: 100%;
 }
 
-label {
+label:not(.switch) {
 	/* z-index: 1; */
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(0.9rem);
-	background-color: white;
+	background-color: var(--body-color);
 	width: fit-content;
 	padding: 0 0.5rem;
 }
@@ -70,6 +70,8 @@ label {
 	outline: none;
 	border: 2px solid var(--accent-lightgrey);
 	border-radius: 10px;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 .longtext-input-field {
@@ -130,3 +132,4 @@ label {
 	max-height: 2398px; */
 	filter: brightness(90%);
 }
+

@@ -12,7 +12,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -26,7 +26,11 @@
   <main>
     <!-- User profile header -->
     <div id="user-profile-container">
-      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+      <% if (locals.user) { %>
+      <img src="<%= locals.user.avatar !== "" ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="User profile icon" id="profile-img">
+      <% } else { %>
+      <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
+      <% } %>
 
       <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
     </div>
@@ -64,20 +68,6 @@
           </div>
         </a>
 
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/language-icon.svg" alt="Language">
-            <p class="function-name">Language</p>
-          </div>
-        </a>
-
-        <a href="#">
-          <div class="function-btn">
-            <img class="function-img" src="/images/account-section/theme-icon.svg" alt="Theme & Accent">
-            <p class="function-name">Theme & Accent</p>
-          </div>
-        </a>
-
       </section>
 
       <!-- "Security" section -->
@@ -92,7 +82,7 @@
         </a>
 
         <a href="#">
-          <div class="function-btn">
+          <div class="function-btn" id="deactivate-btn">
             <img class="function-img" src="/images/account-section/ban-icon.svg" alt="Deactivate Account">
             <p class="function-name">Deactivate Account</p>
           </div>
@@ -123,6 +113,31 @@
 
     </div>
   </main>
+
+  <script>
+    // Deactivate account confirmation
+    const deactivateBtn = document.querySelector("#deactivate-btn");
+    let confirmDeactivate = false;
+    deactivateBtn.addEventListener("click", () => {
+      if (confirmDeactivate) {
+        fetch("/user/archive/" + "<%= locals.user ? locals.user._id : '' %>", {
+          method: "POST"
+        }).then((res) => {
+          if (res.status !== 200) {
+            console.log("Error deactivating account");
+            return;
+          } else {
+            console.log("Account deactivated");
+            window.location.href = "/";
+          }
+        })
+      } else {
+        deactivateBtn.querySelector("p").textContent = "Are you sure? Click again to confirm.";
+        deactivateBtn.querySelector("p").style.color = "red";
+        confirmDeactivate = true;
+      }
+    });
+  </script>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>

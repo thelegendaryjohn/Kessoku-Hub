@@ -54,7 +54,47 @@
     <div id="side-image-container">
       <img id="side-image" src="/images/general-images/desktop-side-image-4.webp" alt="Side image">
     </div>
+
   </main>
+
+  <script>
+    // Contact form submission
+    document.querySelector("#contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      console.log("Form submitted");
+
+      // Get form data
+      const email = document.querySelector("#contact-email-input").value;
+      const subject = document.querySelector("#contact-subject-input").value;
+      const message = document.querySelector("#contact-message-input").value;
+
+      // Validate form data
+      if (email === "" || subject === "" || message === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // Send form data to server
+      fetch("/support", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            subject: subject,
+            message: message
+          })
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = "/support/success";
+          } else {
+            alert("An error occurred. Please try again later.");
+          }
+        })
+    });
+  </script>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>

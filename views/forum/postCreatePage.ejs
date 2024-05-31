@@ -42,26 +42,30 @@
       </div>
 
       <!-- Post creating -->
-      <form id="post-create-container" class="form-container">
+      <form id="post-create-container" class="form-container" method="POST" action="/thread/post" enctype="multipart/form-data">
         <div id="post-create-option-container">
           <label for="post-create-option-thread-select" class="font-poppins">Topics</label>
-          <select id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" default="Select a topic!">
+          <select id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" default="Select a topic!" <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %>>
             <% topics.forEach((topic) => { %>
             <% if (topic.allowedRole <= user.role) { %>
-            <option value=<%= topic.name %> id=<%= topic._id %>><%= topic.name %> </option>
+            <option value=<%= topic._id %> id=<%= topic._id %>><%= topic.name %> </option>
             <% } %>
             <% }) %>
           </select>
 
           <label for="post-create-option-title" class="font-poppins">Title</label>
-          <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make sure it's at least 5 characters!">
+          <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make sure it's at least 5 characters!" <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %> pattern=".{5,32}">
         </div>
 
-        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write the content..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
+        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write the content..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %> pattern=".{3,}"></textarea>
 
-        <div id="post-create-btn-container">
-          <button id="post-create-attachments" class="form-btn" onclick="event.preventDefault();">Add Files</button>
-          <input id="post-create-submit" class="form-btn" type="submit" value="Post" onclick="event.preventDefault();">
+        <div id="post-create-btn-container" style="display: <%= locals.user.isRestricted ? "none" : "flex" %>;">
+          <input id="post-create-attachments" type="file" class="form-btn" value="Upload Image" name="attachment" accept="image/*">
+          <input id="post-create-submit" class="form-btn" type="submit" value="Post" name="submit">
+        </div>
+
+        <div id="post-create-restricted" style="display: <%= locals.user.isRestricted ? "flex" : "none" %>;">
+          <p class="font-poppins" id="post-create-restricted-text">You are restricted from the forum</p>
         </div>
       </form>
 
@@ -70,43 +74,6 @@
 
   <!-- Forum actions partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
-
-  <script>
-    // Upon form submission, send a POST request to the server to create a new post
-    document.getElementById("post-create-submit").addEventListener("click", async (event) => {
-      event.preventDefault();
-
-      const threadSelect = document.getElementById("post-create-option-thread-select");
-      const titleInput = document.getElementById("post-create-option-title");
-      const contentInput = document.getElementById("post-create-input");
-
-      const threadId = threadSelect.options[threadSelect.selectedIndex].id;
-      const title = titleInput.value;
-      const content = contentInput.value;
-
-      const response = await fetch("/thread/post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          topic: threadId,
-          title: title,
-          content: content,
-        }),
-      });
-
-      if (response.ok) {
-        response.json().then((data) => {
-          window.location.href = `/forum/thread/${data._id}`;
-        });
-      } else {
-        response.json().then((data) => {
-          alert("Failed to create post: " + data);
-        });
-      }
-    });
-  </script>
 </body>
 
 </html>
