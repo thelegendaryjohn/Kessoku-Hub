@@ -86,12 +86,11 @@ document
 
 		if (response.status === 200) {
 			let params = new URL(document.location.toString()).searchParams;
+			let extra = params.get("redirect")
+				? `&redirect=${params.get("redirect")}`
+				: ``;
 			window.location.href =
-				"/account/success?username=" +
-				formData.get("username") +
-				+params.get("redirect")
-					? params.get("redirect")
-					: ``;
+				"/account/success?username=" + formData.get("username") + extra;
 		} else {
 			let error = await response.json();
 			clearErrorHighlight();
@@ -145,12 +144,13 @@ document
 
 			if (response.status === 200) {
 				let params = new URL(document.location.toString()).searchParams;
+				let extra = params.get("redirect")
+					? `&redirect=${params.get("redirect")}`
+					: ``;
 				window.location.href =
 					"/account/success?username=" +
 					formData.get("username") +
-					params.get("redirect")
-						? params.get("redirect")
-						: ``;
+					extra;
 			} else {
 				clearErrorHighlight();
 				errorAlert(
