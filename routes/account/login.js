@@ -22,7 +22,7 @@ let schema = {
 // Apply the user login route
 router.post("/account/login", async (req, res, next) => {
 	try {
-		if (NODE_ENV === "prod") {
+		/*if (NODE_ENV === "prod") {
 			// Verify reCAPTCHA
 			const recaptchaResponse = await fetch(
 				`https://www.google.com/recaptcha/api/siteverify`,
@@ -44,7 +44,7 @@ router.post("/account/login", async (req, res, next) => {
 			if (!recaptchaData.success) {
 				return res.status(401).json("Invalid reCAPTCHA.");
 			}
-		}
+		}*/
 
 		// Check whether the user info matches the database
 		const user = await User.findOne({ username: req.body.username });

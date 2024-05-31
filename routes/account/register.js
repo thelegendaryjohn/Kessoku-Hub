@@ -60,7 +60,7 @@ router.post("/account/register", useRateLimit, async (req, res) => {
 	}
 
 	try {
-		if (NODE_ENV === "prod") {
+		/*if (NODE_ENV === "prod") {
 			// Verify reCAPTCHA
 			const recaptchaResponse = await fetch(
 				`https://www.google.com/recaptcha/api/siteverify`,
@@ -80,7 +80,7 @@ router.post("/account/register", useRateLimit, async (req, res) => {
 			if (!recaptchaData.success) {
 				return res.status(401).json("Invalid reCAPTCHA.");
 			}
-		}
+		}*/
 
 		const creds = result.instance;
 
