@@ -7,24 +7,45 @@
     <p id="comment-signin-text" class="font-poppins" style="color: var(--ikuyo-color);">You are restricted from the forum</p>
     <% } %>
   </div>
-
+  <div id="attachment-container">
+    <span name="attachment-name" id="attachment-name">
+      Woah!!
+    </span>
+    <button id="attachment-remove" class="form-btn">✕</button>
+  </div>
   <!-- Comment posting -->
-  <form id="comment-post-container" class="form-container" style="display: <%= isGuest || locals.user.isRestricted ? "none" : "flex" %>">
+  <form id="comment-post-container" class="form-container" method="POST" action="/thread/comment/post" enctype="multipart/form-data" style="display: <%= isGuest || locals.user.isRestricted ? "none" : "flex" %>">
     <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="bio" placeholder="Write a comment..." autocomplete="off"></textarea>
     <div id="comment-post-btn-container">
       <!-- <img role="button" src="/images/forum-section/btn-send.svg" alt="Send" id="comment-post-submit-disabled" class="comment-post-submit comment-post-btn" type="submit"> -->
 
-      <svg role="button" id="comment-post-submit" class="comment-post-submit comment-post-btn" type="submit" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" alt>
+      <svg role="button" class="comment-button" class="comment-post-submit comment-post-btn" type="submit" width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" alt>
         <path d="M10.3009 13.6949L20.102 3.89742M10.5795 14.1355L12.8019 18.5804C13.339 19.6545 13.6075 20.1916 13.9458 20.3356C14.2394 20.4606 14.575 20.4379 14.8492 20.2747C15.1651 20.0866 15.3591 19.5183 15.7472 18.3818L19.9463 6.08434C20.2845 5.09409 20.4535 4.59896 20.3378 4.27142C20.2371 3.98648 20.013 3.76234 19.7281 3.66167C19.4005 3.54595 18.9054 3.71502 17.9151 4.05315L5.61763 8.2523C4.48114 8.64037 3.91289 8.83441 3.72478 9.15032C3.56153 9.42447 3.53891 9.76007 3.66389 10.0536C3.80791 10.3919 4.34498 10.6605 5.41912 11.1975L9.86397 13.42C10.041 13.5085 10.1295 13.5527 10.2061 13.6118C10.2742 13.6643 10.3352 13.7253 10.3876 13.7933C10.4468 13.87 10.491 13.9585 10.5795 14.1355Z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
+      <label for="post-create-attachments" class="form-btn">
+        <svg role="button" class="comment-button" id="submit-button" class="comment-post-submit comment-post-btn" type="submit" height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 280.067 280.067" xml:space="preserve">
+          <g>
+            <path d="M149.823,257.142c-31.398,30.698-81.882,30.576-113.105-0.429
+		c-31.214-30.987-31.337-81.129-0.42-112.308l-0.026-0.018L149.841,31.615l14.203-14.098c23.522-23.356,61.65-23.356,85.172,0
+		s23.522,61.221,0,84.586l-125.19,123.02l-0.044-0.035c-15.428,14.771-40.018,14.666-55.262-0.394
+		c-15.244-15.069-15.34-39.361-0.394-54.588l-0.044-0.053l13.94-13.756l69.701-68.843l13.931,13.774l-83.632,82.599
+		c-7.701,7.596-7.701,19.926,0,27.53s20.188,7.604,27.88,0L235.02,87.987l-0.035-0.026l0.473-0.403
+		c15.682-15.568,15.682-40.823,0-56.39s-41.094-15.568-56.776,0l-0.42,0.473l-0.026-0.018l-14.194,14.089L50.466,158.485
+		c-23.522,23.356-23.522,61.221,0,84.577s61.659,23.356,85.163,0l99.375-98.675l14.194-14.089l14.194,14.089l-14.194,14.098
+		l-99.357,98.675C149.841,257.159,149.823,257.142,149.823,257.142z" />
+          </g>
+        </svg>
+      </label>
     </div>
+    <input id="post-create-attachments" type="file" class="form-btn" value="Upload Image" name="attachment" accept="image/*">
   </form>
 </div>
 
 <script>
   const commentInput = document.querySelector("#comment-post-input");
   const commentBox = document.querySelector("#comment-section-fixed-box");
-  const commentSubmit = document.querySelector("#comment-post-submit");
+  const commentSubmit = document.querySelector("#submit-button");
+  const attachmentInput = document.querySelector("#post-create-attachments");
   let isDisabled = true;
 
   commentSubmit.addEventListener("mouseover", () => {
@@ -53,5 +74,17 @@
     commentInput.style.height = "";
     commentInput.style.height = commentInput.scrollHeight + "px";
     document.querySelector("main").style.marginBottom = commentBox.offsetHeight + "px";
+  })
+
+  attachmentInput.addEventListener("change", () => {
+    if (attachmentInput.files.length > 0)
+      document.querySelector("#attachment-name").textContent = attachmentInput.files[0].name;
+    document.querySelector("#attachment-container").style.display = "flex";
+  })
+
+  document.querySelector("#attachment-remove").addEventListener("click", () => {
+    attachmentInput.value = "";
+    document.querySelector("#attachment-name").textContent = "";
+    document.querySelector("#attachment-container").style.display = "none";
   })
 </script>
