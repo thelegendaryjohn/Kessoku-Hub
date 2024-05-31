@@ -184,6 +184,8 @@ main {
 	width: 3rem;
 	padding: 0;
 	cursor: pointer;
+	background: none;
+	border: none;
 }
 .comment-button:hover {
 	stroke: var(--accent-purple);
