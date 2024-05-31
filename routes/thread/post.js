@@ -1,5 +1,5 @@
 import { Router } from "express";
-import multer from "multer";
+import upload from "../../lib/multer.js";
 import { Post } from "../../models/post.js";
 import { Topic } from "../../models/topic.js";
 //
@@ -22,16 +22,6 @@ function checkUser(req, res, next) {
 	next();
 }
 
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, "uploads/"); // Change the path to your desired upload folder
-	},
-	filename: (req, file, cb) => {
-		cb(null, Date.now() + "-" + file.originalname);
-	},
-});
-
-const upload = multer({ storage });
 // Creating a new post
 router.post(
 	"/thread/post",
