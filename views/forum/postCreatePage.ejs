@@ -57,7 +57,7 @@
           <input id="post-create-option-title" class="input-field font-poppins" type="text" name="bio" placeholder="Make sure it's at least 5 characters!" <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %> pattern=".{5,32}">
         </div>
 
-        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write the content..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %> pattern=".{3,}></textarea>
+        <textarea id="post-create-input" class="longtext-input-field input-field font-poppins" type="text" name="bio" placeholder="Write the content..." autocomplete="off" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %> pattern=".{3,}"></textarea>
 
         <div id="post-create-btn-container" style="display: <%= locals.user.isRestricted ? "none" : "flex" %>;">
           <input id="post-create-attachments" type="file" class="form-btn" value="Upload Image" name="attachment" accept="image/*">
