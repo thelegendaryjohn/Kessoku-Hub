@@ -18,10 +18,14 @@
       <!-- Post link -->
       <div class="post-container">
         <!-- Post link text -->
-        <p class="post-title" style="word-break: break-all; white-space: normal;"><%= comment.content %></p>
+        <textarea title="post content" placeholder="this post has no text" class="post-content-text font-poppins"><%= comment.content %></textarea>
         <% if (comment.attachment) { %>
         <img src="/<%= comment.attachment %>" alt="Post image" class="post-image">
         <% } %>
+        <div class="post-edit-container hide">
+          <button class="edit-cancel-btn post-edit-btn">Cancel</button>
+          <button class="edit-submit-btn post-edit-btn">Done</button>
+        </div>
         <!-- topic post status -->
         <div class="topic-post-link-status">
           <!-- Likes -->

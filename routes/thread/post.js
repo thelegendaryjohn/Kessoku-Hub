@@ -158,7 +158,6 @@ router.put("/thread/post/:id", async (req, res) => {
 			) {
 				return res.status(401).json("Unauthorized.");
 			}
-			post.title = req.body.title;
 			post.content = req.body.content;
 			post.save()
 				.then((post) => {
