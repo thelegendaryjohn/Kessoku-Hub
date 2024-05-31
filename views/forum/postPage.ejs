@@ -56,6 +56,9 @@
   <!-- Comment box partial -->
   <%- include("../partials/forum/commentBox.ejs") %>
 
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
+
   <script>
     // Posting a comment
     document.querySelector("#comment-post-submit").addEventListener("click", async (e) => {

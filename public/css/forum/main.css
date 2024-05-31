@@ -2,7 +2,7 @@ main a:visited {
 	color: rgb(100, 100, 100);
 }
 
-label {
+label:not(.switch) {
 	/* z-index: 1; */
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(1.8rem);

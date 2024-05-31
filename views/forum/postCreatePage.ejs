@@ -75,6 +75,9 @@
   <!-- Forum actions partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
 
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
+
   <script>
     // Upon form submission, send a POST request to the server to create a new post
     document.getElementById("post-create-submit").addEventListener("click", async (event) => {
