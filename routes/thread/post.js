@@ -1,19 +1,10 @@
 import { Router } from "express";
-import { Validator } from "jsonschema";
+import upload from "../../lib/multer.js";
 import { Post } from "../../models/post.js";
 import { Topic } from "../../models/topic.js";
 //
 const router = Router();
-const v = new Validator();
-let schema = {
-	type: "object",
-	properties: {
-		title: { type: "string", minLength: 5, maxLength: 64 },
-		content: { type: "string" },
-		topic: { type: "string" },
-	},
-	required: ["title", "content", "topic"],
-};
+
 // Functions
 export const getPost = (id) => {
 	return Post.findById(id)
@@ -21,52 +12,62 @@ export const getPost = (id) => {
 		.populate("topicId");
 };
 
-// Creating a new post
-router.post("/thread/post", async (req, res) => {
-	let result = v.validate(req.body, schema);
-	if (!result.valid) {
-		return res.status(401).json("Invalid input.");
-	}
-
-	// Check whether the user is logged in
+// Middleware to prevent restricted or banned users from posting
+function checkUser(req, res, next) {
 	if (!req.session.user) {
 		return res.status(401).json("Unauthorized.");
-	}
-
-	// Check whether the topic exists
-	let topic = await Topic.findById(req.body.topic);
-	if (!topic) {
-		return res.status(401).json("Topic not found.");
-	}
-
-	// Check whether the user has permission to post in the topic
-	if (topic.allowedRole > req.session.user.role) {
+	} else if (req.session.user.isRestricted || req.session.user.isBanned) {
 		return res.status(401).json("Unauthorized.");
 	}
+	next();
+}
 
-	// Create a new post
-	let post = new Post({
-		title: req.body.title,
-		content: req.body.content,
-		author: req.session.user._id,
-		topicId: topic._id,
-	});
+// Creating a new post
+router.post(
+	"/thread/post",
+	checkUser,
+	upload.single("attachment"),
+	async (req, res) => {
+		console.log(req.body);
+		// Make sure the input is valid
+		if (
+			req.body.title.length < 5 ||
+			req.body.title.length > 64 ||
+			req.body.content.length < 5 ||
+			!req.body.topic
+		) {
+			return res.status(401).json("Invalid input.");
+		}
 
-	post.save()
-		.then((post) => {
-			return res.status(200).json({
-				_id: post._id,
-				title: post.title,
-				content: post.content,
-				author: post.author.toString(),
-				topicId: post.topicId.toString(),
-			});
-		})
-		.catch((err) => {
-			console.log(err);
-			return res.status(500).json(err);
+		// Check whether the topic exists
+		let topic = await Topic.findById(req.body.topic);
+		if (!topic) {
+			return res.status(401).json("Topic not found.");
+		}
+
+		// Check whether the user has permission to post in the topic
+		if (topic.allowedRole > req.session.user.role) {
+			return res.status(401).json("Unauthorized.");
+		}
+
+		// Create a new post
+		let post = new Post({
+			title: req.body.title,
+			content: req.body.content,
+			author: req.session.user._id,
+			topicId: topic._id,
+			attachment: req.file ? req.file.path : null,
 		});
-});
+
+		try {
+			await post.save();
+			res.redirect(`/forum/thread/${post._id}`);
+		} catch (err) {
+			console.log(err);
+			res.status(500).json("Error creating post");
+		}
+	}
+);
 
 // Getting a post by ID
 router.get("/thread/post/:id", (req, res) => {
@@ -134,11 +135,6 @@ router.put("/thread/post/:id", async (req, res) => {
 	}
 	// Validate the input
 	if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-		return res.status(401).json("Invalid input.");
-	}
-
-	let result = v.validate(req.body, schema);
-	if (!result.valid) {
 		return res.status(401).json("Invalid input.");
 	}
 

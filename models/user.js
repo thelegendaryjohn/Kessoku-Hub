@@ -37,7 +37,8 @@ const userSchema = new Schema({
 	},
 	//
 	bio: { type: String, default: "" },
-	avatar: { type: String, default: "" },
+	avatar: { type: String, default: "/images/account-section/user-icon.svg" },
+	birthday: { type: Date },
 	//
 	isRestricted: { type: Boolean, default: false },
 	isBanned: { type: Boolean, default: false },

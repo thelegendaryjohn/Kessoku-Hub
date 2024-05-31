@@ -31,12 +31,16 @@
     <!-- Thread section -->
     <section id="content-section-container">
       <div id="post-section">
-        <div id="post-title">
+        <div id="post-title" style="word-break: break-all; white-space: normal;">
           <%- include("../partials/forum/forumPostTitle.ejs") %>
         </div>
 
         <div id="post-content">
           <p class="post-content-text font-poppins"><%= post.content %></p>
+          <% if (post.attachment) { %>
+          <img src="/<%= post.attachment %>" alt="Post image" class="post-content-image">
+          <% } %>
+
         </div>
       </div>
 
@@ -56,41 +60,9 @@
     <%- include("../partials/forum/commentBox.ejs") %>
   </main>
 
+  <!-- Comment box partial -->
+  <%- include("../partials/forum/commentBox.ejs") %>
 
-  <!-- Footer partial -->
-  <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
-
-  <script>
-    // Posting a comment
-    document.querySelector("#comment-post-submit").addEventListener("click", async (e) => {
-      e.preventDefault();
-
-      if (document.querySelector("#comment-post-input").value) {
-        const content = document.querySelector("#comment-post-input").value;
-        const postId = "<%= post._id %>";
-
-        const response = await fetch(`/thread/comment/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            postId: postId,
-            content: content,
-          }),
-        });
-
-        if (response.ok) {
-          window.location.reload();
-        } else {
-          response.json().then((data) => {
-            console.log(data);
-            alert("Failed to create comment: " + data);
-          });
-        }
-      }
-    });
-  </script>
 </body>
 
 </html>

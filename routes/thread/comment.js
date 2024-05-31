@@ -1,18 +1,21 @@
 import { Router } from "express";
 import { Comment } from "../../models/comment.js";
-import { Validator } from "jsonschema";
-//
+import multer from "multer";
+
 const router = Router();
-//
-const v = new Validator();
-let schema = {
-	type: "object",
-	properties: {
-		content: { type: "string" },
-		postId: { type: "string" },
+
+// Configure Multer storage
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, "uploads/"); // Specify the upload directory
 	},
-	required: ["content", "postId"],
-};
+	filename: (req, file, cb) => {
+		cb(null, Date.now() + "-" + file.originalname); // Unique filename
+	},
+});
+
+const upload = multer({ storage });
+
 // Functions
 export const getComment = (singleComment, id) => {
 	let comment;
@@ -25,14 +28,9 @@ export const getComment = (singleComment, id) => {
 		.populate("author", "-__v -email -password")
 		.sort({ createdAt: -1 });
 };
-// Posting a comment
-router.post("/thread/comment", (req, res) => {
-	// Validate the input
-	let result = v.validate(req.body, schema);
-	if (!result.valid) {
-		return res.status(401).json("Invalid input.");
-	}
 
+// Posting a comment
+router.post("/thread/comment/post", upload.single("attachment"), (req, res) => {
 	// Check whether the user is logged in
 	if (!req.session.user) {
 		return res.status(401).json("Unauthorized.");
@@ -43,12 +41,13 @@ router.post("/thread/comment", (req, res) => {
 		content: req.body.content,
 		author: req.session.user._id,
 		postId: req.body.postId,
+		attachment: req.file ? req.file.path : null, // Store file path if file uploaded
 	});
 
 	comment
 		.save()
-		.then((comment) => {
-			return res.status(200).json(comment);
+		.then(() => {
+			return res.status(200).redirect(`/forum/thread/${req.body.postId}`);
 		})
 		.catch((err) => {
 			return res.status(500).json(err);

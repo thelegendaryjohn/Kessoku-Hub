@@ -18,6 +18,7 @@ const postSchema = new Schema({
 	//
 	title: { type: String, required: true, minLength: 5, maxLength: 64 },
 	content: { type: String, required: true },
+	attachment: { type: String },
 	//
 	viewCount: { type: Number, default: 0 },
 	likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
