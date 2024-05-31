@@ -13,7 +13,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs", { profileView: true }) %>
 
@@ -26,26 +26,28 @@
   <!-- Welcome page -->
   <main>
     <!-- Function buttons -->
-    <% console.log(`Searched user: ${locals.user.username}`); %>
-    <% console.log(`Current session user: ${locals.currUsername}`); %>
-    <div id="function-btn-container" class="section-container" style="display: <%= locals.currUsername === user.username ? "flex" : "none" %>;">
-      <a id="edit-profile-btn" class="function-btn" href="/account/profile">
+    <div id="function-btn-container" class="section-container">
+      <a style="display: <%= locals.user?.username === locals.targetedUser.username ? "flex" : "none" %>;" id="edit-profile-btn" class="function-btn" href="/account/profile">
         <p class="function-name">Edit</p>
         <img class="function-img" src="/images/account-section/edit-pen-icon.svg" alt="Edit Profile">
       </a>
+      <%- include("../partials/forum/threeDotsMenu.ejs", { isProfile: true }) %>
     </div>
+
 
     <!-- User profile header -->
     <div id="user-card-container" class="section-container">
       <!-- User profile -->
       <div id="profile-container">
-        <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+        <img id="profile-img" src="<%= locals.targetedUser.avatar !="" ? `/${targetedUser.avatar}` : `/images/account-section/user-icon.svg` %>" alt="Profile image">
 
-        <h1 id="profile-name"><%= user.username %></h1>
+        <h1 id="profile-name"><%= targetedUser.username %></h1>
 
         <h3 id="unverified-badge" class="account-badge" style="display: <%= isNotVerified ? "block" : "none" %>">Unverified ✖</h3>
-        <h3 id="verified-badge" class="account-badge" style="display: <%= isVerified ? "block" : "none" %>;">Verified ✔</h2>
+        <h3 id="verified-badge" class="account-badge" style="display: <%= isVerified ? "block" : "none" %>;">Verified ✔</h3>
         <h3 id="admin-badge" class="account-badge" style="display: <%= isAdmin ? "block" : "none" %>">Admin ⚒</h3>
+        <h3 id="unverified-badge" class="account-badge bad-badge" style="display: <%= locals.targetedUser.isRestricted ? "block" : "none" %>">✖ Restricted</h3>
+        <h3 id="unverified-badge" class="account-badge bad-badge" style="display: <%= locals.targetedUser.isBanned ? "block" : "none" %>">✖ Banned</h3>
       </div>
 
       <!-- User stats -->
@@ -53,7 +55,7 @@
         <!-- Join date -->
         <div id="join-date-container">
           <p id="join-date-header" class="stats-header">Joined </p>
-          <p id="join-date-text" class="stats-text"><%- include("../partials/forum/forumDate.ejs", {obj: user}) %></p>
+          <p id="join-date-text" class="stats-text"><%- include("../partials/forum/forumDate.ejs", {obj: targetedUser}) %></p>
         </div>
 
         <!-- Post count -->
@@ -77,11 +79,10 @@
       <!-- Bio -->
       <div id="bio-container" class="detail-container">
         <p id="bio-header" class="detail-header">Bio</p>
-        <p id="bio-text" class="detail-text font-poppins"><%= user.bio %></p>
+        <p id="bio-text" class="detail-text font-poppins"><%= targetedUser.bio %></p>
       </div>
 
     </div>
-
   </main>
 
   <!-- Footer partial -->

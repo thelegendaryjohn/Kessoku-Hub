@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Resend } from "resend";
+import { Post } from "./post.js";
+import { Comment } from "./comment.js";
 //
 const env = process.env.NODE_ENV;
 const Schema = mongoose.Schema;
@@ -14,7 +16,6 @@ const SALT_WORK_FACTOR = 10;
 
 // Role enum
 export const roles = {
-	muted: -1,
 	unverified: 0,
 	user: 1,
 	admin: 2,
@@ -36,10 +37,16 @@ const userSchema = new Schema({
 	},
 	//
 	bio: { type: String, default: "" },
-	avatar: { type: String, default: "" },
+	avatar: { type: String, default: "/images/account-section/user-icon.svg" },
+	birthday: { type: Date },
+	//
+	isRestricted: { type: Boolean, default: false },
+	isBanned: { type: Boolean, default: false },
 	//
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
+	//
+	isArchived: { type: Boolean, default: false },
 });
 
 // Hash password before saving
@@ -90,6 +97,24 @@ userSchema.methods.comparePassword = function (candidatePassword, cb) {
 		if (err) return cb(err);
 		cb(null, isMatch);
 	});
+};
+
+// Method to get a user's posts with pagination
+userSchema.methods.getPosts = function (page, limit, cb) {
+	Post.find({ author: this._id })
+		.skip((page - 1) * limit)
+		.limit(limit)
+		.sort({ createdAt: -1 })
+		.exec(cb);
+};
+
+// Method to get a user's comments with pagination
+userSchema.methods.getComments = function (page, limit, cb) {
+	Comment.find({ author: this._id })
+		.skip((page - 1) * limit)
+		.limit(limit)
+		.sort({ createdAt: -1 })
+		.exec(cb);
 };
 
 // Export the model

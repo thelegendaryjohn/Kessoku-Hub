@@ -4,7 +4,7 @@
 <head>
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
-  <link rel="stylesheet" href="css/store/cart.css">
+  <link rel="stylesheet" href="/css/store/cart.css">
 
   <title>Kessoku Hub | Store</title>
 </head>
@@ -26,106 +26,121 @@
 
   <!-- Cart page -->
   <main>
-    <!-- item List container -->
+
+    <% if(!cart) {%>
+    <!-- no item placeholder -->
+    <div class="no-item-placeholder">* There are no item in your cart</div>
+    <% } %>
+
+    <!-- item list container -->
     <div id="item-list-container">
-      <% items.forEach((item, index) => { %>
-      <div class="item-container" id="<%- item.id%>">
-        <img class="item-image" src="images/store-section/<%- item.imageName%>" alt="<%- item.description%>">
-        <!-- right container -->
+      <% let totalPrice = 0; %>
+      <% for (let id in cart) { %>
+      <div class="item-container" id="<%- items[id].id %>">
+        <img class="item-image" src="/images/store-section/<%- items[id].imageName%>" alt="<%- items[id].description%>">
+        <div class="item-name"> <%- items[id].name%> </div>
+
+        <!-- item's right container -->
         <div class="item-right-container">
-          <!-- upper container -->
-          <div class="item-upper-container">
-            <div class="item-name"><%- item.name%></div>
-          </div>
-          <!-- lower container -->
-          <div class="item-lower-container">
-            <div class="item-price"><%- item.price%> $</div>
-            <div class="qty-selection-container">
-              <button class="qty-btn qty-minus" type="button">
-                -
-              </button>
-              <input class="qty-input" type="number" min="0" max="10" value="<%- item.quantity%>" />
-              <button class="qty-btn qty-plus" type="button">
-                +
-              </button>
-            </div>
-            <div class="svg-container">
-              <svg class="trash-icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="trash-icon-stroke" d="M1.32373 4.375H19.1663" stroke="var(--accent-grey)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path class="trash-icon-stroke" d="M6.89941 1H13.5904" stroke="var(--accent-grey)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path class="trash-icon-stroke" d="M16.9361 4.375H3.5542V19H16.9361V4.375Z" stroke="var(--accent-grey)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-          </div>
+          <div class="item-price"><span class="item-price-number"><%- items[id].price * cart[id]%></span> $</div>
+          <button class="item-minus-button qty-btn">-</button>
+          <div class="item-quantity"><%- cart[id]%></div>
+          <button class="item-plus-button qty-btn">+</button>
         </div>
       </div>
-
-      <% }) %>
+      <% totalPrice += items[id].price * cart[id]; %>
+      <% } %>
     </div>
 
-    <!-- Check out container -->
-    <div class="check-out-container">
-      <!-- total price container -->
-      <div class="total-price-container">
-        <div class="total-price-text">Total:</div>
-        <div class="total-price"></div>
-        <div class="dollar-sign">$</div>
+    <!-- total price -->
+    <div id="check-out-container">
+      <div id="total-price" class="item-price">Total Price: <span id="total-price-number"><%- totalPrice %></span> $</div>
+      <a class="check-out-btn" href="/store/remove/all">Check out</a>
+    </div>
+
+    <!-- Cart page button container -->
+    <a href="/store">
+      <div id="cart-button-container">
+        <svg fill="#2254c0" class="cart-svg" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.1 483.1" xml:space="preserve">
+          <g>
+            <path d="M434.55,418.7l-27.8-313.3c-0.5-6.2-5.7-10.9-12-10.9h-58.6c-0.1-52.1-42.5-94.5-94.6-94.5s-94.5,42.4-94.6,94.5h-58.6
+            c-6.2,0-11.4,4.7-12,10.9l-27.8,313.3c0,0.4,0,0.7,0,1.1c0,34.9,32.1,63.3,71.5,63.3h243c39.4,0,71.5-28.4,71.5-63.3
+            C434.55,419.4,434.55,419.1,434.55,418.7z M241.55,24c38.9,0,70.5,31.6,70.6,70.5h-141.2C171.05,55.6,202.65,24,241.55,24z
+            M363.05,459h-243c-26,0-47.2-17.3-47.5-38.8l26.8-301.7h47.6v42.1c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h141.2v42.1
+            c0,6.6,5.4,12,12,12s12-5.4,12-12v-42.1h47.6l26.8,301.8C410.25,441.7,389.05,459,363.05,459z" />
+          </g>
+        </svg>
       </div>
-      <!-- Check out button -->
-      <button class="check-out-btn">Check Out</button>
-    </div>
+    </a>
+
   </main>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>
-<!-- add the items array from the route/cart.js -->
+
+<!-- add the items array from the route/store.js -->
 <% if (items) { %>
 <script>
   const items = <%- JSON.stringify(items) %>;
+  const cart = <%- JSON.stringify(cart) %>;
 </script>
 <% } %>
-<script type="module">
-  //initialize
-  const itemsList = document.querySelectorAll(".item-container");
-  const qtyInput = document.querySelectorAll(".qty-input");
-  const qtyMinus = document.querySelectorAll(".qty-minus");
-  const qtyPlus = document.querySelectorAll(".qty-plus");
-  const totalPrice = document.querySelector(".total-price");
-  const deleteBtn = document.querySelectorAll(".svg-container");
-  // calculate the total price
-  items.forEach((item) => {
-    totalPrice.textContent = Number(totalPrice.textContent) + (Number(item.quantity) * Number(item.price));
-  });
-  // delete button function
-  deleteBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      btn.parentElement.parentElement.parentElement.remove();
-    })
-  });
-  //quantity selection buttons
-  qtyMinus.forEach((minusBtn) => {
-    minusBtn.addEventListener("click", () => {
-      if (
-        minusBtn.nextElementSibling.value > minusBtn.nextElementSibling.min &&
-        Number(minusBtn.nextElementSibling.value) <= minusBtn.nextElementSibling.max
-      ) {
-        minusBtn.nextElementSibling.value = Number(minusBtn.nextElementSibling.value) - 1;
-      } else {
-        minusBtn.nextElementSibling.value = minusBtn.nextElementSibling.min;
-      }
+
+<script>
+  // initialize
+  const itemPlusBtn = document.querySelectorAll(".item-plus-button");
+  const itemMinusBtn = document.querySelectorAll(".item-minus-button");
+  const itemQuantity = document.querySelectorAll(".item-quantity");
+  const itemPriceNumber = document.querySelectorAll(".item-price-number");
+  const totalPriceNumber = document.querySelector("#total-price-number")
+
+  // Listening to the add to cart button
+  itemPlusBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const itemId = e.target.parentElement.parentElement.id;
+      itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) + 1;
+      itemPriceNumber[itemId].textContent =
+        Number(itemPriceNumber[itemId].textContent) + items[itemId].price;
+      totalPriceNumber.textContent = Number(totalPriceNumber.textContent) + items[itemId].price;
+      fetch(`/store/add/${itemId}`, {
+          method: "POST",
+        })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Failed to add item to cart");
+          }
+        })
     });
   });
-  qtyPlus.forEach((plusBtn) => {
-    plusBtn.addEventListener("click", () => {
-      if (
-        plusBtn.previousElementSibling.value >= plusBtn.previousElementSibling.min &&
-        Number(plusBtn.previousElementSibling.value) < plusBtn.previousElementSibling.max
-      ) {
-        plusBtn.previousElementSibling.value = Number(plusBtn.previousElementSibling.value) + 1;
+
+  // Listening to the remove from cart button
+  itemMinusBtn.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const itemId = e.target.parentElement.parentElement.id;
+      if (Number(itemQuantity[itemId].textContent) > 1) {
+        itemQuantity[itemId].textContent = Number(itemQuantity[itemId].textContent) - 1;
+        itemPriceNumber[itemId].textContent =
+          Number(itemPriceNumber[itemId].textContent) - items[itemId].price;
+        totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
       } else {
-        plusBtn.previousElementSibling.value = plusBtn.previousElementSibling.max;
+        totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
+        btn.parentElement.parentElement.remove();
       }
+      fetch(`/store/remove/${itemId}`, {
+          method: "POST",
+        })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error("Failed to remove item from cart");
+          }
+        })
     });
   });
 </script>

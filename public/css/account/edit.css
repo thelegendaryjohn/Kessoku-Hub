@@ -9,10 +9,16 @@ main {
 	cursor: pointer;
 }
 
-#user-profile-container #profile-img {
-	width: 100%;
+#user-profile-container {
+	width: 15rem;
+	height: 15rem;
+}
+#avatar-picture {
+	width: auto;
+	height: 100%;
 	max-width: 15rem;
 	border: none;
+	object-fit: cover;
 }
 
 #change-profile-img-container {
@@ -25,17 +31,26 @@ main {
 	width: 100%;
 	height: 3.5rem;
 	font-size: 1.5rem;
-	background-color: rgba(105, 105, 105, 0.3);
+	background-color: var(--accent-grey);
+	opacity: 30%;
 	color: var(--accent-lightgrey);
 }
 
+#change-profile-img {
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+
 #user-profile-container:hover > #change-profile-img-container {
-	background-color: rgba(105, 105, 105, 0.5);
+	background-color: var(--accent-grey);
+	opacity: 50%;
 	color: var(--body-color);
 }
 
 #user-profile-container:not(:hover) > #change-profile-img-container {
-	background-color: rgba(105, 105, 105, 0.3);
+	background-color: var(--accent-grey);
+	opacity: 30%;
 	color: var(--accent-lightgrey);
 }
 
@@ -74,7 +89,7 @@ textarea {
 }
 
 #bio-input:not(:focus) {
-	background: -webkit-linear-gradient(top, #000000 30%, #fff);
+	background: -webkit-linear-gradient(top, #000000 30%, var(--body-color));
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

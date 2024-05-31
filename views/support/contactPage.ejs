@@ -12,7 +12,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -44,11 +44,50 @@
 
         <textarea id="contact-message-input" class="input-field longtext-input-field font-poppins" placeholder="Your Message..." type="text" name="bio" placeholder="Write a comment..." oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'></textarea>
 
-        <input id="contact-submit" class="form-btn" onclick="event.preventDefault();" type="submit" value="Send">
+        <input id="contact-submit" class="form-btn" type="submit" value="Send">
       </form>
 
     </section>
   </main>
+
+  <script>
+    // Contact form submission
+    document.querySelector("#contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      console.log("Form submitted");
+
+      // Get form data
+      const email = document.querySelector("#contact-email-input").value;
+      const subject = document.querySelector("#contact-subject-input").value;
+      const message = document.querySelector("#contact-message-input").value;
+
+      // Validate form data
+      if (email === "" || subject === "" || message === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // Send form data to server
+      fetch("/support", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: email,
+            subject: subject,
+            message: message
+          })
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = "/support/success";
+          } else {
+            alert("An error occurred. Please try again later.");
+          }
+        })
+    });
+  </script>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>

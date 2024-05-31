@@ -8,7 +8,6 @@
   <title>Kessoku Hub | Forum</title>
   <link rel="stylesheet" href="/css/forum/forum.css">
   <link rel="stylesheet" href="/css/forum/main.css">
-  <link rel="stylesheet" href="/css/forum/forum.css">
 </head>
 
 <body>
@@ -22,6 +21,9 @@
 
   <!-- Nav bar partial -->
   <%- include("../partials/navBar.ejs", { headerTitle: "FORUM", headerColor: "var(--accent-purple)" }) %>
+
+  <!-- Desktop forum sidebar -->
+  <%- include("../partials/forum/forumSidebarDesktop.ejs") %>
 
   <!-- Cookies consent banner -->
   <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
@@ -41,6 +43,9 @@
 
   <!-- Forum actions partial -->
   <%- include("../partials/forum/forumAction.ejs") %>
+
+  <!-- Footer partial -->
+  <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
 </body>
 
 </html>

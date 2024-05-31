@@ -7,21 +7,24 @@ import { Comment } from "../../models/comment.js";
 const router = Router();
 
 router.get("/user/:username", async (req, res) => {
-	const user = await User.findOne({ username: req.params.username });
+	const user = await User.findOne({
+		username: req.params.username,
+		isArchived: { $ne: true },
+	});
 	if (!user) {
 		return res.status(404).json("User not found.");
 	} else {
 		const postCount = await Post.countDocuments({ author: user._id });
 		const commentCount = await Comment.countDocuments({ author: user._id });
+		let targetedUser = user.toObject();
 		render(req, res, "account/profilePage", {
-			user: user,
+			targetedUser: targetedUser,
 			postCount: postCount,
 			commentCount: commentCount,
-			currUser: req.session.user,
-			currUsername: req.session.user?.username,
-			isNotVerified: user.role === roles.unverified && user.role !== roles.admin,
-			isVerified:
-				user.role === roles.user && user.role !== roles.admin,
+			isCurrUserAdmin: req.session.user?.role === roles.admin,
+			isNotVerified:
+				user.role === roles.unverified && user.role !== roles.admin,
+			isVerified: user.role === roles.user && user.role !== roles.admin,
 			isAdmin: user.role === roles.admin,
 		});
 	}

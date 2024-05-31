@@ -3,9 +3,36 @@
 
 <head>
   <!-- Head partial -->
+  <script>
+    //
+    let loginWidgetId, signupWidgetId;
+    window.onloadCallback = function() {
+      loginWidgetId = grecaptcha.render("recaptcha-login", {
+        sitekey: "6LeHBu0pAAAAAIBwGBNQLaiob3WUeRXhUdqlTgzt",
+      });
+      signupWidgetId = grecaptcha.render("recaptcha-signup", {
+        sitekey: "6LeHBu0pAAAAAIBwGBNQLaiob3WUeRXhUdqlTgzt",
+      });
+    };
+  </script>
+  <!-- Captcha -->
+  <script async src="https://www.google.com/recaptcha/api.js?onload=onloadCallback"></script>
   <%- include("../partials/htmlHead.ejs") %>
   <link rel="stylesheet" href="/css/account/signIn.css">
   <link rel="stylesheet" href="/css/account/checkbox.css">
+  <style>
+    .text-xs-center {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+    }
+
+    .text-xs-center.div {
+      margin: 0 auto;
+      width: 304px;
+    }
+  </style>
 
   <title>Kessoku Hub | Account</title>
 </head>
@@ -84,7 +111,34 @@
           <div class="input-box">
             <input id="username-login-input" class="input-field" type="username" name="username" placeholder="guitarhero" autocapitalize="off" required>
           </div>
-          <span id="username-login-alert" class="alert">[Placeholder]</span>
+
+        </div>
+        <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
+
+        <span id="error-signup-alert" class="alert">[Placeholder]</span>
+        <div id="recaptcha-signup" class="text-xs-center"></div>
+        <input class="submit-btn" type="submit" value="Sign Up">
+      </form>
+
+      <span class="signin-redirect-container">
+        <p class="font-poppins signin-ask">Already have an account?</p><button id="login" class="font-poppins signin-link">Log In</button>
+      </span>
+    </section>
+
+    <!-- Log in section -->
+    <section id="login-section" class="account-section">
+      <!-- Log in header -->
+      <div id="signup-header-container">
+        <h1 id="signup-header">Log In</h1>
+      </div>
+
+      <!-- Log in form -->
+      <form id="login-form" class="account-form" target="_self" method="post">
+        <label for="username">Username or Email</label>
+        <div class="input-box">
+          <input id="username-login-input" class="input-field" type="username" name="username" placeholder="guitarhero" autocapitalize="off" required>
+        </div>
+        <span id="username-login-alert" class="alert">[Placeholder]</span>
 
           <label for="password">Password</label>
 
@@ -106,11 +160,11 @@
               <span class="checkmark"></span>
             </label>
 
-            <a id="forgot-pass" class="font-poppins" href="/account/forgot-password">Forgot Password?</a>
-          </div>
-
-          <input class="submit-btn" type="submit" value="Log in">
-        </form>
+          <a id="forgot-pass" class="font-poppins" href="#">Forgot Password?</a>
+        </div>
+        <div id="recaptcha-login" class="text-xs-center"></div>
+        <input class="submit-btn" type="submit" value="Log in">
+      </form>
 
         <span class="signin-redirect-container">
           <p class="font-poppins signin-ask">Don’t have an account?</p><button id="signup" class="font-poppins signin-link">Sign up</button>
@@ -124,7 +178,9 @@
     </div>
 
   </main>
-
+  <script>
+    const env = "<%= env %>"
+  </script>
   <script src="/js/account.js"></script>
   <script src="/js/showHidePass.js"></script>
 

@@ -1,7 +1,7 @@
 /* Custom variables */
 :root {
 	--body-color: #ffffff;
-	--black-color: #000000;
+	--black-color: #1e2124;
 	--hitori-color: rgb(229, 20, 112);
 	--nijika-color: rgb(219, 126, 5);
 	--ryo-color: rgb(34, 84, 192);
@@ -10,6 +10,8 @@
 	--accent-yellow: rgb(255, 240, 0);
 	--accent-grey: rgb(149, 149, 149);
 	--accent-lightgrey: rgb(211, 211, 211);
+	--accent-lightergrey: rgb(245, 245, 245);
+	--accent-black: rgb(0, 0, 0);
 	/* --accent-rainbow: linear-gradient(
 		145deg,
 		rgb(16, 103, 216),
@@ -20,7 +22,7 @@
 	--xxsmall-font-size: 8px;
 	--xsmall-font-size: 10px;
 	--small-font-size: 12px;
-	--medium-font-size: 16px;
+	--medium-font-size: 14px;
 	--large-font-size: 24px;
 	--xlarge-font-size: 32px;
 }
@@ -38,7 +40,7 @@ body {
 	flex-direction: column;
 	min-height: 100lvh;
 	background-color: var(--body-color);
-	color: #000;
+	color: var(--black-color);
 }
 
 main {
@@ -62,7 +64,7 @@ footer {
 }
 
 footer * {
-	color: #000;
+	color: var(--black-color);
 	font-size: 1.1rem;
 	/* text-decoration: none; */
 }
@@ -121,7 +123,7 @@ footer p {
 	padding: 0 1rem;
 	border-radius: 5px;
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 	font-size: 1.5rem;
 }
 
@@ -138,7 +140,7 @@ footer p {
 	padding: 0 1rem;
 	border-radius: 5px;
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 	font-size: 1.5rem;
 }
 
@@ -155,7 +157,7 @@ footer p {
 	padding: 0 1rem;
 	border-radius: 5px;
 	background-color: var(--accent-purple);
-	color: white;
+	color: var(--body-color);
 	font-size: 1.5rem;
 }
 
@@ -246,7 +248,7 @@ footer p {
 	font-weight: 200;
 	margin: 3rem;
 	text-decoration: none;
-	color: #000;
+	color: var(--black-color);
 	/* box-sizing: content-box; */
 }
 
@@ -285,7 +287,7 @@ footer p {
 /* Desktop elements */
 #desktop-nav-container {
 	position: sticky;
-	z-index: 9;
+	z-index: 6;
 	top: 0;
 
 	/* display: flex; on enabled */
@@ -297,7 +299,7 @@ footer p {
 	background-image: url("/images/footer-section/footer-bg.png");
 	padding: 0.5rem 3rem;
 	height: 5rem;
-	max-height: 8vh;
+	/* max-height: 8vh; */
 	gap: 3rem;
 }
 

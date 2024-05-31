@@ -12,6 +12,21 @@
   <link rel="stylesheet" href="/css/landing/store.css">
   <link rel="stylesheet" href="/css/landing/video.css">
   <link rel="stylesheet" href="/css/landing/music.css">
+
+  <link rel="preload" href="/images/character-section/character/bocchi-face-1.png" as="image">
+  <link rel="preload" href="/images/character-section/character/hitori-3pics.png" as="image">
+  <link rel="preload" href="/images/character-section/character/hitori-layer.png" as="image">
+  <link rel="preload" href="/images/character-section/character/hitori.png" as="image">
+  <link rel="preload" href="/images/character-section/character/ikuyo-3pics.png" as="image">
+  <link rel="preload" href="/images/character-section/character/ikuyo-layer.png" as="image">
+  <link rel="preload" href="/images/character-section/character/ikuyo.png" as="image">
+  <link rel="preload" href="/images/character-section/character/nijika-3pics.png" as="image">
+  <link rel="preload" href="/images/character-section/character/nijika-layer.png" as="image">
+  <link rel="preload" href="/images/character-section/character/nijika.png" as="image">
+  <link rel="preload" href="/images/character-section/character/ryo-3pics.png" as="image">
+  <link rel="preload" href="/images/character-section/character/ryo-layer.png" as="image">
+  <link rel="preload" href="/images/character-section/character/ryo.png" as="image">
+
 </head>
 
 <body class="<%= env == 'prod' ? 'adjustColor' : '' %>">
@@ -24,37 +39,46 @@
   <%- include("partials/sidebar.ejs") %>
 
   <!-- HTML Body -->
-  <!-- Header banner -->
-  <section id="header-banner" class="text-shadow">
-    <div id="banner">
-      <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner" class="<%= env == 'prod' ? 'adjustBrightness' : '' %>">
-      <div id="banner-img-overlap" class="banner-overlap">
-        <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
-        <div id="banner-text" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
-          <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
-          <h3 id="banner-desc">THEATER COMPILATION</h3>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <main class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
-    <!-- Characters -->
-    <%- include("partials/landing/character.ejs") %>
+
+    <div class="desktop-row-container">
+      <!-- Header banner -->
+      <section id="header-banner" class="text-shadow">
+        <div id="banner">
+          <img id="banner-img" src="/images/top-section/top-bg-nr.jpg" alt="Landing page banner" class="<%= env == 'prod' ? 'adjustBrightness' : '' %>">
+          <div id="banner-img-overlap" class="banner-overlap">
+            <img id="banner-logo" src="/images/top-section/band-logo.svg" alt="Landing page banner logo" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
+            <div id="banner-text" class="<%= env == 'prod' ? 'adjustOpacity' : '' %>">
+              <h2 id="banner-name">BOCCHI<br>&nbsp;THE ROCK!</h2>
+              <h3 id="banner-desc">THEATER COMPILATION</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Characters -->
+      <%- include("partials/landing/character.ejs") %>
+    </div>
+
 
     <!-- Other sections -->
     <div id="other-sections" class="text-shadow">
-      <!-- Forum -->
-      <%- include("partials/landing/forum-section/forumContainer.ejs") %>
+      <div class="desktop-row-container">
+        <!-- Forum -->
+        <%- include("partials/landing/forum-section/forumContainer.ejs") %>
 
-      <!-- Music -->
-      <%- include("partials/landing/music-section/albumContainer.ejs", { isLanding: true }) %>
+        <!-- Music -->
+        <%- include("partials/landing/music-section/albumContainer.ejs", { isLanding: true }) %>
+      </div>
 
-      <!-- Series -->
-      <%- include("partials/landing/video-section/videoContainer.ejs") %>
+      <div class="desktop-row-container">
+        <!-- Series -->
+        <%- include("partials/landing/video-section/videoContainer.ejs") %>
 
-      <!-- Store -->
-      <%- include("partials/landing/store-section/storeContainer.ejs") %>
+        <!-- Store -->
+        <%- include("partials/landing/store-section/storeContainer.ejs") %>
+      </div>
+
     </div>
 
   </main>
