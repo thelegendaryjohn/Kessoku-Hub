@@ -8,7 +8,7 @@
       <% } %>
     ">
       <div id="profile-container">
-        <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
+        <img src="<%= locals.user ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="User profile icon" id="profile-img">
         <h1 id="profile-name">
           <% if (locals.profileView) { %>
           <%= user ? user?.username : "Guest" %>
