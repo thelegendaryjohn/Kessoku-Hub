@@ -70,6 +70,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	align-self: center;
 	border-top: 1px solid var(--accent-purple);
 	gap: 0.5rem;
 	background-color: var(--body-color);
