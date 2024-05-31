@@ -24,6 +24,8 @@
     console.clear();
     console.log(`History count: ${historyCount}`);
     console.log(`Latest search: ${localStorage.getItem(`item_${historyCount - 1}`)}`);
-  });
 
+    // Update #search-history-container with .search-history
+    document.querySelector("#search-history-container").innerHTML += `<p class="search-history font-poppins">${localStorage.getItem(`item_${historyCount - 1}`)}</p>`;
+  });
 </script>
