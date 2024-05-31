@@ -93,7 +93,7 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                   document.querySelector("#avatar-picture").src = e.target.result;
-                  console.log(document.querySelector("#avatar-picture")).src
+                  console.log(document.querySelector("#avatar-picture").src)
                 };
                 reader.readAsDataURL(file);
               }

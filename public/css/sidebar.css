@@ -22,12 +22,18 @@
 	display: flex;
 	top: calc(3.5rem + -4.5em / 2);
 	height: 4.5em;
+	width: 4.5em;
 }
 
 #profile-img {
+	height: 4.5em;
+	width: 4.5em;
 	background-color: #ddd;
 	border-radius: 100%;
-	border: 1px solid black;
+	height: 100%;
+	max-width: 15rem;
+	border: none;
+	object-fit: cover;
 }
 
 #profile-name {
