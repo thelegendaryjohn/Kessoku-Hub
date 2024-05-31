@@ -169,7 +169,7 @@ label:not(.checkbox-container, .switch):not(#change-profile-img) {
 /* Content box for desktop */
 #content-section {
 	display: flex;
-	width: 50%;
+	width: 100%;
 	justify-content: center;
 }
 
@@ -181,7 +181,7 @@ label:not(.checkbox-container, .switch):not(#change-profile-img) {
 	justify-content: center;
 	align-items: center;
 	overflow: clip;
-	height: 100lvh;
+	height: 120lvh;
 	width: 50%;
 	/* max-width: 3541px;
 	max-height: 2398px; */

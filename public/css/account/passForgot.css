@@ -46,15 +46,15 @@ textarea {
 	font-size: 1.2rem;
 }
 
-label {
+label:not(.switch) {
 	user-select: none;
 	z-index: 1;
 }
 
-label:not(.checkbox-container) {
+label:not(.checkbox-container, .switch) {
 	font-size: 1.1rem;
 	transform: translateX(1.5rem) translateY(0.8rem);
-	background-color: white;
+	background-color: var(--body-color);
 	width: fit-content;
 	padding: 0 0.5rem;
 }
@@ -73,6 +73,8 @@ label:not(.checkbox-container) {
 	padding: 1.5rem;
 	border-style: none;
 	outline: none;
+	background-color: var(--body-color);
+	color: var(--black-color);
 }
 
 .input-box:focus-within {
@@ -148,7 +150,7 @@ label:not(.checkbox-container) {
 /* Content box for desktop */
 #content-section {
 	display: flex;
-	width: 50%;
+	width: 100%;
 	justify-content: center;
 }
 
@@ -160,7 +162,7 @@ label:not(.checkbox-container) {
 	justify-content: center;
 	align-items: center;
 	overflow: clip;
-	height: 100lvh;
+	height: 120lvh;
 	width: 50%;
 	/* max-width: 3541px;
 	max-height: 2398px; */
