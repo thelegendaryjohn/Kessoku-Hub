@@ -170,7 +170,7 @@ router.post("/api/user/archive/:id", async (req, res) => {
 });
 
 // Set a new password for a user by ID.
-router.put("/user/password/:id", async (req, res) => {
+router.put("/api/user/password/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}

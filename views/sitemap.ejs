@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Head partial -->
+  <%- include("partials/htmlHead.ejs") %>
+
+  <title>Kessoku Hub | Error Page</title>
+  <link rel="stylesheet" href="/css/error.css">
+  <style>
+    #sitemap-container {
+      display: flex;
+      flex-direction: column;
+
+      padding: 2rem;
+    }
+
+    li {
+      padding-left: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Desktop nav bar partial -->
+  <%- include("partials/navBarDesktop.ejs") %>
+
+  <!-- Sidebar -->
+  <%- include("partials/sidebar.ejs") %>
+
+  <!-- Nav bar partial -->
+  <%- include("partials/navBar.ejs", { headerTitle: "SITEMAP", headerColor: "var(--ryo-color)" }) %>
+
+  <script>
+    const sitemap = `<%- sitemap %>`;
+  </script>
+
+
+
+  <main id="sitemap-container">
+
+  </main>
+
+  <script>
+    // Function to convert XML string to an unordered list
+    function xmlToList(xmlString) {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
+      const urlElements = xmlDoc.getElementsByTagName('url');
+
+      const ul = document.createElement('ul');
+
+      for (let i = 0; i < urlElements.length; i++) {
+        const loc = urlElements[i].getElementsByTagName('loc')[0].textContent;
+        const li = document.createElement('li');
+        li.textContent = loc;
+        ul.appendChild(li);
+      }
+
+      return ul;
+    }
+
+    // Function to build nested lists based on the URL path structure
+    function buildNestedList(urlList) {
+      const rootUl = document.createElement('ul');
+      const pathMap = {};
+
+      // Add a / to the root level
+      pathMap[''] = {
+        __url__: ''
+      };
+
+
+      urlList.forEach(url => {
+        const parts = url.split('/').filter(Boolean);
+        let currentLevel = pathMap;
+
+        parts.forEach((part, index) => {
+          if (!currentLevel[part]) {
+            currentLevel[part] = {
+              __url__: parts.slice(0, index + 1).join('/')
+            };
+          }
+          currentLevel = currentLevel[part];
+        });
+      });
+
+      function createListItems(level, parentUl) {
+        for (const key in level) {
+          if (key !== '__url__') {
+            const li = document.createElement('li');
+            const nestedPath = `/${level[key].__url__}`;
+            li.innerHTML = `<a href="https://bocchi.band${nestedPath}">${nestedPath}</a>`;
+            parentUl.appendChild(li);
+
+            const nestedUl = document.createElement('ul');
+            createListItems(level[key], nestedUl);
+            li.appendChild(nestedUl);
+          }
+        }
+      }
+
+      createListItems(pathMap, rootUl);
+      return rootUl;
+    }
+
+    // Get the XML data passed from the server
+    const xmlData = JSON.stringify(sitemap);
+
+    // Parse XML data to get URL list
+    const urlList = [];
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(sitemap, 'text/xml');
+    const urlElements = xmlDoc.getElementsByTagName('url');
+
+    for (let i = 0; i < urlElements.length; i++) {
+      const loc = urlElements[i].getElementsByTagName('loc')[0].textContent.replace('https://bocchi.band', '');
+      urlList.push(loc);
+    }
+
+    // Build nested list and append it to the container
+    const sitemapContainer = document.getElementById('sitemap-container');
+    const nestedUl = buildNestedList(urlList);
+    sitemapContainer.appendChild(nestedUl);
+  </script>
+
+  <!-- Footer partial -->
+  <%- include("partials/htmlFooter.ejs") %>
+</body>
+
+</html>
