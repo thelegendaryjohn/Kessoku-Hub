@@ -71,10 +71,6 @@
         url += `/${post._id}`;
         break;
       }
-      case "editPost": {
-        url = "/thread/post";
-        break;
-      }
       case "pinPost": {
         const post = JSON.parse(`<%-JSON.stringify( locals.post )%>`);
         url = post.pinned ? '/thread/post/unpin' : '/thread/post/pin';
@@ -119,11 +115,6 @@
   // Delete post
   addEventListenerIfExists("#authorDeletePost", "click", () => {
     performAction("deletePost");
-  });
-
-  // Edit post
-  addEventListenerIfExists("#authorEditPost", "click", () => {
-    performAction("editPost");
   });
 
   // Pin post

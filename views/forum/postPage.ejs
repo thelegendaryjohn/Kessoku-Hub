@@ -38,7 +38,7 @@
         <div id="post-content">
           <textarea title="post content" placeholder="this post has no text" class="post-content-text font-poppins"><%= post.content %></textarea>
           <% if (post.attachment) { %>
-          <img src="/<%= post.attachment %>" alt="Post image" class="post-content-image">
+          <img src="/<%= post.attachment %>" alt="Post image" class="post-image">
           <% } %>
           <div class="post-edit-container hide">
             <button class="edit-cancel-btn post-edit-btn">Cancel</button>
@@ -91,12 +91,6 @@
               url += `/${commentId}`;
               break;
             }
-            case "edit": {
-              method = "PUT";
-              url = "/thread/comment";
-              url += `/${commentId}`;
-              break;
-            }
           }
 
           fetch(url, {
@@ -127,9 +121,52 @@
         });
 
         // Edit post
-        addEventListenerIfExists("#editComment", "click", () => {
-          performAction("edit");
+        let parentContainer = container.parentElement.parentElement;
+        parentContainer.querySelector(".post-content-text").disabled = true;
+        const postText = parentContainer.querySelector(".post-content-text");
+        const editContainer = parentContainer.querySelector(".post-edit-container");
+        const postEditBtn = parentContainer.querySelectorAll(".post-edit-btn");
+        const editBtn = parentContainer.querySelector("#editComment");
+
+        try {
+          editBtn.addEventListener("click", () => {
+            parentContainer.querySelector(".post-content-text").disabled = false;
+            editContainer.classList.remove("hide");
+            postText.classList.add("is-editing");
+          })
+        } catch (err) {
+          console.log("you have not login");
+        }
+
+        postEditBtn.forEach(btn => {
+          btn.addEventListener("click", () => {
+            document.querySelector(".post-content-text").disabled = true;
+            editContainer.classList.add("hide");
+            postText.classList.remove("is-editing");
+          })
         });
+
+        document.querySelector(".edit-submit-btn").addEventListener("click", () => {
+          const content = postText.value;
+          const postId = "<%= post._id %>";
+          fetch(`/thread/post/${postId}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                content: content
+              })
+            })
+            .then((res) => {
+              if (res.status === 200) {
+                window.location.reload();
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
       })
     </script>
   </main>
@@ -146,6 +183,7 @@
     editBtn.addEventListener("click", () => {
       document.querySelector(".post-content-text").disabled = false;
       editContainer.classList.remove("hide");
+      postText.classList.add("is-editing");
     })
   } catch (err) {
     console.log("you have not login");
@@ -155,8 +193,31 @@
     btn.addEventListener("click", () => {
       document.querySelector(".post-content-text").disabled = true;
       editContainer.classList.add("hide");
+      postText.classList.remove("is-editing");
     })
   });
+
+  document.querySelector(".edit-submit-btn").addEventListener("click", () => {
+    const content = postText.value;
+    const postId = "<%= post._id %>";
+    fetch(`/thread/post/${postId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          content: content
+        })
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          window.location.reload();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  })
 </script>
 
 </html>

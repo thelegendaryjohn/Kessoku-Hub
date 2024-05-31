@@ -57,8 +57,9 @@ main {
 	gap: 1rem;
 }
 
-#post-content img {
+.post-image {
 	max-width: 100%;
+	margin: 1rem 0;
 }
 .post-content-text {
 	font-size: 1.2rem;
@@ -71,6 +72,10 @@ main {
 	width: 100%;
 	height: auto;
 }
+.post-content-text.is-editing {
+	border: 1px solid var(--ryo-color);
+	border-radius: 1rem;
+}
 .post-edit-container {
 	display: flex;
 	flex-direction: row;
@@ -80,14 +85,15 @@ main {
 .post-edit-btn {
 	background-color: var(--body-color);
 	color: var(--black-color);
-	padding: 0.2rem;
+	padding: 0.5rem 2rem;
 	font-size: 1.2rem;
 	border-radius: 5px;
 	cursor: pointer;
+	border: 1px solid var(--accent-lightgrey);
 }
 .post-edit-btn:hover {
 	background-color: var(--ryo-color);
-	color: var(--black-color);
+	color: white;
 }
 
 #comment-section {
