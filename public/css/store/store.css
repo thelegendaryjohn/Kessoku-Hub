@@ -80,6 +80,10 @@ main {
 }
 .item-add-to-cart:hover {
 	color: var(--ryo-color);
+}
+.item-add-to-cart > a {
+	text-decoration: none;
+	color: var(--body-color);
 	cursor: pointer;
 }
 /* cart page button settings */

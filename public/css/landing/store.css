@@ -23,8 +23,8 @@
 
 .item-img-container {
 	display: flex;
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 	overflow: clip;
 	width: 60%;
 	height: fit-content;
@@ -74,7 +74,7 @@
 
 .size-select.selected {
 	background-color: var(--ryo-color);
-	color: #fff;
+	color: var(--body-color);
 } */
 
 .item-action-container {
@@ -101,11 +101,11 @@
 }
 
 .add-to-cart-btn {
-	background-color: #fff;
+	background-color: var(--body-color);
 	color: var(--ryo-color);
 }
 
 .buy-btn {
 	background-color: var(--ryo-color);
-	color: #fff;
+	color: var(--body-color);
 }

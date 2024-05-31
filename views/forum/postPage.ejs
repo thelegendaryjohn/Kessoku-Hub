@@ -21,7 +21,7 @@
   <%- include("../partials/sidebar.ejs") %>
 
   <!-- Nav bar partial -->
-  <%- include("../partials/navBar.ejs", { headerTitle: post.topicId.name, headerColor: "var(--accent-purple)" }) %>
+  <%- include("../partials/navBar.ejs", { headerTitle: post.topicId.name, headerColor: "var(--accent-purple)", linkedNav: true }) %>
 
   <!-- Cookies consent banner -->
   <%- include("../partials/popup/cookiesConsentPopup.ejs") %>
@@ -55,10 +55,14 @@
       </div>
 
     </section>
+
+    <!-- Comment box partial -->
+    <%- include("../partials/forum/commentBox.ejs") %>
   </main>
 
   <!-- Comment box partial -->
   <%- include("../partials/forum/commentBox.ejs") %>
+
 </body>
 
 </html>

@@ -29,19 +29,16 @@
     <section id="music">
       <div id="album-container" class="section-container">
         <%- include("../partials/landing/music-section/albumHeader.ejs") %>
-
-        <!-- <div class="play-all-btn"></div> -->
-
+        <!-- Album song list -->
         <div id="album-song-list">
           <% songs.forEach((song, index) => { %>
-          <%- include("../partials/landing/music-section/albumSong.ejs", {
-                index: song.index,
-                name: song.songName,
-                length: song.length,
-                url: song.url,
-              }) %>
-          <% }) %>
-
+            <%- include("../partials/landing/music-section/albumSong.ejs", {
+                  index: song.index,
+                  name: song.songName,
+                  length: song.length,
+                  url: song.preview_url,
+                }) %>
+          <% }); %>
         </div>
       </div>
 

@@ -7,10 +7,10 @@
 	max-height: 6rem;
 	top: calc(4rem + (clamp(4rem, 15vw, 6rem) / -2)); */
 	right: 2rem;
-	background-color: #fff;
+	background-color: var(--body-color);
 	border: 1px solid var(--accent-purple);
 	border-radius: 6px;
-	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0.4rem 0.4rem 0.2 var(--black-color);
 }
 
 #sidebar-container {
@@ -27,7 +27,7 @@
 #profile-img {
 	background-color: #ddd;
 	border-radius: 100%;
-	border: 2px solid #fff;
+	border: 1px solid black;
 }
 
 #profile-name {
@@ -57,7 +57,7 @@
 	text-decoration: none;
 	font-size: 2.2rem;
 	font-weight: bold;
-	color: #000;
+	color: black;
 	display: block;
 	text-wrap: nowrap;
 }
@@ -81,7 +81,7 @@
 
 .divider {
 	height: 1px;
-	background-color: #000;
+	background-color: black;
 	width: 100%;
 	margin: 0.5rem 0;
 }
@@ -89,7 +89,7 @@
 /* Menu button animations */
 @keyframes menuButtonAnimation {
 	0% {
-		background-color: #fff;
+		background-color: var(--body-color);
 		border-color: var(--accent-purple);
 		box-shadow: 0 0rem 0.4rem;
 	}
