@@ -140,16 +140,28 @@ router.put("/user/archive/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
+	if (!req.session.user) {
+		return res.status(401).send("Unauthorized.");
+	}
 	if (req.session.user._id != req.params.id) {
 		return res.status(401).send("Unauthorized.");
 	}
 	try {
-		const user = await User.findByIdAndUpdate(
+		await User.findByIdAndUpdate(
 			req.params.id,
 			{ isArchived: true },
 			{ new: true } // This option returns the updated document
 		);
-		return res.status(200).json(user);
+		req.session.destroy((err) => {
+			if (err) {
+				console.error(err);
+				return res.status(500).json("Error logging out.");
+			}
+
+			return res.status(200).redirect("account/accountSuccess", {
+				message: "Your account has been deactivated.",
+			});
+		});
 	} catch (err) {
 		return res.status(500).json(err);
 	}
