@@ -82,6 +82,11 @@ router.get("/forum/thread/:id", checkBanned, async (req, res) => {
 
 	[post, comments] = await Promise.all([post, comments]);
 
+	// If comment is just a single object, convert it to an array
+	if (!Array.isArray(comments)) {
+		comments = [comments];
+	}
+
 	render(req, res, "forum/postPage", {
 		topic: post.topicId,
 		post: post,
