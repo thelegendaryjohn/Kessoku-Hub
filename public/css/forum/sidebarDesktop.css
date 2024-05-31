@@ -8,6 +8,7 @@
 	width: 15rem;
 	gap: 2rem;
 	border-right: 1px solid var(--hitori-color);
+	background-color: var(--body-color);
 }
 
 /* Media Queries */

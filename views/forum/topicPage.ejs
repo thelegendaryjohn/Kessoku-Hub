@@ -39,11 +39,22 @@
 
   <!-- Main content -->
   <main>
+    <div id="topic-page-fixed-box">
+      <div id="topic-page-flex-box">
+        <!-- Forum search bar partial -->
+        <%- include("../partials/forum/forumSearchBar.ejs") %>
+
+        <!-- Recent searches container -->
+        <div id="search-history-container">
+          <% for (let i = 0; i < 20; i++) { %>
+          <div class="search-history">Test <%= i %></div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
     <!-- Desktop forum sidebar -->
     <%- include("../partials/forum/forumSidebarDesktop.ejs") %>
-
-    <!-- Forum search bar partial -->
-    <%- include("../partials/forum/forumSearchBar.ejs") %>
 
     <!-- Post section -->
     <section id="content-section-container">

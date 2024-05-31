@@ -11,3 +11,19 @@
     <p role="button" class="filter-option oldest">Oldest</p>
   </div>
 </div>
+
+<script>
+  // Write textContent from search bar to localStorage when pressing Search, the clear the search bar
+  let historyCount = 0;
+
+  document.querySelector(".search-button").addEventListener("click", () => {
+    localStorage.setItem(`item_${historyCount}`, document.querySelector(".search-input").value);
+    document.querySelector(".search-input").value = "";
+    historyCount++;
+
+    console.clear();
+    console.log(`History count: ${historyCount}`);
+    console.log(`Latest search: ${localStorage.getItem(`item_${historyCount - 1}`)}`);
+  });
+
+</script>
