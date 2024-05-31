@@ -54,6 +54,10 @@ main {
 	font-size: 1.2rem;
 }
 
+#post-content img {
+	max-width: 100%;
+}
+
 #comment-section {
 	display: flex;
 	flex-direction: column;
