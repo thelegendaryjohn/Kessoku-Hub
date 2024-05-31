@@ -12,7 +12,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -26,7 +26,7 @@
   <main>
     <!-- User profile header -->
     <div id="user-profile-container">
-      <img id="profile-img" src="/images/account-section/user-icon.svg" alt="Profile image">
+      <img id="profile-img" src="<%= locals.user ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="Profile image">
 
       <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
     </div>
