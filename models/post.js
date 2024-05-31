@@ -27,6 +27,8 @@ const postSchema = new Schema({
 	//
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: { type: Date, default: Date.now },
+	//
+	isArchived: { type: Boolean, default: false },
 });
 
 // Export the model
