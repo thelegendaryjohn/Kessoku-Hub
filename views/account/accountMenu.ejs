@@ -26,7 +26,11 @@
   <main>
     <!-- User profile header -->
     <div id="user-profile-container">
-      <img id="profile-img" src="<%= locals.user ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="Profile image">
+      <% if (locals.user) { %>
+      <img src="<%= locals.user.avatar !== "" ? `/${user.avatar}` : `/images/account-section/user-icon.svg` %>" alt="User profile icon" id="profile-img">
+      <% } else { %>
+      <img src="/images/account-section/user-icon.svg" alt="User profile icon" id="profile-img">
+      <% } %>
 
       <h1 id="profile-name"><%= user ? user.username : "Guest" %></h1>
     </div>
@@ -78,7 +82,7 @@
         </a>
 
         <a href="#">
-          <div class="function-btn">
+          <div class="function-btn" id="deactivate-btn">
             <img class="function-img" src="/images/account-section/ban-icon.svg" alt="Deactivate Account">
             <p class="function-name">Deactivate Account</p>
           </div>
@@ -116,10 +120,20 @@
     let confirmDeactivate = false;
     deactivateBtn.addEventListener("click", () => {
       if (confirmDeactivate) {
-        window.location.href = "/user/archive/" + "<%= locals.user._id %>";
+        fetch("/user/archive/" + "<%= locals.user ? locals.user._id : '' %>", {
+          method: "POST"
+        }).then((res) => {
+          if (res.status !== 200) {
+            console.log("Error deactivating account");
+            return;
+          } else {
+            console.log("Account deactivated");
+            window.location.href = "/";
+          }
+        })
       } else {
-        deactivateBtn.textContent = "Are you sure? Click again to confirm.";
-        deactivateBtn.style.color = "red";
+        deactivateBtn.querySelector("p").textContent = "Are you sure? Click again to confirm.";
+        deactivateBtn.querySelector("p").style.color = "red";
         confirmDeactivate = true;
       }
     });
