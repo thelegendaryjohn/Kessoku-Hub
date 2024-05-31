@@ -64,8 +64,34 @@
     </div>
 
   </main>
+  <script>
+    const token = <% token %>;
+  </script>
 
   <script src="/js/showHidePass.js"></script>
+  <script>
+    document.querySelector("#forgot-pass-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const password = document.querySelector("#password-input").value;
+      const confirmPassword = document.querySelector("#confirm-signup-input").value;
+      const response = await fetch(`/api/user/reset/${token}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          password,
+          confirmPassword
+        })
+      });
+      const data = await response.json();
+      if (data.error) {
+        document.querySelector("#password-alert").textContent = data.error;
+      } else {
+        window.location.href = "/account/login";
+      }
+    });
+  </script>
 
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>

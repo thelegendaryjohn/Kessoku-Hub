@@ -34,16 +34,17 @@
         </div>
 
         <!-- Log in form -->
-        <form id="forgot-pass-form" class="account-form" target="_self" method="post">
+        <form id="forgot-pass-form" class="account-form" target="_self">
           <label for="email">Email</label>
           <div class="input-box">
             <input id="forgot-pass-input" class="input-field" type="email" name="email" placeholder="guitarhero@bocchi.rock" autocapitalize="off" required>
           </div>
-          <span id="forgot-pass-alert" class="alert">[Placeholder]</span>
+          <!-- <span id="forgot-pass-alert" class="alert">[Placeholder]</span> -->
 
           <input class="submit-btn" type="submit" value="Reset Password">
         </form>
       </section>
+      <h1 id="sent" style="display: none">If there was an account associated with that email, we will send you a reset password link.</h1>
     </div>
 
     <!-- Side image for desktop layout -->
@@ -53,6 +54,27 @@
 
   </main>
 
+  <script>
+    document.querySelector("#forgot-pass-form").addEventListener("submit", async (e) => {
+      console.log("is this working?")
+      e.preventDefault();
+      const email = document.querySelector("#forgot-pass-input").value;
+      const response = await fetch("/api/user/forget", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email
+        })
+      });
+      if (response) {
+        document.querySelector("#forgot-pass-form").style.display = "none";
+        document.querySelector(".section-header").style.display = "none";
+        document.querySelector("#sent").style.display = "block";
+      }
+    });
+  </script>
   <!-- Footer partial -->
   <%- include("../partials/htmlFooter.ejs") %>
 </body>

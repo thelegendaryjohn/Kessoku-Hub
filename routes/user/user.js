@@ -2,6 +2,7 @@ import { Router } from "express";
 import { User } from "../../models/user.js";
 import { app } from "../../lib/app.js";
 import { render } from "../../lib/render.js";
+import jwt from "jsonwebtoken";
 //
 const router = Router();
 
@@ -204,6 +205,79 @@ router.put("/api/user/password/:id", async (req, res) => {
 	} catch (err) {
 		console.error(err);
 		return res.status(500).json(err);
+	}
+});
+
+// Forgetting a password
+router.post("/api/user/forget", async (req, res) => {
+	if (!req.body.email) {
+		return res.status(400).send("Missing email.");
+	}
+	try {
+		const user = await User.findOne({ email: req.body.email });
+		if (!user) {
+			return res.status(404).send("User not found.");
+		}
+		//
+		user.sendPasswordResetLink((err, data) => {
+			if (err) {
+				return res.status(500).json(err);
+			}
+			return res.status(200).json(data);
+		});
+	} catch (err) {
+		console.error(err);
+		return res.status(500).json(err);
+	}
+});
+
+router.get("/api/user/reset-password/:token", async (req, res) => {
+	const token = req.params.token;
+
+	try {
+		// Verify the token
+		const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+		// Find the user by the ID from the token
+		const user = await User.findById(decoded.id);
+
+		if (!user) {
+			return res.status(404).send("User not found.");
+		}
+
+		// Render a form for the user to reset their password
+		return render(req, res, "account/accountPassReset", {
+			userId: user._id,
+			token: token,
+		});
+	} catch (error) {
+		console.error(error);
+		return res.status(400).send("Invalid or expired token.");
+	}
+});
+
+router.post("/api/user/reset/:token", async (req, res) => {
+	const token = req.params.token;
+
+	try {
+		// Verify the token
+		const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+		// Find the user by the ID from the token
+		const user = await User.findById(decoded.id);
+
+		if (!user) {
+			return res.status(404).send("User not found.");
+		}
+
+		// Update the user's password
+		user.password = req.body.password;
+		await user.save();
+
+		return res.status(200).send("Password updated.");
+	} catch (error) {
+		console.error(error);
+		return res.status(400).send("Invalid or expired token.");
 	}
 });
 
