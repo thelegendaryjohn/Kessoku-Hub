@@ -70,8 +70,11 @@ router.post("/account/login", async (req, res, next) => {
 				req.session.regenerate((err) => {
 					if (err) return next(err);
 
+					let newUser = user.toObject();
+					delete newUser.password;
+
 					// Save user info into session, remove the password
-					req.session.user = user;
+					req.session.user = newUser;
 
 					// Set expires if remember is false
 					req.session.cookie.maxAge = req.body.remember
