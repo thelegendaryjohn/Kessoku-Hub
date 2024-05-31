@@ -65,7 +65,7 @@ main {
 	min-width: 4rem;
 	text-align: center;
 }
-.btn {
+.qty-btn {
 	font-size: 1.8rem;
 	color: var(--ryo-color);
 	text-decoration: none;
