@@ -16,6 +16,7 @@
 	position: relative;
 	justify-self: flex-end;
 	align-self: flex-start;
+	fill: var(--black-color);
 }
 
 .three-dots-svg:hover {
