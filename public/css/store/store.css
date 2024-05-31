@@ -32,7 +32,6 @@ main {
 }
 .item-container:hover {
 	border-bottom: 2px solid var(--accent-black);
-	background-color: var(--accent-lightergrey);
 	cursor: pointer;
 }
 .item-image {
