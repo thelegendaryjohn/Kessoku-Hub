@@ -54,26 +54,26 @@
     switch (actionName) {
       case "restrict": {
         const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
-        url = targetedUser.isRestricted ? '/user/unrestrict' : '/user/restrict';
+        url = targetedUser.isRestricted ? '/api/user/unrestrict' : '/api/user/restrict';
         url += `/${targetedUser._id}`;
         break;
       }
       case "ban": {
         const targetedUser = JSON.parse(`<%-JSON.stringify( locals.targetedUser )%>`);
-        url = targetedUser.isBanned ? '/user/unban' : '/user/ban';
+        url = targetedUser.isBanned ? '/api/user/unban' : '/api/user/ban';
         url += `/${targetedUser._id}`;
         break;
       }
       case "deletePost": {
         const post = JSON.parse(`<%-JSON.stringify( locals.post )%>`);
         method = "DELETE";
-        url = "/thread/post";
+        url = "/api/thread/post";
         url += `/${post._id}`;
         break;
       }
       case "pinPost": {
         const post = JSON.parse(`<%-JSON.stringify( locals.post )%>`);
-        url = post.pinned ? '/thread/post/unpin' : '/thread/post/pin';
+        url = post.pinned ? '/api/thread/post/unpin' : '/api/thread/post/pin';
         url += `/${post._id}`;
         break;
       }

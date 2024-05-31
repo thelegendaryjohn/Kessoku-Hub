@@ -90,7 +90,9 @@ document
 				? `&redirect=${params.get("redirect")}`
 				: ``;
 			window.location.href =
-				"/account/success?username=" + formData.get("username") + extra;
+				"/api/account/success?username=" +
+				formData.get("username") +
+				extra;
 		} else {
 			let error = await response.json();
 			clearErrorHighlight();
@@ -148,7 +150,7 @@ document
 					? `&redirect=${params.get("redirect")}`
 					: ``;
 				window.location.href =
-					"/account/success?username=" +
+					"/api/account/success?username=" +
 					formData.get("username") +
 					extra;
 			} else {

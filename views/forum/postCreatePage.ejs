@@ -42,7 +42,7 @@
       </div>
 
       <!-- Post creating -->
-      <form id="post-create-container" class="form-container" method="POST" action="/thread/post" enctype="multipart/form-data">
+      <form id="post-create-container" class="form-container" method="POST" action="/api/thread/post" enctype="multipart/form-data">
         <div id="post-create-option-container">
           <label for="post-create-option-thread-select" class="font-poppins">Topics</label>
           <select id="post-create-option-thread-select" class="input-field font-poppins" type="text" list="thread-list" default="Select a topic!" <%= locals.user.isRestricted ? `disabled aria-disabled="true"` : `` %>>

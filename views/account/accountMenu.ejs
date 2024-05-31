@@ -120,7 +120,7 @@
     let confirmDeactivate = false;
     deactivateBtn.addEventListener("click", () => {
       if (confirmDeactivate) {
-        fetch("/user/archive/" + "<%= locals.user ? locals.user._id : '' %>", {
+        fetch("/api/user/archive/" + "<%= locals.user ? locals.user._id : '' %>", {
           method: "POST"
         }).then((res) => {
           if (res.status !== 200) {

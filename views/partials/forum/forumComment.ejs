@@ -1,7 +1,7 @@
 <div class="topic">
   <!-- topic header -->
   <div class="topic-header">
-    <a href="<%= `/user/${comment.author.username}` %>">
+    <a href="<%= `/api/user/${comment.author.username}` %>">
       <div class="topic-header-date-title">
         <img src='<%= comment.author.avatar != "" ? `/${comment.author.avatar}` : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
         <h3 class="topic-author"><%= comment.author.username %></h3>

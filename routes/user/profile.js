@@ -6,7 +6,7 @@ import { Comment } from "../../models/comment.js";
 //
 const router = Router();
 
-router.get("/user/:username", async (req, res) => {
+router.get("/api/user/:username", async (req, res) => {
 	const user = await User.findOne({
 		username: req.params.username,
 		isArchived: { $ne: true },

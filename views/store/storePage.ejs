@@ -4,7 +4,7 @@
 <head>
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
-  <link rel="stylesheet" href="/css/store/store.css" />
+  <link rel="stylesheet" href="/css/api/store/store.css" />
 
   <title>Kessoku Hub | Store</title>
 </head>
@@ -42,7 +42,7 @@
       <% }) %>
     </div>
     <!-- Cart page button container -->
-    <a href="/store/cart">
+    <a href="/api/store/cart">
       <div id="cart-button-container">
         <svg fill="#2254c0" class="cart-svg" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 483.1 483.1" xml:space="preserve">
           <g>
@@ -100,7 +100,7 @@
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       const itemId = e.target.parentElement.parentElement.id;
-      fetch(`/store/add/${itemId}`, {
+      fetch(`/api/store/add/${itemId}`, {
           method: "POST",
         })
         .then((res) => {

@@ -15,7 +15,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -124,7 +124,7 @@
         return;
       }
       // If the email input is valid, send a request to the verify email route
-      fetch("/account/verify", {
+      fetch("/api/account/verify", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

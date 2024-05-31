@@ -30,32 +30,38 @@ export const getComment = (singleComment, id) => {
 };
 
 // Posting a comment
-router.post("/thread/comment/post", upload.single("attachment"), (req, res) => {
-	// Check whether the user is logged in
-	if (!req.session.user) {
-		return res.status(401).json("Unauthorized.");
-	}
+router.post(
+	"/api/thread/comment/post",
+	upload.single("attachment"),
+	(req, res) => {
+		// Check whether the user is logged in
+		if (!req.session.user) {
+			return res.status(401).json("Unauthorized.");
+		}
 
-	// Create a new comment
-	let comment = new Comment({
-		content: req.body.content,
-		author: req.session.user._id,
-		postId: req.body.postId,
-		attachment: req.file ? req.file.path : null, // Store file path if file uploaded
-	});
-
-	comment
-		.save()
-		.then(() => {
-			return res.status(200).redirect(`/forum/thread/${req.body.postId}`);
-		})
-		.catch((err) => {
-			return res.status(500).json(err);
+		// Create a new comment
+		let comment = new Comment({
+			content: req.body.content,
+			author: req.session.user._id,
+			postId: req.body.postId,
+			attachment: req.file ? req.file.path : null, // Store file path if file uploaded
 		});
-});
+
+		comment
+			.save()
+			.then(() => {
+				return res
+					.status(200)
+					.redirect(`/forum/thread/${req.body.postId}`);
+			})
+			.catch((err) => {
+				return res.status(500).json(err);
+			});
+	}
+);
 
 // Getting comments by post ID
-router.get("/thread/comment/post/:id", (req, res) => {
+router.get("/api/thread/comment/post/:id", (req, res) => {
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -76,7 +82,7 @@ router.get("/thread/comment/post/:id", (req, res) => {
 });
 
 // Getting a comment by ID
-router.get("/thread/comment/:id", (req, res) => {
+router.get("/api/thread/comment/:id", (req, res) => {
 	// Validate the input
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
@@ -98,7 +104,7 @@ router.get("/thread/comment/:id", (req, res) => {
 });
 
 // Deleting a comment by ID
-router.delete("/thread/comment/:id", (req, res) => {
+router.delete("/api/thread/comment/:id", (req, res) => {
 	// Validate the input
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
@@ -134,7 +140,7 @@ router.delete("/thread/comment/:id", (req, res) => {
 });
 
 // Updating a comment by ID
-router.put("/thread/comment/:id", (req, res) => {
+router.put("/api/thread/comment/:id", (req, res) => {
 	// Validate the input
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");

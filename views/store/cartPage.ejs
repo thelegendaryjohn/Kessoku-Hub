@@ -4,7 +4,7 @@
 <head>
   <!-- Head partial -->
   <%- include("../partials/htmlHead.ejs") %>
-  <link rel="stylesheet" href="/css/store/cart.css">
+  <link rel="stylesheet" href="/css/api/store/cart.css">
 
   <title>Kessoku Hub | Store</title>
 </head>
@@ -55,7 +55,7 @@
     <!-- total price -->
     <div id="check-out-container">
       <div id="total-price" class="item-price">Total Price: <span id="total-price-number"><%- totalPrice %></span> $</div>
-      <a class="check-out-btn" href="/store/remove/all">Check out</a>
+      <a class="check-out-btn" href="/api/store/remove/all">Check out</a>
     </div>
 
     <!-- Cart page button container -->
@@ -104,7 +104,7 @@
       curItemQty.textContent = Number(curItemQty.textContent) + 1;
       curItemPrice.textContent = Number(curItemPrice.textContent) + items[itemId].price;
       totalPriceNumber.textContent = Number(totalPriceNumber.textContent) + items[itemId].price;
-      fetch(`/store/add/${itemId}`, {
+      fetch(`/api/store/add/${itemId}`, {
           method: "POST",
         })
         .then((res) => {
@@ -134,7 +134,7 @@
         totalPriceNumber.textContent = Number(totalPriceNumber.textContent) - items[itemId].price;
         btn.parentElement.parentElement.remove();
       }
-      fetch(`/store/remove/${itemId}`, {
+      fetch(`/api/store/remove/${itemId}`, {
           method: "POST",
         })
         .then((res) => {

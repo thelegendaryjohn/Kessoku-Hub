@@ -87,7 +87,7 @@
           switch (actionName) {
             case "delete": {
               method = "DELETE";
-              url = "/thread/comment";
+              url = "/api/thread/comment";
               url += `/${commentId}`;
               break;
             }
@@ -149,7 +149,7 @@
         document.querySelector(".edit-submit-btn").addEventListener("click", () => {
           const content = postText.value;
           const postId = "<%= post._id %>";
-          fetch(`/thread/post/${postId}`, {
+          fetch(`/api/thread/post/${postId}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json"
@@ -200,7 +200,7 @@
   document.querySelector(".edit-submit-btn").addEventListener("click", () => {
     const content = postText.value;
     const postId = "<%= post._id %>";
-    fetch(`/thread/post/${postId}`, {
+    fetch(`/api/thread/post/${postId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

@@ -14,7 +14,7 @@
     <button id="attachment-remove" class="form-btn">✕</button>
   </div>
   <!-- Comment posting -->
-  <form id="comment-post-container" class="form-container" method="POST" action="/thread/comment/post" enctype="multipart/form-data" style="display: <%= isGuest || locals.user.isRestricted ? "none" : "flex" %>">
+  <form id="comment-post-container" class="form-container" method="POST" action="/api/thread/comment/post" enctype="multipart/form-data" style="display: <%= isGuest || locals.user.isRestricted ? "none" : "flex" %>">
     <input type="hidden" name="postId" value="<%= post._id %>" />
     <textarea id="comment-post-input" class="input-field longtext-input-field font-poppins" type="text" name="content" placeholder="Write a comment..." autocomplete="off"></textarea>
     <div id="comment-post-btn-container">

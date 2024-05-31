@@ -15,7 +15,7 @@ app.use(async (req, res, next) => {
 });
 
 // Getting a user by ID. This route is only meant for API usage.
-router.get("/user/:id", (req, res) => {
+router.get("/api/user/:id", (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -33,7 +33,7 @@ router.get("/user/:id", (req, res) => {
 });
 
 // Getting a user's recent posts, with page and limit query parameters.
-router.get("/user/:id/posts", (req, res) => {
+router.get("/api/user/:id/posts", (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -57,7 +57,7 @@ router.get("/user/:id/posts", (req, res) => {
 });
 
 // Getting a user's recent comments, with page and limit query parameters.
-router.get("/user/:id/comments", (req, res) => {
+router.get("/api/user/:id/comments", (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -81,7 +81,7 @@ router.get("/user/:id/comments", (req, res) => {
 });
 
 // Restrict a user by ID.
-router.put("/user/restrict/:id", async (req, res) => {
+router.put("/api/user/restrict/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -95,7 +95,7 @@ router.put("/user/restrict/:id", async (req, res) => {
 });
 
 // Unrestrict a user by ID.
-router.put("/user/unrestrict/:id", async (req, res) => {
+router.put("/api/user/unrestrict/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -109,7 +109,7 @@ router.put("/user/unrestrict/:id", async (req, res) => {
 });
 
 // Ban a user by ID.
-router.put("/user/ban/:id", async (req, res) => {
+router.put("/api/user/ban/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -123,7 +123,7 @@ router.put("/user/ban/:id", async (req, res) => {
 });
 
 // Unban a user by ID.
-router.put("/user/unban/:id", async (req, res) => {
+router.put("/api/user/unban/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -137,7 +137,7 @@ router.put("/user/unban/:id", async (req, res) => {
 });
 
 // Archive a user by ID.
-router.post("/user/archive/:id", async (req, res) => {
+router.post("/api/user/archive/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}

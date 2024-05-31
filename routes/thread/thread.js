@@ -5,7 +5,7 @@ import { getComment } from "./comment.js";
 const router = Router();
 
 // Getting a thread (a post with comments)
-router.get("/thread/:id", async (req, res) => {
+router.get("/api/thread/:id", async (req, res) => {
 	// Validate the id
 	if (!req.params.id) {
 		return res.status(400).json("Invalid thread ID.");

@@ -58,10 +58,10 @@ describe("Post Routes", () => {
 		await post.save();
 	});
 
-	describe("POST /thread/post", () => {
+	describe("POST /api/thread/post", () => {
 		it("should create a new post", (done) => {
 			request(app)
-				.post("/thread/post")
+				.post("/api/thread/post")
 				.send({
 					title: "New Post",
 					content: "New Content",
@@ -82,7 +82,7 @@ describe("Post Routes", () => {
 
 		it("should return 401 if the topic wasnt found", (done) => {
 			request(app)
-				.post("/thread/post")
+				.post("/api/thread/post")
 				.set("Cookie", cookie) // Simulate logged in user
 				.send({ title: "New Post", content: "New Content" }) // Missing content
 				.expect(401, done);
@@ -90,7 +90,7 @@ describe("Post Routes", () => {
 
 		it("should return 401 if user is not logged in", (done) => {
 			request(app)
-				.post("/thread/post")
+				.post("/api/thread/post")
 				.send({
 					title: "New Post",
 					content: "New Content",
@@ -101,17 +101,17 @@ describe("Post Routes", () => {
 
 		it("should return 401 for invalid input", (done) => {
 			request(app)
-				.post("/thread/post")
+				.post("/api/thread/post")
 				.set("Cookie", cookie) // Simulate logged in user
 				.send({ title: "New Post" }) // Missing content
 				.expect(401, done);
 		});
 	});
 
-	describe("GET /thread/post/:id", () => {
+	describe("GET /api/thread/post/:id", () => {
 		it("should get a post by ID", (done) => {
 			request(app)
-				.get(`/thread/post/${post._id}`)
+				.get(`/api/thread/post/${post._id}`)
 				.expect(200)
 				.end((err, res) => {
 					if (err) return done(err);
@@ -130,7 +130,7 @@ describe("Post Routes", () => {
 		});
 
 		it("should return 401 for invalid input", (done) => {
-			request(app).get("/thread/post/invalidid").expect(401, done);
+			request(app).get("/api/thread/post/invalidid").expect(401, done);
 		});
 	});
 });

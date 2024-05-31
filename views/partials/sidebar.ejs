@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar ignoreSidebarToggle">
   <div id="sidebar-container">
     <a href="
-        <%= locals.user ? `/user/${locals.user.username}` : '/account?redirect=/' %>
+        <%= locals.user ? `/api/user/${locals.user.username}` : '/account?redirect=/' %>
     ">
       <div id="profile-container">
         <% if (locals.user) { %>
