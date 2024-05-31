@@ -21,7 +21,7 @@
 
   <main id="success-container">
     <section id="success-section">
-      <h1 id="success-title"><%- message %></h1>
+      <h1 id="success-title"><%- locals.message ? locals.message : "" %></h1>
       <div id="success-desc" class="loading-text-container">
         <span class="loading-text"></span>
       </div>
