@@ -8,7 +8,6 @@ const router = Router();
 // Middleware to update the user's info from the database in the session
 app.use(async (req, res, next) => {
 	if (req.session.user) {
-		console.log("Updating user info in the session");
 		req.session.user = await User.findById(req.session.user._id);
 	}
 	next();
@@ -169,4 +168,43 @@ router.post("/api/user/archive/:id", async (req, res) => {
 		return res.status(500).json(err);
 	}
 });
+
+// Set a new password for a user by ID.
+router.put("/user/password/:id", async (req, res) => {
+	if (!req.params.id) {
+		return res.status(400).send("Missing URL parameter: ID");
+	}
+	if (!req.session.user) {
+		return res.status(401).send("Unauthorized.");
+	}
+	if (req.session.user._id != req.params.id) {
+		return res.status(401).send("Unauthorized.");
+	}
+	if (!req.body.oldPassword) {
+		return res.status(400).send("Missing password.");
+	}
+	try {
+		const user = await User.findById(req.params.id);
+		user.comparePassword(req.body.oldPassword, async (err, isMatch) => {
+			if (err) {
+				return res.status(500).json("Old password is incorrect.");
+			}
+			if (isMatch) {
+				if (req.body.oldPassword != req.body.newPassword) {
+					user.password = req.body.newPassword;
+					await user.save();
+					return res.status(200).json("Password updated.");
+				} else {
+					return res.status(400).json("Password cannot be the same.");
+				}
+			} else {
+				return res.status(500).json("Old password is incorrect.");
+			}
+		});
+	} catch (err) {
+		console.error(err);
+		return res.status(500).json(err);
+	}
+});
+
 export default router;
