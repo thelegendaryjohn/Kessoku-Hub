@@ -3,8 +3,18 @@ import { render } from "../lib/render.js";
 import { characters } from "../public/js/landing/characters.js";
 import { Topic } from "../models/topic.js";
 import { Post } from "../models/post.js";
+import "dotenv/config";
+import { songDB } from "../public/js/landing/music-section/songDB.js";
+import {
+	getAccessToken,
+	getTrack,
+} from "../public/js/landing/music-section/spotifyApi.js";
+//
+const clientId = process.env.SPOTIFY_CLIENT_ID;
+const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 //
 const router = Router();
+let songs = songDB;
 
 router.get("/", async (req, res) => {
 	// Show announcement and discussion topics on the landing page
@@ -19,10 +29,25 @@ router.get("/", async (req, res) => {
 			.populate("author");
 	}
 
+	// Get access token from Spotify API
+	const accessToken = await getAccessToken(clientId, clientSecret);
+
+	// Fetch tracks for each song ID and add preview URL to songs array
+	songs = await Promise.all(
+		songs.map(async (song) => {
+			const trackData = await getTrack(song.id, accessToken);
+			return {
+				...song,
+				preview_url: trackData.preview_url,
+			};
+		})
+	);
+
 	render(req, res, "landingPage", {
 		charNames: characters.map((char) => char.id),
 		topics: topics,
 		posts: posts,
+		songs: songs,
 	});
 });
 
