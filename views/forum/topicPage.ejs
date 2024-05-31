@@ -52,7 +52,7 @@
         <% Object.values(posts).map((post) => { %>
         <div class="authored-post">
           <div class="topic-header">
-            <a href="/user/<%= post.author.username %>">
+            <a href="/api/user/<%= post.author.username %>">
               <div class="topic-header-date-title">
                 <img src='<%= post.author.avatar != "" ? `/${post.author.avatar}` : "/images/account-section/user-icon.svg"%>' alt="User avatar" class="topic-avatar">
                 <h3 class="topic-author"><%= post.author.username %></h3>

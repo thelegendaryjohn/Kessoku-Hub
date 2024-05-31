@@ -62,10 +62,10 @@ describe("Comment Routes", () => {
 		await post.save();
 	});
 
-	describe("POST /thread/comment", () => {
+	describe("POST /api/thread/comment", () => {
 		it("should create a new comment", (done) => {
 			request(app)
-				.post("/thread/comment")
+				.post("/api/thread/comment")
 				.send({
 					content: "Test Comment",
 					postId: post._id.toString(),
@@ -91,7 +91,7 @@ describe("Comment Routes", () => {
 
 		it("should return 401 for invalid input", (done) => {
 			request(app)
-				.post("/thread/comment")
+				.post("/api/thread/comment")
 				.set("Cookie", cookie) // Simulate logged in user
 				.send({ content: "Test Comment" }) // Missing postId
 				.expect(401, done);
@@ -99,7 +99,7 @@ describe("Comment Routes", () => {
 
 		it("should return 401 if user is not logged in", (done) => {
 			request(app)
-				.post("/thread/comment")
+				.post("/api/thread/comment")
 				.send({
 					content: "Test Comment",
 					postId: post._id.toString(),
@@ -108,7 +108,7 @@ describe("Comment Routes", () => {
 		});
 	});
 
-	describe("GET /thread/comment/post/:id", () => {
+	describe("GET /api/thread/comment/post/:id", () => {
 		it("should get comments by post ID", (done) => {
 			// Create a comment first
 			const comment = new Comment({
@@ -118,7 +118,7 @@ describe("Comment Routes", () => {
 			});
 			comment.save().then(() => {
 				request(app)
-					.get(`/thread/comment/post/${post._id}`)
+					.get(`/api/thread/comment/post/${post._id}`)
 					.expect(200)
 					.end((err, res) => {
 						if (err) return done(err);
@@ -139,12 +139,12 @@ describe("Comment Routes", () => {
 
 		it("should return 401 for invalid input", (done) => {
 			request(app)
-				.get("/thread/comment/post/invalidid")
+				.get("/api/thread/comment/post/invalidid")
 				.expect(401, done);
 		});
 	});
 
-	describe("GET /thread/comment/:id", () => {
+	describe("GET /api/thread/comment/:id", () => {
 		it("should get a comment by ID", (done) => {
 			// Create a comment first
 			const comment = new Comment({
@@ -154,7 +154,7 @@ describe("Comment Routes", () => {
 			});
 			comment.save().then((savedComment) => {
 				request(app)
-					.get(`/thread/comment/${savedComment._id}`)
+					.get(`/api/thread/comment/${savedComment._id}`)
 					.expect(200)
 					.end((err, res) => {
 						if (err) return done(err);
@@ -172,7 +172,7 @@ describe("Comment Routes", () => {
 		});
 
 		it("should return 401 for invalid input", (done) => {
-			request(app).get("/thread/comment/invalidid").expect(401, done);
+			request(app).get("/api/thread/comment/invalidid").expect(401, done);
 		});
 	});
 });

@@ -15,7 +15,7 @@
 <body>
   <!-- Desktop nav bar partial -->
   <%- include("../partials/navBarDesktop.ejs") %>
-  
+
   <!-- Sidebar partial -->
   <%- include("../partials/sidebar.ejs") %>
 
@@ -32,7 +32,7 @@
       <!-- "Profile" section -->
       <section id="settings-section" class="menu-section">
 
-        <form id="account-info-form" class="account-form" target="_self" method="post">
+        <form id="account-info-form" class="account-form" target="_self" data-user-id="<%= locals.user._id  %>">
           <h1 class="menu-section-title font-oswald">Verify Account</h1>
 
           <label id="email-label" class="form-label" for="email">Email</label>
@@ -52,7 +52,7 @@
 
           <label id="password-signup-label" class="form-label" for="password">Old Password</label>
           <div class="input-box">
-            <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
+            <input id="old-password-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" required>
 
             <div class="input-function pass-visibility">
               <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
@@ -62,7 +62,7 @@
 
           <label id="password-signup-label" class="form-label" for="password">New Password</label>
           <div class="input-box">
-            <input id="password-signup-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" autocomplete="new-password" required>
+            <input id="new-password-input" class="input-field" type="password" name="password" placeholder="bocchitherock" autocapitalize="off" autocomplete="new-password" name="new-password" required>
 
             <div class="input-function pass-visibility">
               <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
@@ -72,13 +72,13 @@
 
           <label id="confirm-signup-label" class="form-label" for="confirm-password">Confirm New Password</label>
           <div class="input-box">
-            <input id="confirm-signup-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" autocomplete="new-password" required>
+            <input id="confirm-password-input" class="input-field" type="password" name="confirm-password" placeholder="bocchitherock" autocapitalize="off" autocomplete="new-password" name="new-password-confirm" required>
 
             <div class="input-function pass-visibility">
               <img class="pass-visibility-img visible" src="/images/account-section/show-icon.svg" alt="Show/hide password">
             </div>
           </div>
-          <span id="confirm-signup-alert" class="alert">[Placeholder]</span>
+          <span id="confirm-password-alert" class="alert">[Placeholder]</span>
 
 
           <input class="submit-btn" type="submit" value="Save Changes">
@@ -86,27 +86,19 @@
       </section>
     </div>
   </main>
-  <script>
-    let user = '<%-JSON.stringify(user) %>';
-    if (user) {
-      user = JSON.parse(user);
-    }
-    console.log(user);
-  </script>
   <script src="/js/showHidePass.js"></script>
+  <% if (locals.user.email) { %>
+  <script>
+    document.querySelector("#email-input").value = "<%= locals.user.email %>";
+    document.querySelector("#email-input").disabled = true;
+    document.querySelector("#verifyButton").style.display = "none";
+  </script>
+  <% } %>
   <script>
     // By default, hide all the alerts
     document.querySelectorAll(".alert").forEach((alert) => {
       alert.style.opacity = "0";
     });
-
-    // Show email and disable verify button if the email is already verified
-    console.log(user);
-    if (user.email) {
-      document.querySelector("#email-input").value = user.email;
-      document.querySelector("#email-input").disabled = true;
-      document.querySelector("#verifyButton").style.display = "none";
-    }
 
     function errorAlert(element, content) {
       element.style.opacity = "1";
@@ -124,7 +116,7 @@
         return;
       }
       // If the email input is valid, send a request to the verify email route
-      fetch("/account/verify", {
+      fetch("/api/account/verify", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -155,6 +147,58 @@
           errorAlert(document.querySelector("#email-input-alert"), "There was an error sending the email. Please try again later.");
         });
     })
+
+    // Add an event listener to the form submission for password change
+    document.querySelector("#account-info-form").addEventListener("submit", e => {
+      e.preventDefault();
+
+      const oldPasswordInput = document.querySelector("#old-password-input");
+      const newPasswordInput = document.querySelector("#new-password-input");
+      const confirmPasswordInput = document.querySelector("#confirm-password-input");
+
+      const userId = document.querySelector("#account-info-form").dataset.userId;
+
+      // Validate the new password and confirm password match
+      if (newPasswordInput.value !== confirmPasswordInput.value) {
+        errorAlert(document.querySelector("#confirm-password-alert"), "Passwords do not match.");
+        return;
+      }
+
+      // Send a PUT request to the /user/password/:id endpoint
+      fetch(`/user/password/${userId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            oldPassword: oldPasswordInput.value,
+            newPassword: newPasswordInput.value
+          })
+        })
+        .then(res => {
+          if (res.status === 200) {
+            // If the password is successfully changed, show a success alert
+            const alert = document.querySelector("#confirm-password-alert");
+            alert.classList.add("success");
+            alert.textContent = "Password successfully changed.";
+            alert.style.opacity = "1";
+            setTimeout(() => {
+              alert.style.opacity = "0";
+            }, 3000);
+          } else {
+            // If there is an error, show an error alert
+            res.json().then(data => {
+              console.log(data);
+              errorAlert(document.querySelector("#confirm-password-alert"), data);
+            });
+          }
+        })
+        .catch(err => {
+          // If there is an error, show an error alert
+          errorAlert(document.querySelector("#confirm-password-alert"), "There was an error changing the password. Please try again later.");
+        });
+    });
+  </script>
   </script>
 
   <!-- Footer partial -->

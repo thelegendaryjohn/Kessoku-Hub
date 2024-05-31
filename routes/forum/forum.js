@@ -112,11 +112,11 @@ router.get("/forum/post/create", checkBanned, async (req, res) => {
 	});
 });
 
-router.get("/forum/inbox", checkBanned, (req, res) => {
+/*router.get("/forum/inbox", checkBanned, (req, res) => {
 	if (!req.session.user) {
 		return res.redirect("/forum/welcome");
 	}
 	render(req, res, "forum/notifPage", {});
-});
+});*/
 
 export default router;

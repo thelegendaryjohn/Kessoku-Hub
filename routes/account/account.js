@@ -20,7 +20,7 @@ router.get("/account", (req, res) => {
 	render(req, res, "account/accountSignIn");
 });
 
-router.get("/account/success", (req, res) => {
+router.get("/api/account/success", (req, res) => {
 	render(req, res, "account/accountSuccess", {
 		message: `Logging you in as <b>${req.query.username}</b>`,
 	});

@@ -24,7 +24,7 @@ function checkUser(req, res, next) {
 
 // Creating a new post
 router.post(
-	"/thread/post",
+	"/api/thread/post",
 	checkUser,
 	upload.single("attachment"),
 	async (req, res) => {
@@ -70,7 +70,7 @@ router.post(
 );
 
 // Getting a post by ID
-router.get("/thread/post/:id", (req, res) => {
+router.get("/api/thread/post/:id", (req, res) => {
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -90,7 +90,7 @@ router.get("/thread/post/:id", (req, res) => {
 });
 
 // Deleting a post by ID
-router.delete("/thread/post/:id", (req, res) => {
+router.delete("/api/thread/post/:id", (req, res) => {
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -137,7 +137,7 @@ router.delete("/thread/post/:id", (req, res) => {
 });
 
 // Editing a post by ID
-router.put("/thread/post/:id", async (req, res) => {
+router.put("/api/thread/post/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -179,7 +179,7 @@ router.put("/thread/post/:id", async (req, res) => {
 });
 
 // Pinning a post by ID, only available to admins
-router.put("/thread/post/pin/:id", async (req, res) => {
+router.put("/api/thread/post/pin/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
 	}
@@ -217,7 +217,7 @@ router.put("/thread/post/pin/:id", async (req, res) => {
 });
 
 // Unpinning a post by ID, only available to admins
-router.put("/thread/post/unpin/:id", async (req, res) => {
+router.put("/api/thread/post/unpin/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(401).json("Invalid input.");
 	}

@@ -162,7 +162,7 @@
       <!-- User profile dropdown menu -->
       <% if (locals.user) { %>
       <div class="user-profile-menu-container hide">
-        <a class="action-1 user-profile-menu-btn" href="/user/<%= locals.user.username %>">View Profile</a>
+        <a class="action-1 user-profile-menu-btn" href="/api/user/<%= locals.user.username %>">View Profile</a>
         <a class="action-2 user-profile-menu-btn" href="/account/menu">Account Menu</a>
         <a class="user-profile-menu-btn" href="/account/logout">Logout</a>
       </div>

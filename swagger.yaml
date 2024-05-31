@@ -110,7 +110,7 @@ paths:
                     description: "Successfully logged out"
                 "500":
                     description: "Internal server error"
-    /account/verify:
+    /api/account/verify:
         post:
             tags:
                 - "Authentication"
@@ -137,7 +137,7 @@ paths:
                     description: "Conflict, user is already verified"
                 "500":
                     description: "Internal server error"
-    /account/verify/{token}:
+    /api/account/verify/{token}:
         get:
             tags:
                 - "Authentication"
@@ -156,7 +156,7 @@ paths:
                     description: "Bad request, invalid token"
                 "404":
                     description: "Not found, user not found"
-    /thread/comment:
+    /api/thread/comment:
         post:
             tags:
                 - "Comments"
@@ -197,7 +197,7 @@ paths:
                     description: "Invalid input or Unauthorized"
                 "500":
                     description: "Internal server error"
-    /thread/comment/post/{id}:
+    /api/thread/comment/post/{id}:
         get:
             tags:
                 - "Comments"
@@ -229,7 +229,7 @@ paths:
                     description: "Invalid input"
                 "500":
                     description: "Internal server error"
-    /thread/comment/{id}:
+    /api/thread/comment/{id}:
         get:
             tags:
                 - "Comments"
@@ -259,7 +259,7 @@ paths:
                     description: "Invalid input"
                 "500":
                     description: "Internal server error"
-    /thread/post:
+    /api/thread/post:
         post:
             tags:
                 - "Posts"
@@ -305,7 +305,7 @@ paths:
                     description: "Invalid input, topic not found or Unauthorized"
                 "500":
                     description: "Internal server error"
-    /thread/post/{id}:
+    /api/thread/post/{id}:
         get:
             tags:
                 - "Posts"

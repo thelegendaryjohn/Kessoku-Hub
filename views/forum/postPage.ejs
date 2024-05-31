@@ -37,9 +37,14 @@
 
         <div id="post-content">
           <textarea title="post content" placeholder="this post has no text" class="post-content-text font-poppins"><%= post.content %></textarea>
+          <textarea title="post content" placeholder="this post has no text" class="post-content-text font-poppins"><%= post.content %></textarea>
           <% if (post.attachment) { %>
           <img src="/<%= post.attachment %>" alt="Post image" class="post-image">
           <% } %>
+          <div class="post-edit-container hide">
+            <button class="edit-cancel-btn post-edit-btn">Cancel</button>
+            <button class="edit-submit-btn post-edit-btn">Done</button>
+          </div>
           <div class="post-edit-container hide">
             <button class="edit-cancel-btn post-edit-btn">Cancel</button>
             <button class="edit-submit-btn post-edit-btn">Done</button>
@@ -87,7 +92,7 @@
           switch (actionName) {
             case "delete": {
               method = "DELETE";
-              url = "/thread/comment";
+              url = "/api/thread/comment";
               url += `/${commentId}`;
               break;
             }
@@ -149,7 +154,7 @@
         document.querySelector(".edit-submit-btn").addEventListener("click", () => {
           const content = postText.value;
           const postId = "<%= post._id %>";
-          fetch(`/thread/post/${postId}`, {
+          fetch(`/api/thread/post/${postId}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json"
@@ -169,6 +174,9 @@
         })
       })
     </script>
+
+    <!-- Footer partial -->
+    <%- include("../partials/htmlFooter.ejs", { hideFooter: true }) %>
   </main>
 
 </body>
@@ -200,7 +208,7 @@
   document.querySelector(".edit-submit-btn").addEventListener("click", () => {
     const content = postText.value;
     const postId = "<%= post._id %>";
-    fetch(`/thread/post/${postId}`, {
+    fetch(`/api/thread/post/${postId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

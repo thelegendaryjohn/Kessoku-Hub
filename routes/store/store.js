@@ -70,7 +70,7 @@ router.get("/store", (req, res) => {
 });
 
 // add item to cart
-router.post("/store/add/:id", (req, res) => {
+router.post("/api/store/add/:id", (req, res) => {
 	// Validate the id
 	if (!req.params.id) {
 		return res.status(400).json("Invalid item id");
@@ -97,7 +97,7 @@ router.post("/store/add/:id", (req, res) => {
 });
 
 // remove item from cart
-router.post("/store/remove/:id", (req, res) => {
+router.post("/api/store/remove/:id", (req, res) => {
 	// Validate the id
 	if (!req.params.id) {
 		return res.status(400).json("Invalid item id");
@@ -116,7 +116,7 @@ router.post("/store/remove/:id", (req, res) => {
 });
 
 // remove all item from cart
-router.get("/store/remove/all", (req, res) => {
+router.get("/api/store/remove/all", (req, res) => {
 	// empty the cart session
 	req.session.cart = {};
 	req.session.save((err) => {
@@ -128,7 +128,7 @@ router.get("/store/remove/all", (req, res) => {
 	});
 });
 
-router.get("/store/cart", (req, res) => {
+router.get("/api/store/cart", (req, res) => {
 	console.log(req.session.cart);
 	render(req, res, "store/cartPage", {
 		items: items,

@@ -6,7 +6,7 @@ import { User, roles } from "../../models/user.js";
 //
 const router = Router();
 
-router.post("/account/verify", async (req, res) => {
+router.post("/api/account/verify", async (req, res) => {
 	const email = req.body.email;
 	if (!email) return res.status(400).json("Email is required.");
 	// Prevents non logged in users from verifying
@@ -42,7 +42,7 @@ router.post("/account/verify", async (req, res) => {
 	});
 });
 
-router.get("/account/verify/:token", async (req, res) => {
+router.get("/api/account/verify/:token", async (req, res) => {
 	// Check if the token is valid
 	jwt.verify(
 		req.params.token,

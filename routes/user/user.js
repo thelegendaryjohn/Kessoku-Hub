@@ -8,14 +8,13 @@ const router = Router();
 // Middleware to update the user's info from the database in the session
 app.use(async (req, res, next) => {
 	if (req.session.user) {
-		console.log("Updating user info in the session");
 		req.session.user = await User.findById(req.session.user._id);
 	}
 	next();
 });
 
 // Getting a user by ID. This route is only meant for API usage.
-router.get("/user/:id", (req, res) => {
+router.get("/api/user/:id", (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -33,7 +32,7 @@ router.get("/user/:id", (req, res) => {
 });
 
 // Getting a user's recent posts, with page and limit query parameters.
-router.get("/user/:id/posts", (req, res) => {
+router.get("/api/user/:id/posts", (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -57,7 +56,7 @@ router.get("/user/:id/posts", (req, res) => {
 });
 
 // Getting a user's recent comments, with page and limit query parameters.
-router.get("/user/:id/comments", (req, res) => {
+router.get("/api/user/:id/comments", (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -81,7 +80,7 @@ router.get("/user/:id/comments", (req, res) => {
 });
 
 // Restrict a user by ID.
-router.put("/user/restrict/:id", async (req, res) => {
+router.put("/api/user/restrict/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -95,7 +94,7 @@ router.put("/user/restrict/:id", async (req, res) => {
 });
 
 // Unrestrict a user by ID.
-router.put("/user/unrestrict/:id", async (req, res) => {
+router.put("/api/user/unrestrict/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -109,7 +108,7 @@ router.put("/user/unrestrict/:id", async (req, res) => {
 });
 
 // Ban a user by ID.
-router.put("/user/ban/:id", async (req, res) => {
+router.put("/api/user/ban/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -123,7 +122,7 @@ router.put("/user/ban/:id", async (req, res) => {
 });
 
 // Unban a user by ID.
-router.put("/user/unban/:id", async (req, res) => {
+router.put("/api/user/unban/:id", async (req, res) => {
 	try {
 		const user = await User.findByIdAndUpdate(
 			req.params.id,
@@ -137,7 +136,7 @@ router.put("/user/unban/:id", async (req, res) => {
 });
 
 // Archive a user by ID.
-router.post("/user/archive/:id", async (req, res) => {
+router.post("/api/user/archive/:id", async (req, res) => {
 	if (!req.params.id) {
 		return res.status(400).send("Missing URL parameter: ID");
 	}
@@ -169,4 +168,43 @@ router.post("/user/archive/:id", async (req, res) => {
 		return res.status(500).json(err);
 	}
 });
+
+// Set a new password for a user by ID.
+router.put("/user/password/:id", async (req, res) => {
+	if (!req.params.id) {
+		return res.status(400).send("Missing URL parameter: ID");
+	}
+	if (!req.session.user) {
+		return res.status(401).send("Unauthorized.");
+	}
+	if (req.session.user._id != req.params.id) {
+		return res.status(401).send("Unauthorized.");
+	}
+	if (!req.body.oldPassword) {
+		return res.status(400).send("Missing password.");
+	}
+	try {
+		const user = await User.findById(req.params.id);
+		user.comparePassword(req.body.oldPassword, async (err, isMatch) => {
+			if (err) {
+				return res.status(500).json("Old password is incorrect.");
+			}
+			if (isMatch) {
+				if (req.body.oldPassword != req.body.newPassword) {
+					user.password = req.body.newPassword;
+					await user.save();
+					return res.status(200).json("Password updated.");
+				} else {
+					return res.status(400).json("Password cannot be the same.");
+				}
+			} else {
+				return res.status(500).json("Old password is incorrect.");
+			}
+		});
+	} catch (err) {
+		console.error(err);
+		return res.status(500).json(err);
+	}
+});
+
 export default router;
