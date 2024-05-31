@@ -6,14 +6,14 @@
     <%- include("albumHeader.ejs") %>
 
     <div id="album-song-list">
-      <% songs.forEach((song, index) => { %>
+      <% for(let i = 0; i < 4; i++) { %>
         <%- include("./albumSong.ejs", {
-              index: song.index,
-              name: song.songName,
-              length: song.length,
-              url: song.preview_url,
+              index: songs[i].index,
+              name: songs[i].songName,
+              length: songs[i].length,
+              url: songs[i].preview_url,
             }) %>
-      <% }); %>
+      <% }; %>
     </div>
 
     <%- include("../../music/audioWidget.ejs") %>
