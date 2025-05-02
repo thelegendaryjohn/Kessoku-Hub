@@ -47,10 +47,6 @@ router.get("/", async (req, res) => {
 	songs = await Promise.all(
 		songs.map(async (song) => {
 			const preview_url = await getPreviewFromSpotifyEmbed(song.id);
-			console.log({
-				...song,
-				preview_url,
-			});
 			return {
 				...song,
 				preview_url,
