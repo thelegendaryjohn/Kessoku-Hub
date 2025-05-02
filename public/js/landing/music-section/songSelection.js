@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const songItems = document.querySelectorAll(".song");
 	const controlBtns = document.querySelectorAll(".play-pause-btn");
 	let selectedSongIndex;
-    let lastVolume = 0;
+	let lastVolume = 0;
 
 	songItems.forEach((song) => {
 		song.addEventListener("click", () => {
@@ -89,11 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			lastVolume = audio.volume;
 			audio.volume = 0;
 			volumeSlider.value = 0;
-            updateVolumeState();
+			updateVolumeState();
 		} else {
 			audio.volume = lastVolume;
 			volumeSlider.value = lastVolume;
-            updateVolumeState();
+			updateVolumeState();
 		}
 	}
 
