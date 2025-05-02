@@ -6,12 +6,13 @@ import { Post } from "../models/post.js";
 import "dotenv/config";
 import { songDB } from "../public/js/landing/music-section/songDB.js";
 import {
-	getAccessToken,
-	getTrack,
+	// getAccessToken,
+	// getTrack,
+	getPreviewFromSpotifyEmbed,
 } from "../public/js/landing/music-section/spotifyApi.js";
 //
-const clientId = process.env.SPOTIFY_CLIENT_ID;
-const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+// const clientId = process.env.SPOTIFY_CLIENT_ID;
+// const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
 //
 const router = Router();
 let songs = songDB;
@@ -30,15 +31,29 @@ router.get("/", async (req, res) => {
 	}
 
 	// Get access token from Spotify API
-	const accessToken = await getAccessToken(clientId, clientSecret);
+	// const accessToken = await getAccessToken(clientId, clientSecret);
+
+	// songs = await Promise.all(
+	// 	songs.map(async (song) => {
+	// 		const trackData = await getTrack(song.id, accessToken);
+	// 		return {
+	// 			...song,
+	// 			preview_url: trackData.preview_url,
+	// 		};
+	// 	})
+	// );
 
 	// Fetch tracks for each song ID and add preview URL to songs array
 	songs = await Promise.all(
 		songs.map(async (song) => {
-			const trackData = await getTrack(song.id, accessToken);
+			const preview_url = await getPreviewFromSpotifyEmbed(song.id);
+			console.log({
+				...song,
+				preview_url,
+			});
 			return {
 				...song,
-				preview_url: trackData.preview_url,
+				preview_url,
 			};
 		})
 	);
