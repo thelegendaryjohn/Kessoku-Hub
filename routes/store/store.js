@@ -129,7 +129,7 @@ router.get("/api/store/remove/all", (req, res) => {
 });
 
 router.get("/api/store/cart", (req, res) => {
-	console.log(req.session.cart);
+	// console.log(req.session.cart);
 	render(req, res, "store/cartPage", {
 		items: items,
 		cart: req.session.cart,
